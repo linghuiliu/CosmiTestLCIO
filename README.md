@@ -2,12 +2,12 @@
 LCIO analyzer for cosmic test of HBU at DESY 2017-18
 
 How to setup
-1. Replace "directorypath" to your own directory path. There are 5 files "directorypath" is included.
-        user-pro-test_x86_64_gcc44_sl6.cmake
-        calice_cmake/calice.cmake
-        RootTreeWriter/engines/HodoscopeWriteEngine.cc
-        setup.sh
-        test/steering_hodoscope.xml
+1. Replace "directorypath" to your own directory path. There are 5 files "directorypath" is included.  
+        user-pro-test_x86_64_gcc44_sl6.cmake  
+        calice_cmake/calice.cmake  
+        RootTreeWriter/engines/HodoscopeWriteEngine.cc  
+        setup.sh  
+        test/steering_hodoscope.xml  
 
 2.
 ```
@@ -35,6 +35,6 @@ How to setup
 5. Run
 ```
  Marlin test/steering_hodoscope.xml
-```
+```  
    with proper input and output files.
 
