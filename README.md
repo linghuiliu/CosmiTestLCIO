@@ -9,7 +9,8 @@ How to setup
         setup.sh
         test/steering_hodoscope.xml
 
-2.```
+2.
+```
  mkdir myInstall
  mkdir build_calice_userlib
  mkdir build_calice_analysis
@@ -19,7 +20,8 @@ How to setup
  mkdir build_RootTreeWriter
 ```
                    
-3. ```
+3.
+```
  cd build_calice_userlib
  cmake -C ../user-pro-test_x86_64_gcc44_sl6.cmake ../calice_userlib/
  make
@@ -31,6 +33,8 @@ How to setup
 4. ``` source setup.sh```
 
 5. Run
-   ``` Marlin test/steering_hodoscope.xml```
+```
+ Marlin test/steering_hodoscope.xml
+```
    with proper input and output files.
 
