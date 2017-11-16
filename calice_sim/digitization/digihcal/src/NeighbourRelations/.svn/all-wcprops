@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/2565/calice_sim/trunk/digitization/digihcal/src/NeighbourRelations
+END
+Cell.cc
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/public/calice/!svn/ver/2565/calice_sim/trunk/digitization/digihcal/src/NeighbourRelations/Cell.cc
+END
+CoarseModule.cc
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/public/calice/!svn/ver/2565/calice_sim/trunk/digitization/digihcal/src/NeighbourRelations/CoarseModule.cc
+END
+Module.cc
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/public/calice/!svn/ver/2565/calice_sim/trunk/digitization/digihcal/src/NeighbourRelations/Module.cc
+END
+FineModule.cc
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/public/calice/!svn/ver/2565/calice_sim/trunk/digitization/digihcal/src/NeighbourRelations/FineModule.cc
+END

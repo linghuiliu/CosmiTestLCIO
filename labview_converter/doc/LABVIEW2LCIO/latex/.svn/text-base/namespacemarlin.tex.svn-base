@@ -1,0 +1,22 @@
+\section{marlin Namespace Reference}
+\label{namespacemarlin}\index{marlin@{marlin}}
+
+
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+class \bf{Labview\-Converter}
+\begin{CompactList}\small\item\em Processor for reading the AHCAL Labview asscii files. \item\end{CompactList}\item 
+class \bf{Labview\-Converter2}
+\begin{CompactList}\small\item\em Processor for reading the AHCAL Labview asscii files. \item\end{CompactList}\item 
+class \bf{Root\-Write\-Engine}
+\begin{CompactList}\small\item\em Abstract base class of callback classes for the Root\-Tree\-Write processor Abstract interface for a Root\-Tree\-Writer-engine. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+\bf{Labview\-Converter} \bf{a\-Labview\-Converter}\label{namespacemarlin_1b31a5709b7c22967f3cb50ba63a7b98}
+
+\item 
+\bf{Labview\-Converter2} \bf{a\-Labview\-Converter2}\label{namespacemarlin_a29cb1a3c92dfa6b1328e4398702d2bf}
+
+\end{CompactItemize}

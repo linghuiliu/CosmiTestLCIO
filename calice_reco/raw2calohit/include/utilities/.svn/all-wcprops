@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/2770/calice_reco/trunk/raw2calohit/include/utilities
+END
+ProgressHandler.hh
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/2770/calice_reco/trunk/raw2calohit/include/utilities/ProgressHandler.hh
+END
+CollectionSelector.hh
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/public/calice/!svn/ver/2541/calice_reco/trunk/raw2calohit/include/utilities/CollectionSelector.hh
+END
+CollectionHistogramer.hh
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/public/calice/!svn/ver/977/calice_reco/trunk/raw2calohit/include/utilities/CollectionHistogramer.hh
+END

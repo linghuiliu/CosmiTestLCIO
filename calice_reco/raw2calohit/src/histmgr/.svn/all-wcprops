@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/public/calice/!svn/ver/1110/calice_reco/trunk/raw2calohit/src/histmgr
+END
+HistogramCollection_t.cc
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/959/calice_reco/trunk/raw2calohit/src/histmgr/HistogramCollection_t.cc
+END
+HistMgr.cc
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/963/calice_reco/trunk/raw2calohit/src/histmgr/HistMgr.cc
+END
+HistogramOutput.cc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/1109/calice_reco/trunk/raw2calohit/src/histmgr/HistogramOutput.cc
+END
+ProfileCollection_t.cc
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/956/calice_reco/trunk/raw2calohit/src/histmgr/ProfileCollection_t.cc
+END
+GraphCollection_t.cc
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/964/calice_reco/trunk/raw2calohit/src/histmgr/GraphCollection_t.cc
+END
+RootWriter.cc
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/955/calice_reco/trunk/raw2calohit/src/histmgr/RootWriter.cc
+END
+Histogram1D.cc
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/962/calice_reco/trunk/raw2calohit/src/histmgr/Histogram1D.cc
+END
+Histogram2DCollection_t.cc
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/960/calice_reco/trunk/raw2calohit/src/histmgr/Histogram2DCollection_t.cc
+END
+Histogram2D.cc
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/1110/calice_reco/trunk/raw2calohit/src/histmgr/Histogram2D.cc
+END
+HistogramDisplay.cc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/967/calice_reco/trunk/raw2calohit/src/histmgr/HistogramDisplay.cc
+END
+Profile1D.cc
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/957/calice_reco/trunk/raw2calohit/src/histmgr/Profile1D.cc
+END
+FloatHistogram1D.cc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/966/calice_reco/trunk/raw2calohit/src/histmgr/FloatHistogram1D.cc
+END
+RootWriterKit.cc
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/954/calice_reco/trunk/raw2calohit/src/histmgr/RootWriterKit.cc
+END
+FloatHistogram2D.cc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/965/calice_reco/trunk/raw2calohit/src/histmgr/FloatHistogram2D.cc
+END

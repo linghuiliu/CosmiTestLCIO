@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/public/calice/!svn/ver/3195/calice_tools/RootTreeWriter/trunk/include
+END
+RootWriteEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/3194/calice_tools/RootTreeWriter/trunk/include/RootWriteEngine.hh
+END
+EngineRegistrar.hh
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/3195/calice_tools/RootTreeWriter/trunk/include/EngineRegistrar.hh
+END
+EngineLoaderProxy.hh
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/3195/calice_tools/RootTreeWriter/trunk/include/EngineLoaderProxy.hh
+END
+EventPropertiesWriteEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/public/calice/!svn/ver/3193/calice_tools/RootTreeWriter/trunk/include/EventPropertiesWriteEngine.hh
+END
+RootTreeWriter.hh
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/3193/calice_tools/RootTreeWriter/trunk/include/RootTreeWriter.hh
+END

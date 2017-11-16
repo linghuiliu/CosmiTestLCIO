@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/public/calice/!svn/ver/4755/calice_analysis/trunk
+END
+.gitignore
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/public/calice/!svn/ver/3108/calice_analysis/trunk/.gitignore
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/public/calice/!svn/ver/4700/calice_analysis/trunk/CMakeLists.txt
+END

@@ -1,0 +1,18 @@
+Here a example job can be build in which the
+access to converted CALICE data is demonstrated.
+The jobs can help, too, on how to implement
+root histos for analysis but this is not is
+principle purpose.
+
+Setting environment variables (modify as needed):
+   . env.sh
+
+build:
+
+   gmake -C src
+
+run:
+
+   bin/Dataproc steer/datapro.steer
+
+(modify the steering accordingly)

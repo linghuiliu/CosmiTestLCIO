@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/public/calice/!svn/ver/4190/calice_cddata/trunk/dbfill/ReadDaqMap
+END
+getRunStartTime.hh
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/1969/calice_cddata/trunk/dbfill/ReadDaqMap/getRunStartTime.hh
+END
+ReadLine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/1969/calice_cddata/trunk/dbfill/ReadDaqMap/ReadLine.hh
+END
+ReadDaqMap.cc
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/1970/calice_cddata/trunk/dbfill/ReadDaqMap/ReadDaqMap.cc
+END
+TLineIterator.hh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/4190/calice_cddata/trunk/dbfill/ReadDaqMap/TLineIterator.hh
+END
+getRunStartTime.cc
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/1970/calice_cddata/trunk/dbfill/ReadDaqMap/getRunStartTime.cc
+END
+parseDateTime.hh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/1969/calice_cddata/trunk/dbfill/ReadDaqMap/parseDateTime.hh
+END
+ReadLine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/3661/calice_cddata/trunk/dbfill/ReadDaqMap/ReadLine.cc
+END
+TLineIterator.cc
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/3635/calice_cddata/trunk/dbfill/ReadDaqMap/TLineIterator.cc
+END
+FeConnectionDef_t.hh
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/1969/calice_cddata/trunk/dbfill/ReadDaqMap/FeConnectionDef_t.hh
+END
+parseDateTime.cc
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/3661/calice_cddata/trunk/dbfill/ReadDaqMap/parseDateTime.cc
+END
+ReadDaqMap.hh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/1969/calice_cddata/trunk/dbfill/ReadDaqMap/ReadDaqMap.hh
+END

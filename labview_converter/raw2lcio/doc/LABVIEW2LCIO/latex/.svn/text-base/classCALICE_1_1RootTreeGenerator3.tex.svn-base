@@ -1,0 +1,125 @@
+\section{CALICE::Root\-Tree\-Generator3 Class Reference}
+\label{classCALICE_1_1RootTreeGenerator3}\index{CALICE::RootTreeGenerator3@{CALICE::RootTreeGenerator3}}
+Class to process Labview raw.  
+
+
+{\tt \#include $<$Root\-Tree\-Generator3.hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+virtual Processor $\ast$ \bf{new\-Processor} ()\label{classCALICE_1_1RootTreeGenerator3_bb33f0b468df700e0eb0146b25a2b445}
+
+\item 
+\bf{Root\-Tree\-Generator3} ()\label{classCALICE_1_1RootTreeGenerator3_6e94f8bb7fc6b26786b727c1876ca152}
+
+\item 
+\bf{$\sim$Root\-Tree\-Generator3} ()\label{classCALICE_1_1RootTreeGenerator3_3974bad029c73ee8014257c00a4be3f6}
+
+\item 
+void \bf{init} ()\label{classCALICE_1_1RootTreeGenerator3_ae7a4c1a9ac07efb050af724f9ea2fa3}
+
+\item 
+void \bf{process\-Event} (LCEvent $\ast$evt)\label{classCALICE_1_1RootTreeGenerator3_b1d42b1751105c6423299a61dbb10d72}
+
+\item 
+void \bf{end} ()\label{classCALICE_1_1RootTreeGenerator3_37b1f9892241eaa062cc2eab05c0e6e2}
+
+\item 
+void \bf{register\-Branches} (TTree $\ast$host\-Tree)\label{classCALICE_1_1RootTreeGenerator3_8e823872abcc86224b893bd0e9a55315}
+
+\item 
+void \bf{Fill\-Variable} (LCEvent $\ast$evt)\label{classCALICE_1_1RootTreeGenerator3_88246977c8934ca65ff289936bc50370}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+std::string \bf{\_\-input\-Col\-Name}\label{classCALICE_1_1RootTreeGenerator3_1df35a631260665e78a779cbf37fba84}
+
+\item 
+std::string \bf{\_\-prefix}\label{classCALICE_1_1RootTreeGenerator3_841d32a7028430ea1dff76a6793ef22d}
+
+\item 
+TFile $\ast$ \bf{\_\-root\-File}\label{classCALICE_1_1RootTreeGenerator3_407032101ab67948c3bc4200df7efbb7}
+
+\item 
+std::string \bf{\_\-root\-File\-Name}\label{classCALICE_1_1RootTreeGenerator3_fbffd8f33c7afb104a691f55569f2b52}
+
+\item 
+TTree $\ast$ \bf{\_\-tree\-Labview\-Block}\label{classCALICE_1_1RootTreeGenerator3_f5159a77d8fb55cba827e6c0133de0da}
+
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int \bf{iEvt}\\
+\>int \bf{nHits}\\
+\>int \bf{BunchXID} [\bf{MAXCELLS}]\\
+\>int \bf{CycleNr} [\bf{MAXCELLS}]\\
+\>int \bf{ChipID} [\bf{MAXCELLS}]\\
+\>int \bf{EvtNr} [\bf{MAXCELLS}]\\
+\>int \bf{Channel} [\bf{MAXCELLS}]\\
+\>int \bf{TDC} [\bf{MAXCELLS}]\\
+\>int \bf{ADC} [\bf{MAXCELLS}]\\
+\>int \bf{HitBit} [\bf{MAXCELLS}]\\
+\>int \bf{GainBit} [\bf{MAXCELLS}]\\
+\} \textbf{\_hFill}\label{classCALICE_1_1RootTreeGenerator3_6f6c674370d5a4203e1c2ab67ad1b335}
+\\
+
+\end{tabbing}\end{CompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{CompactItemize}
+\item 
+static const unsigned int \bf{MAXCELLS} = 7609\label{classCALICE_1_1RootTreeGenerator3_bc2dae2b59697c958a5751a69f40d1a7}
+
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+int \bf{ievt}\label{classCALICE_1_1RootTreeGenerator3_ac59584352469292fad085bb3a622584}
+
+\item 
+int \bf{run\-Number}\label{classCALICE_1_1RootTreeGenerator3_255028e22ac15f52008f54ef8f5f0cb3}
+
+\item 
+int \bf{event\-Number}\label{classCALICE_1_1RootTreeGenerator3_be8e37623347f734d0ae9324a1b824b6}
+
+\item 
+int \bf{Timestamp}\label{classCALICE_1_1RootTreeGenerator3_88e434b7f695d18de87cf5375afef8ef}
+
+\end{CompactItemize}
+\subsection*{Static Private Attributes}
+\begin{CompactItemize}
+\item 
+static std::map$<$ TTree $\ast$, \bf{Root\-Tree\-Generator3} $\ast$ $>$ \bf{\_\-tree\-Filler\-Map}\label{classCALICE_1_1RootTreeGenerator3_a0cfe319820d0b824560ccbd0686cd36}
+
+\item 
+static std::map$<$ TTree $\ast$, \bf{Root\-Tree\-Generator3} $\ast$ $>$ \bf{\_\-tree\-Owner\-Map}\label{classCALICE_1_1RootTreeGenerator3_d46ce3cb9c423bf5ab6241e09d73e961}
+
+\item 
+static std::map$<$ TFile $\ast$, \bf{Root\-Tree\-Generator3} $\ast$ $>$ \bf{\_\-file\-Owner\-Map}\label{classCALICE_1_1RootTreeGenerator3_9cac476ad6d0a56524b6c0d6071fdb56}
+
+\item 
+static const double \bf{INVALID} = -FLT\_\-MAX\label{classCALICE_1_1RootTreeGenerator3_1947b27171d84779f450fd4237767f12}
+
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Class to process Labview raw. 
+
+\begin{Desc}
+\item[Author:]: Shaojun Lu DESY \end{Desc}
+\begin{Desc}
+\item[Date:]Nov 15 2012 \end{Desc}
+
+
+
+
+Definition at line 21 of file Root\-Tree\-Generator3.hh.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+Root\-Tree\-Generator3.hh\item 
+Root\-Tree\-Generator3.cc\end{CompactItemize}

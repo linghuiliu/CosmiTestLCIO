@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!-- ?xml-stylesheet type="text/xsl" href="http://ilcsoft.desy.de/marlin/marlin.xsl"? -->
+<!-- ?xml-stylesheet type="text/xsl" href="marlin.xsl"? -->
+
+<!-- Loading shared library : /afs/desy.de/user/h/huonglan/RunMarlin/myInstall/lib/libuserlib.so.6.5.1 (libuserlib.so)-->
+<!-- Loading shared library : /afs/desy.de/user/h/huonglan/RunMarlin/myInstall/lib/liblabview2lcio.so.1.0.0 (liblabview2lcio.so)-->
+
+<!--##########################################
+   #                                        #
+   #     Example steering file for marlin   #
+   #                                        #
+   ##########################################-->
+
+
+<marlin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ilcsoft.desy.de/marlin/marlin.xsd">
+  <execute>
+    <processor name="Ahc2OffsetCalibrator"/>
+  </execute>
+
+  <global>
+    <parameter name="LCIOInputFiles">
+
+    </parameter>
+    <!-- limit the number of processed records (run+evt): -->  
+    <parameter name="MaxRecordNumber" value="0" />  
+    <parameter name="SkipNEvents" value="0" />  
+    <parameter name="SupressCheck" value="false" />  
+    <parameter name="Verbosity" options="DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT"> ERROR </parameter> 
+  </global>
+
+  <processor name="Ahc2OffsetCalibrator" type="Ahc2OffsetCalibrator">
+    <parameter name="DetectorType" type="string"> ScCAL </parameter>
+    <!--INPUT COLLECTIONS-->
+    <!--Name of the input collection of EUDAQ lcio raw data-->
+    <parameter name="InputCollectionName" type="string"> EUDAQDataScCAL </parameter>
+    <!--Name of the input collection of EUDAQ BIF data-->
+    <parameter name="InputCollectionNameBIF" type="string"> EUDAQDataBIF </parameter>
+    <!--Output rootfile name for number of events per offset-->
+    <parameter name="Output_file" type="string"> OffsetCalib.root </parameter>
+    <!--Start of the scan, stop of scan and step-->
+    <parameter name="BifHandler" type="StringVec">
+      0 100000 1
+    </parameter>
+  </processor>
+
+</marlin>

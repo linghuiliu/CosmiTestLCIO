@@ -1,0 +1,256 @@
+############################################
+#
+#  Example steering file for LCIOFrame
+#    
+############################################
+
+.begin Global  ---------------------------------------
+
+# specify one ore more input files (in one ore more lines)
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run100214.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run130441.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run111163.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run110915.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run200045.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run200120.000.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run200120.001.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run200120.002.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run200120.003.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run200120.004.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run200120.005.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run200120.006.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run200120.007.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run200120.008.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run200120.009.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run200120.010.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run200120.011.slcio
+#LCIOInputFiles /pnfs/desy.de/calice/tb-desy/raw/conv_v0310/Run201172.000.slcio
+#LCIOInputFiles /pnfs/desy.de/calice/tb-desy/raw/conv_v0310/Run201172.001.slcio
+#LCIOInputFiles /pnfs/desy.de/calice/tb-desy/raw/conv_v0310/Run201172.002.slcio
+#LCIOInputFiles /pnfs/desy.de/calice/tb-desy/raw/conv_v0310/Run230097.000.slcio
+#LCIOInputFiles /pnfs/desy.de/calice/tb-desy/raw/conv_v0310/Run220272.000.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run230267.000.slcio.bkup
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run230267.000.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run320353.000.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run320011.000.slcio
+#LCIOInputFiles /data/poeschl/cvstest/calice_lcioconv/raw2lcio/Run300097.000.slcio
+#LCIOInputFiles /pnfs/desy.de/calice/tb-cern/raw/conv_v0402/Run300135.000.slcio
+#LCIOInputFiles /data/poeschl/ilcsoft/calice/svn_calice/lib/Run360080.000.slcio
+LCIOInputFiles /data/poeschl/ilcsoft/calice/svn_calice/lib/Run360306.000.slcio
+#LCIOInputFiles /scratch/data/Run300184.000.slcio
+MaxRecordNumber 1500
+
+# the active modules that are called in the given order
+ActiveProcessors ConditionsProcessor
+ActiveProcessors SimpleTriggerProcessor
+ActiveProcessors CaliceExampleProcessor
+#ActiveProcessors TBPedestalProcessor
+#ActiveProcessors CaliceCheckSumProcessor
+#ActiveProcessors OutputProcessor
+.end   -----------------------------------------------
+
+#define the module parameters after '.begin ModuleName' :
+
+
+.begin ConditionsProcessor
+ProcessorType ConditionsProcessor
+
+#---ConditionsProcessor provides access to conditions data  transparently 
+#   from LCIO files or a databases, using LCCD
+
+    DBInit   flccaldb02.desy.de:calice:caliceon:Delice.1:3306
+#    DBInit   flc02.desy.de:condb_1:condb:condb:3306
+#    DBInit   flc02.desy.de:calice:condb:condb:3306
+
+
+#DBCondHandler channelmap /cd_calice/CellMapHcal HEAD
+#DBCondHandler CALDAQ_TriggerCheck /cd_calice/CALDAQ_TriggerCheck HEAD
+#DBCondHandler CALDAQ_TriggerAssignment /cd_calice/CALDAQ_TriggerAssignment HEAD
+#
+DBCondHandler CALDAQ_TriggerCheck /cd_calice_cernbeam/CALDAQ_TriggerCheck HEAD
+DBCondHandler CALDAQ_TriggerAssignment /cd_calice_cernbeam/CALDAQ_TriggerAssignment HEAD
+#DBCondHandler ModuleLocation /cd_calice_cernbeam/Ecal/ModuleLocation HEAD
+#DBCondHandler EmcModuleConnection /cd_calice_cernbeam/Ecal/Mapping HEAD
+DBCondHandler AhcModuleConnection /cd_calice_cernbeam/Hcal/HcalMapping HEAD
+#
+DBCondHandler CALDAQ_BeTrgConf /cd_expert_calice_v0402_cernhcal/CALDAQ_BeTrgConf HEAD  
+DBCondHandler CALDAQ_ReadOutConfigurationData /cd_expert_calice_v0402_cernhcal/CALDAQ_ReadOutConfigurationData HEAD 
+##DBCondHandler CALDAQ_BeTrgConf /cd_expert_calice_v0310_beam/CALDAQ_BeTrgConf HEAD  
+#DBCondHandler CALDAQ_EmcFeConfiguration /cd_expert_calice_v0402_cernhcal/CALDAQ_EmcFeConfiguration HEAD
+#DBCondHandler CALDAQ_AhcFeConfiguration /cd_expert_calice_v0402_cernhcal/CALDAQ_AhcFeConfiguration HEAD
+DBCondHandler CALDAQ_FeConfiguration /cd_expert_calice_v0402_cernhcal/CALDAQ_FeConfiguration HEAD
+#DBCondHandler CALDAQ_AhcFeConfiguration /cd_expert_calice_v0402_cernhcal/CALDAQ_AhcFeConfiguration HEAD  
+DBCondHandler CALDAQ_AhcVfeConfiguration /cd_expert_calice_v0402_cernhcal/CALDAQ_AhcVfeConfiguration HEAD 
+##DBCondHandler CALDAQ_EmcStageData /cd_expert_calice_v0402_cernhcal/CALDAQ_EmcStageData HEAD 
+DBCondHandler CALDAQ_RunInfo /cd_expert_calice_v0402_cernhcal/CALDAQ_RunInfo HEAD 
+DBCondHandler CALDAQ_AhcSroData /cd_expert_calice_v0402_cernhcal/CALDAQ_AhcSroData HEAD 
+DBCondHandler CALDAQ_AhcSroModData /cd_expert_calice_v0402_cernhcal/CALDAQ_AhcSroModData HEAD 
+DBCondHandler CALDAQ_TrgReadoutConfigurationData /cd_expert_calice_v0402_cernhcal/CALDAQ_TrgReadoutConfigurationData HEAD 
+DBCondHandler CALDAQ_CaenConfiguration /cd_expert_calice_v0402_cernhcal/CALDAQ_CaenConfiguration HEAD 
+DBCondHandler CALDAQ_CaenReadoutConfiguration /cd_expert_calice_v0402_cernhcal/CALDAQ_CaenReadoutConfiguration HEAD 
+#DBCondHandler CALDAQ_BmlSroRunDataCern /cd_expert_calice_v0402_cernhcal/CALDAQ_BmlSroRunDataCern HEAD 
+
+
+
+#    DBFileHandler  channelmap condDB_CellMapHcal_HEAD_20051219_194255.slcio CellMapHcal
+#    DBFileHandler CALDAQ_TriggerAssignment condDB_CALDAQ_TriggerAssignment_HEAD_20051219_194348.slcio CALDAQ_TriggerAssignment
+#    DBFileHandler CALDAQ_TriggerCheck condDB_CALDAQ_TriggerCheck_HEAD_20051219_194329.slcio CALDAQ_TriggerCheck
+#    DBFileHandler CALDAQ_BeTrgConf condDB_CALDAQ_BeTrgConf_HEAD_20051219_194426.slcio CALDAQ_BeTrgConf 
+#    DBFileHandler CALDAQ_AhcFeConfiguration condDB_CALDAQ_AhcFeConfiguration_HEAD_20051219_194443.slcio CALDAQ_AhcFeConfiguration
+#    DBFileHandler CALDAQ_AhcVfeConfiguration condDB_CALDAQ_AhcVfeConfiguration_HEAD_20051219_194506.slcio CALDAQ_AhcVfeConfiguration
+#    DBFileHandler CALDAQ_AhcSroData condDB_CALDAQ_AhcSroData_HEAD_20051219_194516.slcio CALDAQ_AhcSroData
+
+
+#   DataFileHandler channelmap
+#                 //ConditionsData //LCIOFileName  //LCIOCollectionName
+#   SimpleFileHandler channelmap cellmap.slcio CellMap
+#   SimpleFileHandler chmap  condDB_channelmap_HEAD_1109120400000000000.slcio channelmap
+#   SimpleFileHandler chmap  condDB_channelmap_HEAD_1109124000000000000.slcio channelmap
+#   SimpleFileHandler chmap  condDB_channelmap_HEAD_1109127600000000000.slcio channelmap
+#   SimpleFileHandler chmap  condDB_channelmap_HEAD_1109131200000000000.slcio channelmap
+#   SimpleFileHandler chmap  condDB_channelmap_HEAD_1109134800000000000.slcio channelmap
+#   SimpleFileHandler chmap  condDB_channelmap_HEAD_1109138400000000000.slcio channelmap
+#   SimpleFileHandler chmap  condDB_channelmap_HEAD_1109142000000000000.slcio channelmap
+#   SimpleFileHandler chmap  condDB_channelmap_HEAD_1109145600000000000.slcio channelmap
+#   SimpleFileHandler chmap  condDB_channelmap_HEAD_1109149200000000000.slcio channelmap
+
+
+.end -------------------------------------------------
+
+.begin SimpleTriggerProcessor
+ProcessorType SimpleTriggerProcessor
+
+#---Processor to provide esseential trigger information in an easy accessible way
+#---Data Type   Parameter (string)
+
+#       Name of the conditions collection for the BE trigger configuration
+#        type:  [string]
+#        default: CALDAQ_BeTrgConf
+        BE_Trigger_Configuration   CALDAQ_BeTrgConf
+
+#       List of names of the conditions collection for the FE configuration (CALDAQ_EmcFeConfiguration, CALDAQ_AhcFe
+Configuration).
+#        type:  [StringVec]
+#        default: CALDAQ_EmcFeConfiguration CALDAQ_AhcFeConfiguration 
+FE_Configuration   CALDAQ_EmcFeConfiguration CALDAQ_AhcFeConfiguration 
+
+
+#       List of names of the conditions data collection which describes the connection between modules and the DAQ f
+ront-ends.
+#        type:  [StringVec]
+#        default: 
+ModuleConnectionCollectionName   
+
+
+#       Name of the conditions collection for the readout configuration
+#        type:  [string]
+#        default: CALDAQ_ReadOutConfigurationData
+        Readout_Configuration   CALDAQ_ReadOutConfigurationData
+
+
+
+#       Name of the conditions collection for the trigger readout configuration
+#        type:  [string]
+#        default: CALDAQ_TrgReadoutConfigurationData
+TrgReadout_Configuration   CALDAQ_TrgReadoutConfigurationData
+
+
+#       Name of the parameter which will be set to the trigger main word.
+#        type:  [string]
+#        default: TriggerMainWord
+TriggerMainWordName   TriggerMainWord
+
+
+#       Name of the parameter which will contain the trigger psat history: will create parameters: [name]Pos, [name]
+Bits .
+#        type:  [string]
+#        default: TriggerPostHist
+        TriggerPostHistoryName   TriggerPostHist
+
+
+#       Name of the parameter which will contain the trigger pre history: will create parameters: [name]Pos, [name]B
+its .
+#        type:  [string]
+#        default: TriggerPreHist
+        TriggerPreHistoryName   TriggerPreHist
+
+
+#       Name of the Collection for the Trigger Assignment
+#        type:  [string]
+#        default: CALDAQ_TriggerAssignment
+Trigger_Assignment   CALDAQ_TriggerAssignment
+
+
+
+#       Name of the Collection for the Trigger Check
+#        type:  [string]
+#        default: CALDAQ_TriggerCheck
+Trigger_Check CALDAQ_TriggerCheck
+
+.end -------------------------------------------------
+
+
+.begin CaliceExampleProcessor
+ProcessorType CaliceExampleProcessor
+RunSummaryFolder /cd_expert_calice_v0402_cernhcal/CALDAQ_RunSummary
+#---Example to process LCIO files which contain Hcal Data
+
+#       Name of the conditions collection for the Caen Configuration data (CERN)
+#        type:  [string]
+#        default: CALDAQ_CaenConfiguration
+BMLCAEN_CONF_Data  CALDAQ_CaenConfiguration
+
+#       Name of the conditions collection for the Caen r/o Configuration data (CERN)
+#        type:  [string]
+#        default: CALDAQ_CaenReadoutConfiguration
+BMLCAEN_ROCONF_Data  CALDAQ_CaenReadoutConfiguration
+
+
+
+.end -------------------------------------------------
+
+
+
+
+# the default output module d
+.begin OutputProcessor  
+
+# mandatory module type (the name of the class)
+ProcessorType LCIOOutputProcessor
+
+# the outputfile
+LCIOOutputFile trg_raw.slcio
+
+# lcio write mode, new overwrites existing files 
+# append appends to existing files 
+# if nothing specified create new file only if it doesn't exist
+LCIOWriteMode WRITE_NEW
+#LCIOWriteMode WRITE_APPEND
+.end -------------------------------------------------
+
+#.begin TBPedestalProcessor  
+# mandatory module type (the name of the class)
+#ProcessorType TBPedestalProcessor
+#RequiredCollection TBhcal03_hcalSD
+#OutputCollection TBhcal03_hcalSD_real
+#.end -------------------------------------------------
+
+
+#.begin CaliceCheckSumProcessor  
+# mandatory module type (the name of the class)
+#ProcessorType CaliceCheckSumProcessor
+#Verbose 1
+#RequiredCollection TBhcal03_hcalSD
+#OutputCollection TBhcal03_hcalSD_real
+#.end -------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+

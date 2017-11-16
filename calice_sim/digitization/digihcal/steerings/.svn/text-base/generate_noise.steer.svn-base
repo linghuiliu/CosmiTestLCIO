@@ -1,0 +1,91 @@
+.begin Global  ---------------------------------------
+       
+# real data is the input for the generation of noise!
+       LCIOInputFiles 
+
+ 	ActiveProcessors MyConditionsProcessor
+	ActiveProcessors MyCaliceTriggerProcessor
+	ActiveProcessors MyeventSelector
+	ActiveProcessors MyfastMappingIProcessor
+
+        ActiveProcessors MyPedestalOnTheFlyProcessor
+
+	ActiveProcessors MyLCIOOutputProcessor
+
+# 	MaxRecordNumber 50001
+.end   -----------------------------------------------
+
+.begin MyConditionsProcessor
+  ProcessorType ConditionsProcessor
+
+  DBInit flccaldb01.desy.de:calice:caliceon:Delice.1:3306
+
+  DBCondHandler     AhcModuleLocation    /cd_calice_cernbeam/Hcal/HcalModuleLocation    HEAD
+  DBCondHandler     AhcModuleConnection  /cd_calice_cernbeam/Hcal/HcalMapping           HEAD
+  DBCondHandler     AhcModuleDescription /cd_calice_cernbeam/Hcal/HcalModuleDescription HEAD
+
+  DBCondHandler     CALDAQ_TriggerAssignment /cd_calice_cernbeam/CALDAQ_TriggerAssignment    HEAD
+  DBCondHandler     CALDAQ_TriggerCheck      /cd_calice_cernbeam/CALDAQ_TriggerCheck         HEAD
+
+  DBCondHandler     CALDAQ_BeTrgConf /cd_calice_v0402_cernhcal/CALDAQ_BeTrgConf HEAD
+  DBCondHandler     CALDAQ_AhcFeConfiguration /cd_calice_v0402_cernhcal/CALDAQ_AhcFeConfiguration HEAD
+  DBCondHandler     CALDAQ_ReadOutConfigurationData /cd_calice_v0402_cernhcal/CALDAQ_ReadOutConfigurationData HEAD
+  DBCondHandler     CALDAQ_TrgReadoutConfigurationData /cd_calice_v0402_cernhcal/CALDAQ_TrgReadoutConfigurationData HEAD
+.end -------------------------------------------------
+
+.begin MyCaliceTriggerProcessor
+ProcessorType CaliceTriggerProcessor
+	ColTriggerEventName                     CALDAQ_FeTrgData
+	BE_Trigger_Configuration                CALDAQ_BeTrgConf
+	FE_Configuration                        CALDAQ_AhcFeConfiguration 
+
+	Readout_Configuration                   CALDAQ_ReadOutConfigurationData
+	TrgReadout_Configuration                CALDAQ_TrgReadoutConfigurationData
+	TriggerConfigurationName                Conf_Trigger
+	TriggerEventName                        Event_Trigger
+	Trigger_Assignment                      CALDAQ_TriggerAssignment
+	Trigger_Check                           CALDAQ_TriggerCheck
+
+	ModuleConnectionCollectionName          AhcModuleConnection 
+.end -------------------------------------------------
+
+.begin MyeventSelector
+ProcessorType eventSelector
+
+	TriggerConfigurationName        Conf_Trigger
+	TriggerEventName                Event_Trigger
+
+	withTrigger    P
+	withoutTrigger  B Ca O  
+
+.end -------------------------------------------------
+
+.begin MyfastMappingIProcessor
+ProcessorType fastMappingIProcessor
+
+        # ADCCollectionName is the name of the input collection
+	ADCCollectionName                      CALDAQ_ADCCol
+	OutputCollectionName                   AfterMappingI
+
+	ModuleConnectionCollectionName         AhcModuleConnection
+	ModuleDescriptionCollectionName        AhcModuleDescription
+	ModuleLocationCollectionName           AhcModuleLocation
+
+	PickModule                             0
+	ViewMapping                            0
+.end -------------------------------------------------
+
+.begin MyPedestalOnTheFlyProcessor
+ProcessorType PedestalOnTheFlyProcessor
+	InputCollection                 AfterMappingI
+	OutputCollection                Noise
+	SignificanceCut                 -10000
+	SkipStartUpPedestals		1
+	minPedNumber                    500
+.end -------------------------------------------------
+
+.begin MyLCIOOutputProcessor
+ProcessorType LCIOOutputProcessor
+	LCIOOutputFile  
+	LCIOWriteMode   WRITE_NEW
+.end -------------------------------------------------

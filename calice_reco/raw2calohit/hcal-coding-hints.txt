@@ -1,0 +1,99 @@
+HCAL modules overview:
+
+There are two types of modules: fine and coarse
+
+tile size: 3x3 6x6 12x12
+   #tiles:                #total:
+   - fine: 100  96  20        216
+ - coarse:  /  121  20        141
+
+Each tile is unambiguously assigned to a chip (0-11) and a channel
+(0-17) of this chip.
+
+#active chips:    chip number:
+       - fine: 12         0-11
+     - coarse:  8    0-3, 8-11
+
+Each module is divided into two parts, the so called half modules.
+
+#cells:
+             upper: lower:  
+       fine:    108    108 
+     coarse:     72     69
+        
+A number is assigned to each type.
+
+module type:
+             upper: lower:     or            upper: lower:
+       fine:      4      5             fine:      0      1
+     coarse:      6      7           coarse:      2      3
+
+If you want to loop over all cells of a half module, you can do
+the following.
+
+fine modules:
+
+Create a loop variable, e.g. a cellindex (different from the geometrical cellindex).
+
+For the fine modules it is easy. The cellindex is just a number between
+0 and 107. To get all combinations of chip and channel, do:
+
+  channel = cellindex modulo 18
+
+  cellindex:  channel:
+        0-17      0-17
+       18-35      0-17
+        ...        ...
+
+  chip = (cellindex - channel) / 18 (+ 6 if lower module)
+  
+  example: cellindex = 20 -> (20 - 2)/18 = 1
+
+  cellindex: channel: chip:
+        0-17     0-17     0
+       18-35     0-17     1
+        ...       ...   ...
+
+coarse modules:
+
+In the case of coarse modules the assignment is a little bit tricky,
+because there are spare chips.
+
+               chip: channel:
+coarse upper:    0-3     0-17
+coarse lower:      8     3-17
+                9-11     0-17
+
+In order to start with chip 8 channel 3 for a lower coarse modules, start with cellindex 39.
+   
+   39 modulo 18 = 3
+   (39 - 3)/18 + 6 = 8
+
+If you want to convince yourself, you can run the following program.
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+  for(int moduletype = 4; moduletype != 8; ++moduletype) {
+
+    int firstindex = (moduletype == 7) ? 39 : 0;
+    int lastindex = (moduletype == 6) ? 72 : 108;
+
+    for(int cellindex =  firstindex; cellindex != lastindex; ++cellindex) {
+
+      int channel = cellindex % 18;
+      int chip = (cellindex - channel) / 18 
+                            + ((moduletype == 4 || moduletype == 6) ? 0 : 6);
+
+      switch(moduletype) {
+      case 4: cout << "fine upper part: "; break;
+      case 5: cout << "fine lower part: "; break;
+      case 6: cout << "coarse upper part: "; break;
+      case 7: cout << "coarse lower part: "; break;
+    }
+      cout << "chip: " << chip << " channel: " << channel << endl;
+    }
+  }
+}

@@ -1,0 +1,340 @@
+#!/bin/zsh
+#
+#(make sure the right shell will be used)
+#$ -S /bin/bash
+#
+#(the cpu time for this job)
+#$ -l h_rt=24:00:00
+#
+#the maximum memory usage of this job)
+#$ -l h_vmem=4G
+#
+#(stderr and stdout are merged together to stdout)
+#$ -j y
+#
+#execute the job from the current directory and not relative to your home directory
+#$ -cwd
+###  force to run on desy hamburg side
+#$ -l site="hh"
+
+#$ -l os=sld6
+
+# define output for logfile
+##CHANGE THE PATH TO YOUR OWN LOGFILE DIRECTORY
+#$ -o /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/Mokka/logFiles
+
+#set the email address
+#$ -M eldwan.brianne@desy.de
+#
+#send email when job aborts or when job ends
+#$ -m a
+
+
+
+###==============================================================
+#set necessary variables
+
+physList="QGSP_BERT_HP"
+namesuffix=""
+energy=10
+energy_sigma=0.2
+particle="e-"
+RUNNUMBER=24542
+
+SOFTWARE_PATH=${SGE_O_WORKDIR}
+#where the Mokka executable is
+## CHANGE IT TO THE PATH OF YOUR OWN INSTALLATION
+MOKKA_PATH=/afs/desy.de/group/flc/pool/ebrianne/Projects/AHCAL/Simulations/Mokka/mokka-08-05-01
+#where the envMokka.sh is
+##REMEMBER TO WRITE AN ENVIRONMENTAL FILE envMokka.sh
+##I USUALLY USE A MODIFIED VERSION OF THE init_ilcsoft.sh
+MOKKA_ENV_PATH=/afs/desy.de/group/flc/pool/ebrianne/
+
+##DESTINATION PATH
+##THIS DIRECTORY SHOULD ALREADY EXIST WHEN THE SCRIPT IS SUBMITTED
+DEST_PATH="/nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/Mokka/${energy}GeV/"
+
+#########=========================================
+NEVENTS=1000
+
+i=`expr $SGE_TASK_ID - 1`
+firstEventNumber=`expr ${NEVENTS} \* ${i}`
+lastEventNumber=`expr ${NEVENTS} \* ${i} + ${NEVENTS} - 1`
+echo "i=${i}, firstEventNumber = ${firstEventNumber}, lastEventNumber = ${lastEventNumber}"
+
+LCIOfile=Run${RUNNUMBER}_${particle}_${energy}GeV_${physList}${namesuffix}_Ev${firstEventNumber}-Ev${lastEventNumber}.slcio
+GEARfile=Run${RUNNUMBER}_${particle}_${energy}GeV_${physList}${namesuffix}_Ev${firstEventNumber}-Ev${lastEventNumber}.gear
+
+seed=`expr $RUNNUMBER + $SGE_TASK_ID + ${JOB_ID}`
+
+# sleep to relieve load of Mokka DB
+usleep `expr \( \( ${RANDOM} % 40 \) + 1 \) \* 1333000` ## use this
+
+#echo the path to the directory where your job runs, in case
+#you want to recover files
+echo "HOST=${HOST}, TMPDIR=${TMPDIR}, physList=${physList}"
+echo "Running job ${JOB_ID} with task id ${SGE_TASK_ID}."
+echo "SOFTWARE_PATH=${SOFTWARE_PATH}"
+echo "Take Mokka executable from ${MOKKA_PATH}"
+echo "Take Mokka env variables from ${MOKKA_ENV_PATH}"
+echo "seed=${seed}"
+echo "========================================================================="
+echo " "
+echo " "
+
+###==============================================================
+#change to directory where you run the job
+cd $TMPDIR
+
+
+#=============================================================#
+#                                                             #
+#             prepare for the GEANT4 steering file             #
+#                                                             #
+#==============================================================
+rm -rf g4.mac
+cat <<EOF > g4.mac
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+
+/generator/generator gps
+/gps/particle ${particle}
+/gps/pos/type Beam
+/gps/pos/centre 7.5 3.2 -19000. mm
+/gps/pos/sigma_x 29.2 mm
+/gps/pos/sigma_y 27.5 mm
+/gps/time 0 ns
+/gps/direction 0 0 1
+
+/gps/ene/type Gauss
+/gps/ene/mono ${energy} GeV
+/gps/ene/sigma ${energy_sigma} GeV
+
+/run/beamOn ${NEVENTS}
+exit
+
+
+EOF
+
+#=============================================================#
+#                                                             #
+#             prepare for the Mokka steering file             #
+#                                                             #
+#==============================================================
+##this is the actual Mokka steering file
+
+rm -rf temp.steer
+cat <<EOF > temp.steer
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+##/Mokka/init/userInitString TIMEOUT_TO_RELAX_TMP 120
+##/Mokka/init/userInitInt SLEEP_BEFORE_RETRY 5
+
+/Mokka/init/userInitString TIMEOUT_TO_RELAX_TMP 1${SGE_TASK_ID} ## use this
+/Mokka/init/userInitInt SLEEP_BEFORE_RETRY ${SGE_TASK_ID}       ## use this
+
+
+################################
+# The Mokka databse has been modified
+# on the local flc53.desy.de local
+# installation for the timing studies
+# the scintillator thinkness has been
+# set to 3 mm for next generation prototype
+################################
+
+/Mokka/init/dbHost pollin1.in2p3.fr
+#/Mokka/init/dbHost polui01.in2p3.fr
+/Mokka/init/user consult
+/Mokka/init/dbPasswd consult
+
+/Mokka/init/rangeCut 0.05 mm
+/Mokka/init/lcioDetailedShowerMode true
+/Mokka/init/lcioWriteCompleteHepEvt true
+/Mokka/init/lcioWriteMode WRITE_NEW
+
+/Mokka/init/lcioStoreCalHitPosition true
+## If true, LCIO file will contain the coordinates of the calorimeter cell
+## that was hitted.
+
+
+
+################################
+# TBhcal4d model has be created on flc53.desy.de for development
+# to reach the users request. Intend to more flexible.
+# geometry and radiator can be steered here to reach the studies phase.
+# The example has been provide here.
+################################
+
+/Mokka/init/detectorModel TBhcal4d
+
+/Mokka/init/EditGeometry/rmSubDetector all
+/Mokka/init/EditGeometry/addSubDetector TBecal4d
+/Mokka/init/EditGeometry/addSubDetector TBhcal4d
+
+/Mokka/init/globalModelParameter world_box_hx 20 m
+/Mokka/init/globalModelParameter world_box_hy 20 m
+/Mokka/init/globalModelParameter world_box_hz 20 m
+
+################################
+# The TBecal4d parameters which can be steered here
+################################
+
+/Mokka/init/globalModelParameter Ecal_radiator_material Iron
+
+/Mokka/init/globalModelParameter Ecal_apply_Birks_law 1
+/Mokka/init/globalModelParameter Ecal_time_cut 5000
+/Mokka/init/globalModelParameter Lateral_X 180
+/Mokka/init/globalModelParameter Lateral_Y 180
+/Mokka/init/globalModelParameter grid_size_x 45
+/Mokka/init/globalModelParameter grid_size_y 5
+/Mokka/init/globalModelParameter Ecal_nlayers 2
+
+## Layer pattern: number of entries must be the same af the number of Ecal_nlayers
+## 0 : no layer, 1 : EBU Horizontal, 2 : EBU Transverse
+/Mokka/init/globalModelParameter Ecal_layer_pattern 11
+
+####Control parameter which are not inside database, but used in driver.
+/Mokka/init/userInitDouble X_position_of_first_ECAL_layer 0. mm
+/Mokka/init/userInitDouble Y_position_of_first_ECAL_layer 0. mm
+/Mokka/init/userInitDouble Z_position_of_first_ECAL_layer 0. mm
+
+/Mokka/init/userInitDouble Ecal_airgap_hthickness 1.285 mm
+/Mokka/init/userInitDouble gap_hthickness 1 mm
+/Mokka/init/userInitInt Ecal_beginWithAbsorber 1
+
+################################
+# The TBhcal4d parameters which can be steered here
+################################
+
+#Additional Material
+/Mokka/init/userInitInt Add_Mat 1
+/Mokka/init/userInitString Radiator_AddMaterial Lead
+/Mokka/init/userInitDouble z_begin_AddMaterial -2.8 mm
+/Mokka/init/userInitDouble thickness_AddMaterial 5.6 mm
+
+#Scintillator beamline
+/Mokka/init/userInitInt Add_Scint 1
+/Mokka/init/userInitDouble z_begin_Scint500x500_front -231. mm
+/Mokka/init/userInitDouble z_begin_Scint500x500_back 850. mm
+/Mokka/init/userInitDouble z_begin_Scint100x100_front -391. mm
+/Mokka/init/userInitDouble z_begin_Scint100x100_back -348. mm
+/Mokka/init/userInitDouble thickness_Scint500x500 10. mm
+/Mokka/init/userInitDouble thickness_Scint100x100 6. mm
+
+/Mokka/init/globalModelParameter Hcal_radiator_material Iron
+
+/Mokka/init/globalModelParameter Hcal_apply_Birks_law 1
+/Mokka/init/globalModelParameter Hcal_time_cut 5000
+/Mokka/init/globalModelParameter HCAL_layer_ncell_x 24
+/Mokka/init/globalModelParameter HCAL_layer_ncell_y 24
+/Mokka/init/globalModelParameter Hcal_cells_size 30
+/Mokka/init/globalModelParameter Hcal_nlayers 30
+
+## Layer pattern: number of entries must be the same af the number of Hcal_nlayers
+## 0 : no Layer, 1 : SSF, 2 : Big Layer
+/Mokka/init/globalModelParameter Hcal_layer_pattern 111111112020000000200000000020
+
+################################
+
+###Control parameter which are not inside database, but used in driver.
+/Mokka/init/userInitDouble X_position_of_first_HCAL_layer 0. mm
+/Mokka/init/userInitDouble Y_position_of_first_HCAL_layer 0. mm
+/Mokka/init/userInitDouble Z_position_of_first_HCAL_layer 52.4 mm
+
+/Mokka/init/userInitInt HCAL_SSFLayer_ncell_x 12
+/Mokka/init/userInitInt HCAL_SSFLayer_ncell_y 12
+/Mokka/init/userInitDouble airgap_hthickness 1.285 mm
+/Mokka/init/userInitInt beginWithAbsorber 1
+
+#########################################
+
+/Mokka/init/dataRunNumber ${RUNNUMBER}
+
+/Mokka/init/randomSeed ${seed}
+/Mokka/init/startEventNumber ${firstEventNumber}
+/Mokka/init/lcioFilename ${LCIOfile}
+/Mokka/init/MokkaGearFileName ${GEARfile}
+/Mokka/init/BatchMode true
+/Mokka/init/initialMacroFile g4.mac
+
+
+/Mokka/init/physicsListName ${physList}
+
+#A print level was implemented in order to allow control of Mokka messages.
+#    It can be set by the steering command /Mokka/init/printLevel. A value equal
+#    to zero means no messages concerning the events processed, a value of one
+#    means only a line message per event, and a value greater or equal to two
+#    means full messages, including number of hits from all sensitive detectors.
+#
+#    The warning when Mokka kills a track after 100000 steps is suppressed,
+#    except if Print Level is greater or equal to two.
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+EOF
+
+
+#============================================================#
+#                                                            #
+#        copy necessary files to run Mokka                   #
+#                                                            #
+#============================================================#
+if [ -e ${MOKKA_ENV_PATH}/init_ilcsoft_v17_10.sh  ]
+    then
+    echo "Initializing Mokka environment variables..."
+    source  ${MOKKA_ENV_PATH}/init_ilcsoft_v17_10.sh
+else
+    echo "File ${MOKKA_ENV_PATH}/init_ilcsoft_v17_10.sh does not exist..."
+fi
+
+
+#========================================================================#
+#                                                                        #
+#     run Mokka in batch mode, with the "<<!" and  "!"  Korn-Shell tags  #
+#                                                                        #
+#========================================================================#
+echo "Starting Mokka..."
+
+
+Mokka temp.steer
+
+#===============================================================#
+#                                                               #
+#           copy output files                                   #
+#                                                               #
+#===============================================================#
+if [ -e ${LCIOfile} ]
+    then
+    cp ${LCIOfile} ${DEST_PATH}
+        #if file was copied, delete it from this directory
+    if [ $? -eq 0 ]
+        then
+        rm ${LCIOfile}
+    fi
+else
+    echo "File ${LCIOfile} does not exist...."
+fi
+
+#if [ -e ${GEARfile} ]
+#    then
+#    cp ${GEARfile} ${DEST_PATH}
+#        #if file was copied, delete it from this directory
+#    if [ $? -eq 0 ]
+#        then
+#        rm ${GEARfile}
+#    fi
+#else
+#    echo "File ${GEARfile} does not exist..."
+#fi
+
+#===========================================================#
+#                                                           #
+#      do some additional clean-up                          #
+#                                                           #
+#===========================================================#
+echo "==================================================="
+rm temp.steer
+rm g4.mac
+echo "Last look: "
+ls -lhtr
+echo "Cleaning up... end."

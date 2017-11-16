@@ -1,0 +1,448 @@
+<marlin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ilcsoft.desy.de/marlin/marlin.xsd">
+
+  <execute>
+    <processor name="ProgressHandler"/>
+    <processor name="RunInfo"/>
+    <processor name="Conditions"/>
+    <processor name="Trigger"/>
+
+    <processor name="HcalSROMapper"/>
+    <processor name="HcalMappingProcessor"/>
+    <processor name="HcalCellDescriptionProcessor"/>
+    <processor name="HcalSiPMTemperatureProcessor"/>
+    <processor name="HcalPedestalProcessor"/>
+    <processor name="HcalSiPMCalibrationsProcessor"/>
+
+    <processor name="HcalSiPMCalibrateProcessor"/>
+
+    <processor name="TcmtMappingI"/>
+    <processor name="TcmtPedestalSubtraction"/>
+    <processor name="TcmtCalibration"/>
+    <processor name="TcmtMappingII"/>
+
+    <processor name="AppendMultiAmplitude"/>
+
+    <processor name="LCIOOutput"/>
+
+    <processor name="HcalRootTreeWriter"/>
+  </execute>
+
+
+  <global>
+    <parameter name="LCIOInputFiles">
+      gsidcap://dcache-desy-gsidcap.desy.de:22128/pnfs/desy.de/calice/tb-fnal/raw/conv_v0402/Run520308.000.slcio
+      gsidcap://dcache-desy-gsidcap.desy.de:22128/pnfs/desy.de/calice/tb-fnal/raw/conv_v0402/Run520308.001.slcio
+      gsidcap://dcache-desy-gsidcap.desy.de:22128/pnfs/desy.de/calice/tb-fnal/raw/conv_v0402/Run520308.002.slcio
+    </parameter>
+    <parameter name="MaxRecordNumber" value="2000"/>
+    <parameter name="SkipNEvents" value="0"/>
+    <parameter name="SupressCheck" value="false"/>
+    <parameter name="Verbosity" value="MESSAGE"/>
+  </global>
+
+
+  <processor name="ProgressHandler" type="ProgressHandler">
+    <parameter name="ReportInterval" type="int" value="20"/>
+  </processor>
+
+
+  <processor name="RunInfo" type="RunInfoProcessor">
+    <parameter name="BeamParameterExceptionFolder" type="string" value="/cd_calice/BeamParameterException"/>
+    <parameter name="BeamParameterFolder" type="string" value="default"/>
+    <parameter name="BendingCurrentToCheck" type="int" value="8"/>
+    <parameter name="CurrentToEnergy" type="float" value="4.72"/>
+    <parameter name="CurrentTolerance" type="float" value="0.05"/>
+    <parameter name="DBInit" type="string" value="flccaldb01.desy.de:calice:caliceon:Delice.1:3306"/>
+    <parameter name="KeVToMeV" type="float" value="1000"/>
+    <parameter name="RunLocationFolder" type="string" value="/cd_calice/RunLocation"/>
+    <parameter name="RunNumber" type="int" value="0"/>
+    <parameter name="RunTimeFolder" type="string" value="/cd_calice/CALDAQ_RunTimeInfo"/>
+    <parameter name="SafetyMargin" type="int" value="0"/>
+    <parameter name="TimeTolerance" type="float" value="600"/>
+  </processor>
+
+
+  <processor name="Conditions" type="ConditionsProcessor">
+    <parameter name="DBInit" type="string" value="flccaldb02.desy.de:calice:caliceon:Delice.1:3306"/>
+
+    <parameter name="DBCondHandler" type="StringVec">
+      ReferenceTransformation            /cd_calice_fnalbeam/ExperimentalHall/ReferenceFrame          calice_ReferenceFrame_001
+      CALDAQ_TriggerAssignment           /cd_calice_fnalbeam/CALDAQ_TriggerAssignment                 calice_TriggerAssignment_001
+      CALDAQ_TriggerCheck                /cd_calice_fnalbeam/CALDAQ_TriggerCheck                      calice_TriggerCheck_001
+      CALDAQ_BeTrgConf                   /cd_calice_v0402_fnalhcal/CALDAQ_BeTrgConf                   calice_conv_v0402_001
+      CALDAQ_ReadOutConfigurationData    /cd_calice_v0402_fnalhcal/CALDAQ_ReadOutConfigurationData    calice_conv_v0402_001
+      CALDAQ_TrgReadoutConfigurationData /cd_calice_v0402_fnalhcal/CALDAQ_TrgReadoutConfigurationData calice_conv_v0402_001
+    </parameter>
+
+
+    <!--                               -->
+    <!-- AHCAL                         -->
+    <!--                               -->
+
+    <parameter name="DBCondHandler" type="StringVec">
+      CALDAQ_AhcFeConfiguration  /cd_calice_v0402_fnalhcal/CALDAQ_AhcFeConfiguration  calice_conv_v0402_001
+      CALDAQ_AhcVfeConfiguration /cd_calice_v0402_fnalhcal/CALDAQ_AhcVfeConfiguration calice_conv_v0402_001
+      CALDAQ_AhcSroData          /cd_calice_v0402_fnalhcal/CALDAQ_AhcSroData          calice_conv_v0402_001
+      CALDAQ_AhcSroModData       /cd_calice_v0402_fnalhcal/CALDAQ_AhcSroModData       calice_conv_v0402_001
+
+      AhcModuleLocationReference /cd_calice_fnalbeam/Hcal/HcalModuleLocationReference  ahc_HcalModuleLocationReference_001
+      AhcModuleConnection        /cd_calice_fnalbeam/Hcal/HcalMapping                  ahc_HcalMapping_002
+      AhcModuleDescription       /cd_calice/Ahc/ModuleDescription                      ahc_ModuleDescription_001
+      AhcDetectorTransformation  /cd_calice_fnalbeam/Hcal/DetectorPosition             ahc_DetectorPosition_002
+
+      AhcMipConstants    /cd_calice/IDAG2/IDAG2_v2/mip_constants   ahc_mip_constants_IDAG2_001
+      AhcMipSlopes       /cd_calice/IDAG2/IDAG2_v2/mip_slopes      ahc_mip_slopes_IDAG2_001
+      AhcGainConstants   /cd_calice/Hcal/gain_constants            ahc_gain_constants_006
+      AhcGainSlopes      /cd_calice/Hcal/gain_slopes               ahc_gain_slopes_006
+      AhcInterConstants  /cd_calice/Hcal/ic_constants              ahc_ic_constants_004
+      AhcCellQuality     /cd_calice/Ahc/BadCellMap                 ahc_bad_cell_map_001
+      AhcTempSensorCalib /cd_calice/Hcal/tempSensors               ahc_tempSensors_001
+      AhcSroModMapping   /cd_calice_fnalbeam/Hcal/AhcSroModMapping ahc_AhcSroModMapping_001
+      AhcResponseCurve   /cd_calice/Ahc/ResponseCurve              ahc_response_curve_002
+      AhcResponseScaling /cd_calice/Ahc/ResponseCurveScaling       ahc_response_curve_scaling_001
+    </parameter>
+
+
+    <!--                               -->
+    <!-- Tail Catcher                  -->
+    <!--                               -->
+
+    <parameter name="DBCondHandler" type="StringVec">
+      TcmtModuleDescription      /cd_calice_fnalbeam/Tcmt/TcmtModuleDescription  tcm_TcmtModuleDescription_001
+      TcmtModuleLocation         /cd_calice_fnalbeam/Tcmt/TcmtModuleLocation     tcm_TcmtModuleLocation_001
+      TcmtModuleConnection       /cd_calice_fnalbeam/Tcmt/TcmtModuleConnection   tcm_TcmtModuleConnection_001
+      TcmtDetectorTransformation /cd_calice_fnalbeam/Tcmt/TcmtDetectorPosition   tcm_TcmtDetectorPosition_001
+      tcmtMip00                  /cd_calice_fnalbeam/Tcmt/Mip00                  tcm_Mip00_001
+    </parameter>
+
+
+    <!--                               -->
+    <!-- Multiplicity counter          -->
+    <!--                               -->
+
+    <parameter name="DBCondHandler" type="StringVec">
+      MultiConnection /cd_calice_fnalbeam/veto/mapping  multi_mapping_001
+    </parameter>
+  </processor>
+
+
+  <processor name="Trigger" type="CaliceTriggerProcessor">
+    <parameter name="BE_Trigger_Configuration" type="string">CALDAQ_BeTrgConf </parameter>
+    <parameter name="BeamTriggerNames" type="StringVec">
+      BEAMDATA COSMICS Veto Cherenkov SC1_3x3 SC2_3x3 SC1_10x10 SC2_10x10 SC1_100x100 SC2_100x100
+    </parameter>
+    <parameter name="ColTriggerEventName" type="string">CALDAQ_FeTrgData </parameter>
+    <parameter name="FE_Configuration" type="StringVec">
+      CALDAQ_AhcFeConfiguration
+    </parameter>
+    <parameter name="ModuleConnectionCollectionName" type="StringVec">
+    AhcModuleConnection  </parameter>
+    <parameter name="NoTriggerActivityRanges" type="IntVec">400 200  </parameter>
+    <parameter name="Readout_Configuration" type="string">CALDAQ_ReadOutConfigurationData </parameter>
+    <parameter name="TrgReadout_Configuration" type="string">CALDAQ_TrgReadoutConfigurationData </parameter>
+    <parameter name="TriggerAndEnableName" type="string">TriggerAndEnable </parameter>
+    <parameter name="TriggerConfigurationName" type="string">Conf_Trigger </parameter>
+    <parameter name="TriggerEventName" type="string">Event_Trigger </parameter>
+    <parameter name="TriggerMainWordName" type="string">TriggerMainWord </parameter>
+    <parameter name="TriggerPostHistoryName" type="string">TriggerPostHist </parameter>
+    <parameter name="TriggerPreHistoryName" type="string">TriggerPreHist </parameter>
+    <parameter name="Trigger_Assignment" type="string">CALDAQ_TriggerAssignment </parameter>
+    <parameter name="Trigger_Check" type="string">CALDAQ_TriggerCheck </parameter>
+  </processor>
+
+
+  <!-- ========================================================================================= -->
+  <!--                                                                                           -->
+  <!--          HCAL                                                                             -->
+  <!--                                                                                           -->
+  <!-- ========================================================================================= -->
+  <processor name="HcalSROMapper" type="AhcSROmappingProcessor">
+    <parameter name="inCollectionName" type="string" lcioInType="LCGenericObject"> CALDAQ_AhcSroModData </parameter>
+    <parameter name="mappingCollectionName" type="string" lcioInType="LCGenericObject"> AhcSroModMapping </parameter>
+    <parameter name="outCollectionName" type="string" lcioOutType="LCGenericObject"> AhcSroModData_fixed </parameter>
+  </processor>
+
+
+  <processor name="HcalMappingProcessor" type="MappingProcessor">
+    <parameter name="ModuleConnection"  type="string" lcioInType="LCGenericObject"> AhcModuleConnection </parameter>
+    <parameter name="ModuleDescription" type="string" lcioInType="LCGenericObject"> AhcModuleDescription </parameter>
+    <parameter name="MapperType" type="string" value="AHC"/>
+  </processor>
+
+
+  <processor name="HcalCellDescriptionProcessor" type="CellDescriptionProcessor">
+    <parameter name="MappingProcessorName"   type="string"> HcalMappingProcessor </parameter>
+    <parameter name="DetectorTransformation" type="string" lcioInType="LCGenericObject"> AhcDetectorTransformation </parameter>
+    <parameter name="ModuleConnection"       type="string" lcioInType="LCGenericObject"> AhcModuleConnection </parameter>
+    <parameter name="ModuleDescription"      type="string" lcioInType="LCGenericObject"> AhcModuleDescription </parameter>
+    <parameter name="ModuleLocation"         type="string" lcioInType="LCGenericObject"> AhcModuleLocationReference </parameter>
+  </processor>
+
+
+  <processor name="HcalPedestalProcessor" type="PedestalProcessor">
+    <parameter name="InputCollection" type="string" value="CALDAQ_ADCCol"/>
+    <parameter name="MappingProcessorName" type="string" value="HcalMappingProcessor"/>
+    <parameter name="OutputCollection" type="string" value="AhcPedestal"/>
+    <parameter name="minPedNumber" type="int" value="250"/>
+    <parameter name="updateFrequency" type="int" value="250"/>
+  </processor>
+
+
+  <processor name="HcalSiPMTemperatureProcessor" type="SiPMTemperatureProcessor">
+    <parameter name="AHC_SRO_ModData" type="string" value="AhcSroModData_fixed"/>
+    <parameter name="MappingProcessorName" type="string" value="HcalMappingProcessor"/>
+    <parameter name="TempProviderSanityRange" type="FloatVec"> 0 45 </parameter>
+    <parameter name="TemperatureSensorCalibrationCollectionName" type="string" value="AhcTempSensorCalib"/>
+  </processor>
+
+
+  <group>
+    <parameter name="MappingProcessorName" type="string" value="HcalMappingProcessor"/>
+    <parameter name="CellQualityCollection" type="string" lcioInType="LCGenericObject"> AhcCellQuality </parameter>
+    <parameter name="GainConstantCollection" type="string" lcioInType="LCGenericObject"> AhcGainConstants </parameter>
+    <parameter name="GainSlopeCollection" type="string" lcioInType="LCGenericObject"> AhcGainSlopes </parameter>
+    <parameter name="InterCalibrationCollection" type="string" lcioInType="LCGenericObject"> AhcInterConstants </parameter>
+    <parameter name="MIPConstantCollection" type="string" lcioInType="LCGenericObject"> AhcMipConstants </parameter>
+    <parameter name="MIPSlopeCollection" type="string" lcioInType="LCGenericObject"> AhcMipSlopes </parameter>
+    <parameter name="PedestalCollection" type="string" lcioInType="LCGenericObject"> AhcPedestal </parameter>
+    <parameter name="PixelScaleFactorsCollection" type="string" lcioInType="LCGenericObject"> AhcResponseScaling </parameter>
+    <parameter name="SaturationCollection" type="string" lcioInType="LCGenericObject"> AhcResponseCurve </parameter>
+    <parameter name="GlobalPixelScaleFactor" type="float" value="0.8"/>
+
+    <processor name="HcalSiPMCalibrationsProcessor" type="SiPMCalibrationsProcessor">
+    </processor>
+
+    <processor name="HcalSiPMCalibrationsProcessorUpperLimit" type="SiPMCalibrationsProcessor">
+      <parameter name="MIPConstantScaleFactor" type="float" value="0.98"/>
+      <parameter name="MIPSlopeScaleFactor" type="float" value="1.1"/>
+      <parameter name="SaturationCorrectionScaleFactor" type="float" value="0.9"/>
+    </processor>
+
+    <processor name="HcalSiPMCalibrationsProcessorLowerLimit" type="SiPMCalibrationsProcessor">
+      <parameter name="MIPConstantScaleFactor" type="float" value="1.02"/>
+      <parameter name="MIPSlopeScaleFactor" type="float" value="0.9"/>
+      <parameter name="SaturationCorrectionScaleFactor" type="float" value="1.1"/>
+    </processor>
+
+    <processor name="HcalSiPMCalibrationsProcessorGainConst" type="SiPMCalibrationsProcessor">
+      <parameter name="GainConstantScaleFactor" type="float" value="1.1"/>
+    </processor>
+
+    <processor name="HcalSiPMCalibrationsProcessorGainSlope" type="SiPMCalibrationsProcessor">
+      <parameter name="GainSlopeScaleFactor" type="float" value="1.1"/>
+    </processor>
+
+    <processor name="HcalSiPMCalibrationsProcessorInterCalib" type="SiPMCalibrationsProcessor">
+      <parameter name="InterCalibrationScaleFactor" type="float" value="1.1"/>
+    </processor>
+
+    <processor name="HcalSiPMCalibrationsProcessorMIPConst" type="SiPMCalibrationsProcessor">
+      <parameter name="MIPConstantScaleFactor" type="float" value="1.1"/>
+    </processor>
+
+    <processor name="HcalSiPMCalibrationsProcessorMIPSlope" type="SiPMCalibrationsProcessor">
+      <parameter name="MIPSlopeScaleFactor" type="float" value="1.1"/>
+    </processor>
+
+    <processor name="HcalSiPMCalibrationsProcessorSaturation" type="SiPMCalibrationsProcessor">
+      <parameter name="SaturationCorrectionScaleFactor" type="float" value="1.1"/>
+    </processor>
+  </group>
+
+
+  <group>
+    <parameter name="InputCollectionName" type="string">CALDAQ_ADCCol </parameter>
+    <parameter name="MappingProcessorName" type="string">HcalMappingProcessor </parameter>
+    <parameter name="MipCut" type="float">0.4 </parameter>
+    <parameter name="PedestalSubtraction" type="bool">true </parameter>
+    <parameter name="SiPMTemperatureProcessorName" type="string">HcalSiPMTemperatureProcessor </parameter>
+    <parameter name="ZeroSuppression" type="bool">true </parameter>
+    <parameter name="doErrorCalculation" type="bool">false </parameter>
+    <parameter name="doGainTemperatureCorrection" type="bool">true </parameter>
+    <parameter name="doMipTemperatureCorrection" type="bool">true </parameter>
+    <parameter name="doSaturationCorrection" type="bool">true </parameter>
+    <parameter name="filterDeadCells" type="bool">false </parameter>
+    <parameter name="filterDefaultCells" type="bool">false </parameter>
+    <parameter name="CellDescriptionProcessorName" type="string"> HcalCellDescriptionProcessor </parameter>
+
+    <processor name="HcalSiPMCalibrateProcessor" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessor </parameter>
+      <parameter name="CellDescriptionProcessorName" type="string">HcalCellDescriptionProcessor </parameter>
+      <parameter name="OutputAhcHitCollectionName" type="string">AhcCalorimeter_Hits </parameter>
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude </parameter>
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorNoDefaults" type="SiPMCalibrateProcessor">
+      <parameter name="filterDefaultCells" type="bool">true </parameter>
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessor </parameter>
+      <parameter name="OutputAhcHitCollectionName" type="string">AhcCalorimeter_Hits_NoDefaults_noPos </parameter>
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_NoDefaults_noPos </parameter>
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_NoDefaults_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorUpperLimit" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorUpperLimit </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_UpperLimit_noPos    </parameter>
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_UpperLimit_noPos </parameter>
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_UpperLimit_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorLowerLimit" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorLowerLimit </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_LowerLimit_noPos    </parameter>
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_LowerLimit_noPos </parameter>
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_LowerLimit_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorGainConst" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorGainConst </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_GainConst_noPos    </parameter>
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_GainConst_noPos </parameter>
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_GainConst_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorGainSlope" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorGainSlope </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_GainSlope_noPos    </parameter>
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_GainSlope_noPos </parameter>
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_GainSlope_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorInterCalib" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorInterCalib </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_InterCalib_noPos    </parameter>
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_InterCalib_noPos </parameter>
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_InterCalib_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorMIPConst" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorMIPConst </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_MIPConst_noPos    </parameter>
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_MIPConst_noPos </parameter>
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_MIPConst_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorMIPSlope" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorMIPSlope </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_MIPSlope_noPos    </parameter>
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_MIPSlope_noPos </parameter>
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_MIPSlope_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorSaturation" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorSaturation </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_Saturation_noPos    </parameter>
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_Saturation_noPos </parameter>
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_Saturation_noPos </parameter>
+    </processor>
+  </group>
+
+
+  <processor name="HcalRootTreeWriter" type="RootTreeWriter">
+    <parameter name="OutFileName" type="string">Run520308_rec_altMip.root </parameter>
+    <parameter name="TBTrackWriteEngine_enable" type="int">1 </parameter>
+    <parameter name="HitWriteEngine_enable" type="int">1 </parameter>
+    <parameter name="HitWriteEngine_InCol" type="string" lcioInType="CalorimeterHit">AhcCalorimeter_Hits </parameter>
+    <parameter name="HitWriteEngine_caloType" type="string">ahc </parameter>
+    <parameter name="HitWriteEngine_eventFiltering" type="int">1 </parameter>
+    <parameter name="HitWriteEngine_informationLevel" type="int">3 </parameter>
+    <parameter name="HitWriteEngine_cogIJenable" type="int">1 </parameter>
+    <parameter name="TriggerWriteEngine_enable" type="int">1 </parameter>
+  </processor>
+
+
+  <!-- ========================================================================================= -->
+  <!--                                                                                           -->
+  <!--          TCMT                                                                             -->
+  <!--                                                                                           -->
+  <!-- ========================================================================================= -->
+  <processor name="TcmtMappingI" type="TcmtMappingIProcessor">
+    <parameter name="ADCCollectionName" type="string" value="CALDAQ_ADCCol"/>
+    <parameter name="AdcCollectionName" value="CALDAQ_ADCCol"/>
+    <parameter name="ModuleConnectionCollectionName" type="string" value="TcmtModuleConnection"/>
+    <parameter name="ModuleDescriptionCollectionName" type="string" value="TcmtModuleDescription"/>
+    <parameter name="ModuleLocationCollectionName" type="string" value="TcmtModuleLocation"/>
+    <parameter name="OutputCollectionName" type="string" value="TcmtHitsLevel1DB"/>
+    <parameter name="PickModule" type="int" value="0"/>
+    <parameter name="Verbosity" type="int" value="0"/>
+    <parameter name="ViewMapping" type="int" value="0"/>
+  </processor>
+
+
+  <processor name="TcmtPedestalSubtraction" type="PedestalOnTheFlyProcessor">
+    <parameter name="InputCollection" type="string" value="TcmtHitsLevel1DB"/>
+    <parameter name="OutputCollection" type="string" value="TcmtHitsLevel2DB"/>
+    <parameter name="SignificanceCut" type="float" value="2."/>
+    <parameter name="SkipPedestals" type="int" value="0"/>
+    <parameter name="SkipStartUpPedestals" type="int" value="0"/>
+    <parameter name="ThrowSkipEventException" type="bool" value="true"/>
+    <parameter name="Verbosity" type="int" value="0"/>
+    <parameter name="minPedNumber" type="int" value="20"/>
+  </processor>
+
+
+  <processor name="TcmtCalibration" type="TcmtMipCalibrationProcessor">
+    <parameter name="AHC_SRO_ModData" type="string" value="CALDAQ_AhcSroModData"/>
+    <parameter name="CalibrationCollectionTemplate" type="string" value="tcmtMip"/>
+    <parameter name="InputCollectionName" type="string" value="TcmtHitsLevel2DB"/>
+    <parameter name="Module" type="IntVec" value="0"/>
+    <parameter name="OutputCollectionName" type="string" value="TcmtHitsLevel3DB"/>
+    <parameter name="Verbosity" value="0"/>
+    <parameter name="ZeroSuppression" type="int" value="1"/>
+  </processor>
+
+
+  <processor name="TcmtMappingII" type="TcmtMappingIIProcessor">
+    <parameter name="DetectorTransformationCollectionName" type="string" value="TcmtDetectorTransformation"/>
+    <parameter name="EnergyThreshold" type="float" value="0.5"/>
+    <parameter name="InputCollectionName" type="string" value="TcmtHitsLevel3DB"/>
+    <parameter name="ModuleConnectionCollectionName" type="string" value="TcmtModuleConnection"/>
+    <parameter name="ModuleDescriptionCollectionName" type="string" value="TcmtModuleDescription"/>
+    <parameter name="ModuleLocationCollectionName" type="string" value="TcmtModuleLocation"/>
+    <parameter name="OutputCollectionName" type="string" value="TcmtCalorimeter_Hits"/>
+    <parameter name="OutputCollectionType" type="int" value="0"/>
+    <parameter name="ReferenceTransformationCollectionName" type="string" value="ReferenceTransformation"/>
+    <parameter name="Verbosity" type="int" value="0"/>
+  </processor>
+
+
+  <!-- ========================================================================================= -->
+  <!--                                                                                           -->
+  <!--          Multiplicity counter                                                             -->
+  <!--                                                                                           -->
+  <!-- ========================================================================================= -->
+  <processor name="AppendMultiAmplitude" type="AppendMultiAmplitude">
+    <parameter name="ADCCollectionName" type="string" lcioInType="LCGenericObject"> CALDAQ_ADCCol </parameter>
+    <parameter name="MultiAmplitudeParameterName" type="string" lcioInType="LCGenericObject"> MultiAmplitude </parameter>
+    <parameter name="connectionCollectionName" type="string" lcioInType="LCGenericObject"> MultiConnection </parameter>
+    <parameter name="TriggerEventName" type="string" value="Event_Trigger"/>
+  </processor>
+
+
+  <!-- ========================================================================================= -->
+  <!--                                                                                           -->
+  <!--          LCIO output                                                                      -->
+  <!--                                                                                           -->
+  <!-- ========================================================================================= -->
+  <processor name="LCIOOutput" type="LCIOOutputProcessor">
+    <parameter name="DropCollectionNames" type="StringVec">
+      CALDAQ_ADCCol CALDAQ_BeTrgEventData CALDAQ_FeTrgData CALDAQ_BeTrgPollData
+      CALDAQ_BeTrgConf CALDAQ_BeEventData CALDAQ_FeEventData TrailerInfo
+      BoardHeaderInfo FeHeaderInfo
+      TBTrackTdcHits TBTrackMapper_edges
+      AhcCalorimeter_Hits_noPosition AhcCalorimeter_Hits_GainConst_noPos AhcCalorimeter_Hits_GainSlope_noPos
+      AhcCalorimeter_Hits_InterCalib_noPos AhcCalorimeter_Hits_MIPConst_noPos AhcCalorimeter_Hits_MIPSlope_noPos
+      AhcCalorimeter_Hits_Saturation_noPos AhcCalorimeter_Hits_NoDefaults_noPos
+      AhcCalorimeter_Hits_UpperLimit_noPos AhcCalorimeter_Hits_LowerLimit_noPos
+      AhcHitAmplitudeRelation_noPosition
+      TcmtHitsLevel1DB TcmtHitsLevel2DB TcmtHitsLevel3DB
+    </parameter>
+    <parameter name="LCIOOutputFile" type="string" value="Run520308_rec_altMip.slcio"/>
+    <parameter name="LCIOWriteMode" type="string" value="None"/>
+    <parameter name="SplitFileSizekB" type="int" value="1992294"/>
+  </processor>
+
+
+</marlin>
+

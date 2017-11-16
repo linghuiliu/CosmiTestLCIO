@@ -1,0 +1,183 @@
+############################################
+#
+#  Example DigiSim steering file for Marlin
+#
+#  20050307 G.Lima - Created for digitization of full-detector models
+#
+############################################
+
+.begin Global  ---------------------------------------
+
+# specify one ore more input files (in one ore more lines)
+
+LCIOInputFiles inputfile
+#LCIOInputFiles ../simjob.slcio ../simjob.slcio
+
+# the active processors that are called in the given order
+ActiveProcessors CalHitMapProcessor
+ActiveProcessors EcalBarrDigitizer
+ActiveProcessors EcalEndcapDigitizer
+ActiveProcessors HcalBarrDigitizer
+ActiveProcessors HcalEndcapDigitizer
+ActiveProcessors CalorimeterHitsProcessor
+ActiveProcessors OutputProcessor
+
+# limit the number of processed records (run+evt):
+MaxRecordNumber 501
+.end Global  -----------------------------------------------
+###########################################################
+
+#define the processor parameters after '.begin ProcessorName' :
+
+# the default output processor
+.begin OutputProcessor
+
+# mandatory processor type (the name of the class)
+ProcessorType LCIOOutputProcessor
+
+# the outputfile
+LCIOOutputFile marlin.slcio
+
+# lcio write mode, new overwrites existing files
+# append appends to existing files
+# if nothing specified create new file only if it doesn't exist
+LCIOWriteMode WRITE_NEW
+#LCIOWriteMode WRITE_APPEND
+
+.end -------------------------------------------------
+############################################################
+# Utility processor.  It fills hit maps for use by other processors,
+#  so they don't need to fill the same maps themselves
+
+.begin CalHitMapProcessor
+
+ProcessorType CalHitMapProcessor
+
+.end -------------------------------------------------
+############################################################
+# Cal digitizer processor.  Instantiates one or more calorimeter hit
+#  "modifiers", which together represent the full digitization process.
+
+.begin EcalBarrDigitizer
+
+ProcessorType DigiSimProcessor
+
+InputCollection        EcalBarrHits
+OutputCollection       EcalBarrRawHits
+Raw2SimLinksCollection EcalBarrRaw2sim
+
+ModifierNames   EMBEneDigi EMBTimeDigi
+
+# modifierName     Type                 Parameters (floats)
+EMBEneDigi         SmearedGain          100000000       0
+EMBTimeDigi        SmearedTiming          1000000       0
+
+.end -------------------------------------------------
+############################################################
+# Cal digitizer processor.  Instantiates one or more calorimeter hit
+#  "modifiers", which together represent the full digitization process.
+
+.begin EcalEndcapDigitizer
+
+ProcessorType DigiSimProcessor
+
+InputCollection  EcalEndcapHits
+OutputCollection EcalEndcapRawHits
+Raw2SimLinksCollection EcalEndcapRaw2sim
+
+ModifierNames    EMECEneDigi EMECTimeDigi
+
+# modifierName     Type                 Parameters (floats)
+EMECEneDigi        SmearedGain          100000000       0
+EMECTimeDigi       SmearedTiming          1000000       0
+
+.end -------------------------------------------------
+############################################################
+# Cal digitizer processor.  Instantiates one or more calorimeter hit
+#  "modifiers", which together represent the full digitization process.
+
+.begin HcalBarrDigitizer
+
+ProcessorType DigiSimProcessor
+
+InputCollection        HcalBarrHits
+OutputCollection       HcalBarrRawHits
+Raw2SimLinksCollection HcalBarrRaw2sim
+
+ModifierNames HBlightYield HBlightCollEff SiPMQuEffic HBdiscrim HBGain
+
+# Parameters:
+# modifierName    Type                gainNom  gainSig  thresh   thrSig
+HBlightYield     GainDiscrimination  10000000        0       1        0
+
+# Crosstalk                              mean    sigma
+#HBcrosstalk      Crosstalk               0.020     0.005
+
+# Smeared gain parameters:             gain   gainSigma  thresh   thrSig
+HBlightCollEff   GainDiscrimination  0.0111     0.0029       1        0
+SiPMQuEffic      GainDiscrimination    0.15          0       1        0
+
+### Noise generators
+# GaussNoise parameters:        sys   be    Ecut   TimeNom  TSig   Mean  Sigma
+# Note: sigma<0 means that threshold acts on absolute value only
+#HBGaussNoise   GaussianNoise      3     0      7       100   100    0.0  -1.6
+# ExponentialNoise parameters:  sys    be   Ecut   TimeNom  TSig   Mean
+#HBExpoNoise    ExponentialNoise   3     0      7       100   100    0.6
+
+# SiPM gain=601 with saturation at about 2200 incident photons
+# SiPMSaturation parameters:          gainNom   linMax
+#HBSiPMSaturat    SiPMSaturation	            1     2200
+
+# Hot cell parameters:      AmplNom  Sig  TimeNom  Sig      sys be lay the phi
+#HBHotCell       HotCell      252525   0    101010   0        3   0  12 123 345
+#HBDeadCellTest  HotCell      252525   0    101010   0        3   0  12  34  56
+
+# Hot cell parameters:          sys   be   lay   the   phi
+#HBDeadCell      DeadCell          3    0    12    34    56
+
+# Discrimination                             threshold	 sigma
+HBdiscrim	AbsValueDiscrimination   	   8       1
+#HBdiscrim	GainDiscrimination   	   1       0       8       1
+
+# Gain adjustments (temporary, kludge modifiers)
+HBGain          SmearedGain              6006.        0
+#HBIdentity      SmearedGain                  1        0
+
+.end -------------------------------------------------
+############################################################
+# Cal digitizer processor.  Instantiates one or more calorimeter hit
+#  "modifiers", which together represent the full digitization process.
+
+.begin HcalEndcapDigitizer
+
+ProcessorType DigiSimProcessor
+
+InputCollection        HcalEndcapHits
+OutputCollection       HcalEndcapRawHits
+Raw2SimLinksCollection HcalEndcapRaw2sim
+
+ModifierNames    HECEneDigi HECTimeDigi
+
+# modifierName     Type                 Parameters (floats)
+HECEneDigi         SmearedGain          100000000       0
+HECTimeDigi        SmearedTiming          1000000       0
+
+.end -------------------------------------------------
+###########################################################
+# A processor to convert raw hits into calibrated hits.
+.begin CalorimeterHitsProcessor
+
+# mandatory processor type (the name of the class)
+ProcessorType CalorimeterHitsProcessor
+
+# Input collections to be converted
+InputCollections EcalBarrRawHits HcalBarrRawHits
+
+# Output collections with calibrated hits
+OutputCollections EcalBarrCalibHits HcalBarrCalibHits
+
+# Conversions based on simple factors (at least for now)
+EnergyFactor	1.0e-8
+TimeFactor	1.0e-6
+
+.end -------------------------------------------------

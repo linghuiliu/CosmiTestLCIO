@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/public/calice/!svn/ver/4747/calice_cddata/trunk/ahc2_mapping
+END
+createEPTModuleLocation.cc
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/4639/calice_cddata/trunk/ahc2_mapping/createEPTModuleLocation.cc
+END
+createEPTDescription.cc
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/4639/calice_cddata/trunk/ahc2_mapping/createEPTDescription.cc
+END
+ModuleDescription_LeftReadout.txt
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/4639/calice_cddata/trunk/ahc2_mapping/ModuleDescription_LeftReadout.txt
+END
+createHardwareConnection.cc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/4639/calice_cddata/trunk/ahc2_mapping/createHardwareConnection.cc
+END
+createEPTModuleConnection.cc
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/4639/calice_cddata/trunk/ahc2_mapping/createEPTModuleConnection.cc
+END
+CreateDescription.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/4746/calice_cddata/trunk/ahc2_mapping/CreateDescription.cpp
+END
+ModuleDescription_RightReadout.txt
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/4639/calice_cddata/trunk/ahc2_mapping/ModuleDescription_RightReadout.txt
+END
+writeHBUGeometrydata.sh
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/4747/calice_cddata/trunk/ahc2_mapping/writeHBUGeometrydata.sh
+END
+MakeMappingFile.C
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/4746/calice_cddata/trunk/ahc2_mapping/MakeMappingFile.C
+END
+ModuleDescription_TopReadout_Inversed.txt
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/public/calice/!svn/ver/4746/calice_cddata/trunk/ahc2_mapping/ModuleDescription_TopReadout_Inversed.txt
+END
+ModuleDescription_TopReadout.txt
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/4639/calice_cddata/trunk/ahc2_mapping/ModuleDescription_TopReadout.txt
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/public/calice/!svn/ver/4639/calice_cddata/trunk/ahc2_mapping/README
+END

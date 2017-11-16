@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/public/calice/!svn/ver/4698/calice_calib/trunk/calibmulti/src
+END
+multiCalibrator.cc
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/4628/calice_calib/trunk/calibmulti/src/multiCalibrator.cc
+END
+TConvolution.cc
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/3591/calice_calib/trunk/calibmulti/src/TConvolution.cc
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/4698/calice_calib/trunk/calibmulti/src/CMakeLists.txt
+END

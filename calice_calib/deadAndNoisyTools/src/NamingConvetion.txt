@@ -1,0 +1,7 @@
+Files ending with
+
+.cc  : Data class, not dependent on root
+.cxx : Data class, root dependent. For these classes a root dict is created
+       and they are available in the livDeadAndNoisyChannels.so library
+.cpp : Executable, containing main() function
+

@@ -1,0 +1,50 @@
+06.05.2008  23:48:00.000000000     07.05.2008  13:15:59.000000000
+#  3         2         1         0   3         2         1         0 
+# 10987654321098765432109876543210  10987654321098765432109876543210 
+# disable cosmics:
+#  00000000000000000000000000000000  10000000000000000000000000000000 COSMICS
+21 GENERICBIT
+# 2005: 24 PEDESTAL
+# mask: funkgen
+#        mask                            value
+#  3         2         1         0   3         2         1         0 
+# 10987654321098765432109876543210  10987654321098765432109876543210 
+#  10000011000000000000001000000000  00000000000000000000000000000000 PEDESTAL
+
+# 25 CrcCoincidence
+24 CrcOscillator
+#25 BEAMDATA
+# 26 Electron
+
+#        mask                            value
+#  3         2         1         0   3         2         1         0 
+# 10987654321098765432109876543210  10987654321098765432109876543210 
+# 10000011000000000010001000000000  00000000000000000000001000000000 FUNKGEN
+#
+# Scintillators 
+# ------------
+# 3x3cm^2 scintillators named: SC1
+#12 SC1_3x3   -1 1
+#13 SC2_3x3   -1 1
+# 10x10cm^2 scintillators named: Sc2 and Sc4 
+7 SC1_10x10 0 1
+8 SC2_10x10 0 1
+# 20x20cm^2 1 cm thick scintillator names Sc3
+#10 SC1_20x20 0 1
+#Veto Counter(s)
+15  Veto_UL 0 1
+4  Veto_DR 0 1
+14  Veto_UR 0 1
+2  Veto_DL 0 1
+# 100x100cm^2 scintillaros named: Sc5 and Sc6
+11  SC1_100x100 2 1 
+10  SC2_100x100 2 1
+#
+#1  Veto_20x20 0 1
+1 BEAMDATA
+#
+12 Cherenkov 27 1
+#13 Cherenkov2 27 1 (to be added)
+# Spill signal
+5 Spill
+

@@ -1,0 +1,52 @@
+\section{CALICE::HBUTemperature\-Block Class Reference}
+\label{classCALICE_1_1HBUTemperatureBlock}\index{CALICE::HBUTemperatureBlock@{CALICE::HBUTemperatureBlock}}
+Class for the Labview Data as acquired by the AHCAL Labview.  
+
+
+{\tt \#include $<$HBUtemperature\-Block.hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\bf{HBUTemperature\-Block} ()\label{classCALICE_1_1HBUTemperatureBlock_0347bb19db81f4be88e59590e2c0bd17}
+
+\item 
+\bf{HBUTemperature\-Block} (float temp1, float temp2, float temp3, float temp4, float temp5, float temp6)\label{classCALICE_1_1HBUTemperatureBlock_f375d8e03e1106f8c204aead89155bc5}
+
+\begin{CompactList}\small\item\em Convenient c'tor. \item\end{CompactList}\item 
+\bf{HBUTemperature\-Block} (LCObject $\ast$obj)\label{classCALICE_1_1HBUTemperatureBlock_92e198601fbaa6bfe6c4036b4a05c9b8}
+
+\begin{CompactList}\small\item\em 'Copy constructor' needed to interpret LCCollection read from file/database. \item\end{CompactList}\item 
+virtual \bf{$\sim$HBUTemperature\-Block} ()\label{classCALICE_1_1HBUTemperatureBlock_56e200aa8c952fe97974353a0e64b561}
+
+\begin{CompactList}\small\item\em Important for memory handling. \item\end{CompactList}\item 
+int \bf{Get\-Temperature} (int i) const \label{classCALICE_1_1HBUTemperatureBlock_490183c4ad51e53c39976ca81bb62592}
+
+\begin{CompactList}\small\item\em get the i\-Th temperature value. \item\end{CompactList}\item 
+void \bf{print} (std::ostream \&os, int)\label{classCALICE_1_1HBUTemperatureBlock_ba1db63737ade3e123ced95976acbe6d}
+
+\begin{CompactList}\small\item\em Convenient print method. \item\end{CompactList}\item 
+const std::string \bf{get\-Type\-Name} () const \label{classCALICE_1_1HBUTemperatureBlock_a1f360c273b51321db6a976a021cca52}
+
+\begin{CompactList}\small\item\em Return the type of the class. \item\end{CompactList}\item 
+const std::string \bf{get\-Data\-Description} () const \label{classCALICE_1_1HBUTemperatureBlock_441efe029c3c7f206d8c49ed77a50ef5}
+
+\begin{CompactList}\small\item\em Return a brief description of the data members. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Class for the Labview Data as acquired by the AHCAL Labview. 
+
+The class reflects that the data are received in the Labview \begin{Desc}
+\item[Author:]S. Lu DESY Hamburg \end{Desc}
+\begin{Desc}
+\item[Date:]Oct 02 2012 \end{Desc}
+
+
+
+
+Definition at line 23 of file HBUtemperature\-Block.hh.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+HBUtemperature\-Block.hh\end{CompactItemize}

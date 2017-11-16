@@ -1,0 +1,401 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/public/calice/!svn/ver/4627/calice_reco/trunk/raw2calohit/include
+END
+TempModel.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/1521/calice_reco/trunk/raw2calohit/include/TempModel.hh
+END
+Calibration.hh
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/3601/calice_reco/trunk/raw2calohit/include/Calibration.hh
+END
+AppendMultiAmplitude.hh
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/2871/calice_reco/trunk/raw2calohit/include/AppendMultiAmplitude.hh
+END
+FastPedestalCalibrationProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/public/calice/!svn/ver/1904/calice_reco/trunk/raw2calohit/include/FastPedestalCalibrationProcessor.hh
+END
+Fast2DCalibrationProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/4166/calice_reco/trunk/raw2calohit/include/Fast2DCalibrationProcessor.hh
+END
+fastMappingIIProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/1497/calice_reco/trunk/raw2calohit/include/fastMappingIIProcessor.hh
+END
+CalibrationKit.hh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/686/calice_reco/trunk/raw2calohit/include/CalibrationKit.hh
+END
+CellParameterAccess.hh
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/686/calice_reco/trunk/raw2calohit/include/CellParameterAccess.hh
+END
+CalibrationSet.hh
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/2285/calice_reco/trunk/raw2calohit/include/CalibrationSet.hh
+END
+CaliceTriggerProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/1007/calice_reco/trunk/raw2calohit/include/CaliceTriggerProcessor.hh
+END
+FastCalibrationProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/4627/calice_reco/trunk/raw2calohit/include/FastCalibrationProcessor.hh
+END
+ScECALMappingProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/4109/calice_reco/trunk/raw2calohit/include/ScECALMappingProcessor.hh
+END
+TcmtOverlayProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/2016/calice_reco/trunk/raw2calohit/include/TcmtOverlayProcessor.hh
+END
+IntegratedScECALCalibrationProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/public/calice/!svn/ver/4110/calice_reco/trunk/raw2calohit/include/IntegratedScECALCalibrationProcessor.hh
+END
+PedestalOnTheFlyProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/3904/calice_reco/trunk/raw2calohit/include/PedestalOnTheFlyProcessor.hh
+END
+TcmtSimpleSaturationCorrectionProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/public/calice/!svn/ver/1933/calice_reco/trunk/raw2calohit/include/TcmtSimpleSaturationCorrectionProcessor.hh
+END
+TcmtMipCalibrationProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/1904/calice_reco/trunk/raw2calohit/include/TcmtMipCalibrationProcessor.hh
+END
+MipSelect.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/974/calice_reco/trunk/raw2calohit/include/MipSelect.hh
+END
+IntegratedHcalCalibrationProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/public/calice/!svn/ver/2542/calice_reco/trunk/raw2calohit/include/IntegratedHcalCalibrationProcessor.hh
+END
+SimpleHcalCalibrationProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/public/calice/!svn/ver/1502/calice_reco/trunk/raw2calohit/include/SimpleHcalCalibrationProcessor.hh
+END
+MakeGraph.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/976/calice_reco/trunk/raw2calohit/include/MakeGraph.hh
+END
+Clusteriser.hh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/977/calice_reco/trunk/raw2calohit/include/Clusteriser.hh
+END
+FastGainCalibrationProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/public/calice/!svn/ver/1904/calice_reco/trunk/raw2calohit/include/FastGainCalibrationProcessor.hh
+END
+TcmtMappingIIProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/3905/calice_reco/trunk/raw2calohit/include/TcmtMappingIIProcessor.hh
+END
+SimpleArray_t.hh
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/686/calice_reco/trunk/raw2calohit/include/SimpleArray_t.hh
+END
+NoiseParameter.hh
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/3424/calice_reco/trunk/raw2calohit/include/NoiseParameter.hh
+END
+VRawADCValueProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/1352/calice_reco/trunk/raw2calohit/include/VRawADCValueProcessor.hh
+END
+SimpleHitSearch.hh
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/3424/calice_reco/trunk/raw2calohit/include/SimpleHitSearch.hh
+END
+CaliceConditionsDataCreator.hh
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/978/calice_reco/trunk/raw2calohit/include/CaliceConditionsDataCreator.hh
+END
+SiPmPropertiesProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/public/calice/!svn/ver/2303/calice_reco/trunk/raw2calohit/include/SiPmPropertiesProcessor.hh
+END
+SquareFinder.hh
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/1104/calice_reco/trunk/raw2calohit/include/SquareFinder.hh
+END
+TcmtMappingIProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/3903/calice_reco/trunk/raw2calohit/include/TcmtMappingIProcessor.hh
+END
+LCTrackPayload.hh
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/1302/calice_reco/trunk/raw2calohit/include/LCTrackPayload.hh
+END
+HoldScanAnalysis.hh
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/977/calice_reco/trunk/raw2calohit/include/HoldScanAnalysis.hh
+END
+PedestalNoiseHistograms.hh
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/972/calice_reco/trunk/raw2calohit/include/PedestalNoiseHistograms.hh
+END
+CellParameterArray_t.hh
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/686/calice_reco/trunk/raw2calohit/include/CellParameterArray_t.hh
+END
+ModuleIndexReverseLookup.hh
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/2541/calice_reco/trunk/raw2calohit/include/ModuleIndexReverseLookup.hh
+END
+MCRunTimeProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/2406/calice_reco/trunk/raw2calohit/include/MCRunTimeProcessor.hh
+END
+AdcValueAccess.hh
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/1488/calice_reco/trunk/raw2calohit/include/AdcValueAccess.hh
+END
+LCPayload.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/3603/calice_reco/trunk/raw2calohit/include/LCPayload.hh
+END
+FastMIPCalibrationProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/1904/calice_reco/trunk/raw2calohit/include/FastMIPCalibrationProcessor.hh
+END
+histogram2d.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/982/calice_reco/trunk/raw2calohit/include/histogram2d.h
+END
+HcalTempModel.hh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/4197/calice_reco/trunk/raw2calohit/include/HcalTempModel.hh
+END
+raw2calohit.hh
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/3734/calice_reco/trunk/raw2calohit/include/raw2calohit.hh
+END
+RunInfoProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/3976/calice_reco/trunk/raw2calohit/include/RunInfoProcessor.hh
+END
+CellParameter.hh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/3601/calice_reco/trunk/raw2calohit/include/CellParameter.hh
+END
+fastMappingIProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/1171/calice_reco/trunk/raw2calohit/include/fastMappingIProcessor.hh
+END
+NoOpCalibration.hh
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/3601/calice_reco/trunk/raw2calohit/include/NoOpCalibration.hh
+END
+Box.hh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/3601/calice_reco/trunk/raw2calohit/include/Box.hh
+END
+AhcSROmappingProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/3057/calice_reco/trunk/raw2calohit/include/AhcSROmappingProcessor.hh
+END
+CalibrateAndApplyThreshold.hh
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/4590/calice_reco/trunk/raw2calohit/include/CalibrateAndApplyThreshold.hh
+END
+ExtractConfigurationAverageProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/public/calice/!svn/ver/2280/calice_reco/trunk/raw2calohit/include/ExtractConfigurationAverageProcessor.hh
+END
+TriggerProcessorBase.hh
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/1052/calice_reco/trunk/raw2calohit/include/TriggerProcessorBase.hh
+END
+NoiseParameterArray_t.hh
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/1303/calice_reco/trunk/raw2calohit/include/NoiseParameterArray_t.hh
+END
+AverageHistoryGraphs.hh
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/977/calice_reco/trunk/raw2calohit/include/AverageHistoryGraphs.hh
+END
+ConstantCalibration.hh
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/3601/calice_reco/trunk/raw2calohit/include/ConstantCalibration.hh
+END
+NVector_t.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/3424/calice_reco/trunk/raw2calohit/include/NVector_t.hh
+END
+SimpleTriggerConfiguration.hh
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/686/calice_reco/trunk/raw2calohit/include/SimpleTriggerConfiguration.hh
+END
+FastInterCalibrationProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/public/calice/!svn/ver/1904/calice_reco/trunk/raw2calohit/include/FastInterCalibrationProcessor.hh
+END
+FilterBadChannels.hh
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/3503/calice_reco/trunk/raw2calohit/include/FilterBadChannels.hh
+END
+BaseMappingIIProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/3071/calice_reco/trunk/raw2calohit/include/BaseMappingIIProcessor.hh
+END
+DhcRawHitProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/3540/calice_reco/trunk/raw2calohit/include/DhcRawHitProcessor.hh
+END
+CaliceEcalCalibration.hh
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/3601/calice_reco/trunk/raw2calohit/include/CaliceEcalCalibration.hh
+END
+IntegratedHcalProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/public/calice/!svn/ver/2549/calice_reco/trunk/raw2calohit/include/IntegratedHcalProcessor.hh
+END
+CalibrationFactory.hh
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/686/calice_reco/trunk/raw2calohit/include/CalibrationFactory.hh
+END
+FastSaturationCalibrationProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/public/calice/!svn/ver/1490/calice_reco/trunk/raw2calohit/include/FastSaturationCalibrationProcessor.hh
+END

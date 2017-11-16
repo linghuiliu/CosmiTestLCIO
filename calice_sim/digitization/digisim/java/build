@@ -1,0 +1,42 @@
+#!/bin/sh
+# Setup "default" CLASSPATH for JAS3 command-line run on nicadd cluster
+#
+# 20040525 - GLima - Adapted from Jeremy's script for non-projective .sio
+
+# setup relative dirs using JAS3 app path (JAS3 variable required)
+LCIO=/home/lima/work/local/lciodir
+JAS3=/home/lima/work/local/jas3dir
+JAS3_LIB=$JAS3/lib
+JAS3_EXT=$JAS3/extensions
+LCD_EXT=$HOME/.JAS3/extensions
+
+# CP: include WD
+CLASSPATH=.
+
+# CP: lcio
+CLASSPATH=$CLASSPATH:$LCIO/lib/lcio.jar
+
+# CP: libs
+CLASSPATH=$CLASSPATH:$JAS3_LIB/freehep-base.jar
+CLASSPATH=$CLASSPATH:$JAS3_LIB/jas3.jar
+CLASSPATH=$CLASSPATH:$JAS3_LIB/openide-lookup.jar
+
+# CP: extensions
+CLASSPATH=$CLASSPATH:$JAS3_EXT/jas3lcd.jar
+#CLASSPATH=$CLASSPATH:$LCD_EXT/lcd.jar
+#CLASSPATH=$CLASSPATH:$JAS3_EXT/lcd.jar
+CLASSPATH=$CLASSPATH:/home/lima/work/jas/hep.lcd/head/lib/lcd.jar
+CLASSPATH=$CLASSPATH:$JAS3_EXT/aida.jar
+CLASSPATH=$CLASSPATH:$JAS3_EXT/aida-dev.jar
+CLASSPATH=$CLASSPATH:$JAS3_EXT/freehep-hep.jar
+
+# export (and print) CP
+export CLASSPATH
+#echo CLASSPATH=$CLASSPATH
+
+echo javac -sourcepath . @files.lis
+
+#gcj --classpath=$CLASSPATH @files.lis
+javac -sourcepath . @files.lis \
+&& echo "*** To run java analysis job:" \
+&& echo java RawHistos inputfile

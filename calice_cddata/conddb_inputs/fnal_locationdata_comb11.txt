@@ -1,0 +1,5 @@
+#Generic Information about the run location
+RunRange: 600220 639999 
+Location: Fnal
+generic_Type: fnalcomb
+month_Info: 04/11

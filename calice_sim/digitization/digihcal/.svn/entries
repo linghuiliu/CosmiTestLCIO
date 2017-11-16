@@ -1,0 +1,40 @@
+10
+
+dir
+4758
+https://svnsrv.desy.de/public/calice/calice_sim/trunk/digitization/digihcal
+https://svnsrv.desy.de/public/calice
+
+
+
+2016-02-27T11:47:02.899960Z
+4629
+ebrianne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+d1deb40d-bcc4-47cc-9d27-f84b3a1afcb8
+
+cmake
+dir
+
+include
+dir
+
+steerings
+dir
+
+src
+dir
+

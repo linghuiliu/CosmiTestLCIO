@@ -1,0 +1,161 @@
+#!/bin/bash
+#
+#(make sure the right shell will be used)
+#$ -S /bin/bash
+#
+#(the cpu time for this job)
+#$ -l h_rt=24:00:00
+#
+#the maximum memory usage of this job)
+#$ -l h_vmem=8G
+#
+#(stderr and stdout are merged together to stdout)
+#$ -j y
+#
+#execute the job from the current directory and not relative to your home directory
+#$ -cwd
+###  force to run on desy hamburg side
+#$ -l site="hh"
+
+#$ -l os=sld6
+
+# define output for logfile
+##CHANGE THE PATH TO YOUR OWN LOGFILE DIRECTORY
+#$ -o /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/logFiles
+
+#set the email address
+#$ -M eldwan.brianne@desy.de
+#
+#send email when job aborts or when job ends
+#$ -m a
+
+###==============================================================
+#set necessary variables
+
+physList="QGSP_BERT_HP"
+namesuffix=""
+energy=10
+energy_sigma=0.2
+particle="e-"
+RUNNUMBER=24542
+
+SOFTWARE_PATH=${SGE_O_WORKDIR}
+
+##DESTINATION PATH
+##THIS DIRECTORY SHOULD ALREADY EXIST WHEN THE SCRIPT IS SUBMITTED
+DEST_PATH="/nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/${energy}GeV/"
+
+#########=========================================
+NEVENTS=1000
+
+i=`expr $SGE_TASK_ID - 1`
+firstEventNumber=`expr ${NEVENTS} \* ${i}`
+lastEventNumber=`expr ${NEVENTS} \* ${i} + ${NEVENTS} - 1`
+echo "i=${i}, firstEventNumber = ${firstEventNumber}, lastEventNumber = ${lastEventNumber}"
+
+LCIOfile=Run${RUNNUMBER}_${particle}_${energy}GeV_${physList}${namesuffix}_Ev${firstEventNumber}-Ev${lastEventNumber}.slcio
+GEARfile=Run${RUNNUMBER}_${particle}_${energy}GeV_${physList}${namesuffix}_Ev${firstEventNumber}-Ev${lastEventNumber}.gear
+
+seed=`expr $RUNNUMBER + $SGE_TASK_ID + ${JOB_ID}`
+
+# sleep to relieve load of Mokka DB
+usleep `expr \( \( ${RANDOM} % 40 \) + 1 \) \* 1333000` ## use this
+
+#echo the path to the directory where your job runs, in case
+#you want to recover files
+echo "HOST=${HOST}, TMPDIR=${TMPDIR}, physList=${physList}"
+echo "Running job ${JOB_ID} with task id ${SGE_TASK_ID}."
+echo "SOFTWARE_PATH=${SOFTWARE_PATH}"
+echo "Take Mokka executable from ${DD4HEP_PATH}"
+echo "Take Mokka env variables from ${DD4HEP_ENV_PATH}"
+echo "seed=${seed}"
+echo "========================================================================="
+echo " "
+echo " "
+
+###==============================================================
+#change to directory where you run the job
+cd $TMPDIR
+
+
+#=============================================================#
+#                                                             #
+#             prepare for the GEANT4 steering file             #
+#                                                             #
+#==============================================================
+rm -rf g4.mac
+cat <<EOF > g4.mac
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+
+#/generator/generator gps
+/gps/particle ${particle}
+/gps/pos/type Beam
+/gps/pos/centre 7.5 3.2 -19000. mm
+/gps/pos/sigma_x 29.2 mm
+/gps/pos/sigma_y 27.5 mm
+/gps/time 0 ns
+/gps/direction 0 0 1
+
+/gps/ene/type Gauss
+/gps/ene/mono ${energy} GeV
+/gps/ene/sigma ${energy_sigma} GeV
+
+/run/beamOn ${NEVENTS}
+exit
+
+
+EOF
+
+#========================================================================#
+#                                                                        #
+#     run Mokka in batch mode, with the "<<!" and  "!"  Korn-Shell tags  #
+#                                                                        #
+#========================================================================#
+echo "Starting DD4HEP..."
+
+source /afs/desy.de/group/flc/pool/ebrianne/init_ilcsoft_v17_10.sh
+source /afs/desy.de/group/flc/pool/ebrianne/Projects/AHCAL/Simulations/AHCAL_SPS_July2015/bin/thislcgeo.sh
+
+ddsim --runType run --enableG4GPS --macroFile g4.mac --compactFile /afs/desy.de/group/flc/pool/ebrianne/Projects/AHCAL/Simulations/AHCAL_SPS_July2015/compact/TBModel_SPSJuly2015.xml --outputFile ${LCIOfile} --physics.list ${physList} --physics.pdgfile /afs/desy.de/project/ilcsoft/sw/x86_64_gcc48_sl6/v01-17-10/DD4hep/v00-16/examples/DDG4/examples/particle.tbl --enableDetailedShowerMode --random.seed ${seed} --physics.rangecut 0.05 --action.calo Geant4ScintillatorCalorimeterAction
+
+#===============================================================#
+#                                                               #
+#           copy output files                                   #
+#                                                               #
+#===============================================================#
+if [ -e ${LCIOfile} ]
+    then
+    cp ${LCIOfile} ${DEST_PATH}
+        #if file was copied, delete it from this directory
+    if [ $? -eq 0 ]
+        then
+        rm ${LCIOfile}
+    fi
+else
+    echo "File ${LCIOfile} does not exist...."
+fi
+
+#if [ -e ${GEARfile} ]
+#    then
+#    cp ${GEARfile} ${DEST_PATH}
+#        #if file was copied, delete it from this directory
+#    if [ $? -eq 0 ]
+#        then
+#        rm ${GEARfile}
+#    fi
+#else
+#    echo "File ${GEARfile} does not exist..."
+#fi
+
+#===========================================================#
+#                                                           #
+#      do some additional clean-up                          #
+#                                                           #
+#===========================================================#
+echo "==================================================="
+rm g4.mac
+echo "Last look: "
+ls -lhtr
+echo "Cleaning up... end."

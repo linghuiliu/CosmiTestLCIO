@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/public/calice/!svn/ver/4698/calice_calib/trunk/deadAndNoisyTools/src
+END
+SimpleMapper.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/3861/calice_calib/trunk/deadAndNoisyTools/src/SimpleMapper.cxx
+END
+testSimpleMapper.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/3592/calice_calib/trunk/deadAndNoisyTools/src/testSimpleMapper.cpp
+END
+SpectrumPropertiesRunInfo.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/public/calice/!svn/ver/4698/calice_calib/trunk/deadAndNoisyTools/src/SpectrumPropertiesRunInfo.cxx
+END
+createSpriTree.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/4698/calice_calib/trunk/deadAndNoisyTools/src/createSpriTree.cpp
+END
+createBadChannelsList.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/4698/calice_calib/trunk/deadAndNoisyTools/src/createBadChannelsList.cpp
+END
+ModuleType.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/3860/calice_calib/trunk/deadAndNoisyTools/src/ModuleType.cxx
+END
+ChannelExpertQuality.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/3860/calice_calib/trunk/deadAndNoisyTools/src/ChannelExpertQuality.cxx
+END
+NamingConvetion.txt
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/3592/calice_calib/trunk/deadAndNoisyTools/src/NamingConvetion.txt
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/4698/calice_calib/trunk/deadAndNoisyTools/src/CMakeLists.txt
+END
+RunComparator.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/3592/calice_calib/trunk/deadAndNoisyTools/src/RunComparator.cxx
+END
+TChannelSpectrumProperties.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/public/calice/!svn/ver/3592/calice_calib/trunk/deadAndNoisyTools/src/TChannelSpectrumProperties.cxx
+END
+testRunComparator.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/3592/calice_calib/trunk/deadAndNoisyTools/src/testRunComparator.cpp
+END

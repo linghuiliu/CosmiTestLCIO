@@ -1,0 +1,21 @@
+This directory contains the sources for small programs to store 
+CALICE conditions data into the database and 
+to read back the information (the latter more for checking purposes).
+
+Contents:
+1) ahc_map:         code related to the AHCAL mapping
+
+2) conddb_inputs:   text file containing the information which was written into
+                    the data base during the time. You can look inside to find
+                    examples of input files.
+ 
+3) dbfill:          code used for writing (and reading) information to (from)
+                    the data base
+
+4) dbfillExamples:  a few bash scripts as example of how to use the binaries
+                    from 'dbfill' to write into the data base
+ 
+See the headers of the programs to learn what they are doing.
+
+
+

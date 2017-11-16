@@ -1,0 +1,15 @@
+--- Improved scheme for new objects ---
+
+There is now an abstract base class writeLCGenericObject
+which can parse command line options, open the database for 
+writing and so on.
+
+By inheritance one has to implement the format of the flat file
+used to create the new objects going to database.
+
+Easy examples are writeSimpleValues, writeLinearFitConstants, 
+writeLinearFitSlopes.
+
+If you want to add a new data type use the examples as a skeleton.
+Most probably you just have to change the parsing of the flat file
+and the name of your object.

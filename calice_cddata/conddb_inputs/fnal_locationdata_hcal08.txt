@@ -1,0 +1,5 @@
+#Generic Information about the run location
+RunRange: 520000 529999
+Location: Fnal
+generic_Type: fnalhcal
+month_Info: 05/08

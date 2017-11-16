@@ -1,0 +1,13 @@
+How to use these scripts:
+
+First you need to install the calice_cddata package, then you can use the scripts in this folder:
+
+
+    1. cd dbfillExamples
+    2. export CALICE_DB_INIT=xxxx  #(the passsword to write to the database)
+    3. copy the gain_<runNumber>.dat (the output from the gain analysis) to the gain_single folder
+    4. ./pushSingleGainToDB.sh <runNumber>
+    5. check with "dbview -v", enter folder cd_calice/Hcal/Calib_Measurements/gain_single and see if the entries are there
+
+
+The procedure is the same for other calibration constants

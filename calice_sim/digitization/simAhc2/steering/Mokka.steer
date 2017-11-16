@@ -1,0 +1,146 @@
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+##/Mokka/init/userInitString TIMEOUT_TO_RELAX_TMP 120
+##/Mokka/init/userInitInt SLEEP_BEFORE_RETRY 5
+
+##/Mokka/init/userInitString TIMEOUT_TO_RELAX_TMP 1${SGE_TASK_ID} ## use this
+##/Mokka/init/userInitInt SLEEP_BEFORE_RETRY ${SGE_TASK_ID}       ## use this
+
+
+################################
+# The Mokka databse has been modified
+# on the local flc53.desy.de local
+# installation for the timing studies
+# the scintillator thinkness has been
+# set to 3 mm for next generation prototype
+################################
+
+/Mokka/init/dbHost pollin1.in2p3.fr
+#/Mokka/init/dbHost polui01.in2p3.fr
+/Mokka/init/user consult
+/Mokka/init/dbPasswd consult
+
+/Mokka/init/rangeCut 0.05 mm
+/Mokka/init/lcioDetailedShowerMode true
+/Mokka/init/lcioWriteCompleteHepEvt true
+/Mokka/init/lcioWriteMode WRITE_NEW
+
+/Mokka/init/lcioStoreCalHitPosition true
+## If true, LCIO file will contain the coordinates of the calorimeter cell
+## that was hitted.
+
+
+
+################################
+# TBhcal4d model has be created on flc53.desy.de for development
+# to reach the users request. Intend to more flexible.
+# geometry and radiator can be steered here to reach the studies phase.
+# The example has been provide here.
+################################
+
+/Mokka/init/detectorModel TBhcal4d
+
+/Mokka/init/EditGeometry/rmSubDetector all
+/Mokka/init/EditGeometry/addSubDetector TBecal4d
+/Mokka/init/EditGeometry/addSubDetector TBhcal4d
+
+/Mokka/init/globalModelParameter world_box_hx 20 m
+/Mokka/init/globalModelParameter world_box_hy 20 m
+/Mokka/init/globalModelParameter world_box_hz 20 m
+
+################################
+# The TBecal4d parameters which can be steered here
+################################
+
+/Mokka/init/globalModelParameter Ecal_radiator_material Iron
+
+/Mokka/init/globalModelParameter Ecal_apply_Birks_law 1
+/Mokka/init/globalModelParameter Ecal_time_cut 5000
+/Mokka/init/globalModelParameter Lateral_X 180
+/Mokka/init/globalModelParameter Lateral_Y 180
+/Mokka/init/globalModelParameter grid_size_x 45
+/Mokka/init/globalModelParameter grid_size_y 5
+/Mokka/init/globalModelParameter Ecal_nlayers 2
+
+## Layer pattern: number of entries must be the same af the number of Ecal_nlayers
+## 0 : no layer, 1 : EBU Horizontal, 2 : EBU Transverse
+/Mokka/init/globalModelParameter Ecal_layer_pattern 11
+
+####Control parameter which are not inside database, but used in driver.
+/Mokka/init/userInitDouble X_position_of_first_ECAL_layer 0. mm
+/Mokka/init/userInitDouble Y_position_of_first_ECAL_layer 0. mm
+/Mokka/init/userInitDouble Z_position_of_first_ECAL_layer 0. mm
+
+/Mokka/init/userInitDouble Ecal_airgap_hthickness 1.285 mm
+/Mokka/init/userInitDouble gap_hthickness 1 mm
+/Mokka/init/userInitInt Ecal_beginWithAbsorber 1
+
+################################
+# The TBhcal4d parameters which can be steered here
+################################
+
+#Additional Material
+/Mokka/init/userInitInt Add_Mat 1
+/Mokka/init/userInitString Radiator_AddMaterial Lead
+/Mokka/init/userInitDouble z_begin_AddMaterial -2.8 mm
+/Mokka/init/userInitDouble thickness_AddMaterial 5.6 mm
+
+#Scintillator beamline
+/Mokka/init/userInitInt Add_Scint 1
+/Mokka/init/userInitDouble z_begin_Scint500x500_front -231. mm
+/Mokka/init/userInitDouble z_begin_Scint500x500_back 850. mm
+/Mokka/init/userInitDouble z_begin_Scint100x100_front -391. mm
+/Mokka/init/userInitDouble z_begin_Scint100x100_back -348. mm
+/Mokka/init/userInitDouble thickness_Scint500x500 10. mm
+/Mokka/init/userInitDouble thickness_Scint100x100 6. mm
+
+/Mokka/init/globalModelParameter Hcal_radiator_material Iron
+
+/Mokka/init/globalModelParameter Hcal_apply_Birks_law 1
+/Mokka/init/globalModelParameter Hcal_time_cut 5000
+/Mokka/init/globalModelParameter HCAL_layer_ncell_x 24
+/Mokka/init/globalModelParameter HCAL_layer_ncell_y 24
+/Mokka/init/globalModelParameter Hcal_cells_size 30
+/Mokka/init/globalModelParameter Hcal_nlayers 30
+
+## Layer pattern: number of entries must be the same af the number of Hcal_nlayers
+## 0 : no Layer, 1 : SSF, 2 : Big Layer
+/Mokka/init/globalModelParameter Hcal_layer_pattern 111111112020000000200000000020
+
+################################
+
+###Control parameter which are not inside database, but used in driver.
+/Mokka/init/userInitDouble X_position_of_first_HCAL_layer 0. mm
+/Mokka/init/userInitDouble Y_position_of_first_HCAL_layer 0. mm
+/Mokka/init/userInitDouble Z_position_of_first_HCAL_layer 52.4 mm
+
+/Mokka/init/userInitInt HCAL_SSFLayer_ncell_x 12
+/Mokka/init/userInitInt HCAL_SSFLayer_ncell_y 12
+/Mokka/init/userInitDouble airgap_hthickness 1.285 mm
+/Mokka/init/userInitInt beginWithAbsorber 1
+
+#########################################
+
+/Mokka/init/dataRunNumber 10
+
+/Mokka/init/randomSeed 0
+/Mokka/init/startEventNumber 1
+/Mokka/init/lcioFilename Output.slcio
+/Mokka/init/MokkaGearFileName Mokka.gear
+/Mokka/init/BatchMode false
+#/Mokka/init/BatchMode true
+/Mokka/init/initialMacroFile vis.mac
+#/Mokka/init/initialMacroFile g4.mac
+
+/Mokka/init/physicsListName QGSP_BERT
+
+#A print level was implemented in order to allow control of Mokka messages.
+#    It can be set by the steering command /Mokka/init/printLevel. A value equal
+#    to zero means no messages concerning the events processed, a value of one
+#    means only a line message per event, and a value greater or equal to two
+#    means full messages, including number of hits from all sensitive detectors.
+#
+#    The warning when Mokka kills a track after 100000 steps is suppressed,
+#    except if Print Level is greater or equal to two.
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

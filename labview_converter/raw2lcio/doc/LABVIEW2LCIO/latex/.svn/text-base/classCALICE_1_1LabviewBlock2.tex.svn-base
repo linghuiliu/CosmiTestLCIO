@@ -1,0 +1,76 @@
+\section{CALICE::Labview\-Block2 Class Reference}
+\label{classCALICE_1_1LabviewBlock2}\index{CALICE::LabviewBlock2@{CALICE::LabviewBlock2}}
+Class for the Labview Data as acquired by the AHCAL Labview.  
+
+
+{\tt \#include $<$Labview\-Block2.hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\bf{Labview\-Block2} ()\label{classCALICE_1_1LabviewBlock2_830fcafaec5b665750a88922ce3085da}
+
+\item 
+\bf{Labview\-Block2} (int Cycle\-Nr, int Bunch\-XID, int Chip\-ID, int Evt\-Nr, int Channel, int TDC, int ADC, int Hit\-Bit, int Gain\-Bit)\label{classCALICE_1_1LabviewBlock2_ab162345c6e6d43f1427599687983fc0}
+
+\begin{CompactList}\small\item\em Convenient c'tor. \item\end{CompactList}\item 
+\bf{Labview\-Block2} (LCObject $\ast$obj)\label{classCALICE_1_1LabviewBlock2_29a4961aceb315d67bec264204c0fe0a}
+
+\begin{CompactList}\small\item\em 'Copy constructor' needed to interpret LCCollection read from file/database. \item\end{CompactList}\item 
+virtual \bf{$\sim$Labview\-Block2} ()\label{classCALICE_1_1LabviewBlock2_55872fe1ab3b795ad1b83e305eb38bbd}
+
+\begin{CompactList}\small\item\em Important for memory handling. \item\end{CompactList}\item 
+int \bf{Get\-Cycle\-Nr} () const \label{classCALICE_1_1LabviewBlock2_fe909a3aa0edf8164957e1808b21bae1}
+
+\begin{CompactList}\small\item\em get the Cycle\-Nr. \item\end{CompactList}\item 
+int \bf{Get\-Bunch\-XID} () const \label{classCALICE_1_1LabviewBlock2_8fe2c3dc821a2443030faa126cfa89bd}
+
+\begin{CompactList}\small\item\em get the Bunch\-XID. \item\end{CompactList}\item 
+int \bf{Get\-Chip\-ID} () const \label{classCALICE_1_1LabviewBlock2_911fe73744c712afcef827a17d39c820}
+
+\begin{CompactList}\small\item\em get the Chip\-ID. \item\end{CompactList}\item 
+int \bf{Get\-Evt\-Nr} () const \label{classCALICE_1_1LabviewBlock2_769634f81cdff36b17f205a5b3ac019f}
+
+\begin{CompactList}\small\item\em get the Evt\-Nr. \item\end{CompactList}\item 
+int \bf{Get\-Channel} () const \label{classCALICE_1_1LabviewBlock2_f53186d3cdd49b82e60cc284bccfbdd8}
+
+\begin{CompactList}\small\item\em get the Channel. \item\end{CompactList}\item 
+int \bf{Get\-TDC} () const \label{classCALICE_1_1LabviewBlock2_b5f73509bfde64f6c7129be4ac08236e}
+
+\begin{CompactList}\small\item\em get the TDC. \item\end{CompactList}\item 
+int \bf{Get\-ADC} () const \label{classCALICE_1_1LabviewBlock2_01d616a72f67494b8031490e3ed2f117}
+
+\begin{CompactList}\small\item\em get the ADC. \item\end{CompactList}\item 
+int \bf{Get\-Hit\-Bit} () const \label{classCALICE_1_1LabviewBlock2_f380dc641ef61770a734463f8eae41db}
+
+\begin{CompactList}\small\item\em get the Hit\-Bit. \item\end{CompactList}\item 
+int \bf{Get\-Gain\-Bit} () const \label{classCALICE_1_1LabviewBlock2_60238db376ceaa048dd904e172ecd5b1}
+
+\begin{CompactList}\small\item\em get the Gain\-Bit. \item\end{CompactList}\item 
+void \bf{print} (std::ostream \&os, int)\label{classCALICE_1_1LabviewBlock2_6798a2e15897864857ee0af2d3028bc1}
+
+\begin{CompactList}\small\item\em Convenient print method. \item\end{CompactList}\item 
+const std::string \bf{get\-Type\-Name} () const \label{classCALICE_1_1LabviewBlock2_4d821c9d5842cbff0af2e0305be868c8}
+
+\begin{CompactList}\small\item\em Return the type of the class. \item\end{CompactList}\item 
+const std::string \bf{get\-Data\-Description} () const \label{classCALICE_1_1LabviewBlock2_62f57877859eafb378c5c87513035317}
+
+\begin{CompactList}\small\item\em Return a brief description of the data members. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Class for the Labview Data as acquired by the AHCAL Labview. 
+
+The class reflects that the data are received in the Labview \begin{Desc}
+\item[Author:]S. Lu DESY Hamburg \end{Desc}
+\begin{Desc}
+\item[Date:]Mar 20 2014 Created for New Labview data format. \end{Desc}
+
+
+
+
+Definition at line 24 of file Labview\-Block2.hh.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+Labview\-Block2.hh\end{CompactItemize}

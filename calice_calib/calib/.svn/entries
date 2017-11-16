@@ -1,0 +1,77 @@
+10
+
+dir
+4758
+https://svnsrv.desy.de/public/calice/calice_calib/trunk/calib
+https://svnsrv.desy.de/public/calice
+
+
+
+2016-11-29T16:07:23.405379Z
+4744
+ebrianne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+d1deb40d-bcc4-47cc-9d27-f84b3a1afcb8
+
+cmake
+dir
+
+include
+dir
+
+doc
+dir
+
+src
+dir
+
+CMakeLists.txt
+file
+
+
+
+
+2017-06-08T17:44:19.000000Z
+1092a17202cb6fd9d10433711d1d4bcb
+2016-10-17T05:08:34.402777Z
+4716
+/C=JP/O=KEK/OU=CRC/CN=JEANS Daniel Thomelin Dietrich
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5881
+
+examples
+dir
+

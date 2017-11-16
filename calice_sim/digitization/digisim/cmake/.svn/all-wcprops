@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/public/calice/!svn/ver/1950/calice_sim/trunk/digitization/digisim/cmake
+END
+DIGISIMConfig.cmake.in
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/1950/calice_sim/trunk/digitization/digisim/cmake/DIGISIMConfig.cmake.in
+END
+DigiSimConfig.cmake.in
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/1875/calice_sim/trunk/digitization/digisim/cmake/DigiSimConfig.cmake.in
+END
+cmake_uninstall.cmake.in
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/1875/calice_sim/trunk/digitization/digisim/cmake/cmake_uninstall.cmake.in
+END

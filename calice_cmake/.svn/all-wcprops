@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/public/calice/!svn/ver/4292/calice_cmake/trunk
+END
+calice.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/public/calice/!svn/ver/4292/calice_cmake/trunk/calice.cmake
+END
+FULL_INSTALL_PATH.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/public/calice/!svn/ver/2195/calice_cmake/trunk/FULL_INSTALL_PATH.cmake
+END
+BUILD_FLAG.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/public/calice/!svn/ver/2195/calice_cmake/trunk/BUILD_FLAG.cmake
+END
+DOCUMENTATION.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/public/calice/!svn/ver/2784/calice_cmake/trunk/DOCUMENTATION.cmake
+END

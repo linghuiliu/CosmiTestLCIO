@@ -1,0 +1,1153 @@
+<marlin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ilcsoft.desy.de/marlin/marlin.xsd">
+
+  <execute>
+      <processor name="ProgressHandler"/>
+      <processor name="RunInfo"/>
+      <processor name="Conditions"/>
+      <processor name="Trigger"/>
+
+
+      <processor name="TBTrackDbHandler"/>
+      <processor name="TBTrackMapper"/>
+      <processor name="TBTrackProducer"/>
+
+
+
+      <processor name="EcalSimpleHitSearch"/>
+      <processor name="EcalCalibration"/>
+
+
+
+      <processor name="HcalSROMapper"/>
+      <processor name="HcalMappingProcessor"/>
+      <processor name="HcalCellDescriptionProcessor"/>
+      <processor name="HcalSiPMTemperatureProcessor"/>
+      <processor name="HcalPedestalProcessor"/>
+      <processor name="HcalSiPMCalibrationsProcessor"/>
+
+<!--
+      <processor name="HcalSiPMCalibrationsProcessorGainConst"/>
+      <processor name="HcalSiPMCalibrationsProcessorGainSlope"/>
+      <processor name="HcalSiPMCalibrationsProcessorInterCalib"/>
+      <processor name="HcalSiPMCalibrationsProcessorMIPConst"/>
+      <processor name="HcalSiPMCalibrationsProcessorMIPSlope"/>
+      <processor name="HcalSiPMCalibrationsProcessorSaturation"/>
+-->
+<!--
+      <processor name="HcalSiPMCalibrationsProcessorUpperLimit"/>
+      <processor name="HcalSiPMCalibrationsProcessorLowerLimit"/>
+-->
+      <processor name="HcalSiPMCalibrateProcessor"/>
+<!--
+      <processor name="HcalSiPMCalibrateProcessorGainConst"/>
+      <processor name="HcalSiPMCalibrateProcessorGainSlope"/>
+      <processor name="HcalSiPMCalibrateProcessorInterCalib"/>
+      <processor name="HcalSiPMCalibrateProcessorMIPConst"/>
+      <processor name="HcalSiPMCalibrateProcessorMIPSlope"/>
+      <processor name="HcalSiPMCalibrateProcessorSaturation"/>
+-->
+<!--
+      <processor name="HcalSiPMCalibrateProcessorNoDefaults"/>
+      <processor name="HcalSiPMCalibrateProcessorUpperLimit"/>
+      <processor name="HcalSiPMCalibrateProcessorLowerLimit"/>
+-->
+
+
+
+
+      <processor name="TcmtMappingI"/>
+      <processor name="TcmtPedestalSubtraction"/>
+      <processor name="TcmtCalibration"/>
+      <processor name="TcmtMappingII"/>
+
+
+
+      <!--processor name="AppendMultiAmplitude"/-->
+
+
+      <!--processor name="MyTreeMaker"/-->
+      <processor name="MyCALICEOverlayPreparation"/>
+      <!--processor name="MyPrimaryTrackFinder"/-->
+      <!--processor name="MyMCTreeMaker"/-->
+      <!--processor name="LCIOOutput"/-->
+
+
+      <!--processor name="HcalRootTreeWriter"/-->
+
+
+  </execute>
+
+ <global>
+     <parameter name="LCIOInputFiles"> 
+             gsidcap://dcache-desy-gsidcap.desy.de:22128/pnfs/desy.de/calice/tb-cern/raw/conv_v0402/Run330777.000.slcio
+      gsidcap://dcache-desy-gsidcap.desy.de:22128/pnfs/desy.de/calice/tb-cern/raw/conv_v0402/Run330777.001.slcio
+      gsidcap://dcache-desy-gsidcap.desy.de:22128/pnfs/desy.de/calice/tb-cern/raw/conv_v0402/Run330777.002.slcio
+      gsidcap://dcache-desy-gsidcap.desy.de:22128/pnfs/desy.de/calice/tb-cern/raw/conv_v0402/Run330777.003.slcio
+      gsidcap://dcache-desy-gsidcap.desy.de:22128/pnfs/desy.de/calice/tb-cern/raw/conv_v0402/Run330777.004.slcio
+
+     </parameter>
+     <parameter name="MaxRecordNumber" value="50000"/>
+     <parameter name="SkipNEvents" value="0"/>
+     <parameter name="SupressCheck" value="false"/>
+     <parameter name="Verbosity" value="ERROR2"/>
+ </global>
+
+ <processor name="MyTreeMaker" type="TreeMaker">
+    <!--TBTrack or DCtoTrack-->
+    <parameter name="isTBTrack" type="int" value="1"/>
+    <parameter name="xTBTrackCollection" type="string" value="TBTrackFEX"/>
+    <parameter name="yTBTrackCollection" type="string" value="TBTrackFEY"/>
+    <parameter name="DCtoTrackCollection" type="string" value="driftchamber_track"/>
+    <parameter name="ecalHitsCollection" type="string" value="EmcCalorimeter_Hits"/>
+    <parameter name="hcalHitsCollection" type="string" value="AhcCalorimeter_Hits"/>
+    <parameter name="tcmtHitsCollection" type="string" value="TcmtCalorimeter_Hits"/>
+    <parameter name="RootOutputFileName" type="string" value="/flc/lc4/pool/chadeeva/trees2010/v04-01/Tree330777.root"/>
+ </processor>
+
+ <processor name="MyCALICEOverlayPreparation" type="CALICEOverlayPreparation">
+    <!------------------------------------------------------------>
+    <!-- Run parameters and setup -------------------------------->
+    <!------------------------------------------------------------>
+    <!-- Beam energy in GeV-->
+    <parameter name="BeamEnergy" type="float" value="10.0"/>
+    <!-- Beam angle in degrees-->
+    <parameter name="BeamAngle" type="float" value="0.0"/>
+    <!-- Type of output particle-->
+    <parameter name="OutputParticleType" type="string" value="pionmi"/>
+    <!-- Half calorimeter width for beam input-->
+    <parameter name="CalorimeterHalfWidth" type="float" value="100."/>
+    <!-- Number of bins for 95-% shower radius calculation-->
+    <parameter name="RadialBins" type="int" value="45"/>
+    <!-- Flag to indicate MC-->
+    <parameter name="MCflag" type="int" value="0"/>
+   <!-- GEANT Physics List for MC-->
+   <!--parameter name="MCPhysicsList" type="string" value="LHEP"/-->
+   <!-------------------------------------------------------------->
+   <!-- CALICE calibration constants ------------------------------>
+   <!-------------------------------------------------------------->
+   <!-- MIP to GeV in 1st ECAL part-->
+    <parameter name="MIP2GEVinECAL1" type="float" value="0.00376"/>
+   <!-- MIP to GeV in 2nd ECAL part-->
+    <parameter name="MIP2GEVinECAL2" type="float" value="0.00752"/>
+   <!-- MIP to GeV in 3d ECAL part-->
+    <parameter name="MIP2GEVinECAL3" type="float" value="0.01128"/>
+   <!-- MIP to GeV in 1st HCAL part-->
+    <parameter name="MIP2GEVinHCAL1" type="float" value="0.02364"/>
+   <!-- MIP to GeV in 2nd HCAL part (for CERN 2006 only)-->
+    <parameter name="MIP2GEVinHCAL2" type="float" value="0.02364"/>
+   <!-- MIP to GeV in 1st TCAL part-->
+    <parameter name="MIP2GEVinTCAL1" type="float" value="0.02364"/>
+   <!-- MIP to GeV in 2nd TCAL part-->
+    <parameter name="MIP2GEVinTCAL2" type="float" value="0.11820"/>
+   <!------------------------------------------------------------>
+   <!--  Input collections -------------------------------------->
+   <!------------------------------------------------------------>
+    <parameter name="xTBTrackCollection" type="string" value="TBTrackFEX"/>
+    <parameter name="yTBTrackCollection" type="string" value="TBTrackFEY"/>
+    <parameter name="ecalHitsCollection" type="string" value="EmcCalorimeter_Hits"/>
+    <parameter name="hcalHitsCollection" type="string" value="AhcCalorimeter_Hits"/>
+    <parameter name="tcmtHitsCollection" type="string" value="TcmtCalorimeter_Hits"/>
+   <!------------------------------------------------------------>
+   <!--   CED   ------------------------------------------------->
+   <!------------------------------------------------------------>
+   <!-- Flag to draw events in CED (Y/N -> 1/0)-->
+   <!-- It is necessary to define port number for CED connection-->
+   <!-- when CED is started with .../glced -p CED_HostPort-->
+    <parameter name="DrawFlag" type="int" value="0"/>
+    <parameter name="CED_HostPort" type="int" value="7286"/>
+   <!-- In CED: white points - ECAL hits, green points - HCAL hits,-->
+   <!-- pink points - track hits, orange points - shower start layer,-->
+   <!-- yellow line - averaged track hits coordinates without weights-->
+   <!-------------------------------------------------------------->
+   <!--   ROOT output   ------------------------------------------->
+   <!-------------------------------------------------------------->
+   <!-- Debug output to root-file named <RootOutputFileName>-->
+   <!-- (Y/N => 1/0)-->
+    <parameter name="RootOutputFlag" type="int" value="1"/>
+   <!-- slcio output directory name -->
+    <parameter name="slcioOutputDir" type="string" value="/flc/lc4/pool/chadeeva/select_v04-01/data/"/>
+   <!-------------------------------------------------------------->
+   <!--   FIP and Track Finder ------------------------------------>
+   <!-------------------------------------------------------------->
+   <!-- Noise threshold-->
+    <parameter name="NoiseMIPLimit" type="float" value="0.5"/>
+
+   <!-- Parameters for track finder-->
+    <parameter name="SizeofGAP" type="int" value="6"/>
+    <parameter name="AbsTrackLengthLimit" type="int" value="3"/>
+    <parameter name="RelTrackLengthLimit" type="float" value="0.3"/>
+ </processor>
+
+
+ <processor name="MyPrimaryTrackFinder" type="PrimaryTrackFinder">
+   <!-------------------------------------------------------------->
+   <!-- Run parameters and setup ---------------------------------->
+   <!-------------------------------------------------------------->
+   <!-- Beam energy in GeV-->
+    <parameter name="BeamEnergy" type="float" value="10.0"/>
+   <!-- Beam angle in degrees-->
+    <parameter name="BeamAngle" type="float" value="0.0"/>
+   <!-- Alignments between ECAL and HCAL in XY-plane-->
+    <parameter name="XAlignment" type="float" value="0.0"/>
+    <parameter name="YAlignment" type="float" value="0.0"/>
+   <!------------------------------------------------------------>
+   <!--  Input collections -------------------------------------->
+   <!------------------------------------------------------------>
+    <parameter name="ecalHitsCollection" type="string" value="EmcCalorimeter_Hits"/>
+    <parameter name="hcalHitsCollection" type="string" value="AhcCalorimeter_Hits"/>
+    <parameter name="tcmtHitsCollection" type="string" value="TcmtCalorimeter_Hits"/>
+   <!------------------------------------------------------------>
+   <!--   CED   ------------------------------------------------->
+   <!------------------------------------------------------------>
+   <!-- Flag to draw events in CED (Y/N -> 1/0)-->
+   <!-- It is necessary to define port number for CED connection-->
+   <!-- when CED is started with .../glced -p CED_HostPort-->
+    <parameter name="DrawFlag" type="int" value="0"/>
+    <parameter name="CED_HostPort" type="int" value="7286"/>
+    <parameter name="CEDPointSize" type="int" value="3"/>
+    <parameter name="CEDLineSize" type="int" value="3"/>
+   <!-- In CED: white points - ECAL hits, green points - HCAL hits,-->
+   <!-- pink points - track hits, red points - shower start layer,-->
+   <!-- yellow line - averaged track hits coordinates without weights-->
+   <!-------------------------------------------------------------->
+   <!--   ROOT output   ------------------------------------------->
+   <!-------------------------------------------------------------->
+   <!-- Debug output to root-file named <RootOutputFileName>-->
+   <!-- (Y/N => 1/0)-->
+    <parameter name="RootOutputFlag" type="int" value="1"/>
+    <!--parameter name="RootOutputFileDir" type="string" value="./" -->
+   <!-------------------------------------------------------------->
+   <!-- Name of output collections -------------------------------->
+   <!-------------------------------------------------------------->
+    <parameter name="OutputTrackCollectionName" type="string" value="PrimaryTrackHits"/>
+    <parameter name="OutputStartCollectionName" type="string" value="ShowerStartingLayer"/>
+   <!-------------------------------------------------------------->
+   <!--   FIP and Track Finder ------------------------------------>
+   <!-------------------------------------------------------------->
+   <!-- Skip starting layer finding (1 for muon runs) -->
+    <parameter name="FixStartingLayer" type="int" value="0"/>
+   <!-- Noise threshold -->
+    <parameter name="NoiseMIPLimit" type="float" value="0.5"/>
+   <!-- Parameters for track finder-->
+    <parameter name="SizeofGAP" type="int" value="6"/>
+    <parameter name="AbsTrackLengthLimit" type="int" value="3"/>
+    <parameter name="RelTrackLengthLimit" type="float" value="0.3"/>
+ </processor>
+
+  <processor name="ProgressHandler" type="ProgressHandler">
+    <!--Report event/run numbers at fixed time intervals, and handle SIGINT (Ctrl-C) for a graceful exit.-->
+    <!--The number of seconds after which the number of processed events will be shown.-->
+    <parameter name="ReportInterval" type="int" value="20"/>
+  </processor>
+
+
+  <processor name="RunInfo" type="RunInfoProcessor">
+    <!--Add Runinfo to Runheader needed for MC and DATA-->
+    <!--Folder in which beam parameters are stored if not in datastream or if odd-->
+    <parameter name="BeamParameterExceptionFolder" type="string" value="/cd_calice/BeamParameterException"/>
+    <!--Folder in which the beam parameters are stored-->
+    <parameter name="BeamParameterFolder" type="string" value="default"/>
+    <!--The bending current to be checked to calculate the energy from the current-->
+    <parameter name="BendingCurrentToCheck" type="int" value="8"/>
+    <!--Conversion factor from bending magnet current to energy-->
+    <parameter name="CurrentToEnergy" type="float" value="4.72"/>
+    <!--Tolerance in % allowed until current reading at run begin
+        and run end is considered to be inconsinstent-->
+    <parameter name="CurrentTolerance" type="float" value="0.05"/>
+    <!--initialisation of the database -->
+    <parameter name="DBInit" type="string" value="flccaldb01.desy.de:calice:caliceon:Delice.1:3306"/>
+    <!--Convert calculated Beam Energy into MeV-->
+    <parameter name="KeVToMeV" type="float" value="1000"/>
+    <!--Collection from DB which contains information about the location of a run-->
+    <parameter name="RunLocationFolder" type="string" value="/cd_calice/RunLocation"/>
+    <!--Run number of the run for MC files, in case not written to RunHEaderA run
+        number in the run header ALWAYS superseeds the steering-->
+    <parameter name="RunNumber" type="int" value="0"/>
+    <!--Collection from DB which contains the start amd stop time of a given run-->
+    <parameter name="RunTimeFolder" type="string" value="/cd_calice/CALDAQ_RunTimeInfo"/>
+    <!--Apply a safety margin of n seconds between the nominal run start and the first
+        MC event time stamp to ensure validity of conditions data-->
+    <parameter name="SafetyMargin" type="int" value="0"/>
+    <!--Tolerance in s allowed until reading of beam parameters (at run begin) is considered to be outdated-->
+    <parameter name="TimeTolerance" type="float" value="600"/>
+  </processor>
+
+
+
+   <processor name="Conditions" type="ConditionsProcessor">
+   <!--ConditionsProcessor provides access to conditions data
+       transparently from LCIO files or a databases, using LCCD-->
+   <!--Initialization string for conditions database-->
+   <parameter name="DBInit" type="string" value="flccaldb01.desy.de:calice:caliceon:Delice.1:3306"/>
+   
+   <!--Initialization of a conditions db file handler-->
+   <!--parameter name="DBFileHandler" type="StringVec"> conditionsName conditions.slcio collectionName </parameter-->
+   <!--Initialization of a data file handler-->
+   <!--parameter name="DataFileHandler" type="StringVec" value="conditionsName"/-->
+   <!--Initialization of a simple conditions file handler-->
+   <!--parameter name="SimpleFileHandler" type="StringVec"> conditionsName conditions.slcio collectionName </parameter-->
+   
+
+   <parameter name="DBCondHandler" type="StringVec"> 
+     ReferenceTransformation  /cd_calice_cernbeam/ExperimentalHall/ReferenceFrame calice_ReferenceFrame_001
+     CALDAQ_TriggerAssignment /cd_calice_cernbeam/CALDAQ_TriggerAssignment        calice_TriggerAssignment_001
+     CALDAQ_TriggerCheck      /cd_calice_cernbeam/CALDAQ_TriggerCheck             calice_TriggerCheck_001
+     CALDAQ_BeTrgConf         /cd_calice_v0402_cerncomb/CALDAQ_BeTrgConf             calice_conv_v0402_001
+     CALDAQ_ReadOutConfigurationData    /cd_calice_v0402_cerncomb/CALDAQ_ReadOutConfigurationData    calice_conv_v0402_001
+     CALDAQ_TrgReadoutConfigurationData /cd_calice_v0402_cerncomb/CALDAQ_TrgReadoutConfigurationData calice_conv_v0402_001
+
+   </parameter>
+   
+
+
+   <!--                               -->
+   <!-- TBTrack                       -->
+   <!--                               -->
+
+
+<!--
+    <parameter name="DBCondHandler" type="StringVec"> 
+    DesyTBTrackSimConstants /cd_calice_beam/Tracking/mc/SimConstants  tbtrack_SimConstants_001
+    </parameter>
+-->
+
+   <parameter name="DBCondHandler" type="StringVec"> 
+     DesyTBTrackAlnConstants /cd_calice_beam/TBTrack/AlnConstants tbtrack_AlnConstants_001
+     DesyTBTrackFitConstants /cd_calice_beam/TBTrack/FitConstants tbtrack_FitConstants_001
+  </parameter>
+
+<!--
+  <parameter name="DBCondHandler" type="StringVec"> 
+    CernTBTrackSimConstants /cd_calice_cernbeam/TBTrack/SimConstants tbtrack_SimConstants_001
+  </parameter>
+-->
+   <parameter name="DBCondHandler" type="StringVec"> 
+     CernTBTrackAlnConstants /cd_calice_cernbeam/TBTrack/AlnConstants tbtrack_AlnConstants_001
+     CernTBTrackFitConstants /cd_calice_cernbeam/TBTrack/FitConstants tbtrack_FitConstants_001
+   </parameter>
+
+
+<!--
+  <parameter name="DBCondHandler" type="StringVec"> 
+  FnalTBTrackSimConstants /cd_calice_fnalbeam/TBTrack/SimConstants tbtrack_SimConstants_001
+  </parameter>
+-->
+   <parameter name="DBCondHandler" type="StringVec"> 
+     FnalTBTrackAlnConstants /cd_calice_fnalbeam/TBTrack/AlnConstants tbtrack_AlnConstants_001
+     FnalTBTrackFitConstants /cd_calice_fnalbeam/TBTrack/FitConstants tbtrack_FitConstants_001
+     TBTrackTdcMap /cd_calice_cernbeam/TBTrack/TdcMapping tbtrack_TdcMapping_001
+    </parameter>
+
+   
+   
+   <!--                               -->
+   <!-- ECAL                          -->
+   <!--                               -->
+
+   <parameter name="DBCondHandler" type="StringVec">      
+     CALDAQ_EmcFeConfiguration /cd_calice_v0402_cerncomb/CALDAQ_EmcFeConfiguration calice_conv_v0402_001
+     EmcModuleConnection       /cd_calice_cernbeam/Ecal/Mapping           emc_Mapping_001
+     EmcModuleDescription      /cd_calice/Ecal/ModuleDescription                              emc_ModuleDescription_001
+     EmcModuleLocation         /cd_calice_cernbeam/Ecal/ModuleLocation    emc_ModuleLocation_001
+     EmcDetectorTransformation /cd_calice_cernbeam/Ecal/DetectorPosition  emc_DetectorPosition_001
+     EmcCalibrationConstants   /cd_calice/Ecal/CalibrationConstants                           emc_CalibrationConstants_003
+   </parameter>
+
+
+
+   <!--                               -->
+   <!-- AHCAL                         -->
+   <!--                               -->
+
+
+   <parameter name="DBCondHandler" type="StringVec">
+     CALDAQ_AhcFeConfiguration  /cd_calice_v0402_cerncomb/CALDAQ_AhcFeConfiguration  calice_conv_v0402_001
+     CALDAQ_AhcVfeConfiguration /cd_calice_v0402_cerncomb/CALDAQ_AhcVfeConfiguration calice_conv_v0402_001
+     CALDAQ_AhcSroData          /cd_calice_v0402_cerncomb/CALDAQ_AhcSroData          calice_conv_v0402_001
+     CALDAQ_AhcSroModData       /cd_calice_v0402_cerncomb/CALDAQ_AhcSroModData       calice_conv_v0402_001
+
+     AhcModuleLocationReference /cd_calice_cernbeam/Hcal/HcalModuleLocationReference  ahc_HcalModuleLocationReference_001
+     AhcModuleConnection        /cd_calice_cernbeam/Hcal/HcalMapping                  ahc_HcalMapping_002
+     AhcModuleDescription       /cd_calice/Ahc/ModuleDescription                                          ahc_ModuleDescription_001                               
+     AhcDetectorTransformation  /cd_calice_cernbeam/Hcal/DetectorPosition ahc_DetectorPosition_002
+
+     AhcMipConstants    /cd_calice/Hcal/mip_constants             ahc_mip_constants_007
+     AhcMipSlopes       /cd_calice/Hcal/mip_slopes                ahc_mip_slopes_005
+     AhcGainConstants   /cd_calice/Hcal/gain_constants            ahc_gain_constants_004
+     AhcGainSlopes      /cd_calice/Hcal/gain_slopes               ahc_gain_slopes_004
+     AhcInterConstants  /cd_calice/Hcal/ic_constants              ahc_ic_constants_004
+     AhcCellQuality     /cd_calice/Ahc/BadCellMap                 ahc_bad_cell_map_001
+     AhcTempSensorCalib /cd_calice/Hcal/tempSensors               ahc_tempSensors_001
+     AhcSroModMapping   /cd_calice_cernbeam/Hcal/AhcSroModMapping ahc_AhcSroModMapping_001
+     AhcResponseCurve   /cd_calice/Ahc/ResponseCurve              ahc_response_curve_002
+     AhcResponseScaling /cd_calice/Ahc/ResponseCurveScaling       ahc_response_curve_scaling_001
+   </parameter>
+
+
+   
+   <!--                               -->
+   <!-- Tail Catcher                  -->
+   <!--                               -->
+
+   <parameter name="DBCondHandler" type="StringVec"> 
+     TcmtModuleDescription      /cd_calice_cernbeam/Tcmt/TcmtModuleDescription  tcm_TcmtModuleDescription_001
+     TcmtModuleLocation         /cd_calice_cernbeam/Tcmt/TcmtModuleLocation     tcm_TcmtModuleLocation_001
+     TcmtModuleConnection       /cd_calice_cernbeam/Tcmt/TcmtModuleConnection   tcm_TcmtModuleConnection_001
+     TcmtDetectorTransformation /cd_calice_cernbeam/Tcmt/TcmtDetectorPosition   tcm_TcmtDetectorPosition_001
+     tcmtMip00                  /cd_calice_cernbeam/Tcmt/Mip00                  tcm_Mip00_001
+   </parameter>
+
+
+   
+   <!--                               -->
+   <!-- Multiplicity counter          -->
+   <!--                               -->
+
+   <parameter name="DBCondHandler" type="StringVec"> 
+     MultiConnection /cd_calice_cernbeam/veto/mapping  multi_mapping_001
+   </parameter>
+
+   
+ </processor>
+ 
+
+
+
+
+
+  <processor name="Trigger" type="CaliceTriggerProcessor">
+    <!--Processor to add Trigger information on CALICE data to the event-->
+    <!--Name of the conditions collection for the BE trigger configuration-->
+    <parameter name="BE_Trigger_Configuration" type="string">CALDAQ_BeTrgConf </parameter>
+    <!--Names of all triggers which are considered to indicate physics events. 
+	Events with these triggers not set will be ignored. Only these bits are 
+	used for data consistency checks. Possible names: 
+	UNKNOWN, BEAMDATA, PEDESTAL, COSMICS, Calib, Veto, Cherenkov, SC1_3x3, 
+	SC2_3x3, SC1_10x10, SC2_10x10, SC1_100x100, SC2_100x100, Spill, CrcOscillator, 
+	ExternalPulser, ExternalLED, HorizontalFinger, VerticalFinger, Veto_UL, Veto_DR, 
+	Veto_UR, Veto_DL, SC1_20x20, Veto_20x20, Cherenkov2, , , , , , GENERICBIT-->
+    <parameter name="BeamTriggerNames" type="StringVec">
+    BEAMDATA COSMICS Veto Cherenkov SC1_3x3 SC2_3x3 SC1_10x10 SC2_10x10 SC1_100x100 SC2_100x100  
+    </parameter>
+    <!--Collection name of trigger event data.-->
+    <parameter name="ColTriggerEventName" type="string">CALDAQ_FeTrgData </parameter>
+    <!--List of names of the conditions collection for the FE configuration 
+	(CALDAQ_EmcFeConfiguration, CALDAQ_AhcFeConfiguration).-->
+    <parameter name="FE_Configuration" type="StringVec">
+      CALDAQ_EmcFeConfiguration CALDAQ_AhcFeConfiguration  
+    </parameter>
+    <!--List of names of the conditions data collection which describes the connection 
+	between modules and the DAQ front-ends.-->
+    <parameter name="ModuleConnectionCollectionName" type="StringVec">
+    EmcModuleConnection AhcModuleConnection  </parameter>
+    <!--Two integers which specify the time in ns before and after the main 
+	word during which there should not be any trigger activity.-->
+    <parameter name="NoTriggerActivityRanges" type="IntVec">400 200  </parameter>
+    <!--Name of the conditions collection for the readout configuration-->
+    <parameter name="Readout_Configuration" type="string">CALDAQ_ReadOutConfigurationData </parameter>
+    <!--Name of the conditions collection for the trigger readout configuration-->
+    <parameter name="TrgReadout_Configuration" type="string">CALDAQ_TrgReadoutConfigurationData </parameter>
+    <!--Name of the event parameter which will be filled with the current enabled trigger bits.-->
+    <parameter name="TriggerAndEnableName" type="string">TriggerAndEnable </parameter>
+    <!--Name of the event parameter which will be filled with the current trigger configuration bits.-->
+    <parameter name="TriggerConfigurationName" type="string">Conf_Trigger </parameter>
+    <!--Name of the event parameter which will be filled with the current trigger event bits.-->
+    <parameter name="TriggerEventName" type="string">Event_Trigger </parameter>
+    <!--Name of the parameter which will be set to the trigger main word.-->
+    <parameter name="TriggerMainWordName" type="string">TriggerMainWord </parameter>
+    <!--Name of the parameter which will contain the trigger psat history:
+	will create parameters: [name]Pos, [name]Bits .-->
+    <parameter name="TriggerPostHistoryName" type="string">TriggerPostHist </parameter>
+    <!--Name of the parameter which will contain the trigger pre history: 
+	will create parameters: [name]Pos, [name]Bits .-->
+    <parameter name="TriggerPreHistoryName" type="string">TriggerPreHist </parameter>
+    <!--Name of the Collection for the Trigger Assignment-->
+    <parameter name="Trigger_Assignment" type="string">CALDAQ_TriggerAssignment </parameter>
+    <!--Name of the Collection for the Trigger Check-->
+    <parameter name="Trigger_Check" type="string">CALDAQ_TriggerCheck </parameter>
+  </processor>
+
+
+  <!-- ========================================================================================= -->
+  <!--                                                                                            -->
+  <!--           TBTrack                                                                          -->
+  <!--                                                                                            -->
+  <!-- ========================================================================================= -->
+  <processor name="TBTrackDbHandler" type="TBTrackDbHandler">
+    <!--TBTrackDbHandler-->
+    <!--For Mokka sim using multiple DC Collections-->
+    <parameter name="ObsoleteMokkaCollections" type="int" value="0"/>
+    <!--Print event level-->
+    <parameter name="PrintEventLevel" type="int" value="3"/>
+    <!--Print event number-->
+    <parameter name="PrintEventNumber" type="int" value="-1"/>
+    <!--Print level-->
+    <parameter name="PrintLevel" type="int" value="0"/>
+    <!--SimTrackerHit collection name-->
+    <parameter name="SimTrackerHitCollection" type="string" value="TBSimTrackerHits"/>
+    <!--TdcHit collection name-->
+    <parameter name="TdcHitCollection" type="string" value="TBTrackTdcHits"/>
+    <!--TrackProjection collection name-->
+    <parameter name="TrackProjectionCollection" type="string" value="TBTrackProjection"/>
+  </processor>
+
+
+  <processor name="TBTrackMapper" type="TBTrackMapper">
+    <!--Base class for TBTrack processors-->
+    <!--Name of the mapping collection with TdcConnection objects-->
+    <parameter name="MappingCollectionName" type="string" value="TBTrackTdcMap"/>
+    <!--For Mokka sim using multiple DC Collections-->
+    <parameter name="ObsoleteMokkaCollections" type="int" value="0"/>
+    <!--Print event level-->
+    <parameter name="PrintEventLevel" type="int" value="3"/>
+    <!--Print event number-->
+    <parameter name="PrintEventNumber" type="int" value="-1"/>
+    <!--Print level-->
+    <parameter name="PrintLevel" type="int" value="0"/>
+    <!--SimTrackerHit collection name-->
+    <parameter name="SimTrackerHitCollection" type="string" value="TBSimTrackerHits"/>
+    <!--The name of the output collection which will contain the selected TDCHit.-->
+    <parameter name="TDCHitCollectionName" type="string" value="TBTrackTdcHits"/>
+    <!--TdcHit collection name-->
+    <parameter name="TdcHitCollection" type="string" value="TBTrackTdcHits"/>
+    <!--TrackProjection collection name-->
+    <parameter name="TrackProjectionCollection" type="string" value="TBTrackProjection"/>
+    <!--Upper accepted value in TDC counts.-->
+    <parameter name="UpperLimit" type="int" value="3000"/>
+  </processor>
+
+
+  <processor name="TBTrackProducer" type="TBTrackProducer">
+    <!--TBTrackProducer-->
+    <!--For Mokka sim using multiple DC Collections-->
+    <parameter name="ObsoleteMokkaCollections" type="int" value="0"/>
+    <!--Print event level-->
+    <parameter name="PrintEventLevel" type="int" value="3"/>
+    <!--Print event number-->
+    <parameter name="PrintEventNumber" type="int" value="-1"/>
+    <!--Print level-->
+    <parameter name="PrintLevel" type="int" value="0"/>
+    <!--SimTrackerHit collection name-->
+    <parameter name="SimTrackerHitCollection" type="string" value="TBSimTrackerHits"/>
+    <!--The name of the output collection which will contain the selected TDCHit.-->
+    <parameter name="TDCHitCollectionName" type="string" value="TBTrackTdcHits"/>
+    <!--TdcHit collection name-->
+    <parameter name="TdcHitCollection" type="string" value="TBTrackTdcHits"/>
+    <!--TrackProjection collection name-->
+    <parameter name="TrackProjectionCollection" type="string" value="TBTrackProjection"/>
+  </processor>
+
+
+  <!-- ========================================================================================= -->
+  <!--                                                                                            -->
+  <!--           ECAL                                                                             -->
+  <!--                                                                                            -->
+  <!-- ========================================================================================= -->
+  <processor name="EcalCalibration" type="CalibrateAndApplyThreshold">
+    <!-- description not set by author -->
+    <!--The name of the adc collection (input) to be used-->
+    <parameter name="ADCCollectionName" type="string" value="CALDAQ_ADCCol"/>
+    <!--Name of object to be used for the calibration-->
+    <parameter name="Calibration" type="string" value="CaliceEcalCalibration"/>
+    <!--Name of the conditions data collection which contains the calibration constants-->
+    <parameter name="CalibrationConstants" type="string" value="EmcCalibrationConstants"/>
+    <!--The name of the collection which contains the pedestals, the noise, etc. of all the cells.-->
+    <parameter name="CellParameterCollectionName" type="string" value="EmcCellParametersSaved"/>
+    <!--Name of the conditions data collection which describes the detector position and rotation
+        (folder e.g. /Calice/ECAL/Transformation)-->
+    <parameter name="DetectorTransformationCollectionName" type="string" value="EmcDetectorTransformation"/>
+    <!--The name of the calorimeter hit collection (output) to be used-->
+    <parameter name="HitCollectionName" type="string" value="EmcCalorimeter_Hits"/>
+    <!--Names of relation collections with simhits-->
+    <parameter name="InputRelCollections" type="string" value="EcalProtoRaw2sim"/>
+    <!--Name of the conditions data collection which describes the connection between modules
+        and the DAQ front-ends (folder /CaliceEcal/module_connection)-->
+    <parameter name="ModuleConnectionCollectionName" type="string" value="EmcModuleConnection"/>
+    <!--Name of the conditions data collection which contains the description of the module
+        location (folder /CaliceEcal/module_description)-->
+    <parameter name="ModuleDescriptionCollectionName" type="string" value="EmcModuleDescription"/>
+    <!--Name of the conditions data collection which contains the description of the
+        module location (folder /CaliceEcal/module_location)-->
+    <parameter name="ModuleLocationCollectionName" type="string" value="EmcModuleLocation"/>
+    <!--Cells with a signal-to-noise ratio larger than this value are considered to have a hit.
+        The first element is used for hit search the second for hit rejection during noise calculation.-->
+    <parameter name="NoiseCut" type="FloatVec"> 1.8 5 </parameter>
+    <!--The name of the Rawcalorimeter hit collection (input) to be used-->
+    <parameter name="RawHitCollectionName" type="string" value="EmcRawCalorimeter_Hits"/>
+    <!--Name of the conditions data collection which describes the position and rotation of
+        the reference coordinate system (folder e.g. /Calice/ECAL/Transformation)-->
+    <parameter name="ReferenceTransformationCollectionName" type="string" value="ReferenceTransformation"/>
+    <!--Create a rootfile with control histograms-->
+    <parameter name="SaveHistograms" type="int" value="0"/>
+    <!--Cells with a signal (after calibration) larger than this threshold are considered to have a hit. -->
+    <parameter name="SignalThreshold" type="float" value=".5"/>
+    <!--Name of the conditions data collection which contains stage position data-->
+    <!--parameter name="StageCollectionName" type="string" value="StageCollectionNotDefined"/-->
+  </processor>
+
+  <processor name="EcalSimpleHitSearch" type="SimpleHitSearch">
+    <!-- description not set by author -->
+    <!--The name of the adc collection (input) to be used-->
+    <parameter name="ADCCollectionName" type="string" value="CALDAQ_ADCCol"/>
+    <!--The allowed ADC range-->
+    <parameter name="ADCRange" type="IntVec"> -65536 32768 </parameter>
+    <!--Name of object to be used for the calibration-->
+    <parameter name="Calibration" type="string" value="CaliceEcalCalibration"/>
+    <!--Name of the conditions data collection which contains the calibration constants-->
+    <parameter name="CalibrationConstants" type="string" value="EmcCalibrationConstants"/>
+    <!--The name of the collection which contains the pedestals, the noise, etc. of all the cells.-->
+    <parameter name="CellParameterCollectionName" type="string" value="EmcCellParameters"/>
+    <!--DB Init string needed to write Noise into db-->
+    <parameter name="DBInit" type="string" value="flccaldb02.desy.de:calice:calicedb:bh7+4FUw:3306"/>
+    <!--Name of the conditions data collection which describes the detector position and rotation
+        (folder e.g. /Calice/ECAL/Transformation)-->
+    <parameter name="DetectorTransformationCollectionName" type="string" value="EmcDetectorTransformation"/>
+    <!--Folder to which the Ecal noise is stored-->
+    <parameter name="EcalNoiseFolder" type="string" value="/cd_calice/Ecal/Noise"/>
+    <!--Parameter name for the total energy-->
+    <parameter name="EnergyParameterName" type="string" value="EmcEventEnergy"/>
+    <!-- Sorry, this parameter isn't a default parameter for this processor: description and type lost!!  -->
+    <parameter name="HistogramGroupName" value="EmcSimpleHitSearch"/>
+    <!--The name of the calorimeter hit collection (output) to be used-->
+    <parameter name="HitCollectionName" type="string" value="Calorimeter_hits"/>
+    <!--The name of all errors which should be ignored.-->
+    <parameter name="MaskedErrors" type="StringVec">
+    DirtyEvent TDCOutOfSynch MissingAdcBlock MissingVLinkHeader WrongTriggerCounter </parameter>
+    <!--The maximum tolerated hit occupancy. Events with a larger hit occupancy are rejected.-->
+    <parameter name="MaxHitOccupancy" type="float" value="1.0"/>
+    <!--Maximum allowed pedestal change.-->
+    <parameter name="MaxPedestalChange" type="float" value="500"/>
+    <!--If at least this numbers of pedestal/random triggers occurred then
+        the pedestals and the noise are updated -->
+    <parameter name="MinNEventsForPedestalNoiseUpdate" type="int" value="20"/>
+    <!--Name of the conditions data collection which describes the connection
+        between modules and the DAQ front-ends (folder /CaliceEcal/module_connection)-->
+    <parameter name="ModuleConnectionCollectionName" type="string" value="EmcModuleConnection"/>
+    <!--Name of the conditions data collection which contains the description of the
+        module location (folder /CaliceEcal/module_description)-->
+    <parameter name="ModuleDescriptionCollectionName" type="string" value="EmcModuleDescription"/>
+    <!--Name of the conditions data collection which contains the description of
+        the module location (folder /CaliceEcal/module_location)-->
+    <parameter name="ModuleLocationCollectionName" type="string" value="EmcModuleLocation"/>
+    <!--Parameter name of the per module pedestal correction.-->
+    <!--parameter name="ModulePedestalCorrectionParameterName" type="string" value=""/-->
+    <!--Cells with a signal-to-noise ratio larger than this value are considered to have a hit.
+        The first element is used for hit search the second for hit rejection during noise calculation.-->
+    <parameter name="NoiseCut" type="FloatVec"> 1.8 5 </parameter>
+    <!--The allowed noise range. Cells outside this range are declared dead.-->
+    <parameter name="NoiseRange" type="FloatVec"> 1.5 40 </parameter>
+    <!-- Sorry, this parameter isn't a default parameter for this processor: description and type lost!!  -->
+    <parameter name="PedestalChangeBinning"> 1000 -100 100 </parameter>
+    <!--If the mean value of the last 5 values (ignoring hits) changes by more than this threshold,
+        then it is assumed that the pedestal has changed..-->
+    <parameter name="PedestalChangeCut" type="float" value="3.40282e+38"/>
+    <!--The allowed pedestal range. Cells with pedestals outside this range are declared dead.-->
+    <parameter name="PedestalRange" type="FloatVec"> -1000 1000 </parameter>
+    <!--The name of the Rawcalorimeter hit collection (output) to be used-->
+    <parameter name="RawHitCollectionName" type="string" value="EmcRawCalorimeter_Hits"/>
+    <!--Name of the conditions data collection which describes the position and rotation of
+        the reference coordinate system (folder e.g. /Calice/ECAL/Transformation)-->
+    <parameter name="ReferenceTransformationCollectionName" type="string" value="ReferenceTransformation"/>
+    <!--During the initial pedestal and noise calculation the maximum of this 
+	number of events is removed to reject hits.-->
+    <parameter name="RemoveMaximumInNEvents" type="int" value="20"/>
+    <!--Save the noise in the database-->
+    <parameter name="SaveEcalNoise" type="bool" value="false"/>
+    <!--When processing pedestal events, the average value per Module is calculated and
+        used to shift the old pedestals moderated by this factor.-->
+    <parameter name="ShiftpedestalFactor" type="float" value="0"/>
+    <!-- Sorry, this parameter isn't a default parameter for this processor: description and type lost!!  -->
+    <parameter name="SignalBinning"> 800 0 200 </parameter>
+    <!--Cells with a signal (after calibration) larger than this threshold are considered to have a hit. -->
+    <parameter name="SignalThreshold" type="float" value=".5"/>
+    <!--Skip events for which the calibration chip was switched on (Otherwise they are treated as beam events)-->
+    <parameter name="SkipCalibrationEvents" type="int" value="1"/>
+    <!--Skip the given number of events after trigger configuration changes.-->
+    <parameter name="SkipEventsAfterConfigurationChanges" type="int" value="2"/>
+    <!--Skip this numnber of events after DAQ slow readout and configuration records.-->
+    <parameter name="SkipEventsAfterSlowConfRecords" type="int" value="0"/>
+    <!--Skip the first n events.-->
+    <parameter name="SkipFirstNEvents" type="int" value="20"/>
+    <!--Name of the conditions data collection which contains stage position data-->
+    <parameter name="StageCollectionName" type="string" value="CALDAQ_AhcSroData"/>
+    <!--Name of the event parameter name which will be filled with the reconstruction state.-->
+    <parameter name="StateParameterName" type="string" value="ReconstructionState"/>
+    <!--The maximum fraction of events in which a cell was out of the allowed ADC range
+        (beyond the cell is declared dead).-->
+    <parameter name="ToleratedSaturationFraction" type="float" value="0.5"/>
+    <!-- Sorry, this parameter isn't a default parameter for this processor: description and type lost!!  -->
+    <parameter name="TotalSignalBinning"> 5000 0 5000 </parameter>
+    <!--Name of the event parameter name which contains the trigger configuration bits.-->
+    <parameter name="TriggerConfigurationName" type="string" value="Conf_Trigger"/>
+    <!--Name of the event parameter name which contains the current trigger main word .-->
+    <parameter name="TriggerEventName" type="string" value="Event_Trigger"/>
+    <!--During pedestal triggers, update the pedestals every n events.  -->
+    <parameter name="UpdatePedestalsEveryNEvents" type="int" value="1000"/>
+    <!--View the mapping between channels and modules when ever the module location or
+        module connection conditions data cahange (set to 0 or !=0)-->
+    <parameter name="ViewMapping" type="int" value="0"/>
+    <!--When adjusting the pedestals and the noise with a new value, 
+	the old pedestal and noise gets this weight.-->
+    <parameter name="WeightOfOldPedestalNoise" type="int" value="20"/>
+    <!--Save the output RawCalorimeterHit collection in the file-->
+    <parameter name="WriteRawHits" type="bool" value="false"/>
+  </processor>
+
+
+  <!-- ========================================================================================= -->
+  <!--                                                                                           -->
+  <!--          HCAL                                                                             -->
+  <!--                                                                                           -->
+  <!-- ========================================================================================= -->
+  <processor name="HcalSROMapper" type="AhcSROmappingProcessor">
+    <!--fixes the mapping of the AhcSlowReaoutModBlocks-->
+    <!--Name of the MCParticle collection-->
+    <parameter name="inCollectionName" type="string" lcioInType="LCGenericObject"> CALDAQ_AhcSroModData </parameter>
+    <!--Name of the MCParticle collection-->
+    <parameter name="mappingCollectionName" type="string" lcioInType="LCGenericObject"> AhcSroModMapping </parameter>
+    <!--Name of the MCParticle collection-->
+    <parameter name="outCollectionName" type="string" lcioOutType="LCGenericObject"> AhcSroModData_fixed </parameter>
+  </processor>
+
+
+  <processor name="HcalMappingProcessor" type="MappingProcessor">
+    <!--Processor that provides a CALICE Mapping object from conditions data-->
+    <!--Name of the ModuleConnection collection-->
+    <parameter name="ModuleConnection"  type="string" lcioInType="LCGenericObject"> AhcModuleConnection </parameter>
+    <!--Name of the ModuleDescription collection-->
+    <parameter name="ModuleDescription" type="string" lcioInType="LCGenericObject"> AhcModuleDescription </parameter>
+    <!--Type name of the mapper instance. Currently valid identifiers are: AHC-->
+    <parameter name="MapperType" type="string" value="AHC"/>
+  </processor>
+
+  <processor name="HcalCellDescriptionProcessor" type="CellDescriptionProcessor">
+    <!--Processor that provides a MappedContainer of CALICE CellDescription objects from conditions data-->
+
+    <!--name of MappingProcessor which takes care of the mapping-->
+    <parameter name="MappingProcessorName"   type="string"> HcalMappingProcessor </parameter>
+
+    <!--Name of the DetectorTransformation collection-->
+    <parameter name="DetectorTransformation" type="string" lcioInType="LCGenericObject"> AhcDetectorTransformation </parameter>
+    <!--Name of the ModuleConnection collection-->
+    <parameter name="ModuleConnection"       type="string" lcioInType="LCGenericObject"> AhcModuleConnection </parameter>
+    <!--Name of the ModuleDescription collection-->
+    <parameter name="ModuleDescription"      type="string" lcioInType="LCGenericObject"> AhcModuleDescription </parameter>
+    <!--Name of the ModuleLocation collection-->
+    <parameter name="ModuleLocation"         type="string" lcioInType="LCGenericObject"> AhcModuleLocationReference </parameter>
+  </processor>
+
+
+  <processor name="HcalPedestalProcessor" type="PedestalProcessor">
+    <!--Pedestal subtraction using pedestal extracted on the fly from the same run.-->
+    <!--Name of input collection of CaliceHits-->
+    <parameter name="InputCollection" type="string" value="CALDAQ_ADCCol"/>
+    <!--Name of the MappingProcessor instance that provides the geometry of the detector.-->
+    <parameter name="MappingProcessorName" type="string" value="HcalMappingProcessor"/>
+    <!--Name of output collection of pedestals-->
+    <parameter name="OutputCollection" type="string" value="AhcPedestal"/>
+    <!--Minimum number of pedestal before the pedestal value is considered valid and pedestal substraction is applied-->
+    <parameter name="minPedNumber" type="int" value="250"/>
+    <!--Update frequency of pedestal collection-->
+    <parameter name="updateFrequency" type="int" value="250"/>
+  </processor>
+
+  <processor name="HcalSiPMTemperatureProcessor" type="SiPMTemperatureProcessor">
+    <!--Provides the temperature of the SiPMs-->
+    <!--Name of the conditions collection for the AHC Slow r/o data.-->
+    <parameter name="AHC_SRO_ModData" type="string" value="AhcSroModData_fixed"/>
+    <!--Name of the MappingProcessor instance that provides the geometry of the detector.-->
+    <parameter name="MappingProcessorName" type="string" value="HcalMappingProcessor"/>
+    <!--Temperature model: if 'simple', use AhcSimpleTempProvider, else AhcTempProvider-->
+    <!--parameter name="TempProviderModel" type="string" value="simple"/-->
+    <!--Sanity range of the temperature provider-->
+    <parameter name="TempProviderSanityRange" type="FloatVec"> 0 45 </parameter>
+    <!--Name of collection of temperature sensors-->
+    <parameter name="TemperatureSensorCalibrationCollectionName" type="string" value="AhcTempSensorCalib"/>
+  </processor>
+
+
+  <group>
+
+    <!--Name of the MappingProcessor instance that provides the geometry of the detector.-->
+    <parameter name="MappingProcessorName" type="string" value="HcalMappingProcessor"/>
+
+    <!--Collection with quality flags-->
+    <parameter name="CellQualityCollection" type="string" lcioInType="LCGenericObject"> AhcCellQuality </parameter>
+    <!--Name of the default pixel scale factors collection-->
+    <!--parameter name="DefaultPixelScaleFactorsCollection" type="string" lcioInType="LCGenericObject">  DefaultPixelScaleFactors </parameter-->
+    <!--Name of the gain constants collection-->
+    <parameter name="GainConstantCollection" type="string" lcioInType="LCGenericObject"> AhcGainConstants </parameter>
+    <!--Name of the gain slopes collection-->
+    <parameter name="GainSlopeCollection" type="string" lcioInType="LCGenericObject"> AhcGainSlopes </parameter>
+    <!--Name of the interCalibration collection-->
+    <parameter name="InterCalibrationCollection" type="string" lcioInType="LCGenericObject"> AhcInterConstants </parameter>
+    <!--Name of the MIP constants collection-->
+    <parameter name="MIPConstantCollection" type="string" lcioInType="LCGenericObject"> AhcMipConstants </parameter>
+    <!--Name of the MIP slopes collection-->
+    <parameter name="MIPSlopeCollection" type="string" lcioInType="LCGenericObject"> AhcMipSlopes </parameter>
+    <!--Name of the pedestal collection-->
+    <parameter name="PedestalCollection" type="string" lcioInType="LCGenericObject"> AhcPedestal </parameter>
+    <!--Name of the pixel scale factors collection-->
+    <parameter name="PixelScaleFactorsCollection" type="string" lcioInType="LCGenericObject"> AhcResponseScaling </parameter>
+    <!--Name of the saturation collection-->
+    <parameter name="SaturationCollection" type="string" lcioInType="LCGenericObject"> AhcResponseCurve </parameter>
+    <!--Default (global) value for the pixel scale factor-->
+    <parameter name="GlobalPixelScaleFactor" type="float" value="0.8"/>
+
+    <processor name="HcalSiPMCalibrationsProcessor" type="SiPMCalibrationsProcessor">
+      <!--Processor that provides a MappedContainer of SiPMCalibrations objects-->
+    </processor>
+
+    <processor name="HcalSiPMCalibrationsProcessorUpperLimit" type="SiPMCalibrationsProcessor">
+      <!--Processor that provides a MappedContainer of SiPMCalibrations objects-->
+      <parameter name="MIPConstantScaleFactor" type="float" value="0.98"/>
+      <parameter name="MIPSlopeScaleFactor" type="float" value="1.1"/>
+      <parameter name="SaturationCorrectionScaleFactor" type="float" value="0.9"/>
+    </processor>
+
+    <processor name="HcalSiPMCalibrationsProcessorLowerLimit" type="SiPMCalibrationsProcessor">
+      <!--Processor that provides a MappedContainer of SiPMCalibrations objects-->
+      <parameter name="MIPConstantScaleFactor" type="float" value="1.02"/>
+      <parameter name="MIPSlopeScaleFactor" type="float" value="0.9"/>
+      <parameter name="SaturationCorrectionScaleFactor" type="float" value="1.1"/>
+    </processor>
+
+    <processor name="HcalSiPMCalibrationsProcessorGainConst" type="SiPMCalibrationsProcessor">
+      <!--factor to scale all gain constants-->
+      <parameter name="GainConstantScaleFactor" type="float" value="1.1"/>
+    </processor>
+
+    <processor name="HcalSiPMCalibrationsProcessorGainSlope" type="SiPMCalibrationsProcessor">
+      <parameter name="GainSlopeScaleFactor" type="float" value="1.1"/>
+    </processor>
+
+    <processor name="HcalSiPMCalibrationsProcessorInterCalib" type="SiPMCalibrationsProcessor">
+      <!--factor to scale all inter-calibration constants-->
+      <parameter name="InterCalibrationScaleFactor" type="float" value="1.1"/>
+    </processor>
+
+
+    <processor name="HcalSiPMCalibrationsProcessorMIPConst" type="SiPMCalibrationsProcessor">
+      <!--factor to scale all MIP constants-->
+      <parameter name="MIPConstantScaleFactor" type="float" value="1.1"/>
+    </processor>
+
+
+    <processor name="HcalSiPMCalibrationsProcessorMIPSlope" type="SiPMCalibrationsProcessor">
+      <!--factor to scale all MIP slopes-->
+      <parameter name="MIPSlopeScaleFactor" type="float" value="1.1"/>
+    </processor>
+
+
+    <processor name="HcalSiPMCalibrationsProcessorSaturation" type="SiPMCalibrationsProcessor">
+      <!--factor to scale the saturation correction function-->
+      <parameter name="SaturationCorrectionScaleFactor" type="float" value="1.1"/>
+    </processor>
+
+  </group>
+
+
+  <group>
+
+    <!--Name of the input collection-->
+    <parameter name="InputCollectionName" type="string">CALDAQ_ADCCol </parameter>
+    <!--Name of the MappingProcessor instance that provides the geometry of the detector.-->
+    <parameter name="MappingProcessorName" type="string">HcalMappingProcessor </parameter>
+    <!--Minimal energy deposition in units of MIP to keep hit, applied only if ZeroSuppression==1.-->
+    <parameter name="MipCut" type="float">0.4 </parameter>
+    <!--apply (1) or ignore (0) the pedestal subtraction-->
+    <parameter name="PedestalSubtraction" type="bool">true </parameter>
+    <!--Name of the SiPMTemperatureProcessor that provides the AHCAL temperature provider.-->
+    <parameter name="SiPMTemperatureProcessorName" type="string">HcalSiPMTemperatureProcessor </parameter>
+    <!--apply (1) or ignore (0) the MIP threshold cut-->
+    <parameter name="ZeroSuppression" type="bool">true </parameter>
+    <!--Do error calculation-->
+    <parameter name="doErrorCalculation" type="bool">false </parameter>
+    <!--Do gain temperature correction-->
+    <parameter name="doGainTemperatureCorrection" type="bool">true </parameter>
+    <!--Do MIP temperature correction-->
+    <parameter name="doMipTemperatureCorrection" type="bool">true </parameter>
+    <!--Do saturation correction-->
+    <parameter name="doSaturationCorrection" type="bool">true </parameter>
+    <!--Filter dead cells-->
+    <parameter name="filterDeadCells" type="bool">true </parameter>
+    <!--Filter cells that use some default value in calibration.-->
+    <parameter name="filterDefaultCells" type="bool">false </parameter>
+    <!--Name of the CellDescriptionProcessor instance that provides the corrected position of the cells.-->
+    <parameter name="CellDescriptionProcessorName" type="string"> HcalCellDescriptionProcessor </parameter>
+
+
+    <processor name="HcalSiPMCalibrateProcessor" type="SiPMCalibrateProcessor">
+      <!--Does calibration of AHCAL hits-->
+
+      <!--Name of the SiPMCalibrationsProcessor that provides the calibrations of the AHCAL tiles.-->
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessor </parameter>
+      <!--Name of the CellDescriptionProcessor instance that provides the corrected position of the cells.-->
+      <parameter name="CellDescriptionProcessorName" type="string">HcalCellDescriptionProcessor </parameter>
+     <!--Name of the output collection-->
+      <parameter name="OutputAhcHitCollectionName" type="string">AhcCalorimeter_Hits </parameter>
+     <!--Name of the output AHCal amplitude collection, of type LCGenericObject-->
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude </parameter>
+     <!--Name of the output LCRelation between CalorimeterHit and AhcAmplitude-->
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorNoDefaults" type="SiPMCalibrateProcessor">
+
+      <parameter name="filterDefaultCells" type="bool">true </parameter>
+
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessor </parameter>
+      <parameter name="OutputAhcHitCollectionName" type="string">AhcCalorimeter_Hits_NoDefaults_noPos </parameter>
+     <!--Name of the output AHCal amplitude collection, of type LCGenericObject-->
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_NoDefaults_noPos </parameter>
+     <!--Name of the output LCRelation between CalorimeterHit and AhcAmplitude-->
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_NoDefaults_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorUpperLimit" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorUpperLimit </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_UpperLimit_noPos    </parameter>
+     <!--Name of the output AHCal amplitude collection, of type LCGenericObject-->
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_UpperLimit_noPos </parameter>
+     <!--Name of the output LCRelation between CalorimeterHit and AhcAmplitude-->
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_UpperLimit_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorLowerLimit" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorLowerLimit </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_LowerLimit_noPos    </parameter>
+     <!--Name of the output AHCal amplitude collection, of type LCGenericObject-->
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_LowerLimit_noPos </parameter>
+     <!--Name of the output LCRelation between CalorimeterHit and AhcAmplitude-->
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_LowerLimit_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorGainConst" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorGainConst </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_GainConst_noPos    </parameter>
+     <!--Name of the output AHCal amplitude collection, of type LCGenericObject-->
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_GainConst_noPos </parameter>
+     <!--Name of the output LCRelation between CalorimeterHit and AhcAmplitude-->
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_GainConst_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorGainSlope" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorGainSlope </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_GainSlope_noPos    </parameter>
+     <!--Name of the output AHCal amplitude collection, of type LCGenericObject-->
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_GainSlope_noPos </parameter>
+     <!--Name of the output LCRelation between CalorimeterHit and AhcAmplitude-->
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_GainSlope_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorInterCalib" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorInterCalib </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_InterCalib_noPos    </parameter>
+     <!--Name of the output AHCal amplitude collection, of type LCGenericObject-->
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_InterCalib_noPos </parameter>
+     <!--Name of the output LCRelation between CalorimeterHit and AhcAmplitude-->
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_InterCalib_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorMIPConst" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorMIPConst </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_MIPConst_noPos    </parameter>
+     <!--Name of the output AHCal amplitude collection, of type LCGenericObject-->
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_MIPConst_noPos </parameter>
+     <!--Name of the output LCRelation between CalorimeterHit and AhcAmplitude-->
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_MIPConst_noPos </parameter>
+    </processor>
+ 
+    <processor name="HcalSiPMCalibrateProcessorMIPSlope" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorMIPSlope </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_MIPSlope_noPos    </parameter>
+     <!--Name of the output AHCal amplitude collection, of type LCGenericObject-->
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_MIPSlope_noPos </parameter>
+      <!--Name of the output LCRelation between CalorimeterHit and AhcAmplitude-->
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_MIPSlope_noPos </parameter>
+    </processor>
+
+    <processor name="HcalSiPMCalibrateProcessorSaturation" type="SiPMCalibrateProcessor">
+      <parameter name="SiPMCalibrationsProcessorName" type="string">HcalSiPMCalibrationsProcessorSaturation </parameter>
+      <parameter name="OutputAhcHitCollectionName"          type="string">AhcCalorimeter_Hits_Saturation_noPos    </parameter>
+     <!--Name of the output AHCal amplitude collection, of type LCGenericObject-->
+      <parameter name="OutputAhcAmplCollectionName" type="string">AhcAmplitude_Saturation_noPos </parameter>
+     <!--Name of the output LCRelation between CalorimeterHit and AhcAmplitude-->
+      <parameter name="HitAmplRelationName" type="string">AhcHitAmplitudeRelation_Saturation_noPos </parameter>
+    </processor>
+
+
+  </group>
+
+  <processor name="HcalRootTreeWriter" type="RootTreeWriter">
+    <!--Name of the output ROOT file-->
+    <parameter name="OutFileName" type="string">Run330777_rec.root </parameter>
+    <parameter name="TBTrackWriteEngine_enable" type="int">1 </parameter>
+    <parameter name="HitWriteEngine_enable" type="int">1 </parameter>
+    <parameter name="HitWriteEngine_InCol" type="string" lcioInType="CalorimeterHit">AhcCalorimeter_Hits </parameter>
+    <parameter name="HitWriteEngine_caloType" type="string">ahc </parameter>
+    <parameter name="HitWriteEngine_eventFiltering" type="int">1 </parameter>
+    <parameter name="HitWriteEngine_informationLevel" type="int">3 </parameter>
+    <parameter name="HitWriteEngine_cogIJenable" type="int">1 </parameter>
+    <parameter name="TriggerWriteEngine_enable" type="int">1 </parameter>
+  </processor>
+
+
+
+
+
+  <!-- ========================================================================================= -->
+  <!--                                                                                           -->
+  <!--          TCMT                                                                             -->
+  <!--                                                                                           -->
+  <!-- ========================================================================================= -->
+  <processor name="TcmtMappingI" type="TcmtMappingIProcessor">
+    <!--This processor reads rawCalorimeterHits and applies part I of the mapping.-->
+    <!--The name of the adc collection (input) to be used-->
+    <parameter name="ADCCollectionName" type="string" value="CALDAQ_ADCCol"/>
+    <!-- Sorry, this parameter isn't a default parameter for this processor: description and type lost!!  -->
+    <parameter name="AdcCollectionName" value="CALDAQ_ADCCol"/>
+    <!--Name of the conditions data collection which describes the connection
+        between modules and the DAQ front-ends (folder /CaliceEcal/module_connection)-->
+    <parameter name="ModuleConnectionCollectionName" type="string" value="TcmtModuleConnection"/>
+    <!--Name of the conditions data collection which contains the description of
+        the module location (folder /CaliceEcal/module_description)-->
+    <parameter name="ModuleDescriptionCollectionName" type="string" value="TcmtModuleDescription"/>
+    <!--Name of the conditions data collection which contains the description of the module
+        location (folder /CaliceEcal/module_location)-->
+    <parameter name="ModuleLocationCollectionName" type="string" value="TcmtModuleLocation"/>
+    <!--Name of the output collection-->
+    <parameter name="OutputCollectionName" type="string" value="TcmtHitsLevel1DB"/>
+    <!--Select only a single module to be processed-->
+    <parameter name="PickModule" type="int" value="0"/>
+    <!--Name of the conditions data collection which contains stage position data-->
+    <!--parameter name="StageCollectionName" type="string" value="StageCollectionNotDefined"/-->
+    <!--Select verbosity level (0-?)-->
+    <parameter name="Verbosity" type="int" value="0"/>
+    <!--View the channels/strips mapping whenever location/connection conditions change (set to 0 or !=0)-->
+    <parameter name="ViewMapping" type="int" value="0"/>
+  </processor>
+
+
+  <processor name="TcmtPedestalSubtraction" type="PedestalOnTheFlyProcessor">
+    <!--Pedestal subtraction using pedestal extracted on the fly from the same run.-->
+    <!--Name of input collection of CaliceHits-->
+    <parameter name="InputCollection" type="string" value="TcmtHitsLevel1DB"/>
+    <!--Name of output collection of CaliceHits-->
+    <parameter name="OutputCollection" type="string" value="TcmtHitsLevel2DB"/>
+    <!--Defines how significant the deviation of a hit from the pedestal has to be to survive the zero suppression.-->
+    <parameter name="SignificanceCut" type="float" value="2."/>
+    <!--Skip all events which have been used for pedestal calculations in the following processors-->
+    <parameter name="SkipPedestals" type="int" value="0"/>
+    <!--Skip all pedestals for which the minimal number of pedestals has not yet been reached-->
+    <parameter name="SkipStartUpPedestals" type="int" value="0"/>
+    <!--Do the skipping via SkipEventException-->
+    <parameter name="ThrowSkipEventException" type="bool" value="true"/>
+    <!--Control debugging printout-->
+    <parameter name="Verbosity" type="int" value="0"/>
+    <!--Minimum number of pedestal before the pedestal value is considered valid and pedestal substraction is applied-->
+    <parameter name="minPedNumber" type="int" value="20"/>
+  </processor>
+
+
+  <processor name="TcmtCalibration" type="TcmtMipCalibrationProcessor">
+    <!--This processor makes a calibration constant available which is stored module wise-->
+    <!--Name of the conditions collection for the AHC Slow r/o data.-->
+    <parameter name="AHC_SRO_ModData" type="string" value="CALDAQ_AhcSroModData"/>
+    <!--Template for the name of the module wise collections with the calibration constants-->
+    <parameter name="CalibrationCollectionTemplate" type="string" value="tcmtMip"/>
+    <!--Name of the input collection-->
+    <parameter name="InputCollectionName" type="string" value="TcmtHitsLevel2DB"/>
+    <!--Add calibration for module-->
+    <parameter name="Module" type="IntVec" value="0"/>
+    <!--Name of the output collection-->
+    <parameter name="OutputCollectionName" type="string" value="TcmtHitsLevel3DB"/>
+    <!-- Sorry, this parameter isn't a default parameter for this processor: description and type lost!!  -->
+    <parameter name="Verbosity" value="0"/>
+    <!--apply (1) or ignore (0) calibration induced cut-->
+    <parameter name="ZeroSuppression" type="int" value="1"/>
+  </processor>
+
+
+  <processor name="TcmtMappingII" type="TcmtMappingIIProcessor">
+    <!--This processor reads calibrated TcmtHits and applies part II of the mapping.-->
+    <!--Name of the conditions data collection which contains the detetcor transformation-->
+    <parameter name="DetectorTransformationCollectionName" type="string" value="TcmtDetectorTransformation"/>
+    <!--Minimum energy required to save the hit-->
+    <parameter name="EnergyThreshold" type="float" value="0.5"/>
+    <!--Name of the input collection-->
+    <parameter name="InputCollectionName" type="string" value="TcmtHitsLevel3DB"/>
+    <!--Name of the conditions data collection which describes the connection between modules and the DAQ front-ends-->
+    <parameter name="ModuleConnectionCollectionName" type="string" value="TcmtModuleConnection"/>
+    <!--Name of the conditions data collection which contains the description of the module
+        location (folder /CaliceEcal/module_description)-->
+    <parameter name="ModuleDescriptionCollectionName" type="string" value="TcmtModuleDescription"/>
+    <!--Name of the conditions data collection which contains the description of the module location
+        (folder /CaliceEcal/module_location)-->
+    <parameter name="ModuleLocationCollectionName" type="string" value="TcmtModuleLocation"/>
+    <!--Name of the output collection-->
+    <parameter name="OutputCollectionName" type="string" value="TcmtCalorimeter_Hits"/>
+    <!--Format of output hits: (0) CalorimeterHits (default) or (1) TcmtHits-->
+    <parameter name="OutputCollectionType" type="int" value="0"/>
+    <!--Name of the conditions data collection which describes the position and rotation
+        of the reference coordinate system (folder e.g. /Calice/ECAL/Transformation)-->
+    <parameter name="ReferenceTransformationCollectionName" type="string" value="ReferenceTransformation"/>
+    <!--Select verbosity level (0-?)-->
+    <parameter name="Verbosity" type="int" value="0"/>
+  </processor>
+
+
+ <!-- ========================================================================================= -->
+ <!--                                                                                           -->
+ <!--          Multiplicity counter                                                             -->
+ <!--                                                                                           -->
+ <!-- ========================================================================================= -->
+ <processor name="AppendMultiAmplitude" type="AppendMultiAmplitude">
+ <!-- This processor adds the analog multiplicity counter amplitude as MultiAmplitude to the event-->
+  <!--The name of the adc collection (input) to be used-->
+  <parameter name="ADCCollectionName" type="string" lcioInType="LCGenericObject"> CALDAQ_ADCCol </parameter>
+  <!--The name of the event parameter (input) to be used-->
+  <parameter name="MultiAmplitudeParameterName" type="string" lcioInType="LCGenericObject"> MultiAmplitude </parameter>
+  <!--The name of the DAQconnection collection (input) to be used-->
+  <parameter name="connectionCollectionName" type="string" lcioInType="LCGenericObject"> MultiConnection </parameter>
+  <!--Name of the event parameter name which contains the current trigger main word .-->
+  <parameter name="TriggerEventName" type="string" value="Event_Trigger"/>
+</processor>
+
+
+  <!-- ========================================================================================= -->
+  <!--                                                                                           -->
+  <!--          LCIO output                                                                      -->
+  <!--                                                                                           -->
+  <!-- ========================================================================================= -->
+  <processor name="LCIOOutput" type="LCIOOutputProcessor">
+    <!--Writes the current event to the specified LCIO outputfile. Needs to be the last ActiveProcessor.-->
+    <!--drops the named collections from the event-->
+    <parameter name="DropCollectionNames" type="StringVec">
+      CALDAQ_ADCCol CALDAQ_BeTrgEventData CALDAQ_FeTrgData CALDAQ_BeTrgPollData 
+      CALDAQ_BeTrgConf CALDAQ_BeEventData CALDAQ_FeEventData TrailerInfo 
+      BoardHeaderInfo FeHeaderInfo 
+      TBTrackTdcHits TBTrackMapper_edges 
+      AhcCalorimeter_Hits_noPosition AhcCalorimeter_Hits_GainConst_noPos AhcCalorimeter_Hits_GainSlope_noPos 
+      AhcCalorimeter_Hits_InterCalib_noPos AhcCalorimeter_Hits_MIPConst_noPos AhcCalorimeter_Hits_MIPSlope_noPos
+      AhcCalorimeter_Hits_Saturation_noPos AhcCalorimeter_Hits_NoDefaults_noPos 
+      AhcCalorimeter_Hits_UpperLimit_noPos AhcCalorimeter_Hits_LowerLimit_noPos 
+      AhcHitAmplitudeRelation_noPosition
+      TcmtHitsLevel1DB TcmtHitsLevel2DB TcmtHitsLevel3DB
+    </parameter>
+    <!--drops all collections of the given type from the event-->
+    <!--parameter name="DropCollectionTypes" type="StringVec"> SimTrackerHit SimCalorimeterHit </parameter-->
+    <!-- write complete objects in subset collections to the file (i.e. ignore subset flag)-->
+    <!--parameter name="FullSubsetCollections" type="StringVec" value="MCParticlesSkimmed"/-->
+    <!--force keep of the named collections - overrules DropCollectionTypes (and DropCollectionNames)-->
+    <!--parameter name="KeepCollectionNames" type="StringVec" value="MyPreciousSimTrackerHits"/-->
+    <!-- name of output file -->
+    <parameter name="LCIOOutputFile" type="string" value="Run330777_rec.slcio"/>
+    <!--write mode for output file:  WRITE_APPEND or WRITE_NEW-->
+    <parameter name="LCIOWriteMode" type="string" value="None"/>
+    <!--will split output file if size in kB exceeds given value - doesn't work with APPEND and NEW-->
+    <parameter name="SplitFileSizekB" type="int" value="1992294"/>
+  </processor>
+
+
+</marlin>

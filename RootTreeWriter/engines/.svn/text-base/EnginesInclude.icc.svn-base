@@ -1,0 +1,41 @@
+/** \file 
+ * \brief Edit to add new engine
+ *
+ * To activate a new engine you have to add a line like the
+ * following in this file:
+ *
+ * 
+ * \code
+ * #include "MyNewEngineName.hh"
+ * \endcode
+ * 
+ * <B> You also have to edit the file \link EnginesAdd.icc
+ * engines/EnginesAdd.icc\endlink.</B>
+ * 
+ * 
+ */
+
+
+//****************************************************
+// Add header files for new write engines here
+
+//#include "EventPropertiesWriteEngine.hh"
+
+//#include "HcalHitWriteEngine.hh"
+#include "HitWriteEngine.hh"
+#include "TriggerWriteEngine.hh"
+//#include "HcalIntegratedWriteEngine.hh"
+//#include "HcalLayerWriteEngine.hh"
+#include "DriftChamberWriteEngine.hh"
+#include "MCParticleWriteEngine.hh"
+#include "ASimCalorimeterHitWriteEngine.hh"
+#include "TBTrackWriteEngine.hh"
+#include "TrackFinderWriteEngine.hh"
+#include "ShowerShapeEngine.hh"
+#include "HcalTrackLarsEngine.hh"
+#include "BifWriteEngine.hh"
+#ifdef RTW_USE_CLUSTERING
+  #include "DeepAnaWriteEngine.hh"
+#endif //RTW_USE_CLUSTERING
+
+//****************************************************

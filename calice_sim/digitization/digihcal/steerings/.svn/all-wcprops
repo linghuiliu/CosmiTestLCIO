@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/2603/calice_sim/trunk/digitization/digihcal/steerings
+END
+digitizing.steer
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/2603/calice_sim/trunk/digitization/digihcal/steerings/digitizing.steer
+END
+generate_noise.steer
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/public/calice/!svn/ver/2603/calice_sim/trunk/digitization/digihcal/steerings/generate_noise.steer
+END
+ganging.steer
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/2580/calice_sim/trunk/digitization/digihcal/steerings/ganging.steer
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/2578/calice_sim/trunk/digitization/digihcal/steerings/README
+END

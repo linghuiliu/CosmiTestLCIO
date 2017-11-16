@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/4698/calice_calib/trunk/deadAndNoisyTools/include
+END
+ChannelExpertQuality.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/3860/calice_calib/trunk/deadAndNoisyTools/include/ChannelExpertQuality.h
+END
+LinkDef.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/3860/calice_calib/trunk/deadAndNoisyTools/include/LinkDef.h
+END
+RunComparator.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/3592/calice_calib/trunk/deadAndNoisyTools/include/RunComparator.h
+END
+TChannelSpectrumProperties.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/public/calice/!svn/ver/3592/calice_calib/trunk/deadAndNoisyTools/include/TChannelSpectrumProperties.h
+END
+SimpleMapper.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/4698/calice_calib/trunk/deadAndNoisyTools/include/SimpleMapper.h
+END
+SpectrumPropertiesRunInfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/public/calice/!svn/ver/3861/calice_calib/trunk/deadAndNoisyTools/include/SpectrumPropertiesRunInfo.h
+END
+ModuleType.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/3859/calice_calib/trunk/deadAndNoisyTools/include/ModuleType.h
+END

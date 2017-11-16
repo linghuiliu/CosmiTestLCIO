@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/3436/calice_reco/trunk/raw2calohit/src/TBTrackUtil
+END
+LinearFitResult.cc
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/public/calice/!svn/ver/1401/calice_reco/trunk/raw2calohit/src/TBTrackUtil/LinearFitResult.cc
+END
+TrackFinder.cc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/3403/calice_reco/trunk/raw2calohit/src/TBTrackUtil/TrackFinder.cc
+END
+FitConstants.cc
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/3436/calice_reco/trunk/raw2calohit/src/TBTrackUtil/FitConstants.cc
+END
+TrackProjection.cc
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/public/calice/!svn/ver/1629/calice_reco/trunk/raw2calohit/src/TBTrackUtil/TrackProjection.cc
+END
+TrackFitter.cc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/1401/calice_reco/trunk/raw2calohit/src/TBTrackUtil/TrackFitter.cc
+END
+SimConstants.cc
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/1401/calice_reco/trunk/raw2calohit/src/TBTrackUtil/SimConstants.cc
+END
+TrackFitResult.cc
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/1629/calice_reco/trunk/raw2calohit/src/TBTrackUtil/TrackFitResult.cc
+END
+AlnConstants.cc
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/2946/calice_reco/trunk/raw2calohit/src/TBTrackUtil/AlnConstants.cc
+END
+LinearFitter.cc
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/1401/calice_reco/trunk/raw2calohit/src/TBTrackUtil/LinearFitter.cc
+END
+TrackFitInitialisation.cc
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/public/calice/!svn/ver/1401/calice_reco/trunk/raw2calohit/src/TBTrackUtil/TrackFitInitialisation.cc
+END
+MapConstants.cc
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/1401/calice_reco/trunk/raw2calohit/src/TBTrackUtil/MapConstants.cc
+END

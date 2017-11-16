@@ -1,0 +1,134 @@
+SET( ${PROJECT_NAME}_LIBRARY_NAME ${PROJECT_NAME} )
+
+#####################
+# include directories
+#####################
+
+INCLUDE_DIRECTORIES(
+  ${LCIO_INCLUDE_DIRS}
+  ${Marlin_INCLUDE_DIRS}
+  ${LCCD_INCLUDE_DIRS}
+  ${CALICE_USERLIB_INCLUDE_DIRS}
+  ${ROOT_INCLUDE_DIRS} )
+
+  ADD_DEFINITIONS( ${LCCD_DEFINITIONS} )
+
+IF( CMAKE_SIZEOF_VOID_P EQUAL 8 )
+  INCLUDE_DIRECTORIES( ${streamlog_INCLUDE_DIRS} )
+ENDIF()
+
+
+INCLUDE_DIRECTORIES( BEFORE "${${PROJECT_NAME}_SOURCE_DIR}/include" )
+
+
+
+
+####################
+# DEFINITIONS
+####################
+
+ADD_DEFINITIONS( ${${PROJECT_NAME}_DEFINITIONS}        )
+ADD_DEFINITIONS( ${${PROJECT_NAME}_EXPORT_DEFINITIONS} )
+ADD_DEFINITIONS( ${LCIO_DEFINITIONS}  ${MARLIN_DEFINITIONS} )
+ADD_DEFINITIONS( ${CALICE_USERLIB_DEFINITIONS}         )
+
+#GET_DIRECTORY_PROPERTY( ${PROJECT_NAME}_DEFINITIONS DEFINITIONS )
+#STRING(REGEX MATCHALL "[-][D]([^ ;])+" ${PROJECT_NAME}_REAL_DEFINITIONS  ${${PROJECT_NAME}_DEFINITIONS})
+#FOREACH(ARG ${${PROJECT_NAME}_REAL_DEFINITIONS} )
+#  STRING(REGEX REPLACE "[=]([^ ;])+" "" cleaned_arg  ${ARG})
+#  SET(${PROJECT_NAME}_CLEANED_DEFINITIONS ${${PROJECT_NAME}_CLEANED_DEFINITIONS} ${cleaned_arg})
+#ENDFOREACH(ARG ${${PROJECT_NAME}_REAL_DEFINITIONS})
+#STRING(REGEX REPLACE "[-][D]" " " ${PROJECT_NAME}_USED_DEFINITIONS ${${PROJECT_NAME}_CLEANED_DEFINITIONS})
+#SET( ${PROJECT_NAME}_USED_DEFINITIONS ${${PROJECT_NAME}_USED_DEFINITIONS} CACHE STRING "definitions" FORCE)
+
+
+#####################
+# what to build
+####################
+
+#ADD_ROOT_DICTONARY( TConvolution )
+INCLUDE( MacroRootDict )
+PREPARE_ROOT_DICT_HEADERS( ${PROJECT_SOURCE_DIR}/include )
+FILE(GLOB ${PROJECT_NAME}_CXX_FILES "TConvolution.cc")
+GEN_ROOT_DICT_SOURCES( ${${PROJECT_NAME}_CXX_FILES} )
+
+MESSAGE( STATUS "TConvolution dictionary created: ${TConvolution_DICT_NAME}" )
+SET( ${${PROJECT_NAME}_LIBRARY_NAME}_srcs
+  TConvolution ${TConvolution_DICT_NAME}
+  multiCalibrator
+  )
+
+
+# require proper c++
+SET_SOURCE_FILES_PROPERTIES(  ${${${PROJECT_NAME}_LIBRARY_NAME}_srcs} PROPERTIES
+  COMPILE_FLAGS "${CMAKE_CXX_FLAGS}" )
+
+ADD_LIBRARY( ${${PROJECT_NAME}_LIBRARY_NAME}
+  ${${${PROJECT_NAME}_LIBRARY_NAME}_srcs}
+  ${ROOT_DICT_OUTPUT_SOURCES}
+)
+
+SET_TARGET_PROPERTIES( ${${PROJECT_NAME}_LIBRARY_NAME} PROPERTIES
+  VERSION ${${PROJECT_NAME}_VERSION}
+  SOVERSION ${${PROJECT_NAME}_SOVERSION}
+  # not needed at the moment (no build of
+  # static and dynamic lib at the same time)
+  # CLEAN_DIRECT_OUTPUT 1
+  )
+
+
+
+###############
+# link against
+###############
+
+
+# todo: use options to change link behaviour to link with dependent libraries
+#       this would only be necessary if mixing static and shared libraries
+#       because this is dangerous anyway this should not matter now
+TARGET_LINK_LIBRARIES( ${${PROJECT_NAME}_LIBRARY_NAME}
+  ${LCIO_LIBRARIES}
+  ${LCCD_LIBRARIES}
+  ${Marlin_LIBRARIES}
+  ${CALICE_USERLIB_LIBRARIES} ${ROOT_LIBRARIES} )
+
+
+
+
+
+
+####################
+# install
+####################
+
+# Fixme: use explicit list of header files to install?
+INSTALL( DIRECTORY "${${PROJECT_NAME}_SOURCE_DIR}/include/" DESTINATION ${INCLUDE_INSTALL_DIR}
+  PATTERN "*~" EXCLUDE
+  PATTERN "*CVS*" EXCLUDE )
+
+# fixme: execute permission not needed for static library
+INSTALL( TARGETS ${${PROJECT_NAME}_LIBRARY_NAME}
+  DESTINATION ${LIB_INSTALL_DIR}
+  PERMISSIONS
+  OWNER_READ OWNER_WRITE OWNER_EXECUTE
+  GROUP_READ GROUP_EXECUTE
+  WORLD_READ WORLD_EXECUTE  )
+
+
+################################
+# prepare for XXXXConfig.cmake
+################################
+
+
+
+GET_TARGET_PROPERTY(${${PROJECT_NAME}_LIBRARY_NAME}_prefix ${${PROJECT_NAME}_LIBRARY_NAME} PREFIX)
+GET_TARGET_PROPERTY(${${PROJECT_NAME}_LIBRARY_NAME}_prefix ${${PROJECT_NAME}_LIBRARY_NAME} SUFFIX)
+SET(lib_${${PROJECT_NAME}_LIBRARY_NAME}_name ${${${PROJECT_NAME}_LIBRARY_NAME}_prefix}${${PROJECT_NAME}_LIBRARY_NAME}${${${PROJECT_NAME}_LIBRARY_NAME}_suffix})
+
+
+
+GET_TARGET_PROPERTY(FULL_LIBRARY_NAME ${${PROJECT_NAME}_LIBRARY_NAME} LOCATION)
+STRING(REGEX REPLACE ".*/" "" FULL_LIBRARY_NAME ${FULL_LIBRARY_NAME})
+SET( FULL_LIBRARY_NAME ${FULL_LIBRARY_NAME} CACHE INTERNAL "Full library name" FORCE )
+
+MARK_AS_ADVANCED( FULL_LIBRARY_NAME )

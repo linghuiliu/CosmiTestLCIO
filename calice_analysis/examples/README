@@ -1,0 +1,63 @@
+#######################
+#     example001:     #
+#######################
+example001 - Example steering files (reconstruction with two different sets of muon
+             calibration factors and analysis) and ROOT macro used for the analysis
+             presented in CAN-034 and PhD thesis "Low-energetic Hadron Interactions
+             in a Highly Granular Calorimeter" by N. Feege (in preparation).
+             The analysis is based on data collected with the AHCAL and the TCMT
+             (without any ECAL) at Fermilab in July 2008 and May 2009.
+             The example run 520308 is a 10 GeV negative pion run.
+
+#######################
+#     example002:     #
+#######################
+example002 -Example steering files (For PandoraPFA tests using overlaid
+            charged pion test beam data) used for the analysis
+ 	    presented in CAN-024 by Oleg Markin.
+            CALICE 2007 test beam data were used.
+
+#######################
+#     example003:     #
+#######################
+get_HCalPIDtree.py
+
+- python script to create a ROOT tree with booleans for particle ID selection 
+  (electron, pion, muon, etc), using as input the ROOT tree created by the 
+  RootTreeWriter
+- valid for CERN 2010 runs
+- you can then AddFriend the output tree to your input tree, and do the 
+  selection, eg:
+
+  bigtree->AddFriend(pID);
+  bigtree->Draw("ahc_energySum", "beamBit && muon");
+
+  where:
+  bigtree - is the name of the tree in the ROOT file created by the 
+            RootTreeWriter, more specifically by the HitWriteEngine
+  pID - is the name of the tree in the ROOT file created by the above script.
+
+#######################
+#     example004:     #
+#######################
+Example usage of the HcalTMVAProcessor, from
+calice_analysis/addonProcs. Read example004/TMVA.pdf for explanations.
+
+#######################
+#     example005:     #
+#######################
+An example steering file to show the usage of the  HCAL tracking processor from Lars:
+  HCalTrackingNNProcessor 
+  HCalTrackFitFilter
+  HcalTrack2RootTree
+
+#######################
+#     example005:     #
+#######################
+An example steering file to show the usage of the DEHEventDisplayProcessor
+for the new prototype (EBU and HBU) testbeam configuration CERN Oct 2014.
+
+    The new prototype testbeam configuration may be changed,
+    The database may be modified following the development process. 
+    Please update it to the latest development.
+

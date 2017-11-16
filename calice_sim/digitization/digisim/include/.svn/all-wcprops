@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/3609/calice_sim/trunk/digitization/digisim/include
+END
+Digitizer.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/1686/calice_sim/trunk/digitization/digisim/include/Digitizer.hpp
+END
+TempCalHit.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/1685/calice_sim/trunk/digitization/digisim/include/TempCalHit.hpp
+END
+NoiseDef.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/1068/calice_sim/trunk/digitization/digisim/include/NoiseDef.hpp
+END
+TcmtCrosstalk.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/1680/calice_sim/trunk/digitization/digisim/include/TcmtCrosstalk.hpp
+END
+tempGEARvariables.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/1068/calice_sim/trunk/digitization/digisim/include/tempGEARvariables.hpp
+END
+CalorimeterHitsProcessor.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/public/calice/!svn/ver/2017/calice_sim/trunk/digitization/digisim/include/CalorimeterHitsProcessor.hpp
+END
+AbsValueDiscrimination.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/public/calice/!svn/ver/207/calice_sim/trunk/digitization/digisim/include/AbsValueDiscrimination.hpp
+END
+CalHitMapProcessor.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/1288/calice_sim/trunk/digitization/digisim/include/CalHitMapProcessor.hpp
+END
+FunctionModifier.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/207/calice_sim/trunk/digitization/digisim/include/FunctionModifier.hpp
+END
+HitContrib.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/648/calice_sim/trunk/digitization/digisim/include/HitContrib.hpp
+END
+SimCalorimeterHitsProcessor.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/public/calice/!svn/ver/3609/calice_sim/trunk/digitization/digisim/include/SimCalorimeterHitsProcessor.hpp
+END
+CalHitMapMgr.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/1682/calice_sim/trunk/digitization/digisim/include/CalHitMapMgr.hpp
+END
+GainDiscrimination.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/52/calice_sim/trunk/digitization/digisim/include/GainDiscrimination.hpp
+END
+Raw2SimConverter.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/651/calice_sim/trunk/digitization/digisim/include/Raw2SimConverter.hpp
+END
+DigisimConditionsProcessor.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/public/calice/!svn/ver/1288/calice_sim/trunk/digitization/digisim/include/DigisimConditionsProcessor.hpp
+END
+SmearedGain.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/207/calice_sim/trunk/digitization/digisim/include/SmearedGain.hpp
+END
+RandomCellSelector.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/1068/calice_sim/trunk/digitization/digisim/include/RandomCellSelector.hpp
+END
+TcmtGangingModifier.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/public/calice/!svn/ver/1680/calice_sim/trunk/digitization/digisim/include/TcmtGangingModifier.hpp
+END
+ModifierParameters.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/640/calice_sim/trunk/digitization/digisim/include/ModifierParameters.hpp
+END
+CellIDDecoder.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/1068/calice_sim/trunk/digitization/digisim/include/CellIDDecoder.hpp
+END
+SiPMSaturation.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/207/calice_sim/trunk/digitization/digisim/include/SiPMSaturation.hpp
+END
+Globals.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/52/calice_sim/trunk/digitization/digisim/include/Globals.hpp
+END
+CalHitModifier.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/207/calice_sim/trunk/digitization/digisim/include/CalHitModifier.hpp
+END
+Analysis.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/1869/calice_sim/trunk/digitization/digisim/include/Analysis.hpp
+END
+CrossTalkModifier.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/52/calice_sim/trunk/digitization/digisim/include/CrossTalkModifier.hpp
+END
+DigiSimProcessor.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/2880/calice_sim/trunk/digitization/digisim/include/DigiSimProcessor.hpp
+END
+RawHitConverter.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/1684/calice_sim/trunk/digitization/digisim/include/RawHitConverter.hpp
+END
+SmearedTiming.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/207/calice_sim/trunk/digitization/digisim/include/SmearedTiming.hpp
+END

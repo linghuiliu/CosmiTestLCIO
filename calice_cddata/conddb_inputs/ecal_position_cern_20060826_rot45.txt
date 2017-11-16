@@ -1,0 +1,8 @@
+validity: 2006/08/26 18:47:30 2006/08/28 02:06:30
+# runs 300240 - 300308; 300310,300311 ahc runs 
+rotationAngleZX:   -45
+rotationX0:        0
+rotationZ0:        -11.64
+detectorPostionX:  -0.47
+detectorPostionY: -3.95
+detectorPostionZ:  96.09

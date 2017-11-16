@@ -1,0 +1,34 @@
+/** \file 
+ * \brief Edit to add new engine.
+ *
+ * To activate a new engine you have to add a line like the following
+ * in this file:
+ *
+ *
+ * \code
+ * _writeEngineList.push_back( new MyNewEngineName(this) ); 
+ * \endcode
+ * 
+ * <B> You also have to edit the file \link EnginesInclude.icc
+ * engines/EnginesInclude.icc\endlink.</B>
+ */
+
+
+//***********************************************************
+// Add new engines here
+//    _writeEngineList.push_back( new EventPropertiesWriteEngine( this )    );
+//    _writeEngineList.push_back( new HcalHitWriteEngine( this )    );
+    _writeEngineList.push_back( new HitWriteEngine( this )    );
+    _writeEngineList.push_back( new TriggerWriteEngine( this )    );
+    _writeEngineList.push_back( new DriftChamberWriteEngine( this )    );
+    _writeEngineList.push_back( new MCParticleWriteEngine( this )    );
+    _writeEngineList.push_back( new ASimCalorimeterHitWriteEngine( this )    );
+    _writeEngineList.push_back( new TBTrackWriteEngine( this )    );
+    _writeEngineList.push_back( new TrackFinderWriteEngine( this )    );
+    _writeEngineList.push_back( new ShowerShapeEngine( this )    );
+    _writeEngineList.push_back( new HcalTrackLarsEngine( this )    );
+    _writeEngineList.push_back( new BifWriteEngine( this )    );
+#ifdef RTW_USE_CLUSTERING
+    _writeEngineList.push_back( new DeepAnaWriteEngine( this )    );
+#endif //RTW_USE_CLUSTERING
+//***********************************************************

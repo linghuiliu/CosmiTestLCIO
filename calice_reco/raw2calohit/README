@@ -1,0 +1,30 @@
+This is the software package to reconstruct calice data.
+It runs over lcio files as produced by the converter. See the
+announcements in the calice-sw mailing lists for compatibility
+issues with converted files
+
+Prerequisites:
+
+It needs marlin (lcio) lccd and CondDBMySQL installed
+as well as the calice userlib and root. 
+Depending on your marlin installation it might also
+need to know the path to the CLHEP libraries.
+
+See also the doxygen documentation of the corresponding version of the
+calice_reco package.
+
+
+To install:
+
+modify the env.sh script
+
+. ./env.sh
+gmake -C src
+
+bin/raw2calohit steer/reconstruct.steer
+
+(after having edited the steering file accordingly)
+
+
+
+

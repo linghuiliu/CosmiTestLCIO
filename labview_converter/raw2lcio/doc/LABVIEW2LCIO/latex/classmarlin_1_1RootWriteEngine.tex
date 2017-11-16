@@ -1,0 +1,128 @@
+\section{marlin::Root\-Write\-Engine Class Reference}
+\label{classmarlin_1_1RootWriteEngine}\index{marlin::RootWriteEngine@{marlin::RootWriteEngine}}
+Abstract base class of callback classes for the Root\-Tree\-Write processor Abstract interface for a Root\-Tree\-Writer-engine.  
+
+
+{\tt \#include $<$Root\-Write\-Engine.hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\bf{Root\-Write\-Engine} (Root\-Tree\-Writer $\ast$host)
+\begin{CompactList}\small\item\em constructor \item\end{CompactList}\item 
+virtual const std::string \& \bf{get\-Engine\-Name} ()=0
+\begin{CompactList}\small\item\em Returns the name of the engine to the Root\-Tree\-Writer processor. \item\end{CompactList}\item 
+virtual void \bf{register\-Parameters} ()=0
+\begin{CompactList}\small\item\em Used to register steering parameters. \item\end{CompactList}\item 
+virtual void \bf{register\-Branches} (TTree $\ast$)=0
+\begin{CompactList}\small\item\em Implement to register local variables to the output tree. \item\end{CompactList}\item 
+virtual void \bf{fill\-Variables} (EVENT::LCEvent $\ast$evt)=0
+\begin{CompactList}\small\item\em Implement this to extract the variables which you want to fill into the {\em ROOT\/} tree from the event. \item\end{CompactList}\item 
+virtual \bf{$\sim$Root\-Write\-Engine} ()\label{classmarlin_1_1RootWriteEngine_5f541fb340518942be78e4ee69d87edf}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+Root\-Tree\-Writer \& \bf{\_\-host\-Processor}\label{classmarlin_1_1RootWriteEngine_06de7544ff28c539d38a40ac05495862}
+
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract base class of callback classes for the Root\-Tree\-Write processor Abstract interface for a Root\-Tree\-Writer-engine. 
+
+Implement an descendant of this class to add variables to the output tree of the Root\-Tree\-Writer\-Processor. After that add the new {\em engine\/} to the list of writer engines in the Root\-Tree\-Writer processor 
+
+
+
+Definition at line 29 of file Root\-Write\-Engine.hh.
+
+\subsection{Constructor \& Destructor Documentation}
+\index{marlin::RootWriteEngine@{marlin::Root\-Write\-Engine}!RootWriteEngine@{RootWriteEngine}}
+\index{RootWriteEngine@{RootWriteEngine}!marlin::RootWriteEngine@{marlin::Root\-Write\-Engine}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}marlin::Root\-Write\-Engine::Root\-Write\-Engine (Root\-Tree\-Writer $\ast$ {\em host})\hspace{0.3cm}{\tt  [inline]}}\label{classmarlin_1_1RootWriteEngine_b9551f5a3323b6489adb42a7993ebb6f}
+
+
+constructor 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em host}]pointer to the Root\-Tree\-Writer processor the constructor of a derived class must pass this pointer to this base class e.g.
+
+\footnotesize\begin{verbatim}    /// SomeeWriteEngine( RootTreeWriter* host ):RootWriteEngine(host),
+    ///                                          _engineName("SomeWriteEngine")
+    /// {} \end{verbatim}
+\normalsize
+ \end{description}
+\end{Desc}
+
+
+Definition at line 38 of file Root\-Write\-Engine.hh.
+
+\subsection{Member Function Documentation}
+\index{marlin::RootWriteEngine@{marlin::Root\-Write\-Engine}!fillVariables@{fillVariables}}
+\index{fillVariables@{fillVariables}!marlin::RootWriteEngine@{marlin::Root\-Write\-Engine}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}virtual void marlin::Root\-Write\-Engine::fill\-Variables (EVENT::LCEvent $\ast$ {\em evt})\hspace{0.3cm}{\tt  [pure virtual]}}\label{classmarlin_1_1RootWriteEngine_b8cb6e6006b8e5820b1f3959f5abb15a}
+
+
+Implement this to extract the variables which you want to fill into the {\em ROOT\/} tree from the event. 
+
+Write the value of the variables you want to add to the tree to the member variables, which you registered to the {\em ROOT\/} tree. The Root\-Tree\-Writer will call TTree::Fill() for you. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em evt}]the current event \end{description}
+\end{Desc}
+\index{marlin::RootWriteEngine@{marlin::Root\-Write\-Engine}!getEngineName@{getEngineName}}
+\index{getEngineName@{getEngineName}!marlin::RootWriteEngine@{marlin::Root\-Write\-Engine}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}virtual const std::string\& marlin::Root\-Write\-Engine::get\-Engine\-Name ()\hspace{0.3cm}{\tt  [pure virtual]}}\label{classmarlin_1_1RootWriteEngine_e9bd7c517e368d121eb364049715e542}
+
+
+Returns the name of the engine to the Root\-Tree\-Writer processor. 
+
+\begin{Desc}
+\item[Returns:]Must return a string with the engine name. \end{Desc}
+\begin{Desc}
+\item[\bf{Todo}]fixme: should be const, but must be declared const in implementations too. Need to fix all existing engines?!? \end{Desc}
+\index{marlin::RootWriteEngine@{marlin::Root\-Write\-Engine}!registerBranches@{registerBranches}}
+\index{registerBranches@{registerBranches}!marlin::RootWriteEngine@{marlin::Root\-Write\-Engine}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}virtual void marlin::Root\-Write\-Engine::register\-Branches (TTree $\ast$)\hspace{0.3cm}{\tt  [pure virtual]}}\label{classmarlin_1_1RootWriteEngine_a1fd821203fe59d00f0bc28b76904570}
+
+
+Implement to register local variables to the output tree. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em pointer}]to the {\em ROOT\/} tree, which the Root\-Tree\-Writer processor fills at the end of each event. Usually the implementation looks like
+
+\footnotesize\begin{verbatim}    /// hostTree->Branch("variable",&_variable" ,"variable/F"  );
+    /// \end{verbatim}
+\normalsize
+. But you can add any type of branch you like. \end{description}
+\end{Desc}
+\index{marlin::RootWriteEngine@{marlin::Root\-Write\-Engine}!registerParameters@{registerParameters}}
+\index{registerParameters@{registerParameters}!marlin::RootWriteEngine@{marlin::Root\-Write\-Engine}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}virtual void marlin::Root\-Write\-Engine::register\-Parameters ()\hspace{0.3cm}{\tt  [pure virtual]}}\label{classmarlin_1_1RootWriteEngine_98171597757dfacdde11763d948dfe6c}
+
+
+Used to register steering parameters. 
+
+Implement to register {\em marlin\/} steering file parameters. Use {\em marlin\/} syntax to register parameters for the calling Root\-Tree\-Writer processor.
+
+use
+
+\footnotesize\begin{verbatim}    /// _hostProc.relayRegisterProcessorParameter(...)
+    /// _hostProc.relayRegister...()
+    /// \end{verbatim}
+\normalsize
+ instead of {\em marlin\/} processors
+
+\footnotesize\begin{verbatim}register...() \end{verbatim}
+\normalsize
+ methods 
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+Root\-Write\-Engine.hh\end{CompactItemize}

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/public/calice/!svn/ver/4034/calice_reco/trunk/cellGeometry/include
+END
+CellDescriptionProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/3055/calice_reco/trunk/cellGeometry/include/CellDescriptionProcessor.hh
+END
+CellNeighboursProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/4034/calice_reco/trunk/cellGeometry/include/CellNeighboursProcessor.hh
+END
+CorrectPositionProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/3056/calice_reco/trunk/cellGeometry/include/CorrectPositionProcessor.hh
+END
+MappingProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/3094/calice_reco/trunk/cellGeometry/include/MappingProcessor.hh
+END

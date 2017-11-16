@@ -1,0 +1,17 @@
+The calice_userlib package is the main CALICE software package.
+It is used by the lcioconverter job and Marlin processors
+running on the converted files.
+It contains in addition data type definitions of 
+calice conditions data.
+
+It depends on ILC software packages and on the calice_cmake package,
+which contains a few CALICE specific cmake macros.
+
+For installing and compiling this package,
+please follow these instructions:
+
+https://twiki.cern.ch/twiki/bin/view/CALICE/HowToInstallAndCompileCALICEPackages
+
+In particular, please pay attention to the fact that you need to have the
+calice_cmake package installed, and that you need to add it in the CMAKE_MODULE_PATH:
+

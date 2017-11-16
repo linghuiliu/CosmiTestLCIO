@@ -1,0 +1,80 @@
+10
+
+dir
+4758
+https://svnsrv.desy.de/public/calice/calice_reco/trunk
+https://svnsrv.desy.de/public/calice
+
+
+
+2016-11-15T09:58:06.147156Z
+4736
+ebrianne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+d1deb40d-bcc4-47cc-9d27-f84b3a1afcb8
+
+clustering
+dir
+
+raw2calohit
+dir
+
+cmake
+dir
+
+recoSiPM
+dir
+
+cellGeometry
+dir
+
+CMakeLists.txt
+file
+
+
+
+
+2017-06-08T17:53:48.000000Z
+ebdcf127d97d25779c17a48f95fd1d62
+2016-08-10T13:06:27.520184Z
+4696
+ebrianne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1673
+
+examples
+dir
+

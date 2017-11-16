@@ -1,0 +1,22 @@
+
+* Java analysis code
+
+digisim/java/RawHistos.java - Java analysis code
+digisim/java/build          - build script
+digisim/java/files.lis	   - List of files needed to build (local directory)
+
+* Usage instructions (under bash or similar):
+
+  Edit LCIO and JAS3 variables in file build, to reflect the local
+  configuration of your machine.  Then use the following commands:
+
+  % . build    # also sets up CLASSPATH, so it should be run at least once
+               # in the session
+  % java RawHistos inputFile1.slcio inputFile2.slcio inputFile3.slcio
+
+  An AIDA histogram file called histos.aida will be produced in local
+  directory.  JAS3 can be used to look at the histograms.
+
+-------
+Last updated:
+2004-12-30, by Guilherme Lima

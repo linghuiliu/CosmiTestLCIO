@@ -1,0 +1,85 @@
+\section{marlin::Labview\-Converter Class Reference}
+\label{classmarlin_1_1LabviewConverter}\index{marlin::LabviewConverter@{marlin::LabviewConverter}}
+Processor for reading the AHCAL Labview asscii files.  
+
+
+{\tt \#include $<$Labview\-Converter.hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\bf{Labview\-Converter} ()\label{classmarlin_1_1LabviewConverter_91ff74e416d002020de78e90d6620f2d}
+
+\item 
+virtual \bf{Labview\-Converter} $\ast$ \bf{new\-Processor} ()\label{classmarlin_1_1LabviewConverter_180fe98220abe8b7a2ab79ac26a441a7}
+
+\begin{CompactList}\small\item\em Implementation of new Processor returns pointer to processor. \item\end{CompactList}\item 
+virtual void \bf{read\-Data\-Source} (int num\-Events)\label{classmarlin_1_1LabviewConverter_647e556e32902a41292c4df54b0be23c}
+
+\begin{CompactList}\small\item\em Creates events with LCGenreal\-Object collections from the Labview input file and calls all active processors' process\-Event() and process\-Run\-Header Method. \item\end{CompactList}\item 
+void \bf{write\-Slow\-Control} ()\label{classmarlin_1_1LabviewConverter_1313e63e4467c1a0bab26e4c443427c8}
+
+\begin{CompactList}\small\item\em work on slow control data, ASIC \item\end{CompactList}\item 
+virtual void \bf{init} ()\label{classmarlin_1_1LabviewConverter_34f045afcee02462472615119c163105}
+
+\begin{CompactList}\small\item\em init method \item\end{CompactList}\item 
+virtual void \bf{end} ()\label{classmarlin_1_1LabviewConverter_9cd6834583513e23fbe137d48b44307c}
+
+\begin{CompactList}\small\item\em end method \item\end{CompactList}\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+std::string \bf{\_\-ofile}
+\begin{CompactList}\small\item\em The string variable to access the data. \item\end{CompactList}\item 
+std::string \bf{\_\-data}\label{classmarlin_1_1LabviewConverter_e985a0b35330fd1b9ecd1248dab4fa43}
+
+\begin{CompactList}\small\item\em The string variable to access the data. \item\end{CompactList}\item 
+int \bf{\_\-run\-Number}\label{classmarlin_1_1LabviewConverter_ad4b073eacd0710dc476754a58faf2c6}
+
+\begin{CompactList}\small\item\em The run number. \item\end{CompactList}\item 
+int \bf{\_\-Slow\-Control\-Line\-Number}\label{classmarlin_1_1LabviewConverter_10c8d9a2625ee6842c0fb724d8d0eaae}
+
+\begin{CompactList}\small\item\em Slow control line number, HBU: 120, EPT: 1920. \item\end{CompactList}\item 
+int \bf{\_\-HBUNumber}\label{classmarlin_1_1LabviewConverter_ab2efce8bf8fbfd5b6a4567fc398d740}
+
+\begin{CompactList}\small\item\em The HBU number: HBUVI: 6; HBUVI: 7, HBUVIII: 8, HBUIX: 9. \item\end{CompactList}\item 
+int \bf{\_\-EPTModel\-Nr}\label{classmarlin_1_1LabviewConverter_4bcbac949d9924ba42149ff351bc188d}
+
+\begin{CompactList}\small\item\em The EPT model number: CERN November testbeam EPT: 1. \item\end{CompactList}\item 
+std::stringstream \bf{Slow\-Control}\label{classmarlin_1_1LabviewConverter_a5eda640fb891ffacf445f15622b92ae}
+
+\begin{CompactList}\small\item\em Slow Control data block. \item\end{CompactList}\item 
+std::string \bf{\_\-detector\-Type\-Name}\label{classmarlin_1_1LabviewConverter_8a6eb3684e256926c4b3a8a8ee9b5e9f}
+
+\begin{CompactList}\small\item\em The string variable of the detector type name, AHC AEC. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Processor for reading the AHCAL Labview asscii files. 
+
+It processes the input data to create events with LCIO collections of the AHCAL Labview ascii output. Based on F. Gaede's Std\-Hep\-Reader to be found in the marlin package. \begin{Desc}
+\item[Author:]: S. Lu (DESY Hamburg) \end{Desc}
+\begin{Desc}
+\item[Date:]Aug 15 2012 \end{Desc}
+
+
+
+
+Definition at line 18 of file Labview\-Converter.hh.
+
+\subsection{Field Documentation}
+\index{marlin::LabviewConverter@{marlin::Labview\-Converter}!_ofile@{\_\-ofile}}
+\index{_ofile@{\_\-ofile}!marlin::LabviewConverter@{marlin::Labview\-Converter}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}std::string \bf{marlin::Labview\-Converter::\_\-ofile}\hspace{0.3cm}{\tt  [protected]}}\label{classmarlin_1_1LabviewConverter_eabc687d12617a98326b7989dd431125}
+
+
+The string variable to access the data. 
+
+Requires \char`\"{}yourpath/Run\char`\"{} 
+
+Definition at line 53 of file Labview\-Converter.hh.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+Labview\-Converter.hh\item 
+Labview\-Converter.cc\end{CompactItemize}

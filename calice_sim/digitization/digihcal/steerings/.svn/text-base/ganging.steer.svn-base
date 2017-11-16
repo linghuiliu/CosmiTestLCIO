@@ -1,0 +1,32 @@
+.begin Global  ---------------------------------------
+
+       LCIOInputFiles 
+
+       ActiveProcessors MyahcalGangingProcessor
+
+       ActiveProcessors MyLCIOOutputProcessor
+
+     #  MaxRecordNumber 10
+
+       Verbosity MESSAGE
+
+.end   -----------------------------------------------
+
+# There is currently no way to specify which layers have the coarse modules.
+# Layers 1-30 are always regarded as fine and 31-38 as coarse ones.
+.begin MyahcalGangingProcessor
+       
+       ProcessorType ahcalGangingProcessor
+
+       RequiredCollection           hcalSD
+       OutputCollection             AfterGanging
+
+.end -------------------------------------------------
+
+.begin MyLCIOOutputProcessor
+
+       ProcessorType LCIOOutputProcessor
+
+       LCIOOutputFile 
+
+.end -------------------------------------------------

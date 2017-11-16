@@ -1,0 +1,7 @@
+validity: 2006/07/01 00:00:00 2006/09/24 00:00:00
+rotationAngleZX:   0
+rotationX0:        0
+rotationZ0:        0
+detectorPostionX:  0
+detectorPostionY: -0.873
+detectorPostionZ: 161.6

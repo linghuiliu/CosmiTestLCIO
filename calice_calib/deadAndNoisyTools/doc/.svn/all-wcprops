@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/public/calice/!svn/ver/3796/calice_calib/trunk/deadAndNoisyTools/doc
+END
+rootLib.dox
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/3592/calice_calib/trunk/deadAndNoisyTools/doc/rootLib.dox
+END
+normal_channel_spectrum.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/3592/calice_calib/trunk/deadAndNoisyTools/doc/normal_channel_spectrum.png
+END
+rms_spectrum.png
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/3592/calice_calib/trunk/deadAndNoisyTools/doc/rms_spectrum.png
+END
+examples.dox
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/3796/calice_calib/trunk/deadAndNoisyTools/doc/examples.dox
+END
+Doxyfile.in
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/3626/calice_calib/trunk/deadAndNoisyTools/doc/Doxyfile.in
+END
+Mainpage.dox
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/3592/calice_calib/trunk/deadAndNoisyTools/doc/Mainpage.dox
+END
+installation.dox
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/3626/calice_calib/trunk/deadAndNoisyTools/doc/installation.dox
+END
+rms_spectrum_zoom.png
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/3592/calice_calib/trunk/deadAndNoisyTools/doc/rms_spectrum_zoom.png
+END
+createBadChannelsList.dox
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/3796/calice_calib/trunk/deadAndNoisyTools/doc/createBadChannelsList.dox
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/3592/calice_calib/trunk/deadAndNoisyTools/doc/CMakeLists.txt
+END

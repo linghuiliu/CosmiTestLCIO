@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <title>DigiSim software package</title>
+</head>
+<body>
+<div style="text-align: center;"><br>
+</div>
+<h2 style="text-align: center;">DigiSim<br>
+A digitizer simulation package<br>
+for the CALICE test beam</h2>
+<br>
+<br>
+<div style="text-align: center;">v00.01<br>
+<br>
+<br>
+<span style="font-weight: bold;">Dhiman Chakraborty, Guilherme Lima,
+Vishnu Zutshi</span><br style="font-weight: bold;">
+<br style="font-weight: bold;">
+<span style="font-weight: bold;">Northern Illinois Center for</span><br
+ style="font-weight: bold;">
+<span style="font-weight: bold;">Accelerator and Detector Development</span><br
+ style="font-weight: bold;">
+<br style="font-weight: bold;">
+<span style="font-weight: bold;">Physics Department</span><br
+ style="font-weight: bold;">
+<span style="font-weight: bold;">Northern Illinois University</span><br>
+</div>
+<br>
+<br>
+<br>
+<h4><span style="color: rgb(255, 0, 0);">Introduction</span><br>
+</h4>
+The purpose of the DigiSim package is to do detector digitization, for
+the CALICE test beam as a first goal, and ultimately for the full ILC
+detector.&nbsp; It is currently implemented as a standalone module,
+readily available for download and use.<br>
+<br>
+The package reads the LCIO files produced by Geant4 applications (like
+LCDG4, Mokka or SLIC) and appends the raw hits produced to the output
+events. Most of the DigiSim (re)configuration can be done at run time
+editing an ASCII steering file, no recompilation is necessary.&nbsp;
+The existing
+modifiers (digitization classes) are extremely easy to setup and
+configure, and new functionality can also be easily added.&nbsp;
+DigiSim is thus very powerful, extensible and very simple to use and
+extend, it is well suitable for the simulation of CALICE test beam
+digitization.<br>
+<br>
+<h4 style="color: rgb(255, 0, 0);">Package dependencies</h4>
+<ul>
+  <li>LCIO v01-03 or later -&nbsp; see <a href="http://lcio.desy.de/">http://lcio.desy.de/</a><br>
+  </li>
+  <li>Marlin v00-06 or later -&nbsp; see <a
+ href="http://www.desy.de/%7Egaede/marlin">http://www.desy.de/~gaede/marlin</a><br>
+    <br>
+  </li>
+</ul>
+<h4 style="color: rgb(255, 0, 0);">Downloading, building and running
+DigiSim</h4>
+The source code for DigiSim can be checked out from the <a
+ href="http://www-zeuthen.desy.de/lc-cgi-bin/cvsweb.cgi/calice_sim/digitization/digisim/?cvsroot=calice">official
+CALICE CVS repository</a> (see <a
+ href="http://www-zeuthen.desy.de/linear_collider/">access instructions</a>).&nbsp;
+Instructions for
+building under Linux are given below.&nbsp; These instructions have
+been tested within Fedora Linux
+environments, using g++ version 3.3, but it will probably build without
+problems in other versions of Linux and the g++ compilers as well.<br>
+<br>
+<ul>
+  <li>export CVS_RSH=ccvssh</li>
+  <li>export CVSROOT=:ext:<span
+ style="font-style: italic; text-decoration: underline;">yourUserName</span><span
+ style="text-decoration: underline;"></span>@cvssrv.ifh.de:/calice<br>
+  </li>
+  <li>ccvssh login</li>
+  <li>cvs co -d digisim calice_sim/digitization/digisim</li>
+  <li>cd digisim<br>
+  </li>
+  <li>gmake</li>
+  <li>ln -sf /path/to/some/data.slcio inputfile</li>
+  <li>./bin/digisim digi.steer<br>
+  </li>
+</ul>
+An alternative to the last two steps would be to edit the steering file
+digi.steer, and insert the explicit name(s) of the input data
+file(s) to
+be digitized.<br>
+<br>
+Several parameters of the digitizer can be configured, as explained
+later, by editing the file <code>digi.steer</code>.<br>
+<br>
+<h4 style="color: rgb(255, 0, 0);">Design requirements and development
+choices</h4>
+The following requirements were considered when designing the software
+package:<br>
+<ol>
+  <li>To be initially based on C++ programming language, as most of the
+software of the
+CALICE collaboration</li>
+  <li>Object-orientated, for easier development and maintenance of the
+source code</li>
+  <li>Based on the LCIO event model, which is becoming the <span
+ style="font-style: italic;">de-facto</span> standard for CALICE and
+ILC simulations<br>
+  </li>
+  <li>Used as a test-bed for the development of a digitization
+simulation software for the full ILC detector</li>
+</ol>
+<p>
+</p>
+We chose to use Marlin as the C++ framework on which DigiSim was
+developed.&nbsp; However, DigiSim is not strongly
+tied to Marlin, and it would be quite simple to move out from Marlin,
+if such
+need arises.<br>
+<br>
+<span style="font-weight: bold;">Note:</span> a java version of DigiSim
+is under development.<br>
+<br>
+<h4 style="color: rgb(255, 0, 0);">How DigiSim works</h4>
+The package works by using a chain of "modifiers", which will apply
+successive transformations to the input simulated hits.&nbsp; The
+resulting raw
+hits are then simply appended to the LCEvent, and get automatically
+written to the output LCIO file.&nbsp; We show the DigiSim class
+diagram on Fig.1, which is helpful to understand how DigiSim works.<br>
+<br>
+<div style="text-align: center;"><a href="./DigiSimClassDiagram.png"><img
+ title="Click for larger resolution" alt="DigiSim class diagram"
+ src="DigiSimClassDiagram.png"
+ style="border: 0px solid ; width: 750px; height: 513px;"></a><br>
+<br>
+<div style="text-align: left; margin-left: 80px;"><span
+ style="font-weight: bold;">Figure 1</span>: Class diagram for the
+digitization simulation package DigiSim.&nbsp; Please note the
+inheritance relationships represented by the solid arrows.&nbsp;
+CalHitModifier and FunctionModifier are abstract classes, defining the
+interfaces to be followed by the subclasses.&nbsp; (Click on the figure
+for better resolution)<br>
+</div>
+</div>
+<br>
+<br>
+Marlin, as the framework, takes care of all the I/O, and calls
+DigiSimProcessor's methods for initialization, event processing and
+finalization.&nbsp; During initialization, all the requested <span
+ style="font-style: italic; font-weight: bold;">modifiers</span> are
+instantiated and configured, according to the Marlin steering file.<br>
+<br>
+<div style="margin-left: 40px;"><small>Note: DigiSimProcessor is the
+only class which knows about Marlin, and so abides by the interface
+imposed for all Marlin <span style="font-family: monospace;">Processor</span>s.&nbsp;
+It is also responsible for managing the digitization processing
+itself.&nbsp; These responsibilities will likely be split into two
+different classes at some point.</small><br>
+</div>
+<br>
+The processing which takes place during the event loop is better
+understood by analysing Fig.2.&nbsp; The modifiers will act on the
+calorimeter hit information through the transient class <span
+ style="font-family: monospace;">TempCalHit</span>, which is used as
+both input and output to the modifiers' event processing method.&nbsp;
+The abstract class <span style="font-family: monospace;">CalHitModifier</span>
+defines the interface to be inherited by the modifiers.<br>
+<br>
+<div style="text-align: center;"><a href="./DigiSimEventLoop.png"><img
+ title="Click for larger resolution"
+ alt="Figure 2: Illustration of the processing inside the DigiSim event loop."
+ src="DigiSimEventLoop.png"
+ style="border: 0px solid ; width: 750px; height: 325px;"></a><br>
+<div style="text-align: left; margin-left: 120px;"><span
+ style="font-weight: bold;">Figure 2</span> - Diagram illustrating the
+event processing loop.&nbsp; (Click on the figure for better resolution)<br>
+</div>
+<br>
+</div>
+<br>
+At the event loop, <span style="font-family: monospace;">LCEvents</span>
+are passed to <span style="font-family: monospace;">DigiSimProcessor</span>,
+which extracts the simulated hits (<span style="font-family: monospace;">SimCalorimeterHits)</span>
+from an <span style="font-family: monospace;">LCCollectionVec</span> (<span
+ style="font-family: monospace;">SimHitsLCCollection</span>).&nbsp;
+Simulated hits are converted into the transient hits (class <span
+ style="font-family: monospace;">TempCalHit</span>s) and passed through
+a chain of modifiers.&nbsp; Each modifier modifies the input <span
+ style="font-family: monospace;">TempCalHit</span>s by applying their
+own transformation.&nbsp; After all the modifiers have been processed,
+the final hits are finally converted into <span
+ style="font-family: monospace;">RawCalorimeterHit</span>s, stored into
+an <span style="font-family: monospace;">LCCollectionVec
+(RawHitsLCCollection)</span> and appended to the event.&nbsp; Marlin
+takes care of writing the event into the output file.<br>
+<br>
+<h4 style="color: rgb(255, 0, 0);">Configuring <span
+ style="font-family: monospace;">DigiSimProcessors</span>
+and its modifiers</h4>
+An arbitrary number of modifiers can be defined and used within any
+DigiSim run.&nbsp; It is possible to configure and use any number of
+modifiers of any single existing modifier type.&nbsp; DigiSimProcessor
+is a Marlin processor, therefore it can receive any number of
+parameters from the Marlin steering file.&nbsp; The modifiers can then
+be configured on-the-fly, using parameters from the steering file (<a
+ href="digi.steer">see this simple example</a>).<br>
+<br>
+<span style="font-family: monospace;">LCCollectionVec</span>
+collections with <span style="font-family: monospace;">RawCalorimeterHits</span>
+to the LCIO-based event <span style="font-family: monospace;">LCEvent</span>.
+<br>
+<h4 style="color: rgb(255, 0, 0);">Existing modifiers</h4>
+There are currently two general modifiers implemented and ready for use
+(see Fig. 3 for a graphical representation of the existing modifiers):<br>
+<br>
+<div style="text-align: left; margin-left: 80px;"><a
+ href="./existingModifiers.png"><img title="Click for larger resolution"
+ alt="existing modifiers: a graphical representation"
+ src="existingModifiers.png"
+ style="border: 0px solid ; width: 705px; height: 437px;"></a><br>
+</div>
+<div style="text-align: center;"><br>
+<div style="margin-left: 80px; text-align: center;">
+<div style="text-align: left;"><span style="font-weight: bold;">Figure 3</span>
+- Illustration of the hit
+smearing procedure implemented by a typical modifier, <br>
+</div>
+<div style="text-align: left;">and an explanation of the
+existing modifiers. (Click on the figure for better resolution)<br>
+</div>
+</div>
+</div>
+<ol>
+  <li><span
+ style="font-weight: bold; font-family: monospace; color: rgb(51, 51, 255);">GainDiscrimination<br>
+    <br>
+    </span>A simple modifier inheriting directly from
+CalHitModifier.&nbsp; This
+modifier contains 4 parameters, which are called <span
+ style="font-family: monospace;">gainNom, gainSig, threshNom</span> and
+    <span style="font-family: monospace;">threshSig</span>.&nbsp; They
+represent a gauss-smeared gain and a gaussian-smeared threshold, both
+applied to hit
+energies.&nbsp; Inside the modifier, the gain (just a factor) is
+applied before the threshold.&nbsp; A fixed gain or threshold is
+applied if the widths (<span style="font-family: monospace;">gainSig</span>
+or <span style="font-family: monospace;">threshSig</span>) are set to
+zero.<br>
+    <br>
+  </li>
+  <li><span
+ style="font-weight: bold; font-family: monospace; color: rgb(51, 51, 255);">FunctionModifier</span>
+&nbsp; <br>
+    <br>
+An <em>abstract</em> function-based modifier.&nbsp; Its subclasses
+must
+implement the two abstract functions:
+    <div style="margin-left: 80px;"><span
+ style="font-family: monospace;"><br>
+virtual
+double transformEnergy(const TempCalHit&amp; hit) const = 0;</span><br
+ style="font-family: monospace;">
+    <span style="font-family: monospace;">virtual double
+transformTime(const TempCalHit&amp; hit) const = 0;<br>
+    </span><br>
+    </div>
+The values returned from the functions
+above will overwrite the ADC counts and time stamps of the transient
+hits.<br>
+    <br>
+  </li>
+  <li><span
+ style="font-weight: bold; font-family: monospace; color: rgb(51, 51, 255);">SmearedLinear<span
+ style="color: rgb(51, 0, 51);"></span><br>
+    </span></li>
+</ol>
+<div style="margin-left: 40px;">A simple function-based modifier.&nbsp;
+It contains 4
+parameters, which represent <span style="font-family: monospace;">EfactorNom,
+EfactorSig, TfactorNom</span> and <span style="font-family: monospace;">TfactorSig</span>.&nbsp;
+If <code>Efactor</code> and <code>Tfactor</code> are both set to 1
+without smearing
+(<code>EfactorNom</code>=1, <code>EfactorSig</code>=0, and similar for
+<code>Tfactor</code>), <code>SmearedLinear</code> does not alter the
+input values, thus acting like an identity transformation.<br>
+<br>
+</div>
+<h4 style="color: rgb(255, 0, 0);">Real-life digitization: creating new
+modifiers</h4>
+<br>
+In order to be properly controlled by DigiSimProcessor, all modifiers
+should inherit the interface from the abstract class CalHitModifier,
+implementing <code>init(), processEvent(), print()</code> and <code>newInstance()</code>,
+see
+figure below.<br>
+<br>
+<div style="margin-left: 40px;"><a href="creatingModifiers.png"><img
+ title="Click for larger resolution"
+ alt="Creating Modifiers: interface inheritance and functions to be implemented"
+ src="creatingModifiers.png"
+ style="border: 0px solid ; width: 804px; height: 533px;"></a><br>
+</div>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">Figure
+4</span> - Creating new modifiers.&nbsp; The member functions in red
+are the ones which need to be implemented by the new modifiers. (Click
+on the figure for better resolution)<br>
+</div>
+<br>
+<br>
+In spite of their simplicity, several of the typical effects from the
+digitization processes can be represented quite well by appropriate
+configuration of either
+one of these very simple-minded modifiers.&nbsp; Examples are uniform
+inefficiencies of say
+(97.8+/- 0.5)%, or zero-suppression say below (100+/-2) ADC counts,
+which can reuse&nbsp; the existing GainDiscrimination modifier.<br>
+<br>
+At the next step of increasing complexity, one anticipates that some
+other effects, like charge saturation or signal risetime, can be
+operated by a
+function call, like:<br>
+<br>
+<div style="margin-left: 40px;"><span style="font-family: monospace;">double
+smearedEnergy = transformEnergy(aHit);<br>
+double smearedTime = transformTime(aHit);<br>
+</span></div>
+<br>
+Such a modifiers can be created very easily, by
+inheriting from FunctionModifier and implementing the two functions in
+red in Fig.4.&nbsp; Or even better, by copying the code
+from SmearedLinear, which already inherits from FunctionModifier,
+changing the class name appropriately and modifying the methods above,
+which
+are already present in the copy.<br>
+<br>
+Another set of effects would fall in the next level of complexity, like
+<em>cell ganging</em> or <em>crosstalk</em>.&nbsp; These effects&nbsp;
+typically require
+external
+information, like cell neighborhood, which is not readily available in
+the
+hit itself. Geometry-dependent modifiers need to be developed,
+preferably by keeping
+the geometry-dependent processing isolated into reusable geometry-aware
+classes.&nbsp; In general, such modifiers should inherit directly from <span
+ style="font-family: monospace;">CalHitModifier</span>, and implement
+its virtual methods <span style="font-family: monospace;">init()</span>,
+<span style="font-family: monospace;">processHits()</span>, <span
+ style="font-family: monospace;">print()</span> and <span
+ style="font-family: monospace;">newInstance()</span>.<br>
+<br>
+<h4 style="color: rgb(255, 0, 0);"><span style="font-weight: bold;">Analysis
+(java)</span></h4>
+Some simple java analysis code is available in the subdirectory <span
+ style="font-family: monospace;">java</span>.&nbsp; It was used to
+demonstrate that the modifiers are doing what they are supposed to
+do.&nbsp; Please find usage instructions in the README file.<br>
+<br>
+<h4 style="color: rgb(255, 0, 0);">References</h4>
+<ol>
+  <li>LCIO web page: <a href="http://lcio.desy.de"><span
+ style="font-family: monospace;">http://lcio.desy.de</span></a><span
+ style="font-family: monospace;"></span></li>
+  <li>Marlin web page: <span style="font-family: monospace;"></span><a
+ href="http://www.desy.de/%7Egaede/marlin"><span
+ style="font-family: monospace;">http://www.desy.de/~gaede/marlin</span></a></li>
+  <li><span style="font-family: monospace;"></span>Java web page: <span
+ style="font-family: monospace;"></span><span
+ style="font-family: monospace;"><a href="http://java.sun.com">http://java.sun.com</a><br>
+    </span></li>
+</ol>
+<br>
+<p> <a href="http://validator.w3.org/check?uri=referer"><img border="0"
+ src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01!"
+ height="31" width="88"></a>
+</p>
+</body>
+</html>

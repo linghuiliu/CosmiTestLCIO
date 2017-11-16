@@ -1,0 +1,59 @@
+/**
+\mainpage Dead and Noisy Channels Analysis for CALICE Test Beam
+
+\section Introduction
+
+Determining dead and noisy channels is based on the analysis of the channel
+ADC spectra recorded during a PMNoiseRun. These spectra are provided by \c
+ahcBinHst from the \c calice_daq package.
+
+\image html normal_channel_spectrum.png "Typical ADC spectrum of a channel in a noise run." 
+\image latex normal_channel_spectrum.png "Typical ADC spectrum of a channel in a noise run." width=0.7\textwidth
+
+Only the mean of the distribution (the pedestal in case of a noise run) and
+the width (RMS) are used.
+
+\section Definition Definition of dead and noisy
+Currently dead and noisy are only defined from the RMS.
+\subsection Noisy
+Looking at RMS sectrum
+of all channels one sees that most channels have an RMS around 40, but some
+channels (the noisy ones) have much larger RMS, causing a tail in the
+distribution.
+
+\image html rms_spectrum.png "The RMS spectrum of all channels." 
+\image latex rms_spectrum.png "The RMS spectrum of all channels." width=0.7\textwidth
+
+<b>Definiton of noisy: RMS > 140 </b>
+
+\subsection Dead 
+A comparisan with data and LEDVCalib runs has shown that the peak at the lover
+end of the distribution contains basically only dead channels (see section
+"Comparing two runs").
+
+\image html rms_spectrum_zoom.png "The RMS spectrum of all channels." 
+\image latex rms_spectrum_zoom.png "The RMS spectrum of all channels." width=0.7\textwidth
+
+<b>Definiton of dead: RMS < 20.5 </b>
+
+\section SWOverview Software overview
+The software basically consists of two parts
+\li The root library \c libDeadAndNoisyTools which conveniently allows to
+access the RMS and pedestal values of one or several runs
+\li The \c createBadChannelsList executable which creates the list of bad
+channels to be written to the database.
+
+\subsection pages Detailed descritons
+\li \ref downloadInstall "Download and Installation"
+\li The \ref createBadChannelsList_exe "createBadChannelsList" executable
+\li The \ref rootLib "libDeadAndNoisyTools" root library
+\li \ref Examples
+
+\section Outlook Outlook
+\todo Implement convenience draw functions which create the default plots with
+well formated axis labels etc.
+\todo Transfer missing functionality from C scripts.
+\todo Maybe implement GUI?
+
+	
+*/

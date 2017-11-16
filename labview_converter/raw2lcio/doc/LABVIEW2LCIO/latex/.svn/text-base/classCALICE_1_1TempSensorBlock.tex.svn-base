@@ -1,0 +1,55 @@
+\section{CALICE::Temp\-Sensor\-Block Class Reference}
+\label{classCALICE_1_1TempSensorBlock}\index{CALICE::TempSensorBlock@{CALICE::TempSensorBlock}}
+Class for the Labview Data as acquired by the AHCAL Labview.  
+
+
+{\tt \#include $<$Temp\-Sensor\-Block.hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\bf{Temp\-Sensor\-Block} ()\label{classCALICE_1_1TempSensorBlock_7c2dc562b8c3c1887aa7d263579523ad}
+
+\item 
+\bf{Temp\-Sensor\-Block} (int Temp\-Sensor\-Number, float Temp\-Sensor\-Value)\label{classCALICE_1_1TempSensorBlock_ca35f21019ba0407497f9c509835976e}
+
+\begin{CompactList}\small\item\em Convenient c'tor. \item\end{CompactList}\item 
+\bf{Temp\-Sensor\-Block} (LCObject $\ast$obj)\label{classCALICE_1_1TempSensorBlock_61792bc01286fb9b6a569c02359fd902}
+
+\begin{CompactList}\small\item\em 'Copy constructor' needed to interpret LCCollection read from file/database. \item\end{CompactList}\item 
+virtual \bf{$\sim$Temp\-Sensor\-Block} ()\label{classCALICE_1_1TempSensorBlock_77cc86644f79638abbe6d35f237c2bed}
+
+\begin{CompactList}\small\item\em Important for memory handling. \item\end{CompactList}\item 
+int \bf{Get\-Temp\-Sensor\-Number} () const \label{classCALICE_1_1TempSensorBlock_257f547cd706c249f9aef85851ecc3db}
+
+\item 
+float \bf{Get\-Temp\-Sensor\-Value} () const \label{classCALICE_1_1TempSensorBlock_de016e91981cebc6a6947cf6dd6ff5a9}
+
+\item 
+void \textbf{print} (std::ostream \&os, int)\label{classCALICE_1_1TempSensorBlock_a780928a17277879af13462c37253fb6}
+
+\item 
+const std::string \bf{get\-Type\-Name} () const \label{classCALICE_1_1TempSensorBlock_747a0c871fbd986c5a6de2804a318bbf}
+
+\begin{CompactList}\small\item\em Return the type of the class. \item\end{CompactList}\item 
+const std::string \bf{get\-Data\-Description} () const \label{classCALICE_1_1TempSensorBlock_8243e90e885c1aa4f83a3cf2aaae1e24}
+
+\begin{CompactList}\small\item\em Return a brief description of the data members. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Class for the Labview Data as acquired by the AHCAL Labview. 
+
+The class reflects that the data are received in the Labview \begin{Desc}
+\item[Author:]S. Lu DESY Hamburg \end{Desc}
+\begin{Desc}
+\item[Date:]Dec 17 2012 \end{Desc}
+
+
+
+
+Definition at line 23 of file Temp\-Sensor\-Block.hh.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+Temp\-Sensor\-Block.hh\end{CompactItemize}

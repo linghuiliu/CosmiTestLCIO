@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/public/calice/!svn/ver/4699/calice_tools/RootTreeWriter/trunk/engines
+END
+DriftChamberWriteEngine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/2071/calice_tools/RootTreeWriter/trunk/engines/DriftChamberWriteEngine.cc
+END
+TBTrackWriteEngine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/3921/calice_tools/RootTreeWriter/trunk/engines/TBTrackWriteEngine.cc
+END
+EventParameterWriteEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/public/calice/!svn/ver/3683/calice_tools/RootTreeWriter/trunk/engines/EventParameterWriteEngine.hh
+END
+CollectionParameterWriteEngine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/public/calice/!svn/ver/4631/calice_tools/RootTreeWriter/trunk/engines/CollectionParameterWriteEngine.cc
+END
+TrackFinderWriteEngine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/4631/calice_tools/RootTreeWriter/trunk/engines/TrackFinderWriteEngine.cc
+END
+DeepAnaWriteEngine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/3177/calice_tools/RootTreeWriter/trunk/engines/DeepAnaWriteEngine.cc
+END
+MCParticleWriteEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/3198/calice_tools/RootTreeWriter/trunk/engines/MCParticleWriteEngine.hh
+END
+HitWriteEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/4653/calice_tools/RootTreeWriter/trunk/engines/HitWriteEngine.hh
+END
+ASimCalorimeterHitWriteEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/public/calice/!svn/ver/4048/calice_tools/RootTreeWriter/trunk/engines/ASimCalorimeterHitWriteEngine.hh
+END
+BifWriteEngine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/4699/calice_tools/RootTreeWriter/trunk/engines/BifWriteEngine.cc
+END
+HcalTrackLarsEngine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/public/calice/!svn/ver/4631/calice_tools/RootTreeWriter/trunk/engines/HcalTrackLarsEngine.cc
+END
+TriggerWriteEngine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/4096/calice_tools/RootTreeWriter/trunk/engines/TriggerWriteEngine.cc
+END
+EnginesInclude.icc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/4664/calice_tools/RootTreeWriter/trunk/engines/EnginesInclude.icc
+END
+DriftChamberWriteEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/2066/calice_tools/RootTreeWriter/trunk/engines/DriftChamberWriteEngine.hh
+END
+TBTrackWriteEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/3921/calice_tools/RootTreeWriter/trunk/engines/TBTrackWriteEngine.hh
+END
+CollectionParameterWriteEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/public/calice/!svn/ver/3683/calice_tools/RootTreeWriter/trunk/engines/CollectionParameterWriteEngine.hh
+END
+TrackFinderWriteEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/4163/calice_tools/RootTreeWriter/trunk/engines/TrackFinderWriteEngine.hh
+END
+DeepAnaWriteEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/2084/calice_tools/RootTreeWriter/trunk/engines/DeepAnaWriteEngine.hh
+END
+EnginesAdd.icc
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/4664/calice_tools/RootTreeWriter/trunk/engines/EnginesAdd.icc
+END
+BifWriteEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/4664/calice_tools/RootTreeWriter/trunk/engines/BifWriteEngine.hh
+END
+HcalTrackLarsEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/public/calice/!svn/ver/4098/calice_tools/RootTreeWriter/trunk/engines/HcalTrackLarsEngine.hh
+END
+ShowerShapeEngine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/4631/calice_tools/RootTreeWriter/trunk/engines/ShowerShapeEngine.cc
+END
+TriggerWriteEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/4096/calice_tools/RootTreeWriter/trunk/engines/TriggerWriteEngine.hh
+END
+EventParameterWriteEngine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/public/calice/!svn/ver/4631/calice_tools/RootTreeWriter/trunk/engines/EventParameterWriteEngine.cc
+END
+MCParticleWriteEngine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/4031/calice_tools/RootTreeWriter/trunk/engines/MCParticleWriteEngine.cc
+END
+HitWriteEngine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/4653/calice_tools/RootTreeWriter/trunk/engines/HitWriteEngine.cc
+END
+ASimCalorimeterHitWriteEngine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/public/calice/!svn/ver/3740/calice_tools/RootTreeWriter/trunk/engines/ASimCalorimeterHitWriteEngine.cc
+END
+ShowerShapeEngine.hh
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/4085/calice_tools/RootTreeWriter/trunk/engines/ShowerShapeEngine.hh
+END

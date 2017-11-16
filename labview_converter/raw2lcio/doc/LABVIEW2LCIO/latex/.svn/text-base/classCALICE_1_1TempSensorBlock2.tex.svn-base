@@ -1,0 +1,79 @@
+\section{CALICE::Temp\-Sensor\-Block2 Class Reference}
+\label{classCALICE_1_1TempSensorBlock2}\index{CALICE::TempSensorBlock2@{CALICE::TempSensorBlock2}}
+Class for the Labview Data as acquired by the AHCAL Labview.  
+
+
+{\tt \#include $<$Temp\-Sensor\-Block2.hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\bf{Temp\-Sensor\-Block2} ()\label{classCALICE_1_1TempSensorBlock2_f38143a29ea3f11050f38dd0f7450916}
+
+\item 
+\bf{Temp\-Sensor\-Block2} (int LDANumber, int Port\-Number, int T1, int T2, int T3, int T4, int T5, int T6, int TDIF, int TPWR)\label{classCALICE_1_1TempSensorBlock2_1ff42e93847d9a7f14f73c5652988ba6}
+
+\begin{CompactList}\small\item\em Convenient c'tor. \item\end{CompactList}\item 
+\bf{Temp\-Sensor\-Block2} (LCObject $\ast$obj)\label{classCALICE_1_1TempSensorBlock2_2e2cd2e0cee6be53975c86a5b1e5961e}
+
+\begin{CompactList}\small\item\em 'Copy constructor' needed to interpret LCCollection read from file/database. \item\end{CompactList}\item 
+virtual \bf{$\sim$Temp\-Sensor\-Block2} ()\label{classCALICE_1_1TempSensorBlock2_949997ef4f112adca75b4c9cb1951164}
+
+\begin{CompactList}\small\item\em Important for memory handling. \item\end{CompactList}\item 
+int \bf{Get\-LDANumber} () const \label{classCALICE_1_1TempSensorBlock2_531f8320297f3ef302d07fd8ddc33ac8}
+
+\item 
+int \bf{Get\-Port\-Number} () const \label{classCALICE_1_1TempSensorBlock2_776695a7ae4d40e3221a24adf6b9b03f}
+
+\item 
+int \bf{Get\-T1} () const \label{classCALICE_1_1TempSensorBlock2_00301bc28bf3d97d8be10c67617ee4e6}
+
+\item 
+int \bf{Get\-T2} () const \label{classCALICE_1_1TempSensorBlock2_0923d251422b4f11431dc1fe38233bfa}
+
+\item 
+int \bf{Get\-T3} () const \label{classCALICE_1_1TempSensorBlock2_9659349390410b3d6d72ff96fc497712}
+
+\item 
+int \bf{Get\-T4} () const \label{classCALICE_1_1TempSensorBlock2_49950101bd1cb6654947ae9924d52d11}
+
+\item 
+int \bf{Get\-T5} () const \label{classCALICE_1_1TempSensorBlock2_3345151695c4d32aeb570ef78d068eae}
+
+\item 
+int \bf{Get\-T6} () const \label{classCALICE_1_1TempSensorBlock2_9d9584a309de51438cdd563231afd02a}
+
+\item 
+int \bf{Get\-TDIF} () const \label{classCALICE_1_1TempSensorBlock2_4d21b2916b90e4c2317b1c6caf4f9e35}
+
+\item 
+int \bf{Get\-TPWR} () const \label{classCALICE_1_1TempSensorBlock2_a9ad3435cd3e360e8b0665bf702d1d9c}
+
+\item 
+void \textbf{print} (std::ostream \&os, int)\label{classCALICE_1_1TempSensorBlock2_57a8d8b66742d0dfd5a87f528d853c41}
+
+\item 
+const std::string \bf{get\-Type\-Name} () const \label{classCALICE_1_1TempSensorBlock2_49d73b3f58c083affe79d384a95a8eba}
+
+\begin{CompactList}\small\item\em Return the type of the class. \item\end{CompactList}\item 
+const std::string \bf{get\-Data\-Description} () const \label{classCALICE_1_1TempSensorBlock2_389b229eec365db12afc8288099e7913}
+
+\begin{CompactList}\small\item\em Return a brief description of the data members. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Class for the Labview Data as acquired by the AHCAL Labview. 
+
+The class reflects that the data are received in the Labview \begin{Desc}
+\item[Author:]S. Lu DESY Hamburg \end{Desc}
+\begin{Desc}
+\item[Date:]Dec 17 2012 \end{Desc}
+
+
+
+
+Definition at line 23 of file Temp\-Sensor\-Block2.hh.
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+Temp\-Sensor\-Block2.hh\end{CompactItemize}

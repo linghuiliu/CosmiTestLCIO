@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/public/calice/!svn/ver/4696/calice_reco/trunk/clustering/src
+END
+HistogrammPT.cc
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/1900/calice_reco/trunk/clustering/src/HistogrammPT.cc
+END
+cernlib_utils.cc
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/1900/calice_reco/trunk/clustering/src/cernlib_utils.cc
+END
+DeepAnalysisProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/4627/calice_reco/trunk/clustering/src/DeepAnalysisProcessor.cc
+END
+B_Util_DA.cc
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/1900/calice_reco/trunk/clustering/src/B_Util_DA.cc
+END
+RecoUtil.cc
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/1900/calice_reco/trunk/clustering/src/RecoUtil.cc
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/4696/calice_reco/trunk/clustering/src/CMakeLists.txt
+END

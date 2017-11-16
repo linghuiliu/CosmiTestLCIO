@@ -1,0 +1,114 @@
+############################################
+#
+#  Example DigiSim steering file for Marlin
+#
+#  20050307 G.Lima - Created
+#
+############################################
+
+.begin Global  ---------------------------------------
+
+# specify one ore more input files (in one ore more lines)
+
+LCIOInputFiles /home/magnan/LCIOFILES/Mokka06-00_e-2GeV_angle0.slcio
+#LCIOInputFiles ../simjob.slcio ../simjob.slcio
+
+# the active processors that are called in the given order
+ActiveProcessors CalHitMapProcessor
+ActiveProcessors EMDigitizer
+ActiveProcessors CalorimeterHitsProcessor
+ActiveProcessors OutputProcessor
+
+# limit the number of processed records (run+evt):
+MaxRecordNumber 1000
+.end Global  -----------------------------------------------
+###########################################################
+
+#define the processor parameters after '.begin ProcessorName' :
+
+# the default output processor
+.begin OutputProcessor
+
+# mandatory processor type (the name of the class)
+ProcessorType LCIOOutputProcessor
+
+# the outputfile
+LCIOOutputFile Mokka06-00_e-2GeV_angle0_digi_test.slcio
+
+# lcio write mode, new overwrites existing files
+# append appends to existing files
+# if nothing specified create new file only if it doesn't exist
+LCIOWriteMode WRITE_NEW
+#LCIOWriteMode WRITE_APPEND
+
+.end -------------------------------------------------
+############################################################
+# Utility processor.  It fills hit maps for use by other processors,
+#  so they don't need to fill the same maps themselves
+
+.begin CalHitMapProcessor
+
+ProcessorType CalHitMapProcessor
+
+.end -------------------------------------------------
+############################################################
+# Cal digitizer processor.  Instantiates one or more calorimeter hit
+#  "modifiers", which together represent the full digitization process.
+######################################################################
+
+.begin EMDigitizer
+
+ProcessorType DigiSimProcessor
+
+InputCollection        ProtoDesy0205_ProtoSD03
+OutputCollection       MyRawCalorimeterHit
+#OutputCollectionType   RAWCALORIMETERHIT
+#OutputCollectionType   CALORIMETERHIT
+Raw2SimLinksCollection EcalProtoRaw2sim
+
+ModifierNames    EMGaussianGain EMAddRandomNoise EMThreshOnly
+#EMAddRandomNoise
+# 1./0.00016*47 = 293750
+# modifierName    Type                 Parameters (floats)
+EMFixedGain       GainDiscrimination   293750        0     0    0
+EMThreshOnly      GainDiscrimination         1       0    18    2.5
+
+EMSinglePass      GainDiscrimination   1000000       0    30    0
+
+EMGaussianGain    GainDiscrimination   293750     8812     0    0
+EMGainThresh      GainDiscrimination   1000000   50000    30    1.5
+
+EMDigiIdentity    SmearedLinear          1.2	   3.4
+
+#AM Addings
+#RandomNoiseModifier Parameters :  Noise of each of 30 layers,
+# plus coherent noise per layer as well,
+# then DebugMode, SymmetryOrder (1=prototype, 2=endcap, 8=barrel, 16=MAPS)
+# then TimeMean, TimeSigma (to generate a timestamp for the noise hits).
+EMAddRandomNoise  RandomNoiseModifier	5.8 6.0 6.0 5.8 6.0 5.8 6.0 6.0 5.7 6.0 5.6 6.1 5.8 6.2 6.0 6.0 5.8 5.9 5.8 6.0 6.0 6.0 6.0 6.0 6.3 5.7 6.0 6.0 6.0 6.0 0.0 0.0 0.0 0.0 3.1 0.0 3.0 6.5 0.0 1.6 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1 1 0 0
+
+.end -------------------------------------------------
+
+ ###########################################################
+# A processor to convert raw hits into calibrated hits.
+.begin CalorimeterHitsProcessor
+
+# mandatory processor type (the name of the class)
+ProcessorType CalorimeterHitsProcessor
+
+# Input collections to be converted
+# InputCollections EcalBarrRawHits HcalBarrRawHits
+InputCollections MyRawCalorimeterHit
+#InputCollectionsType RAWCALORIMETERHIT
+#InputCollectionsType CALORIMETERHIT
+
+# Output collections with calibrated hits
+# OutputCollections EcalBarrCalibHits HcalBarrCalibHits
+OutputCollections MyCalorimeterHit
+
+# Conversions based on simple factors (at least for now)
+# 1./47*0.00016 in GeV...
+EnergyFactor    3.40426e-6	
+TimeFactor	1.0
+
+.end -------------------------------------------------

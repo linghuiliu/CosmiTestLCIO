@@ -1,0 +1,1025 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/public/calice/!svn/ver/4734/calice_userlib/trunk/include
+END
+EcalModuleCalibration.hh
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/2766/calice_userlib/trunk/include/EcalModuleCalibration.hh
+END
+VetoThreshold.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/3663/calice_userlib/trunk/include/VetoThreshold.hh
+END
+DriftChamberParameter.hh
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/DriftChamberParameter.hh
+END
+RunLocation.hh
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/public/calice/!svn/ver/3219/calice_userlib/trunk/include/RunLocation.hh
+END
+CaliceException.hh
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/2519/calice_userlib/trunk/include/CaliceException.hh
+END
+DBInitString.hh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/4671/calice_userlib/trunk/include/DBInitString.hh
+END
+BoardID.hh
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/public/calice/!svn/ver/919/calice_userlib/trunk/include/BoardID.hh
+END
+ScECALNoisyChannel.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/4111/calice_userlib/trunk/include/ScECALNoisyChannel.hh
+END
+SatCorrItepCutOff.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/3666/calice_userlib/trunk/include/SatCorrItepCutOff.hh
+END
+to_binary_bitops.hh
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/to_binary_bitops.hh
+END
+BmlSlowRunDataBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/2246/calice_userlib/trunk/include/BmlSlowRunDataBlock.hh
+END
+EUDAQBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/public/calice/!svn/ver/4563/calice_userlib/trunk/include/EUDAQBlock.hh
+END
+LCHcalCalibrationObject2D.hh
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/2502/calice_userlib/trunk/include/LCHcalCalibrationObject2D.hh
+END
+TcmtHit.hh
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/public/calice/!svn/ver/2337/calice_userlib/trunk/include/TcmtHit.hh
+END
+SceSlowReadoutModBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/2456/calice_userlib/trunk/include/SceSlowReadoutModBlock.hh
+END
+AcquisitionData.hh
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/3452/calice_userlib/trunk/include/AcquisitionData.hh
+END
+RunTimeProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/4623/calice_userlib/trunk/include/RunTimeProcessor.hh
+END
+ScintCaloSlowReadoutModBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/2456/calice_userlib/trunk/include/ScintCaloSlowReadoutModBlock.hh
+END
+CaliceHit.hh
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/public/calice/!svn/ver/1193/calice_userlib/trunk/include/CaliceHit.hh
+END
+SaturationConstants.hh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/2254/calice_userlib/trunk/include/SaturationConstants.hh
+END
+BeamMomentum.hh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/3663/calice_userlib/trunk/include/BeamMomentum.hh
+END
+HstBase.hh
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/public/calice/!svn/ver/497/calice_userlib/trunk/include/HstBase.hh
+END
+ScECALOnePeADC.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/4093/calice_userlib/trunk/include/ScECALOnePeADC.hh
+END
+HcalModuleIndexReverseLookup.hh
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/2507/calice_userlib/trunk/include/HcalModuleIndexReverseLookup.hh
+END
+PedestalConstants.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/2254/calice_userlib/trunk/include/PedestalConstants.hh
+END
+AhcSlowReadoutModMapping.hh
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/3662/calice_userlib/trunk/include/AhcSlowReadoutModMapping.hh
+END
+FeStatList_t.hh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/2510/calice_userlib/trunk/include/FeStatList_t.hh
+END
+FeInfo.hh
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/FeInfo.hh
+END
+BmlEventData.hh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/4694/calice_userlib/trunk/include/BmlEventData.hh
+END
+CellIndex.hh
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/public/calice/!svn/ver/4460/calice_userlib/trunk/include/CellIndex.hh
+END
+AhcCern2010TempProvider.hh
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/3703/calice_userlib/trunk/include/AhcCern2010TempProvider.hh
+END
+RunInformation.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/2507/calice_userlib/trunk/include/RunInformation.hh
+END
+Ahc2CalibrationStatusBits.hh
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/4679/calice_userlib/trunk/include/Ahc2CalibrationStatusBits.hh
+END
+SimpleArray_t.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/1180/calice_userlib/trunk/include/SimpleArray_t.hh
+END
+TcmtEventIdentifier.hh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/3663/calice_userlib/trunk/include/TcmtEventIdentifier.hh
+END
+ExperimentalSetup.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/ExperimentalSetup.hh
+END
+Alignment.hh
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/public/calice/!svn/ver/3226/calice_userlib/trunk/include/Alignment.hh
+END
+LinearFitSlope.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/2272/calice_userlib/trunk/include/LinearFitSlope.hh
+END
+cloneUtils.hh
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/cloneUtils.hh
+END
+MIPConstants.hh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/2254/calice_userlib/trunk/include/MIPConstants.hh
+END
+CalibrationWriter.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/1192/calice_userlib/trunk/include/CalibrationWriter.hh
+END
+AhcConditions.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/1751/calice_userlib/trunk/include/AhcConditions.hh
+END
+LabviewBlock2.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/4448/calice_userlib/trunk/include/LabviewBlock2.hh
+END
+LinearFitConstant.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/2490/calice_userlib/trunk/include/LinearFitConstant.hh
+END
+TilesProduction.hh
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/1926/calice_userlib/trunk/include/TilesProduction.hh
+END
+DeadNoiseConstants.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/1558/calice_userlib/trunk/include/DeadNoiseConstants.hh
+END
+ModuleDescription.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/3226/calice_userlib/trunk/include/ModuleDescription.hh
+END
+EUDAQTempSensorBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/4568/calice_userlib/trunk/include/EUDAQTempSensorBlock.hh
+END
+TcmtEventBits.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/3410/calice_userlib/trunk/include/TcmtEventBits.hh
+END
+DetectorTransformation.hh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/DetectorTransformation.hh
+END
+TriggerCheck.hh
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/public/calice/!svn/ver/497/calice_userlib/trunk/include/TriggerCheck.hh
+END
+AhcTempSensorIndex.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/2257/calice_userlib/trunk/include/AhcTempSensorIndex.hh
+END
+VetoFraction.hh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/3663/calice_userlib/trunk/include/VetoFraction.hh
+END
+ReadOutConfigurationBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/ReadOutConfigurationBlock.hh
+END
+Ahc2Calibrations.hh
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/4679/calice_userlib/trunk/include/Ahc2Calibrations.hh
+END
+BeTrgConf.hh
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/BeTrgConf.hh
+END
+TilesItepSaturation.hh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/1534/calice_userlib/trunk/include/TilesItepSaturation.hh
+END
+ModuleLocation.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/2518/calice_userlib/trunk/include/ModuleLocation.hh
+END
+InterConstants.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/2254/calice_userlib/trunk/include/InterConstants.hh
+END
+HcalBoardsConn.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/HcalBoardsConn.hh
+END
+AhcMedianFilterTempProvider.hh
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/4152/calice_userlib/trunk/include/AhcMedianFilterTempProvider.hh
+END
+LinearFitCompound.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/2853/calice_userlib/trunk/include/LinearFitCompound.hh
+END
+MultipleConditionsChangeDelegator.hh
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/2511/calice_userlib/trunk/include/MultipleConditionsChangeDelegator.hh
+END
+TrgReadoutConfigurationBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/TrgReadoutConfigurationBlock.hh
+END
+BeTrgPollData.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/3226/calice_userlib/trunk/include/BeTrgPollData.hh
+END
+TriggerBits.hh
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/public/calice/!svn/ver/3746/calice_userlib/trunk/include/TriggerBits.hh
+END
+TriggerHistory.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/2511/calice_userlib/trunk/include/TriggerHistory.hh
+END
+TcmtConnection.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/TcmtConnection.hh
+END
+AhcSlowReadoutModMapper.hh
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/2516/calice_userlib/trunk/include/AhcSlowReadoutModMapper.hh
+END
+TdcConnection.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/2205/calice_userlib/trunk/include/TdcConnection.hh
+END
+ClusterShapesTyped.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/3409/calice_userlib/trunk/include/ClusterShapesTyped.hh
+END
+FeEvent.hh
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/public/calice/!svn/ver/3226/calice_userlib/trunk/include/FeEvent.hh
+END
+FeConfigurationBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/2766/calice_userlib/trunk/include/FeConfigurationBlock.hh
+END
+BmlEventDataSup.hh
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/3318/calice_userlib/trunk/include/BmlEventDataSup.hh
+END
+RunTimeInfo.hh
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/RunTimeInfo.hh
+END
+AhcVfeConfigurationBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/3046/calice_userlib/trunk/include/AhcVfeConfigurationBlock.hh
+END
+HstTGraphErrors.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/497/calice_userlib/trunk/include/HstTGraphErrors.hh
+END
+TdcIndex.hh
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/public/calice/!svn/ver/2205/calice_userlib/trunk/include/TdcIndex.hh
+END
+TriggerHandlerCalice.hh
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/3226/calice_userlib/trunk/include/TriggerHandlerCalice.hh
+END
+NVector_t.hh
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/public/calice/!svn/ver/2511/calice_userlib/trunk/include/NVector_t.hh
+END
+RtypesSubSet.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/public/calice/!svn/ver/3594/calice_userlib/trunk/include/RtypesSubSet.h
+END
+BmlCaen1290ReadoutConfigurationBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/3253/calice_userlib/trunk/include/BmlCaen1290ReadoutConfigurationBlock.hh
+END
+AverageSimple_t.hh
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/2254/calice_userlib/trunk/include/AverageSimple_t.hh
+END
+RunTimeWhizard.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/RunTimeWhizard.hh
+END
+ConditionsDataWriteHandler.hh
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/2511/calice_userlib/trunk/include/ConditionsDataWriteHandler.hh
+END
+DaqTypeDataBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/3226/calice_userlib/trunk/include/DaqTypeDataBlock.hh
+END
+MappingAndAlignment.hh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/3226/calice_userlib/trunk/include/MappingAndAlignment.hh
+END
+EncodingStringHelper.hh
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/2275/calice_userlib/trunk/include/EncodingStringHelper.hh
+END
+collection_names.hh
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/3721/calice_userlib/trunk/include/collection_names.hh
+END
+HcalCassVsCrc.hh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/497/calice_userlib/trunk/include/HcalCassVsCrc.hh
+END
+LinearFitResultLCIO.hh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/2264/calice_userlib/trunk/include/LinearFitResultLCIO.hh
+END
+md5.hh
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/public/calice/!svn/ver/923/calice_userlib/trunk/include/md5.hh
+END
+RunLocationWhizard.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/RunLocationWhizard.hh
+END
+DifTrigger.hh
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/public/calice/!svn/ver/3449/calice_userlib/trunk/include/DifTrigger.hh
+END
+SimpleValue.hh
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/public/calice/!svn/ver/2853/calice_userlib/trunk/include/SimpleValue.hh
+END
+BitSet.hh
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/public/calice/!svn/ver/2853/calice_userlib/trunk/include/BitSet.hh
+END
+BmlCaen767ReadoutConfigurationBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/3334/calice_userlib/trunk/include/BmlCaen767ReadoutConfigurationBlock.hh
+END
+EmcStageDataBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/EmcStageDataBlock.hh
+END
+HcalCellIndex.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/2502/calice_userlib/trunk/include/HcalCellIndex.hh
+END
+ConnCellMappingHcal.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/497/calice_userlib/trunk/include/ConnCellMappingHcal.hh
+END
+FastCaliceHit.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/2337/calice_userlib/trunk/include/FastCaliceHit.hh
+END
+ScECALMIPfit.hh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/4093/calice_userlib/trunk/include/ScECALMIPfit.hh
+END
+BmlCaenConfigurationBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/3338/calice_userlib/trunk/include/BmlCaenConfigurationBlock.hh
+END
+BeamParameter.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/BeamParameter.hh
+END
+ConditionsChangeDelegator.hh
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/2511/calice_userlib/trunk/include/ConditionsChangeDelegator.hh
+END
+DhcRawChipContent.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/3722/calice_userlib/trunk/include/DhcRawChipContent.hh
+END
+ScECALTemperature.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/4093/calice_userlib/trunk/include/ScECALTemperature.hh
+END
+SimpleValueVector.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/4679/calice_userlib/trunk/include/SimpleValueVector.hh
+END
+LinearRegression.hh
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/662/calice_userlib/trunk/include/LinearRegression.hh
+END
+SaturationParameters.hh
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/4145/calice_userlib/trunk/include/SaturationParameters.hh
+END
+TcmtSaturationConstants.hh
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/2254/calice_userlib/trunk/include/TcmtSaturationConstants.hh
+END
+BeamParameterException.hh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/BeamParameterException.hh
+END
+LCHcalCalibrationObject.hh
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/1989/calice_userlib/trunk/include/LCHcalCalibrationObject.hh
+END
+LCGenericObjectImplExt.hh
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/497/calice_userlib/trunk/include/LCGenericObjectImplExt.hh
+END
+BmlCaenReadoutConfigurationBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/public/calice/!svn/ver/3332/calice_userlib/trunk/include/BmlCaenReadoutConfigurationBlock.hh
+END
+HodoscopeEventDataBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/HodoscopeEventDataBlock.hh
+END
+EventHeader.hh
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/EventHeader.hh
+END
+ConditionsDataWriter.hh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/937/calice_userlib/trunk/include/ConditionsDataWriter.hh
+END
+TilesItep.hh
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/public/calice/!svn/ver/1524/calice_userlib/trunk/include/TilesItep.hh
+END
+CaliceElogInfo.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/3667/calice_userlib/trunk/include/CaliceElogInfo.hh
+END
+SiPMCalibrations.hh
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/3051/calice_userlib/trunk/include/SiPMCalibrations.hh
+END
+BeamMetaData.hh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/2404/calice_userlib/trunk/include/BeamMetaData.hh
+END
+userlib.hh
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/public/calice/!svn/ver/3748/calice_userlib/trunk/include/userlib.hh
+END
+AhcSimpleTempProvider.hh
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/3613/calice_userlib/trunk/include/AhcSimpleTempProvider.hh
+END
+Ahc2HardwareConnection.hh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/4592/calice_userlib/trunk/include/Ahc2HardwareConnection.hh
+END
+ErrorBits.hh
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/public/calice/!svn/ver/3451/calice_userlib/trunk/include/ErrorBits.hh
+END
+RunTimeConditionsHandler.hh
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/3053/calice_userlib/trunk/include/RunTimeConditionsHandler.hh
+END
+BinnedVector.hh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/4626/calice_userlib/trunk/include/BinnedVector.hh
+END
+DaqRunSummaryBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/DaqRunSummaryBlock.hh
+END
+DAQconnection.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/2276/calice_userlib/trunk/include/DAQconnection.hh
+END
+HstChanNoise.hh
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/public/calice/!svn/ver/497/calice_userlib/trunk/include/HstChanNoise.hh
+END
+ScECALIntercalib.hh
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/4093/calice_userlib/trunk/include/ScECALIntercalib.hh
+END
+CellQuality.hh
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/public/calice/!svn/ver/3504/calice_userlib/trunk/include/CellQuality.hh
+END
+AhcTempProvider.hh
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/3613/calice_userlib/trunk/include/AhcTempProvider.hh
+END
+Average_t.hh
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/public/calice/!svn/ver/2335/calice_userlib/trunk/include/Average_t.hh
+END
+SatCorrItep.hh
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/public/calice/!svn/ver/4146/calice_userlib/trunk/include/SatCorrItep.hh
+END
+AhcSlowReadoutBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/2134/calice_userlib/trunk/include/AhcSlowReadoutBlock.hh
+END
+ConfStatList_t.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/2510/calice_userlib/trunk/include/ConfStatList_t.hh
+END
+TriggerHandler.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/TriggerHandler.hh
+END
+DhcReadoutConfBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/3789/calice_userlib/trunk/include/DhcReadoutConfBlock.hh
+END
+ScECALMapping.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/4093/calice_userlib/trunk/include/ScECALMapping.hh
+END
+LCGenericObjectImplCloner.hh
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/LCGenericObjectImplCloner.hh
+END
+CaliceConditions.hh
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/1194/calice_userlib/trunk/include/CaliceConditions.hh
+END
+checksumcalculator.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/checksumcalculator.hh
+END
+DCIndex.hh
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/public/calice/!svn/ver/2205/calice_userlib/trunk/include/DCIndex.hh
+END
+SiPMVolCorr.hh
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/public/calice/!svn/ver/497/calice_userlib/trunk/include/SiPMVolCorr.hh
+END
+BmlCaen1290ConfigurationBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/3253/calice_userlib/trunk/include/BmlCaen1290ConfigurationBlock.hh
+END
+SatCorrFunction.hh
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/4122/calice_userlib/trunk/include/SatCorrFunction.hh
+END
+CellMappingHcal.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/497/calice_userlib/trunk/include/CellMappingHcal.hh
+END
+BeEvent.hh
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/public/calice/!svn/ver/3226/calice_userlib/trunk/include/BeEvent.hh
+END
+stringFromToInts.hh
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/3656/calice_userlib/trunk/include/stringFromToInts.hh
+END
+EventStatList_t.hh
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/2510/calice_userlib/trunk/include/EventStatList_t.hh
+END
+ScECALGainfit.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/4111/calice_userlib/trunk/include/ScECALGainfit.hh
+END
+AhcSlowReadoutModBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/AhcSlowReadoutModBlock.hh
+END
+AhcAmplitude.hh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/4049/calice_userlib/trunk/include/AhcAmplitude.hh
+END
+FeTrgData.hh
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/public/calice/!svn/ver/3226/calice_userlib/trunk/include/FeTrgData.hh
+END
+TempGainConstants.hh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/calice/!svn/ver/1559/calice_userlib/trunk/include/TempGainConstants.hh
+END
+AdcBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/public/calice/!svn/ver/3226/calice_userlib/trunk/include/AdcBlock.hh
+END
+ModuleConnection.hh
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/2508/calice_userlib/trunk/include/ModuleConnection.hh
+END
+BeTrgEvent.hh
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/public/calice/!svn/ver/3226/calice_userlib/trunk/include/BeTrgEvent.hh
+END
+SiPMCalibrationStatusBits.hh
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/3052/calice_userlib/trunk/include/SiPMCalibrationStatusBits.hh
+END
+AverageValue.hh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/public/calice/!svn/ver/2245/calice_userlib/trunk/include/AverageValue.hh
+END
+BmlCaen767ConfigurationBlock.hh
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/3335/calice_userlib/trunk/include/BmlCaen767ConfigurationBlock.hh
+END
+GainConstants.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/2254/calice_userlib/trunk/include/GainConstants.hh
+END
+Ahc2SatCorr.hh
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/public/calice/!svn/ver/4644/calice_userlib/trunk/include/Ahc2SatCorr.hh
+END
+SiPMMappingHcal.hh
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/497/calice_userlib/trunk/include/SiPMMappingHcal.hh
+END
+HcalTileIndex.hh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/4592/calice_userlib/trunk/include/HcalTileIndex.hh
+END
+TestCondDataProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/497/calice_userlib/trunk/include/TestCondDataProcessor.hh
+END
+ScECALParameters.hh
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/4107/calice_userlib/trunk/include/ScECALParameters.hh
+END
+GLTimeUtil.hh
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/public/calice/!svn/ver/2337/calice_userlib/trunk/include/GLTimeUtil.hh
+END

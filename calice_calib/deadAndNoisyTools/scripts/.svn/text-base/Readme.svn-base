@@ -1,0 +1,16 @@
+Most of the shell scripts here need a workdir with the following directory structure inside the workdir:
+
+data
+data/run
+data/log
+data/run
+data/slw
+data/sum
+data/temp
+
+MakeRootFiles_NN.sh:
+A script to run ahcBinHst on a list of runs. The bin files must be in data/run.
+For PMNoise runs just give the list of run numbers. For beam data runs add the
+ -o0 option. This only processes the configs %0, which are the PmNoise configs
+in the beam data files.
+You can also use -o1, which gives the LED configs.

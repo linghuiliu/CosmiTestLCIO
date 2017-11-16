@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/public/calice/!svn/ver/4736/calice_reco/trunk/recoSiPM/include
+END
+PedestalProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/3779/calice_reco/trunk/recoSiPM/include/PedestalProcessor.hh
+END
+SiPMCalibrationsProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/4559/calice_reco/trunk/recoSiPM/include/SiPMCalibrationsProcessor.hh
+END
+Ahc2CalibrateProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/4736/calice_reco/trunk/recoSiPM/include/Ahc2CalibrateProcessor.hh
+END
+SiPMTemperatureProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/3060/calice_reco/trunk/recoSiPM/include/SiPMTemperatureProcessor.hh
+END
+Ahc2CalibrationsProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/4680/calice_reco/trunk/recoSiPM/include/Ahc2CalibrationsProcessor.hh
+END
+SiPMCalibrateProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/4155/calice_reco/trunk/recoSiPM/include/SiPMCalibrateProcessor.hh
+END

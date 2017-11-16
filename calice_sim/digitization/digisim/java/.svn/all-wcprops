@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/public/calice/!svn/ver/1871/calice_sim/trunk/digitization/digisim/java
+END
+build
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/643/calice_sim/trunk/digitization/digisim/java/build
+END
+BasicPlots.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/1691/calice_sim/trunk/digitization/digisim/java/BasicPlots.java
+END
+RawHistos.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/1871/calice_sim/trunk/digitization/digisim/java/RawHistos.java
+END
+EcalRawHistos.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/1691/calice_sim/trunk/digitization/digisim/java/EcalRawHistos.java
+END
+files.lis
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/1871/calice_sim/trunk/digitization/digisim/java/files.lis
+END
+HcalRawHistos.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/1691/calice_sim/trunk/digitization/digisim/java/HcalRawHistos.java
+END
+TcmtRawHistos.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/1691/calice_sim/trunk/digitization/digisim/java/TcmtRawHistos.java
+END
+.cvsignore
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/1691/calice_sim/trunk/digitization/digisim/java/.cvsignore
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/52/calice_sim/trunk/digitization/digisim/java/README
+END

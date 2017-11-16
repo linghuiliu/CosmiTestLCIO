@@ -1,0 +1,80 @@
+10
+
+dir
+4758
+https://svnsrv.desy.de/public/calice/calice_calib/trunk
+https://svnsrv.desy.de/public/calice
+
+
+
+2016-11-29T16:07:23.405379Z
+4744
+ebrianne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+d1deb40d-bcc4-47cc-9d27-f84b3a1afcb8
+
+deadAndNoisyTools
+dir
+
+calibmulti
+dir
+
+fitmip
+dir
+
+documentation
+dir
+
+calib
+dir
+
+holdAnalysis
+dir
+
+CMakeLists.txt
+file
+
+
+
+
+2017-06-08T17:44:19.000000Z
+a2e3b31130887b39313c7f3db8ae6a1e
+2016-08-10T13:06:55.874560Z
+4698
+ebrianne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1226
+

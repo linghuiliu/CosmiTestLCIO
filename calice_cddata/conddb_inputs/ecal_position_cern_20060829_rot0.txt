@@ -1,0 +1,8 @@
+validity: 2006/08/29 18:55:10  2006/08/31 11:00:00
+# runs 300000 300239
+rotationAngleZX:   0
+rotationX0:        0
+rotationZ0:       -11.64
+detectorPostionX: -0.47
+detectorPostionY: -3.95
+detectorPostionZ:  96.09

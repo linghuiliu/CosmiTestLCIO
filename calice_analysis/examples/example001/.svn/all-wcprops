@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/public/calice/!svn/ver/3965/calice_analysis/trunk/examples/example001
+END
+example001_anaReco.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/public/calice/!svn/ver/3960/calice_analysis/trunk/examples/example001/example001_anaReco.xml
+END
+example001_makePlots_3DProfile.C
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/public/calice/!svn/ver/3965/calice_analysis/trunk/examples/example001/example001_makePlots_3DProfile.C
+END
+example001_reco.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/3960/calice_analysis/trunk/examples/example001/example001_reco.xml
+END
+example001_makePlots_anaReco.C
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/public/calice/!svn/ver/3965/calice_analysis/trunk/examples/example001/example001_makePlots_anaReco.C
+END
+example001_CutHelper.hh
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/3965/calice_analysis/trunk/examples/example001/example001_CutHelper.hh
+END
+example001_reco_altMip.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/3960/calice_analysis/trunk/examples/example001/example001_reco_altMip.xml
+END

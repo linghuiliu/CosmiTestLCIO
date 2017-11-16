@@ -1,0 +1,15 @@
+#ifndef SCECALPARAMETERS_H
+#define SCECALPARAMETERS_H 1
+
+
+// At FNAL beam test
+#define ScECAL_NSLOT 2
+#define ScECAL_NFE   8
+#define ScECAL_NCHIP 12
+#define ScECAL_NCHAN 18
+
+#define ScECAL_NLAYERS 30
+#define ScECAL_NSTRIPS 72
+#define ScECAL_NTOTALSTRIPS 2160
+#define ScECAL_NCONFIGS 11
+#endif

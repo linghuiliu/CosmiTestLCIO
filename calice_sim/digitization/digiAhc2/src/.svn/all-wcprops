@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/public/calice/!svn/ver/4757/calice_sim/trunk/digitization/digiAhc2/src
+END
+Ahc2CollectionMerger.cc
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/4737/calice_sim/trunk/digitization/digiAhc2/src/Ahc2CollectionMerger.cc
+END
+Ahc2ROCThresholdProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/public/calice/!svn/ver/4737/calice_sim/trunk/digitization/digiAhc2/src/Ahc2ROCThresholdProcessor.cc
+END
+Ahc2SiPMStatisticProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/public/calice/!svn/ver/4748/calice_sim/trunk/digitization/digiAhc2/src/Ahc2SiPMStatisticProcessor.cc
+END
+Ahc2TimeSmearingProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/public/calice/!svn/ver/4757/calice_sim/trunk/digitization/digiAhc2/src/Ahc2TimeSmearingProcessor.cc
+END
+Ahc2TriggeredChannels.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/4754/calice_sim/trunk/digitization/digiAhc2/src/Ahc2TriggeredChannels.cpp
+END
+Ahc2AppendProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/4737/calice_sim/trunk/digitization/digiAhc2/src/Ahc2AppendProcessor.cc
+END
+Ahc2MIP2GeVProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/4737/calice_sim/trunk/digitization/digiAhc2/src/Ahc2MIP2GeVProcessor.cc
+END
+Ahc2TriggerSim.cc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/4749/calice_sim/trunk/digitization/digiAhc2/src/Ahc2TriggerSim.cc
+END

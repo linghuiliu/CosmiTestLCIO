@@ -1,0 +1,18 @@
+//=============== Documentation of installation procedure =======================
+
+/**
+ * \addtogroup install Install
+ * General installation information \subpage general_install
+ */
+
+
+/**
+
+\page general_install Install RootTreeWriter
+
+Use the cmake base install system.  
+
+@todo Write docu, how to use cmake
+
+*/
+

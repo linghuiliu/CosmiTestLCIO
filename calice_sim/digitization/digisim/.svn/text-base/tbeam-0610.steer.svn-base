@@ -1,0 +1,254 @@
+############################################
+#
+#  Example DigiSim steering file for Marlin
+#
+#  20050307 G.Lima - Created for CALICE tbeam prototype
+#
+############################################
+
+.begin Global  ---------------------------------------
+
+# specify one ore more input files (in one ore more lines)
+
+LCIOInputFiles inputfile
+#LCIOInputFiles ../simjob.slcio ../simjob.slcio
+
+# the active processors that are called in the given order
+  ActiveProcessors CalHitMapProcessor
+## ActiveProcessors TBhcalGangingProcessor  ### does not work yet...
+  ActiveProcessors EMDigitizer
+  ActiveProcessors HADDigitizer
+  ActiveProcessors TCDigitizer
+  ActiveProcessors EcalCalibrationProcessor
+  ActiveProcessors HcalCalibrationProcessor
+  ActiveProcessors TcmtCalibrationProcessor
+  ActiveProcessors AnalysisProcessor
+  ActiveProcessors OutputProcessor
+
+# limit the number of processed records (run+evt):
+MaxRecordNumber  10001
+.end Global  -----------------------------------------------
+###########################################################
+
+#define the processor parameters after '.begin ProcessorName' :
+
+# the default output processor
+.begin OutputProcessor
+
+# mandatory processor type (the name of the class)
+ProcessorType LCIOOutputProcessor
+
+# the outputfile
+LCIOOutputFile marlin.slcio
+
+# lcio write mode, new overwrites existing files
+# append appends to existing files
+# if nothing specified create new file only if it doesn't exist
+LCIOWriteMode WRITE_NEW
+#LCIOWriteMode WRITE_APPEND
+
+.end -------------------------------------------------
+###########################################################
+# A processor to convert raw hits into calibrated hits.
+#define the module parameters after '.begin ModuleName' :
+.begin TBhcalGangingProcessor  
+
+# mandatory module type (the name of the class)
+ProcessorType TB03ahcalGangingProcessor
+RequiredCollection TBhcal06_01_hcalSD
+OutputCollection TBhcal06_01_hcalSD_ganged
+
+#Choose beween 'user' and 'default' setting
+#choosing default makes all of the following paramters
+#ineffective
+Setting default
+
+.end -------------------------------------------------
+############################################################
+# Utility processor.  It fills hit maps for use by other processors,
+#  so they don't need to fill the same maps themselves
+
+.begin CalHitMapProcessor
+
+ProcessorType CalHitMapProcessor
+
+.end -------------------------------------------------
+############################################################
+# Cal digitizer processor.  Instantiates one or more calorimeter hit
+#  "modifiers", which together represent the full digitization process.
+
+.begin EMDigitizer
+
+ProcessorType DigiSimProcessor
+
+InputCollection  ProtoCern1006_01_ProtoSD03
+OutputCollection EcalRawCollection
+Raw2SimLinksCollection EMraw2simLinks
+
+# Use this as a unit converter into RawCalHits
+ModifierNames      EMEnergyThreshold  EMmipCalibration
+
+# energy threshold at approx 0.5 mip peak
+EMEnergyThreshold  GainDiscrimination   1000000    0    77    0
+EMmipCalibration   GainDiscrimination   6.49       0    0    0
+
+#.. Not used, here as examples only
+# modifierName     Type                 Parameters (floats)
+EMFixedGain        GainDiscrimination   1000000       0     0    0
+EMThreshOnly       GainDiscrimination         1       0    30    0
+
+EMSinglePass       GainDiscrimination   1000000       0    30    0
+
+EMGaussianGain     GainDiscrimination   1000000   50000     0    0
+EMGainThresh       GainDiscrimination   1000000   50000    30    1.5
+
+EMDigiIdentity     SmearedGain          1000000	     0
+
+
+.end -------------------------------------------------
+############################################################
+
+.begin HADDigitizer
+
+ProcessorType DigiSimProcessor
+
+InputCollection  TBhcal06_01_hcalSD_ganged
+OutputCollection HcalRawCollection
+Raw2SimLinksCollection HADraw2simLinks
+
+# Use this as a unit converter into RawCalHits
+ModifierNames     HDEnergyThreshold  HDCalib
+
+#.. Remap cellid from Mokka (YYXXLL) to CALICE TB convention (M:3,S-1:3,I:9,J:9,K-1:6)
+#ModifierNames    HDMapII HDEnergyThreshold  HDCalib  # GL:HDMapII screws up hit positions...
+#HDMapII	           AhcalRemapModifier
+
+# energy threshold at approx 0.2 mip peak
+HDEnergyThreshold  GainDiscrimination   1000000       0   167    0
+HDCalib            GainDiscrimination      1.18       0     0   0
+
+# modifierName     Type                 Parameters (floats)
+HADFixedGain       GainDiscrimination   1000000       0     0    0
+HADThreshOnly      GainDiscrimination         1       0   120    0
+HADSinglePass      GainDiscrimination   1000000       0   120    0
+HADGaussianGain    GainDiscrimination   1000000   50000     0    0
+HADGainThresh      GainDiscrimination   1000000   50000   120    2.4
+
+HADDigiIdentity    SmearedGain          1000000	     0
+
+.end -------------------------------------------------
+############################################################
+# Cal digitizer processor.  Instantiates one or more calorimeter hit
+#  "modifiers", which together represent the full digitization process.
+
+.begin TCDigitizer
+
+# Use this as a unit converter into RawCalHits
+ProcessorType DigiSimProcessor
+
+InputCollection  TBcatcher06_01_catcherSD
+OutputCollection TcmtRawCollection
+Raw2SimLinksCollection TCraw2simLinks
+
+# Gangs square cells into strips and SimCalHits into RawCalHits
+ModifierNames    TCganging TCxtalk TCEnergyMultiplier  TCCalib
+
+TCganging          TcmtGangingModifier  1000000       0     0    0
+
+TCxtalk		   TcmtCrosstalk        0.07
+
+#.. energy threshold at approx 0.2 mip peak
+TCEnergyMultiplier GainDiscrimination   1000000       0     0   0
+
+#.. mip calibration
+TCCalib            GainDiscrimination     1.29       0     0   0
+
+#.. other modifiers, here only as examples
+# modifierName     Type                 Parameters (floats)
+TCEnergyThreshold  GainDiscrimination   1000000       0   167   0
+TCFixedGain        GainDiscrimination   1000000       0     1    0
+TCThreshOnly       GainDiscrimination         1       0    30    0
+TCSinglePass       GainDiscrimination   1000000       0    30    0
+
+TCGaussianGain     GainDiscrimination   1000000   50000     0    0
+TCGainThresh       GainDiscrimination   1000000   50000    30    1.5
+
+TCDigiIdentity     SmearedGain          1000000	     0
+
+.end -------------------------------------------------
+###########################################################
+# A processor to convert raw hits into calibrated hits.
+.begin EcalCalibrationProcessor
+
+# mandatory processor type (the name of the class)
+ProcessorType CalorimeterHitsProcessor
+
+# Input collections to be converted
+InputCollection EcalRawCollection
+
+# Reference collections for cell positions
+PositionReference  ProtoCern1006_01_ProtoSD03
+
+# Output collections with calibrated hits
+OutputCollection EmcDigiCalorimeterHits
+
+# Set MIP peak to be centered at 1
+EnergyFactor	1.0e-3
+TimeFactor	1.0e-6
+
+.end -------------------------------------------------
+###########################################################
+# A processor to convert raw hits into calibrated hits.
+.begin HcalCalibrationProcessor
+
+# mandatory processor type (the name of the class)
+ProcessorType AhcalCalorimeterHitsProcessor
+
+# Input collections to be converted
+InputCollection HcalRawCollection
+
+# Reference collections for cell positions
+PositionReference  TBhcal06_01_hcalSD_ganged
+
+# Output collections with calibrated hits
+OutputCollection AhcDigiCalorimeterHits
+
+# Set MIP peak to be centered at 1
+EnergyFactor	1.0e-3
+TimeFactor	1.0e-6
+
+.end -------------------------------------------------
+###########################################################
+# A processor to convert raw hits into calibrated hits.
+.begin TcmtCalibrationProcessor
+
+# mandatory processor type (the name of the class)
+ProcessorType CalorimeterHitsProcessor
+
+# Input collections to be converted
+InputCollection TcmtRawCollection
+
+# Reference collections for cell positions
+PositionReference  tcmtPositions-TBCern1006_1.dat
+
+# Output collections with calibrated hits
+OutputCollection TcmDigiCalorimeterHits
+
+# Set MIP peak to be centered at 1
+EnergyFactor	1.0e-3
+TimeFactor	1.0e-6
+
+.end -------------------------------------------------
+###########################################################
+# A processor for analysis
+.begin AnalysisProcessor
+
+# mandatory processor type (the name of the class)
+ProcessorType Analysis
+
+# Input collections
+EcalCollectionName EmcDigiCalorimeterHits
+HcalCollectionName AhcDigiCalorimeterHits
+TcmtCollectionName TcmDigiCalorimeterHits
+
+.end -------------------------------------------------

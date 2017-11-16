@@ -1,0 +1,95 @@
+\section{CALICE::Root\-Tree\-Generator2 Class Reference}
+\label{classCALICE_1_1RootTreeGenerator2}\index{CALICE::RootTreeGenerator2@{CALICE::RootTreeGenerator2}}
+Class to process Labview raw.  
+
+
+{\tt \#include $<$Root\-Tree\-Generator2.hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+virtual Processor $\ast$ \bf{new\-Processor} ()\label{classCALICE_1_1RootTreeGenerator2_009db4b467a994d522e333c41dfa8055}
+
+\item 
+\bf{Root\-Tree\-Generator2} ()\label{classCALICE_1_1RootTreeGenerator2_c2c492e455fdd3efdbdf79ebe122e6ef}
+
+\item 
+\bf{$\sim$Root\-Tree\-Generator2} ()\label{classCALICE_1_1RootTreeGenerator2_060fc40efd9da0ff608f7d48c42b8117}
+
+\item 
+void \bf{init} ()\label{classCALICE_1_1RootTreeGenerator2_8c49be0b34378f5ac1c1b3132c74abac}
+
+\item 
+void \bf{process\-Event} (LCEvent $\ast$evt)\label{classCALICE_1_1RootTreeGenerator2_30cc5ec2eb58abccfe1220ae69e6a647}
+
+\item 
+void \bf{end} ()\label{classCALICE_1_1RootTreeGenerator2_de52d71f3695bd4bc9d5d40db170acbb}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+std::string \bf{\_\-input\-Col\-Name}\label{classCALICE_1_1RootTreeGenerator2_f7a726498c6aac89e9a9594dcd6ad3cd}
+
+\item 
+TFile $\ast$ \bf{\_\-root\-File}\label{classCALICE_1_1RootTreeGenerator2_af2a73aa9c8eda88de25b576ae192ff3}
+
+\item 
+std::string \bf{\_\-root\-File\-Name}\label{classCALICE_1_1RootTreeGenerator2_e47993e82a5278c81d06d639c13f6fd1}
+
+\item 
+TTree $\ast$ \bf{\_\-tree}\label{classCALICE_1_1RootTreeGenerator2_b931b9d1666cf50846989ab24847162a}
+
+\item 
+double \bf{\_\-Esum\_\-Layer} [500]\label{classCALICE_1_1RootTreeGenerator2_6b1dc0da933ecae8e80ab1acd1ca49ff}
+
+\item 
+double \bf{\_\-Esum}\label{classCALICE_1_1RootTreeGenerator2_a19167b1114dabe7e9f720e291c0a459}
+
+\item 
+int \bf{\_\-event\_\-num}\label{classCALICE_1_1RootTreeGenerator2_cd009d55f960d0479dd2c81c682c46dc}
+
+\item 
+int \bf{n\-Hits}\label{classCALICE_1_1RootTreeGenerator2_5f3958d727437c96c9299c4377c04047}
+
+\item 
+int \bf{\_\-n\-Hits\_\-Layer} [500]\label{classCALICE_1_1RootTreeGenerator2_831d8554e815c55fa9ea053f241a70a3}
+
+\item 
+int \bf{K} [MAXCELLS]\label{classCALICE_1_1RootTreeGenerator2_2306ffe6607367ae9eb1eb073e2eab7f}
+
+\item 
+int \bf{I} [MAXCELLS]\label{classCALICE_1_1RootTreeGenerator2_2596de66f75a57557dde449333c1c10f}
+
+\item 
+int \bf{J} [MAXCELLS]\label{classCALICE_1_1RootTreeGenerator2_204f528e5f668da16d0cb2aa0f5fbd2c}
+
+\item 
+float \bf{hit\-Energy} [MAXCELLS]\label{classCALICE_1_1RootTreeGenerator2_914b3cfbab7d97a729afaf927bf1d60f}
+
+\item 
+float \bf{hit\-Pos} [MAXCELLS][3]\label{classCALICE_1_1RootTreeGenerator2_e3f3099e5112679ad932d1a3886b32fe}
+
+\item 
+float \bf{hit\-Timestamp} [MAXCELLS]\label{classCALICE_1_1RootTreeGenerator2_17db8079ac1c3f4ae6559e97820020db}
+
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Class to process Labview raw. 
+
+\begin{Desc}
+\item[Author:]: Shaojun Lu DESY \end{Desc}
+\begin{Desc}
+\item[Date:]Nov 15 2012 \end{Desc}
+
+
+
+
+Definition at line 25 of file Root\-Tree\-Generator2.hh.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+Root\-Tree\-Generator2.hh\item 
+Root\-Tree\-Generator2.cc\end{CompactItemize}

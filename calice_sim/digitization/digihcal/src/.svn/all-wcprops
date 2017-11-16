@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/public/calice/!svn/ver/4629/calice_sim/trunk/digitization/digihcal/src
+END
+IntegratedHcalDigitizationProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/public/calice/!svn/ver/2602/calice_sim/trunk/digitization/digihcal/src/IntegratedHcalDigitizationProcessor.cc
+END
+AhcDigitisationProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/public/calice/!svn/ver/4629/calice_sim/trunk/digitization/digihcal/src/AhcDigitisationProcessor.cc
+END
+AppendProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/3770/calice_sim/trunk/digitization/digihcal/src/AppendProcessor.cc
+END
+fastMappingMCProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/2575/calice_sim/trunk/digitization/digihcal/src/fastMappingMCProcessor.cc
+END

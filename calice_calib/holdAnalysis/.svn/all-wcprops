@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/public/calice/!svn/ver/3834/calice_calib/trunk/holdAnalysis
+END
+holdMultiModule_2011_beam.c
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/3834/calice_calib/trunk/holdAnalysis/holdMultiModule_2011_beam.c
+END
+compare_holds.c
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/3834/calice_calib/trunk/holdAnalysis/compare_holds.c
+END
+fullHoldAnalysis_janet_beam_2011.sh
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/3834/calice_calib/trunk/holdAnalysis/fullHoldAnalysis_janet_beam_2011.sh
+END

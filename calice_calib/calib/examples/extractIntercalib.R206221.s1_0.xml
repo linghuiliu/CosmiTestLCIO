@@ -1,0 +1,118 @@
+<marlin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ilcsoft.desy.de/marlin/marlin.xsd">
+
+   <execute>
+      <processor name="ProgressHandler"/>
+      <processor name="Conditions"/>
+      <processor name="MyAhcMappingProcessor"/>
+      <processor name="MyMappingIConditionsProcessor"/>
+      <processor name="MyExtractIntercalibrationProcessor"/>
+   </execute>
+
+   <global>
+     <parameter name="LCIOInputFiles"> 
+	     gsidcap://dcache-desy-gsidcap.desy.de:22128/pnfs/desy.de/calice/tb-desy/raw/conv_v0402/Run206221.000.slcio
+	     gsidcap://dcache-desy-gsidcap.desy.de:22128/pnfs/desy.de/calice/tb-desy/raw/conv_v0402/Run206221.001.slcio
+	     gsidcap://dcache-desy-gsidcap.desy.de:22128/pnfs/desy.de/calice/tb-desy/raw/conv_v0402/Run206220.000.slcio
+     </parameter>
+     <!--parameter name="MaxRecordNumber" value="50"/-->
+     <!--parameter name="SkipNEvents" value="1000"/-->
+     <parameter name="SupressCheck" value="false"/>
+     <parameter name="Verbosity" value="MESSAGE"/>
+   </global>
+
+
+ <!-- ----------------------------------------------- ---------------- -->
+
+  <processor name="MyAhcMappingProcessor" type="MappingProcessor">
+    <!--Processor that provides a CALICE Mapping object from conditions data-->
+    <!--Name of the ModuleConnection collection-->
+    <parameter name="ModuleConnection"  type="string" lcioInType="LCGenericObject"> AhcModuleConnection </parameter>
+    <!--Name of the ModuleDescription collection-->
+    <parameter name="ModuleDescription" type="string" lcioInType="LCGenericObject"> AhcModuleDescription </parameter>
+    <!--Type name of the mapper instance. Currently valid identifiers are: AHC-->
+    <parameter name="MapperType" type="string" value="AHC"/>
+  </processor>
+
+
+ <!-- ----------------------------------------------- ---------------- -->
+
+ <processor name="ProgressHandler" type="ProgressHandler">
+  <!--Report event/run numbers at fixed time intervals, and handle SIGINT (Ctrl-C) for a graceful exit.-->
+  <!--The number of seconds after which the number of processed events will be shown.-->
+  <parameter name="ReportInterval" type="int" value="20"/>
+ </processor>
+
+
+
+ <!-- ----------------------------------------------- ---------------- -->
+
+ <processor name="Conditions" type="ConditionsProcessor">
+ <!--ConditionsProcessor provides access to conditions data  transparently from LCIO files or a databases, using LCCD-->
+ <!--Initialization of a conditions database handler-->
+   <parameter name="DBCondHandler" type="StringVec"> 
+     CALDAQ_TriggerAssignment /cd_calice_desylab/CALDAQ_TriggerAssignment        HEAD
+     CALDAQ_TriggerCheck      /cd_calice_desylab/CALDAQ_TriggerCheck             HEAD
+     CALDAQ_BeTrgConf         /cd_calice_v0402_desyhcal/CALDAQ_BeTrgConf            HEAD 
+     CALDAQ_ReadOutConfigurationData    /cd_calice_v0402_desyhcal/CALDAQ_ReadOutConfigurationData  HEAD  
+     CALDAQ_TrgReadoutConfigurationData /cd_calice_v0402_desyhcal/CALDAQ_TrgReadoutConfigurationData HEAD
+
+   </parameter>
+
+   <parameter name="DBCondHandler" type="StringVec">
+     CALDAQ_AhcFeConfiguration  /cd_calice_v0402_desyhcal/CALDAQ_AhcFeConfiguration  HEAD
+     CALDAQ_AhcVfeConfiguration /cd_calice_v0402_desyhcal/CALDAQ_AhcVfeConfiguration HEAD
+
+     AhcModuleConnection        /cd_calice_desylab/Hcal/HcalMapping                  HEAD
+     AhcModuleDescription       /cd_calice/Ahc/ModuleDescription                                          ahc_ModuleDescription_001                               
+   </parameter>
+
+  <!--Initialization of a conditions db file handler-->
+  <!--parameter name="DBFileHandler" type="StringVec"> conditionsName conditions.slcio collectionName </parameter-->
+  <!--Initialization string for conditions database-->
+  <parameter name="DBInit" type="string" value="flccaldb01.desy.de:calice:caliceon:Delice.1:3306"/>
+</processor>
+
+
+ <!-- ----------------------------------------------- ---------------- -->
+
+  <processor name="MyMappingIConditionsProcessor" type="mappingIconditionsProcessor">
+    <!--This processor collects the conditions information for the AHCAL modules and 
+	provides a collection with a set for each module.-->
+    <!--Name of the conditions collection for the AHC FE configuration-->
+    <parameter name="AHC_FE_Configuration" type="string" lcioInType="LCGenericObject">CALDAQ_AhcFeConfiguration </parameter>
+    <!--Name of the conditions collection for the AHC VFE configuration-->
+    <parameter name="AHC_VFE_Configuration" type="string" lcioInType="LCGenericObject">CALDAQ_AhcVfeConfiguration </parameter>
+    <!--Name of the MappingProcessor-->
+    <parameter name="MappingProcessorName" type="string">MyAhcMappingProcessor </parameter>
+    <!--Name of the output collection-->
+    <parameter name="OutputCollectionName" type="string" lcioOutType="LCGenericObject">AhcConditions </parameter>
+  </processor>
+
+
+
+
+
+ <!-- ------------------------------------------------ ---------------- -->
+ <!-- ------------  MyExtractIntercalibrationProcessor ---------------- -->
+
+<processor name="MyExtractIntercalibrationProcessor" type="ExtractIntercalibrationProcessor">
+ <!--processor extracting Intercalibration constants from ahcPmLed & ahcCmLed - runs-->
+
+  <!--Collection of AhcConditions objects-->
+  <parameter name="ConditionsCollectionName" type="string">AhcConditions </parameter>
+  <!--Name of the input collection-->
+  <parameter name="InputCollectionName" type="string">CALDAQ_ADCCol </parameter>
+  <!--Name of the MappingProcessor-->
+  <parameter name="MappingProcessorName" type="string">MyAhcMappingProcessor </parameter>
+
+  <!--ASCII file to write results-->
+  <parameter name="OutputFileName" type="string">inter/206221-intercalibration.s1_0.dat </parameter>
+
+  <!--verbosity level of this processor ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
+  <!--parameter name="Verbosity" type="string">DEBUG </parameter-->
+
+</processor>
+
+</marlin>
+
+

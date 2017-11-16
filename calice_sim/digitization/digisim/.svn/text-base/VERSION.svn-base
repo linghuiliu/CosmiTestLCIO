@@ -1,0 +1,7 @@
+calice_sim/digitization/digisim version v01-09
+
+For release notes and corresponding tags, please check
+http://www-zeuthen.desy.de/lc-cgi-bin/cvsweb.cgi/calice_sim/digitization/digisim/VERSION?cvsroot=calice
+
+To create new release tags:
+> cvs rtag `head -1 ./VERSION | cut -d' ' -f3` calice_sim/digitization/digisim

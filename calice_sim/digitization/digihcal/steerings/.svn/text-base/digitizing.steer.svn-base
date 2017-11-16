@@ -1,0 +1,350 @@
+.begin Global  ---------------------------------------
+
+        LCIOInputFiles 
+
+        ActiveProcessors MyMCRunTimeProcessor
+
+ 	ActiveProcessors MyConditionsProcessor
+
+        ActiveProcessors MyfastMappingMCProcessor
+	ActiveProcessors MyAppendNoiseProcessor
+
+	ActiveProcessors MyIntegratedHcalDigitizationProcessor
+
+        ActiveProcessors MyLCIOOutputProcessor
+
+# 	MaxRecordNumber 5000
+
+        Verbosity MESSAGE
+.end   -----------------------------------------------
+
+.begin MyMCRunTimeProcessor
+ProcessorType MCRunTimeProcessor
+
+	RunNumber               
+
+	SavetyMargin            60
+
+	DBInit                  flccaldb01.desy.de:calice:caliceon:Delice.1:3306
+	RunLocationFolder       /cd_calice/RunLocation
+	RunTimeFolder           /cd_calice/CALDAQ_RunTimeInfo
+.end -------------------------------------------------
+
+.begin MyConditionsProcessor
+  ProcessorType ConditionsProcessor
+
+  DBInit flccaldb01.desy.de:calice:caliceon:Delice.1:3306
+
+  DBCondHandler     AhcDetectorTransformation /cd_calice_cernbeam/Hcal/HcalDetectorPosition HEAD
+  DBCondHandler     ReferenceTransformation /cd_calice_cernbeam/ExperimentalHall/ReferenceFrame HEAD
+  DBCondHandler     AhcModuleLocation  /cd_calice_cernbeam/Hcal/HcalModuleLocation HEAD
+  DBCondHandler     AhcModuleConnection /cd_calice_cernbeam/Hcal/HcalMapping HEAD
+  DBCondHandler     AhcModuleDescription /cd_calice_cernbeam/Hcal/HcalModuleDescription HEAD
+
+  DBCondHandler     CALDAQ_TriggerAssignment /cd_calice_cernbeam/CALDAQ_TriggerAssignment HEAD
+  DBCondHandler     CALDAQ_TriggerCheck /cd_calice_cernbeam/CALDAQ_TriggerCheck HEAD
+                    
+  DBCondHandler     CALDAQ_BeTrgConf /cd_calice_v0402_cernhcal/CALDAQ_BeTrgConf HEAD
+  DBCondHandler     CALDAQ_AhcFeConfiguration /cd_calice_v0402_cernhcal/CALDAQ_AhcFeConfiguration HEAD
+  DBCondHandler     CALDAQ_AhcVfeConfiguration /cd_calice_v0402_cernhcal/CALDAQ_AhcVfeConfiguration HEAD
+  DBCondHandler     CALDAQ_RunInfo /cd_calice_v0402_cernhcal/CALDAQ_RunInfo HEAD
+  DBCondHandler     CALDAQ_ReadOutConfigurationData /cd_calice_v0402_cernhcal/CALDAQ_ReadOutConfigurationData HEAD
+  DBCondHandler     CALDAQ_TrgReadoutConfigurationData /cd_calice_v0402_cernhcal/CALDAQ_TrgReadoutConfigurationData HEAD
+  DBCondHandler     CALDAQ_AhcSroModData /cd_calice_v0402_cernhcal/CALDAQ_AhcSroModData HEAD
+
+  DBCondHandler     SiPmInfo /cd_calice/Hcal/ITEP_DB HEAD
+  DBCondHandler     SiPmSaturation /cd_calice/Hcal/ITEP_Saturation HEAD
+  DBCondHandler     SiPmModuleProduction /cd_calice/Hcal/Production_DB HEAD
+
+  DBCondHandler     Gain_01 /cd_calice/Hcal/Gain/Approved/ID01A HEAD
+  DBCondHandler     Gain_02 /cd_calice/Hcal/Gain/Approved/ID01B HEAD
+  DBCondHandler     Gain_03 /cd_calice/Hcal/Gain/Approved/ID02A HEAD
+  DBCondHandler     Gain_04 /cd_calice/Hcal/Gain/Approved/ID02B HEAD
+  DBCondHandler     Gain_05 /cd_calice/Hcal/Gain/Approved/ID03A HEAD
+  DBCondHandler     Gain_06 /cd_calice/Hcal/Gain/Approved/ID03B HEAD
+  DBCondHandler     Gain_07 /cd_calice/Hcal/Gain/Approved/ID04A HEAD
+  DBCondHandler     Gain_08 /cd_calice/Hcal/Gain/Approved/ID04B HEAD
+  DBCondHandler     Gain_09 /cd_calice/Hcal/Gain/Approved/ID05A HEAD
+  DBCondHandler     Gain_10 /cd_calice/Hcal/Gain/Approved/ID05B HEAD
+  DBCondHandler     Gain_11 /cd_calice/Hcal/Gain/Approved/ID06A HEAD
+  DBCondHandler     Gain_12 /cd_calice/Hcal/Gain/Approved/ID06B HEAD
+  DBCondHandler     Gain_13 /cd_calice/Hcal/Gain/Approved/ID07A HEAD
+  DBCondHandler     Gain_14 /cd_calice/Hcal/Gain/Approved/ID07B HEAD
+  DBCondHandler     Gain_15 /cd_calice/Hcal/Gain/Approved/ID08A HEAD
+  DBCondHandler     Gain_16 /cd_calice/Hcal/Gain/Approved/ID08B HEAD
+  DBCondHandler     Gain_17 /cd_calice/Hcal/Gain/Approved/ID09A HEAD
+  DBCondHandler     Gain_18 /cd_calice/Hcal/Gain/Approved/ID09B HEAD
+  DBCondHandler     Gain_19 /cd_calice/Hcal/Gain/Approved/ID10A HEAD
+  DBCondHandler     Gain_20 /cd_calice/Hcal/Gain/Approved/ID10B HEAD
+  DBCondHandler     Gain_21 /cd_calice/Hcal/Gain/Approved/ID11A HEAD
+  DBCondHandler     Gain_22 /cd_calice/Hcal/Gain/Approved/ID11B HEAD
+  DBCondHandler     Gain_23 /cd_calice/Hcal/Gain/Approved/ID12A HEAD
+  DBCondHandler     Gain_24 /cd_calice/Hcal/Gain/Approved/ID12B HEAD
+  DBCondHandler     Gain_25 /cd_calice/Hcal/Gain/Approved/ID13A HEAD
+  DBCondHandler     Gain_26 /cd_calice/Hcal/Gain/Approved/ID13B HEAD
+  DBCondHandler     Gain_27 /cd_calice/Hcal/Gain/Approved/ID14A HEAD
+  DBCondHandler     Gain_28 /cd_calice/Hcal/Gain/Approved/ID14B HEAD
+  DBCondHandler     Gain_29 /cd_calice/Hcal/Gain/Approved/ID15A HEAD
+  DBCondHandler     Gain_30 /cd_calice/Hcal/Gain/Approved/ID15B HEAD
+  DBCondHandler     Gain_31 /cd_calice/Hcal/Gain/Approved/ID16A HEAD
+  DBCondHandler     Gain_32 /cd_calice/Hcal/Gain/Approved/ID16B HEAD
+  DBCondHandler     Gain_33 /cd_calice/Hcal/Gain/Approved/ID17A HEAD
+  DBCondHandler     Gain_34 /cd_calice/Hcal/Gain/Approved/ID17B HEAD
+  DBCondHandler     Gain_35 /cd_calice/Hcal/Gain/Approved/ID18A HEAD
+  DBCondHandler     Gain_36 /cd_calice/Hcal/Gain/Approved/ID18B HEAD
+  DBCondHandler     Gain_37 /cd_calice/Hcal/Gain/Approved/ID19A HEAD
+  DBCondHandler     Gain_38 /cd_calice/Hcal/Gain/Approved/ID19B HEAD
+  DBCondHandler     Gain_39 /cd_calice/Hcal/Gain/Approved/ID20A HEAD
+  DBCondHandler     Gain_40 /cd_calice/Hcal/Gain/Approved/ID20B HEAD
+  DBCondHandler     Gain_41 /cd_calice/Hcal/Gain/Approved/ID21A HEAD
+  DBCondHandler     Gain_42 /cd_calice/Hcal/Gain/Approved/ID21B HEAD
+  DBCondHandler     Gain_43 /cd_calice/Hcal/Gain/Approved/ID22A HEAD
+  DBCondHandler     Gain_44 /cd_calice/Hcal/Gain/Approved/ID22B HEAD
+  DBCondHandler     Gain_45 /cd_calice/Hcal/Gain/Approved/ID23A HEAD
+  DBCondHandler     Gain_46 /cd_calice/Hcal/Gain/Approved/ID23B HEAD
+  DBCondHandler     Gain_47 /cd_calice/Hcal/Gain/Approved/ID24A HEAD
+  DBCondHandler     Gain_48 /cd_calice/Hcal/Gain/Approved/ID24B HEAD
+  DBCondHandler     Gain_49 /cd_calice/Hcal/Gain/Approved/ID25A HEAD
+  DBCondHandler     Gain_50 /cd_calice/Hcal/Gain/Approved/ID25B HEAD
+  DBCondHandler     Gain_51 /cd_calice/Hcal/Gain/Approved/ID26A HEAD
+  DBCondHandler     Gain_52 /cd_calice/Hcal/Gain/Approved/ID26B HEAD
+  DBCondHandler     Gain_53 /cd_calice/Hcal/Gain/Approved/ID27A HEAD
+  DBCondHandler     Gain_54 /cd_calice/Hcal/Gain/Approved/ID27B HEAD
+  DBCondHandler     Gain_55 /cd_calice/Hcal/Gain/Approved/ID28A HEAD
+  DBCondHandler     Gain_56 /cd_calice/Hcal/Gain/Approved/ID28B HEAD
+  DBCondHandler     Gain_57 /cd_calice/Hcal/Gain/Approved/ID29A HEAD
+  DBCondHandler     Gain_58 /cd_calice/Hcal/Gain/Approved/ID29B HEAD
+  DBCondHandler     Gain_59 /cd_calice/Hcal/Gain/Approved/ID30A HEAD
+  DBCondHandler     Gain_60 /cd_calice/Hcal/Gain/Approved/ID30B HEAD
+  DBCondHandler     Gain_61 /cd_calice/Hcal/Gain/Approved/ID31A HEAD
+  DBCondHandler     Gain_62 /cd_calice/Hcal/Gain/Approved/ID31B HEAD
+  DBCondHandler     Gain_63 /cd_calice/Hcal/Gain/Approved/ID32A HEAD
+  DBCondHandler     Gain_64 /cd_calice/Hcal/Gain/Approved/ID32B HEAD
+  DBCondHandler     Gain_65 /cd_calice/Hcal/Gain/Approved/ID33A HEAD
+  DBCondHandler     Gain_66 /cd_calice/Hcal/Gain/Approved/ID33B HEAD
+  DBCondHandler     Gain_67 /cd_calice/Hcal/Gain/Approved/ID34A HEAD
+  DBCondHandler     Gain_68 /cd_calice/Hcal/Gain/Approved/ID34B HEAD
+  DBCondHandler     Gain_69 /cd_calice/Hcal/Gain/Approved/ID35A HEAD
+  DBCondHandler     Gain_70 /cd_calice/Hcal/Gain/Approved/ID35B HEAD
+  DBCondHandler     Gain_71 /cd_calice/Hcal/Gain/Approved/ID36A HEAD
+  DBCondHandler     Gain_72 /cd_calice/Hcal/Gain/Approved/ID36B HEAD
+  DBCondHandler     Gain_73 /cd_calice/Hcal/Gain/Approved/ID37A HEAD
+  DBCondHandler     Gain_74 /cd_calice/Hcal/Gain/Approved/ID37B HEAD
+  DBCondHandler     Gain_75 /cd_calice/Hcal/Gain/Approved/ID38A HEAD
+  DBCondHandler     Gain_76 /cd_calice/Hcal/Gain/Approved/ID38B HEAD
+
+  DBCondHandler     Inter_01 /cd_calice/Hcal/Inter/Approved/ID01A HEAD
+  DBCondHandler     Inter_02 /cd_calice/Hcal/Inter/Approved/ID01B HEAD
+  DBCondHandler     Inter_03 /cd_calice/Hcal/Inter/Approved/ID02A HEAD
+  DBCondHandler     Inter_04 /cd_calice/Hcal/Inter/Approved/ID02B HEAD
+  DBCondHandler     Inter_05 /cd_calice/Hcal/Inter/Approved/ID03A HEAD
+  DBCondHandler     Inter_06 /cd_calice/Hcal/Inter/Approved/ID03B HEAD
+  DBCondHandler     Inter_07 /cd_calice/Hcal/Inter/Approved/ID04A HEAD
+  DBCondHandler     Inter_08 /cd_calice/Hcal/Inter/Approved/ID04B HEAD
+  DBCondHandler     Inter_09 /cd_calice/Hcal/Inter/Approved/ID05A HEAD
+  DBCondHandler     Inter_10 /cd_calice/Hcal/Inter/Approved/ID05B HEAD
+  DBCondHandler     Inter_11 /cd_calice/Hcal/Inter/Approved/ID06A HEAD
+  DBCondHandler     Inter_12 /cd_calice/Hcal/Inter/Approved/ID06B HEAD
+  DBCondHandler     Inter_13 /cd_calice/Hcal/Inter/Approved/ID07A HEAD
+  DBCondHandler     Inter_14 /cd_calice/Hcal/Inter/Approved/ID07B HEAD
+  DBCondHandler     Inter_15 /cd_calice/Hcal/Inter/Approved/ID08A HEAD
+  DBCondHandler     Inter_16 /cd_calice/Hcal/Inter/Approved/ID08B HEAD
+  DBCondHandler     Inter_17 /cd_calice/Hcal/Inter/Approved/ID09A HEAD
+  DBCondHandler     Inter_18 /cd_calice/Hcal/Inter/Approved/ID09B HEAD
+  DBCondHandler     Inter_19 /cd_calice/Hcal/Inter/Approved/ID10A HEAD
+  DBCondHandler     Inter_20 /cd_calice/Hcal/Inter/Approved/ID10B HEAD
+  DBCondHandler     Inter_21 /cd_calice/Hcal/Inter/Approved/ID11A HEAD
+  DBCondHandler     Inter_22 /cd_calice/Hcal/Inter/Approved/ID11B HEAD
+  DBCondHandler     Inter_23 /cd_calice/Hcal/Inter/Approved/ID12A HEAD
+  DBCondHandler     Inter_24 /cd_calice/Hcal/Inter/Approved/ID12B HEAD
+  DBCondHandler     Inter_25 /cd_calice/Hcal/Inter/Approved/ID13A HEAD
+  DBCondHandler     Inter_26 /cd_calice/Hcal/Inter/Approved/ID13B HEAD
+  DBCondHandler     Inter_27 /cd_calice/Hcal/Inter/Approved/ID14A HEAD
+  DBCondHandler     Inter_28 /cd_calice/Hcal/Inter/Approved/ID14B HEAD
+  DBCondHandler     Inter_29 /cd_calice/Hcal/Inter/Approved/ID15A HEAD
+  DBCondHandler     Inter_30 /cd_calice/Hcal/Inter/Approved/ID15B HEAD
+  DBCondHandler     Inter_31 /cd_calice/Hcal/Inter/Approved/ID16A HEAD
+  DBCondHandler     Inter_32 /cd_calice/Hcal/Inter/Approved/ID16B HEAD
+  DBCondHandler     Inter_33 /cd_calice/Hcal/Inter/Approved/ID17A HEAD
+  DBCondHandler     Inter_34 /cd_calice/Hcal/Inter/Approved/ID17B HEAD
+  DBCondHandler     Inter_35 /cd_calice/Hcal/Inter/Approved/ID18A HEAD
+  DBCondHandler     Inter_36 /cd_calice/Hcal/Inter/Approved/ID18B HEAD
+  DBCondHandler     Inter_37 /cd_calice/Hcal/Inter/Approved/ID19A HEAD
+  DBCondHandler     Inter_38 /cd_calice/Hcal/Inter/Approved/ID19B HEAD
+  DBCondHandler     Inter_39 /cd_calice/Hcal/Inter/Approved/ID20A HEAD
+  DBCondHandler     Inter_40 /cd_calice/Hcal/Inter/Approved/ID20B HEAD
+  DBCondHandler     Inter_41 /cd_calice/Hcal/Inter/Approved/ID21A HEAD
+  DBCondHandler     Inter_42 /cd_calice/Hcal/Inter/Approved/ID21B HEAD
+  DBCondHandler     Inter_43 /cd_calice/Hcal/Inter/Approved/ID22A HEAD
+  DBCondHandler     Inter_44 /cd_calice/Hcal/Inter/Approved/ID22B HEAD
+  DBCondHandler     Inter_45 /cd_calice/Hcal/Inter/Approved/ID23A HEAD
+  DBCondHandler     Inter_46 /cd_calice/Hcal/Inter/Approved/ID23B HEAD
+  DBCondHandler     Inter_47 /cd_calice/Hcal/Inter/Approved/ID24A HEAD
+  DBCondHandler     Inter_48 /cd_calice/Hcal/Inter/Approved/ID24B HEAD
+  DBCondHandler     Inter_49 /cd_calice/Hcal/Inter/Approved/ID25A HEAD
+  DBCondHandler     Inter_50 /cd_calice/Hcal/Inter/Approved/ID25B HEAD
+  DBCondHandler     Inter_51 /cd_calice/Hcal/Inter/Approved/ID26A HEAD
+  DBCondHandler     Inter_52 /cd_calice/Hcal/Inter/Approved/ID26B HEAD
+  DBCondHandler     Inter_53 /cd_calice/Hcal/Inter/Approved/ID27A HEAD
+  DBCondHandler     Inter_54 /cd_calice/Hcal/Inter/Approved/ID27B HEAD
+  DBCondHandler     Inter_55 /cd_calice/Hcal/Inter/Approved/ID28A HEAD
+  DBCondHandler     Inter_56 /cd_calice/Hcal/Inter/Approved/ID28B HEAD
+  DBCondHandler     Inter_57 /cd_calice/Hcal/Inter/Approved/ID29A HEAD
+  DBCondHandler     Inter_58 /cd_calice/Hcal/Inter/Approved/ID29B HEAD
+  DBCondHandler     Inter_59 /cd_calice/Hcal/Inter/Approved/ID30A HEAD
+  DBCondHandler     Inter_60 /cd_calice/Hcal/Inter/Approved/ID30B HEAD
+  DBCondHandler     Inter_61 /cd_calice/Hcal/Inter/Approved/ID31A HEAD
+  DBCondHandler     Inter_62 /cd_calice/Hcal/Inter/Approved/ID31B HEAD
+  DBCondHandler     Inter_63 /cd_calice/Hcal/Inter/Approved/ID32A HEAD
+  DBCondHandler     Inter_64 /cd_calice/Hcal/Inter/Approved/ID32B HEAD
+  DBCondHandler     Inter_65 /cd_calice/Hcal/Inter/Approved/ID33A HEAD
+  DBCondHandler     Inter_66 /cd_calice/Hcal/Inter/Approved/ID33B HEAD
+  DBCondHandler     Inter_67 /cd_calice/Hcal/Inter/Approved/ID34A HEAD
+  DBCondHandler     Inter_68 /cd_calice/Hcal/Inter/Approved/ID34B HEAD
+  DBCondHandler     Inter_69 /cd_calice/Hcal/Inter/Approved/ID35A HEAD
+  DBCondHandler     Inter_70 /cd_calice/Hcal/Inter/Approved/ID35B HEAD
+  DBCondHandler     Inter_71 /cd_calice/Hcal/Inter/Approved/ID36A HEAD
+  DBCondHandler     Inter_72 /cd_calice/Hcal/Inter/Approved/ID36B HEAD
+  DBCondHandler     Inter_73 /cd_calice/Hcal/Inter/Approved/ID37A HEAD
+  DBCondHandler     Inter_74 /cd_calice/Hcal/Inter/Approved/ID37B HEAD
+  DBCondHandler     Inter_75 /cd_calice/Hcal/Inter/Approved/ID38A HEAD
+  DBCondHandler     Inter_76 /cd_calice/Hcal/Inter/Approved/ID38B HEAD
+
+  DBCondHandler     MIP_01 /cd_calice/Hcal/MIP/Approved/ID01A HEAD
+  DBCondHandler     MIP_02 /cd_calice/Hcal/MIP/Approved/ID01B HEAD
+  DBCondHandler     MIP_03 /cd_calice/Hcal/MIP/Approved/ID02A HEAD
+  DBCondHandler     MIP_04 /cd_calice/Hcal/MIP/Approved/ID02B HEAD
+  DBCondHandler     MIP_05 /cd_calice/Hcal/MIP/Approved/ID03A HEAD
+  DBCondHandler     MIP_06 /cd_calice/Hcal/MIP/Approved/ID03B HEAD
+  DBCondHandler     MIP_07 /cd_calice/Hcal/MIP/Approved/ID04A HEAD
+  DBCondHandler     MIP_08 /cd_calice/Hcal/MIP/Approved/ID04B HEAD
+  DBCondHandler     MIP_09 /cd_calice/Hcal/MIP/Approved/ID05A HEAD
+  DBCondHandler     MIP_10 /cd_calice/Hcal/MIP/Approved/ID05B HEAD
+  DBCondHandler     MIP_11 /cd_calice/Hcal/MIP/Approved/ID06A HEAD
+  DBCondHandler     MIP_12 /cd_calice/Hcal/MIP/Approved/ID06B HEAD
+  DBCondHandler     MIP_13 /cd_calice/Hcal/MIP/Approved/ID07A HEAD
+  DBCondHandler     MIP_14 /cd_calice/Hcal/MIP/Approved/ID07B HEAD
+  DBCondHandler     MIP_15 /cd_calice/Hcal/MIP/Approved/ID08A HEAD
+  DBCondHandler     MIP_16 /cd_calice/Hcal/MIP/Approved/ID08B HEAD
+  DBCondHandler     MIP_17 /cd_calice/Hcal/MIP/Approved/ID09A HEAD
+  DBCondHandler     MIP_18 /cd_calice/Hcal/MIP/Approved/ID09B HEAD
+  DBCondHandler     MIP_19 /cd_calice/Hcal/MIP/Approved/ID10A HEAD
+  DBCondHandler     MIP_20 /cd_calice/Hcal/MIP/Approved/ID10B HEAD
+  DBCondHandler     MIP_21 /cd_calice/Hcal/MIP/Approved/ID11A HEAD
+  DBCondHandler     MIP_22 /cd_calice/Hcal/MIP/Approved/ID11B HEAD
+  DBCondHandler     MIP_23 /cd_calice/Hcal/MIP/Approved/ID12A HEAD
+  DBCondHandler     MIP_24 /cd_calice/Hcal/MIP/Approved/ID12B HEAD
+  DBCondHandler     MIP_25 /cd_calice/Hcal/MIP/Approved/ID13A HEAD
+  DBCondHandler     MIP_26 /cd_calice/Hcal/MIP/Approved/ID13B HEAD
+  DBCondHandler     MIP_27 /cd_calice/Hcal/MIP/Approved/ID14A HEAD
+  DBCondHandler     MIP_28 /cd_calice/Hcal/MIP/Approved/ID14B HEAD
+  DBCondHandler     MIP_29 /cd_calice/Hcal/MIP/Approved/ID15A HEAD
+  DBCondHandler     MIP_30 /cd_calice/Hcal/MIP/Approved/ID15B HEAD
+  DBCondHandler     MIP_31 /cd_calice/Hcal/MIP/Approved/ID16A HEAD
+  DBCondHandler     MIP_32 /cd_calice/Hcal/MIP/Approved/ID16B HEAD
+  DBCondHandler     MIP_33 /cd_calice/Hcal/MIP/Approved/ID17A HEAD
+  DBCondHandler     MIP_34 /cd_calice/Hcal/MIP/Approved/ID17B HEAD
+  DBCondHandler     MIP_35 /cd_calice/Hcal/MIP/Approved/ID18A HEAD
+  DBCondHandler     MIP_36 /cd_calice/Hcal/MIP/Approved/ID18B HEAD
+  DBCondHandler     MIP_37 /cd_calice/Hcal/MIP/Approved/ID19A HEAD
+  DBCondHandler     MIP_38 /cd_calice/Hcal/MIP/Approved/ID19B HEAD
+  DBCondHandler     MIP_39 /cd_calice/Hcal/MIP/Approved/ID20A HEAD
+  DBCondHandler     MIP_40 /cd_calice/Hcal/MIP/Approved/ID20B HEAD
+  DBCondHandler     MIP_41 /cd_calice/Hcal/MIP/Approved/ID21A HEAD
+  DBCondHandler     MIP_42 /cd_calice/Hcal/MIP/Approved/ID21B HEAD
+  DBCondHandler     MIP_43 /cd_calice/Hcal/MIP/Approved/ID22A HEAD
+  DBCondHandler     MIP_44 /cd_calice/Hcal/MIP/Approved/ID22B HEAD
+  DBCondHandler     MIP_45 /cd_calice/Hcal/MIP/Approved/ID23A HEAD
+  DBCondHandler     MIP_46 /cd_calice/Hcal/MIP/Approved/ID23B HEAD
+  DBCondHandler     MIP_47 /cd_calice/Hcal/MIP/Approved/ID24A HEAD
+  DBCondHandler     MIP_48 /cd_calice/Hcal/MIP/Approved/ID24B HEAD
+  DBCondHandler     MIP_49 /cd_calice/Hcal/MIP/Approved/ID25A HEAD
+  DBCondHandler     MIP_50 /cd_calice/Hcal/MIP/Approved/ID25B HEAD
+  DBCondHandler     MIP_51 /cd_calice/Hcal/MIP/Approved/ID26A HEAD
+  DBCondHandler     MIP_52 /cd_calice/Hcal/MIP/Approved/ID26B HEAD
+  DBCondHandler     MIP_53 /cd_calice/Hcal/MIP/Approved/ID27A HEAD
+  DBCondHandler     MIP_54 /cd_calice/Hcal/MIP/Approved/ID27B HEAD
+  DBCondHandler     MIP_55 /cd_calice/Hcal/MIP/Approved/ID28A HEAD
+  DBCondHandler     MIP_56 /cd_calice/Hcal/MIP/Approved/ID28B HEAD
+  DBCondHandler     MIP_57 /cd_calice/Hcal/MIP/Approved/ID29A HEAD
+  DBCondHandler     MIP_58 /cd_calice/Hcal/MIP/Approved/ID29B HEAD
+  DBCondHandler     MIP_59 /cd_calice/Hcal/MIP/Approved/ID30A HEAD
+  DBCondHandler     MIP_60 /cd_calice/Hcal/MIP/Approved/ID30B HEAD
+  DBCondHandler     MIP_61 /cd_calice/Hcal/MIP/Approved/ID31A HEAD
+  DBCondHandler     MIP_62 /cd_calice/Hcal/MIP/Approved/ID31B HEAD
+  DBCondHandler     MIP_63 /cd_calice/Hcal/MIP/Approved/ID32A HEAD
+  DBCondHandler     MIP_64 /cd_calice/Hcal/MIP/Approved/ID32B HEAD
+  DBCondHandler     MIP_65 /cd_calice/Hcal/MIP/Approved/ID33A HEAD
+  DBCondHandler     MIP_66 /cd_calice/Hcal/MIP/Approved/ID33B HEAD
+  DBCondHandler     MIP_67 /cd_calice/Hcal/MIP/Approved/ID34A HEAD
+  DBCondHandler     MIP_68 /cd_calice/Hcal/MIP/Approved/ID34B HEAD
+  DBCondHandler     MIP_69 /cd_calice/Hcal/MIP/Approved/ID35A HEAD
+  DBCondHandler     MIP_70 /cd_calice/Hcal/MIP/Approved/ID35B HEAD
+  DBCondHandler     MIP_71 /cd_calice/Hcal/MIP/Approved/ID36A HEAD
+  DBCondHandler     MIP_72 /cd_calice/Hcal/MIP/Approved/ID36B HEAD
+  DBCondHandler     MIP_73 /cd_calice/Hcal/MIP/Approved/ID37A HEAD
+  DBCondHandler     MIP_74 /cd_calice/Hcal/MIP/Approved/ID37B HEAD
+  DBCondHandler     MIP_75 /cd_calice/Hcal/MIP/Approved/ID38A HEAD
+  DBCondHandler     MIP_76 /cd_calice/Hcal/MIP/Approved/ID38B HEAD
+
+.end -------------------------------------------------
+
+.begin MyfastMappingMCProcessor
+ProcessorType fastMappingMCProcessor
+	InputCollectionName                    AfterGanging
+	OutputCollectionName                   AfterMappingMC
+
+	ModuleConnectionCollectionName         AhcModuleConnection
+	ModuleDescriptionCollectionName        AhcModuleDescription
+	ModuleLocationCollectionName           AhcModuleLocation
+	ViewMapping                            0
+.end -------------------------------------------------
+
+.begin MyAppendNoiseProcessor
+ProcessorType AppendProcessor
+
+	AppendFileNames 
+
+	InputCollections   Noise 
+	OutputCollections   Noise1
+
+	RepeatCollections   true
+	TransformToFCH   1 
+
+.end -------------------------------------------------
+
+.begin MyIntegratedHcalDigitizationProcessor
+ProcessorType IntegratedHcalDigitizationProcessor
+
+	InputCollectionName                     AfterMappingMC
+	NoiseCollectionName                     Noise1
+	OutputCollectionName                    AfterDigitization
+
+	LightLeakage                            0.1
+
+	MipPerGeV                               0.000861
+
+        GainCalibrationCollectionTemplate       Gain_
+	InterCalibrationCollectionTemplate      Inter_
+	MIPCalibrationCollectionTemplate        MIP_
+	ModuleConnectionCollectionName          AhcModuleConnection
+	ModuleDescriptionCollectionName         AhcModuleDescription
+	ModuleLocationCollectionName            AhcModuleLocation
+	ModuleProductionCollectionName          SiPmModuleProduction
+	SiPmInfoCollectionName                  SiPmInfo
+	SiPmSaturationCollectionName            SiPmSaturation
+	RandomSeed                              1
+	ReduceFluctuations                      1
+	ViewMapping                             0
+	AssumeIncrease                          1
+        FudgeNonExistingSaturationCorrections   0
+        Module 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 
+.end -------------------------------------------------
+
+.begin MyLCIOOutputProcessor
+
+        ProcessorType LCIOOutputProcessor
+	LCIOOutputFile 
+        SplitFileSizekB   1992294
+
+.end -------------------------------------------------

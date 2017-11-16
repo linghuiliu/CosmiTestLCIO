@@ -1,0 +1,192 @@
+<marlin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ilcsoft.desy.de/marlin/marlin.xsd">
+
+  <execute>
+    <processor name="ProgressHandler"/>
+    <processor name="Conditions"/>
+     <processor name="MyeventSelector"/>
+    <processor name="MyHCalPIDProcessor"/>   
+    <processor name="HcalMappingProcessor"/>
+
+    <processor name="MyPrimaryTrackFinder"/>
+    <processor name="MyHcalTMVAProcessor"/>
+  
+  </execute>
+
+  <global>
+    <parameter name="LCIOInputFiles"> 
+       /home/jzalieck/data/Digi/Run360827_recoMipSlope37MipConstant2b.000.slcio
+       /home/jzalieck/data/Digi/Run360834_recoMipSlope37MipConstant2b.000.slcio
+    </parameter>
+    <!--parameter name="MaxRecordNumber" value="100" /-->
+    <!--parameter name="SkipNEvents" value="1100" /-->
+    <parameter name="SupressCheck" value="false" />
+    <parameter name="Verbosity" options="DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT"> MESSAGE  </parameter>
+  </global>
+
+  <processor name="MyHCalPIDProcessor" type="HCalPIDProcessor">
+    <!--Selects events from HCal testbeam with the particles requested by the user. 
+        The selection is based on the information given by the Cherenkov counters A and B.-->
+    <!--Name of Elog collection in database-->
+    <parameter name="ElogCollectionName" type="string">Elog </parameter>
+    <!--Particle to be selected (string)-->
+    <parameter name="Particle" type="string">
+      Pion
+    </parameter>
+    <!--Name of the event parameter name which contains the current trigger main word .-->
+    <parameter name="TriggerEventName" type="string">Event_Trigger </parameter>
+    <!--verbosity level of this processor ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
+    <!--parameter name="Verbosity" type="string">DEBUG </parameter-->
+    <!--To veto particles instead of selecting them (boolean)-->
+    <parameter name="Veto" type="bool">false </parameter>
+    <parameter name="Verbosity" value="MESSAGE"/>
+  </processor>
+
+ <processor name="MyHcalTMVAProcessor" type="HcalTMVAProcessor">
+ <!--Example processor with HCAL histograms-->
+  <!--Name of input HCAL collection name-->
+  <parameter name="HcalCollectionName" type="string">AhcCalorimeter_Hits </parameter>
+  <!--name of Ahcal MappingProcessor which takes care of the mapping-->
+  <parameter name="ProcessorName_Mapping" type="string">HcalMappingProcessor </parameter>
+  <!--Name of input Primary Track Finder track collection name-->
+  <parameter name="PtfTrackCollectionName" type="string">PrimaryTrackHits </parameter>
+  <!--Name of ROOT output file name-->
+  <parameter name="RootFileName" type="string">
+           /home/jzalieck/scripts/data/Data_Run_Pion_5GeV.root 
+  </parameter>
+  <!--Name of input shower start collection-->
+  <parameter name="ShowerStartCollectionName" type="string">ShowerStartingLayer </parameter>
+  <!--Mode for opening ROOT file-->
+  <!--parameter name="rootFileMode" type="string">RECREATE </parameter-->
+  <!--verbosity level of this processor ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
+  <parameter name="Verbosity" type="string">MESSAGE </parameter>
+  <!-------------------------------------------------------------------------------------->
+    <!------------------------TMVA parameters----------------------------------------------->
+    <!-------------------------------------------------------------------------------------->
+    <!--Use for creating MC and data ROOT files with shower shape variables-->
+    <parameter name="FillRootTree" type="bool">true</parameter>
+    <!--Method for training-------------------------------------------------->
+    <parameter name="TMVA_Method" type="string">BDT</parameter>
+    <!--Enable TMVA training------------------------------------------------->
+    <parameter name="TMVA_Training" type="bool">false</parameter>
+    <!--Enable data analysis------------------------------------------------->
+    <parameter name="TMVA_Analysis" type="bool">false</parameter>
+    <!-------------------------------------------------------------------------------------->
+    <!-------------------------------------------------------------------------------------->
+    <!-------------------------------------------------------------------------------------->
+</processor>
+
+
+<processor name="MyeventSelector" type="eventSelector">
+  <!--This processor selects events with special triggers. 
+      pedestal=P, cosmic=Co, calibration=Ca, beam=B, cherenkov=Ch, veto=V, 
+      vetoUpLeft=Vul, vetoUpRight=Vur,  vetoDownLeft=Vdl, vetoDownRight=Vdr,
+      multiplicityBit = multiBit, t3x3a=t3a, t3x3b=t3b, t10x10a=t10a,                   
+      t10x10b=t10b, t100x100a=t100a, t100x100b=t100b, spill=S, generic=G, oscillator=O, external=X,                   
+      EMC-TrackBit=TrackEmc, auxiliary bit 1 = aux1, auxiliary bit 2 = aux2, auxiliary bit 3 = aux3, 
+      auxiliary bit 4 = aux4, auxiliary bit 5 = aux5-->
+     <!--trigger flags which are required-->
+    <parameter name="withTrigger" type="StringVec">    B </parameter>
+    <!--parameter name="withTrigger" type="StringVec">    B Ch2 </parameter-->
+    <!--parameter name="withoutTrigger" type="StringVec"> Ch </parameter-->
+ </processor>
+ 
+  <processor name="ProgressHandler" type="ProgressHandler">
+    <!--Report event/run numbers at fixed time intervals, and handle SIGINT (Ctrl-C) for a graceful exit.-->
+    <!--The number of seconds after which the number of processed events will be shown.-->
+    <parameter name="ReportInterval" type="int" value="20"/>
+  </processor>
+
+
+  <processor name="Conditions" type="ConditionsProcessor">
+    <!--ConditionsProcessor provides access to conditions data
+    transparently from LCIO files or a databases, using LCCD-->
+    <!--Initialization string for conditions database-->
+    <parameter name="DBInit" type="string" value="flccaldb01.desy.de:calice:caliceon:Delice.1:3306"/>
+
+      <!--Initialization of a conditions db file handler-->
+      <!--parameter name="DBFileHandler" type="StringVec"> conditionsName conditions.slcio collectionName </parameter-->
+      <!--Initialization of a data file handler-->
+      <!--parameter name="DataFileHandler" type="StringVec" value="conditionsName"/-->
+      <!--Initialization of a simple conditions file handler-->
+      <!--parameter name="SimpleFileHandler" type="StringVec"> conditionsName conditions.slcio collectionName </parameter-->
+
+
+      <parameter name="DBCondHandler" type="StringVec">
+       Elog  /test_al/ElogInfo HEAD
+
+   AhcModuleLocationReference /cd_calice_cernbeam/Hcal/HcalModuleLocationReference  HEAD
+     AhcModuleConnection        /cd_calice_cernbeam/Hcal/HcalMapping                  HEAD
+     AhcModuleDescription       /cd_calice/Ahc/ModuleDescription                      ahc_ModuleDescription_001
+     AhcDetectorTransformation  /cd_calice_cernbeam/Hcal/DetectorPosition HEAD
+
+  </parameter>
+
+  </processor>
+
+
+  <processor name="HcalMappingProcessor" type="MappingProcessor">
+    <!--Processor that provides a CALICE Mapping object from conditions data-->
+    <!--Name of the ModuleConnection collection-->
+    <parameter name="ModuleConnection"  type="string" lcioInType="LCGenericObject"> AhcModuleConnection </parameter>
+    <!--Name of the ModuleDescription collection-->
+    <parameter name="ModuleDescription" type="string" lcioInType="LCGenericObject"> AhcModuleDescription </parameter>
+    <!--Type name of the mapper instance. Currently valid identifiers are: AHC-->
+    <parameter name="MapperType" type="string" value="AHC"/>
+  </processor>
+
+
+  <processor name="MyPrimaryTrackFinder" type="PrimaryTrackFinder">
+    <!--Primary Track Finder-->
+    <!--Is Monte Carlo file (i.e. no triggers will be used)-->
+   <parameter name="IsMonteCarlo" type="bool">false </parameter>
+ 
+ Electron <parameter name="AbsTrackLengthLimit" type="int">3 </parameter>
+    <!--Beam incident angle in degrees-->
+    <parameter name="BeamAngle" type="float">0 </parameter>
+    <!--Beam energy in GeV-->
+    <parameter name="BeamEnergy" type="float">5 </parameter>
+    <!--Line size for CED drawing-->
+    <parameter name="CEDLineSize" type="int">2 </parameter>
+    <!--Point size for CED drawing-->
+    <parameter name="CEDPointSize" type="int">5 </parameter>
+    <!--Host Port number for CED-->
+    <parameter name="CED_HostPort" type="int">7557 </parameter>
+    <!--Flag for CED drawing-->
+    <parameter name="DrawFlag" type="bool">false </parameter>
+    <!--Skip starting layer finding procedure-->
+    <parameter name="FixStartingLayer" type="bool">false </parameter>
+    <!--Noise threshold for hit energy in MIPs-->
+    <parameter name="NoiseMIPLimit" type="float">0.5 </parameter>
+    <!--Name of shower start collection-->
+    <parameter name="OutputStartCollectionName" type="string">ShowerStartingLayer </parameter>
+    <!--Name of track hits collection-->
+    <parameter name="OutputTrackCollectionName" type="string">PrimaryTrackHits </parameter>
+    <!--Minimum track length relative to shower start-->
+    <parameter name="RelTrackLengthLimit" type="float">0.3 </parameter>
+    <!--Directory for output ROOT-file-->
+    <parameter name="RootOutputFileDir" type="string">./ </parameter>
+    <!--Flag for output to Root-file-->
+    <parameter name="RootOutputFlag" type="bool">false </parameter>
+    <!--Maximum gap between track points-->
+    <parameter name="SizeofGAP" type="int">6 </parameter>
+    <!--Skip primary track finding procedure-->
+    <parameter name="SkipTrackFinder" type="bool">false </parameter>
+    <!--verbosity level of this processor ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
+    <!--parameter name="Verbosity" type="string">DEBUG </parameter-->
+    <!--X alignment ECAL-HCAL in mm-->
+    <parameter name="XAlignment" type="float">0 </parameter>
+    <!--Y alignment ECAL-HCAL in mm-->
+    <parameter name="YAlignment" type="float">0 </parameter>
+    <!--Name of ECAL hits collection-->
+    <!--parameter name="ecalHitsCollection" type="string">EmcCalorimeter_Hits </parameter-->
+    <!--Name of HCAL hits collection-->
+    <parameter name="hcalHitsCollection" type="string">AhcCalorimeter_Hits </parameter>
+    <!--Name of TCMT hits collection-->
+    <!--parameter name="tcmtHitsCollection" type="string">TcmtCalorimeter_Hits </parameter-->
+  </processor>
+  
+
+  
+
+
+</marlin>

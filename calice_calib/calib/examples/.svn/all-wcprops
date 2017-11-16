@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/public/calice/!svn/ver/4668/calice_calib/trunk/calib/examples
+END
+Ahc2MipTrackFinder.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/4636/calice_calib/trunk/calib/examples/Ahc2MipTrackFinder.xml
+END
+extractSaturation.R206221.fit10points.s1_0.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/public/calice/!svn/ver/3222/calice_calib/trunk/calib/examples/extractSaturation.R206221.fit10points.s1_0.xml
+END
+Ahc2PedestalCalibrator.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/4588/calice_calib/trunk/calib/examples/Ahc2PedestalCalibrator.xml
+END
+ReadCompareInterCalibs.C
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/3221/calice_calib/trunk/calib/examples/ReadCompareInterCalibs.C
+END
+extractIntercalibration.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/3043/calice_calib/trunk/calib/examples/extractIntercalibration.xml
+END
+extractIntercalib.R206221.s1_0.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/3221/calice_calib/trunk/calib/examples/extractIntercalib.R206221.s1_0.xml
+END
+ExtractSatPlotMods.C
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/3222/calice_calib/trunk/calib/examples/ExtractSatPlotMods.C
+END
+Ahc2OffsetCalibrator.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/4668/calice_calib/trunk/calib/examples/Ahc2OffsetCalibrator.xml
+END

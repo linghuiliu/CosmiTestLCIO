@@ -1,0 +1,7 @@
+validity:  2008/07/24 01:10:00.020183000 2008/07/25  07:10:00.415518001
+rotationAngleZX:   20
+rotationX0:        0
+rotationZ0:       -11.64
+detectorPostionX:  0
+detectorPostionY:  0
+detectorPostionZ:  150.00

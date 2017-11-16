@@ -1,0 +1,123 @@
+############################################
+#
+#  Example steering file for Marlin
+#
+############################################
+
+.begin Global  ---------------------------------------
+
+# specify one ore more input files (in one ore more lines)
+
+LCIOInputFiles inputfile
+#LCIOInputFiles ../simjob.slcio ../simjob.slcio
+
+# the active processors that are called in the given order
+ActiveProcessors CalHitMapProcessor
+ActiveProcessors EMDigiSimProcessor
+ActiveProcessors HADDigiSimProcessor
+ActiveProcessors TCDigiSimProcessor
+ActiveProcessors OutputProcessor
+
+# limit the number of processed records (run+evt):
+#MaxRecordNumber 501
+MaxRecordNumber 3
+.end Global  -----------------------------------------------
+############################################################
+
+#define the processor parameters after '.begin ProcessorName' :
+
+# the default output processor
+.begin OutputProcessor
+
+# mandatory processor type (the name of the class)
+ProcessorType LCIOOutputProcessor
+
+# the outputfile
+LCIOOutputFile marlin.slcio
+
+# lcio write mode, new overwrites existing files
+# append appends to existing files
+# if nothing specified create new file only if it doesn't exist
+LCIOWriteMode WRITE_NEW
+#LCIOWriteMode WRITE_APPEND
+
+.end -------------------------------------------------
+############################################################
+# Utility processor.  It fills hit maps for use by other processors,
+#  so they don't need to fill the same maps themselves
+
+.begin CalHitMapProcessor
+
+ProcessorType CalHitMapProcessor
+
+.end -------------------------------------------------
+############################################################
+# Cal digitizer processor.  Instantiates one or more calorimeter hit
+#  "modifiers", which together represent the full digitization process.
+
+.begin EMDigiSimProcessor
+
+ProcessorType DigiSimProcessor
+
+InputCollection  EMcalCollection
+OutputCollection EMrawCollection
+CalorimeterType  EM
+
+ModifierNames    EMFixedGain EMThreshOnly EMDigiIdentity
+
+# modifierName    Type                 Parameters (floats)
+EMFixedGain       GainDiscrimination   1000000       0     0    0
+EMThreshOnly      GainDiscrimination         1       0    30    0
+
+EMSinglePass      GainDiscrimination   1000000       0    30    0
+
+EMGaussianGain    GainDiscrimination   1000000   50000     0    0
+EMGainThresh      GainDiscrimination   1000000   50000    30    1.5
+
+EMDigiIdentity    SmearedLinear          1.2	   3.4
+
+.end -------------------------------------------------
+############################################################
+
+.begin HADDigiSimProcessor
+
+ProcessorType DigiSimProcessor
+
+InputCollection  HADcalCollection
+OutputCollection HADrawCollection
+CalorimeterType  HAD
+
+ModifierNames    HADSinglePass  HADDigiIdentity
+
+# modifierName    Type                 Parameters (floats)
+HADFixedGain      GainDiscrimination   1000000       0     0    0
+HADThreshOnly     GainDiscrimination         1       0   120    0
+HADSinglePass     GainDiscrimination   1000000       0   120    0
+HADGaussianGain   GainDiscrimination   1000000   50000     0    0
+HADGainThresh     GainDiscrimination   1000000   50000   120    2.4
+
+HADDigiIdentity   SmearedLinear          4.3	   2.1
+
+.end -------------------------------------------------
+############################################################
+
+.begin TCDigiSimProcessor
+
+ProcessorType DigiSimProcessor
+
+InputCollection  TCcalCollection
+OutputCollection TCrawCollection
+CalorimeterType  TC
+
+ModifierNames    TCSinglePass  TCDigiIdentity
+
+# modifierName    Type                 Parameters (floats)
+TCFixedGain      GainDiscrimination   1000000       0     0    0
+TCThreshOnly     GainDiscrimination         1       0   120    0
+TCSinglePass     GainDiscrimination   1000000       0   120    0
+TCGaussianGain   GainDiscrimination   1000000   50000     0    0
+TCGainThresh     GainDiscrimination   1000000   50000   120    2.4
+
+TCDigiIdentity   SmearedLinear          4.3	   2.1
+
+.end -------------------------------------------------

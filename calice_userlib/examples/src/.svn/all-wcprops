@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/public/calice/!svn/ver/3341/calice_userlib/trunk/examples/src
+END
+CaliceExampleProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/3341/calice_userlib/trunk/examples/src/CaliceExampleProcessor.cc
+END
+SimpleTriggerProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/public/calice/!svn/ver/1053/calice_userlib/trunk/examples/src/SimpleTriggerProcessor.cc
+END
+GNUmakefile
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/public/calice/!svn/ver/1151/calice_userlib/trunk/examples/src/GNUmakefile
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/1959/calice_userlib/trunk/examples/src/CMakeLists.txt
+END

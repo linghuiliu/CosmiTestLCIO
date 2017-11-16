@@ -1,0 +1,50 @@
+/** \file 
+ *  \brief source for the Doxygen main page
+ */
+
+/// Namespace for all Marlin processors
+namespace marlin
+{}
+
+/**
+\mainpage
+
+<H1>RootTreeWriter</H1> This Package provides an Marlin processor to
+write a ROOT Tree with event variables. It provides a modular approach
+to extend the functionality. See the documentation of 
+\link marlin::RootTreeWriter RootTreeWriter (Extending the RootTreeWriter)\endlink and 
+\link marlin::RootWriteEngine RootWriteEngine \endlink for details.
+
+
+For installation instructions, have a look \link install here \endlink.
+
+
+\todo write download information (cvs) 
+
+\todo create and link to developer instructions
+*/
+
+
+
+//================ Documentation for the shell scripts files ========================
+/**
+
+\file createEngineTemplate.sh
+\brief script to create a template for a new engine
+
+\todo write documentation for this file
+*/
+
+
+/**
+\dir engines
+\brief this directory contains all code for the user engines
+Add the code and header files for new engines in this directory and edit EnginesInclude.icc and EnginesAdd.icc in this directory to activate the new engines.
+*/
+
+
+
+
+
+
+

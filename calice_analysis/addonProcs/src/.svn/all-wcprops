@@ -1,0 +1,257 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/public/calice/!svn/ver/4755/calice_analysis/trunk/addonProcs/src
+END
+HcalTMVAProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/HcalTMVAProcessor.cc
+END
+EmcTrackBitGenerator.cc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/EmcTrackBitGenerator.cc
+END
+PrimaryTrackFinder.cc
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/PrimaryTrackFinder.cc
+END
+HCalTrackFilter.cc
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/4089/calice_analysis/trunk/addonProcs/src/HCalTrackFilter.cc
+END
+angleTrackFinder.cc
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/angleTrackFinder.cc
+END
+McSplitterComp.cc
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/3146/calice_analysis/trunk/addonProcs/src/McSplitterComp.cc
+END
+ConvertPositionToLayer.cc
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/ConvertPositionToLayer.cc
+END
+EventDisplayProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/EventDisplayProcessor.cc
+END
+ExtractBeamEnergyProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/public/calice/!svn/ver/3561/calice_analysis/trunk/addonProcs/src/ExtractBeamEnergyProcessor.cc
+END
+VirtualCellsProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/VirtualCellsProcessor.cc
+END
+TcmtEventTypeProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/TcmtEventTypeProcessor.cc
+END
+ClusterPatternProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/ClusterPatternProcessor.cc
+END
+ConvertAmpl2CaloHitProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/ConvertAmpl2CaloHitProcessor.cc
+END
+EventSelector.cc
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/4032/calice_analysis/trunk/addonProcs/src/EventSelector.cc
+END
+AppendIntegralObservables.cc
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/AppendIntegralObservables.cc
+END
+McSplitter.cc
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/3146/calice_analysis/trunk/addonProcs/src/McSplitter.cc
+END
+HcalTrackingNN.cc
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/4121/calice_analysis/trunk/addonProcs/src/HcalTrackingNN.cc
+END
+ScECALElectronAnalysisTemplate.cc
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/public/calice/!svn/ver/4426/calice_analysis/trunk/addonProcs/src/ScECALElectronAnalysisTemplate.cc
+END
+CALICEOverlayPreparation.cc
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/public/calice/!svn/ver/4167/calice_analysis/trunk/addonProcs/src/CALICEOverlayPreparation.cc
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/4700/calice_analysis/trunk/addonProcs/src/CMakeLists.txt
+END
+BoojumColor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/3668/calice_analysis/trunk/addonProcs/src/BoojumColor.cc
+END
+Mixture.cc
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/calice/!svn/ver/4167/calice_analysis/trunk/addonProcs/src/Mixture.cc
+END
+AhcVetoRegion.cc
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/AhcVetoRegion.cc
+END
+mappingIconditionsProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/mappingIconditionsProcessor.cc
+END
+MultiBitGenerator.cc
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/4032/calice_analysis/trunk/addonProcs/src/MultiBitGenerator.cc
+END
+HcalTrack2RootTree.cc
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/4089/calice_analysis/trunk/addonProcs/src/HcalTrack2RootTree.cc
+END
+HCalPIDProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/HCalPIDProcessor.cc
+END
+HcalHistosDrawer.cc
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/3659/calice_analysis/trunk/addonProcs/src/HcalHistosDrawer.cc
+END
+AppendLongitudinalObservables.cc
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/AppendLongitudinalObservables.cc
+END
+VirtualCells.cc
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/3947/calice_analysis/trunk/addonProcs/src/VirtualCells.cc
+END
+slimLCIOfile.cc
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/3993/calice_analysis/trunk/addonProcs/src/slimLCIOfile.cc
+END
+EventListProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/3659/calice_analysis/trunk/addonProcs/src/EventListProcessor.cc
+END
+McFracCalc.cc
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/3146/calice_analysis/trunk/addonProcs/src/McFracCalc.cc
+END
+ApplyThresholdCut.cc
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/ApplyThresholdCut.cc
+END
+McInvertedComp.cc
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/3146/calice_analysis/trunk/addonProcs/src/McInvertedComp.cc
+END
+AppendMCParticleInformation.cc
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/AppendMCParticleInformation.cc
+END
+TcmtMuonTracker.cc
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/TcmtMuonTracker.cc
+END
+VirtualCellsCalculator.cc
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/public/calice/!svn/ver/3947/calice_analysis/trunk/addonProcs/src/VirtualCellsCalculator.cc
+END
+RemoveBadCells.cc
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/RemoveBadCells.cc
+END
+CalorimeterProfileProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/CalorimeterProfileProcessor.cc
+END
+ShowerStartClusterProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/4632/calice_analysis/trunk/addonProcs/src/ShowerStartClusterProcessor.cc
+END
+DEHEventDisplayProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/public/calice/!svn/ver/4755/calice_analysis/trunk/addonProcs/src/DEHEventDisplayProcessor.cc
+END

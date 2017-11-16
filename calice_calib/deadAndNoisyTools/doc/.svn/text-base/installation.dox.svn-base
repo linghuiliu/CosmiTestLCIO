@@ -1,0 +1,42 @@
+/**
+\page downloadInstall Download and Installation
+\section Download
+DeadAndNoisyTools is part of the calice_calib package. To download the
+latest version from svn directly check it out of the repsoitory:
+\code
+$~> svn co https://svnsrv.desy.de/public/calice/calice_calib/trunk calice_calib
+\endcode
+
+
+\section Installation
+The calice software uses CMake to generate the Makefiles. It is recommended to do an out of souce
+build. To do so create a build directory and run CMake.
+
+\section Dependencies
+\li Root
+\li CMakeModules from ILCSoft
+\li calice_cmake
+\li calice_userlib [planned]
+
+The DeadAndNoisyTools depend on Root. In order to find it the CMakeModules
+from ILCSoft are used. To generate the documetation a CMake makro from 
+calice_cmake is used.
+
+\warning
+Linking to the calice_userlib 
+ensures that the status produced by createBadChannelsList really is the status of
+the lccd \c CellQuality class which is in the data base. This is not implemented yet.
+The current status is the expert status, which currently is identical to the data base status,
+but this done manually is not guaranteed if either createBadChannelsList or \c CellQuality
+change. Check consistency before writing to the data base!
+
+\section installExample Example
+This example assumes that ILCSoft is installed in a directory pointed to by
+${ILCPATH} and that the calice_cmake directory is known to the ILCSoft.cmake.
+Do not forget the two dots at the end of the cmake command.
+\code
+$~/calice_calib> mkdir build; cd build
+$~/calice_calib/build> cmake -C ${ILCPATH}/ILCSoft.cmake ..
+$~/calice_calib/build> make
+\endcode
+*/

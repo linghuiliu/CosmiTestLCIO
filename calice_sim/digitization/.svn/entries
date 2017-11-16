@@ -1,0 +1,89 @@
+10
+
+dir
+4758
+https://svnsrv.desy.de/public/calice/calice_sim/trunk/digitization
+https://svnsrv.desy.de/public/calice
+
+
+
+2017-03-13T18:06:04.950458Z
+4757
+ebrianne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+d1deb40d-bcc4-47cc-9d27-f84b3a1afcb8
+
+digiecal
+dir
+
+digitrack
+dir
+
+digihcal
+dir
+
+digisim
+dir
+
+simAhc2
+dir
+
+sim
+dir
+
+digiAhc2
+dir
+
+ganging
+dir
+
+digitime
+dir
+
+CMakeLists.txt
+file
+
+
+
+
+2017-06-08T17:44:13.000000Z
+63c467b434dddd60c6aecc94f1a33151
+2016-11-12T16:12:37.581130Z
+4733
+ebrianne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5522
+

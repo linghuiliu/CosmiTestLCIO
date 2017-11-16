@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/public/calice/!svn/ver/3430/calice_cddata/trunk/dbfillExamples
+END
+pushSingleICToDB.sh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/3430/calice_cddata/trunk/dbfillExamples/pushSingleICToDB.sh
+END
+Instructions.txt
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/3430/calice_cddata/trunk/dbfillExamples/Instructions.txt
+END
+pushSingleGainToDB.sh
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/3430/calice_cddata/trunk/dbfillExamples/pushSingleGainToDB.sh
+END
+pushListOfCalibMeasurementsToDB.sh
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/public/calice/!svn/ver/3430/calice_cddata/trunk/dbfillExamples/pushListOfCalibMeasurementsToDB.sh
+END
+pushSingleMipToDB.sh
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/public/calice/!svn/ver/3430/calice_cddata/trunk/dbfillExamples/pushSingleMipToDB.sh
+END
+copyCalibration.sh
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/3430/calice_cddata/trunk/dbfillExamples/copyCalibration.sh
+END
+tagFolderList.sh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/3430/calice_cddata/trunk/dbfillExamples/tagFolderList.sh
+END
+PushAllSingleGainsToDB.sh
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/3430/calice_cddata/trunk/dbfillExamples/PushAllSingleGainsToDB.sh
+END

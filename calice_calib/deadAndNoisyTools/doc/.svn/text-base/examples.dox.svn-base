@@ -1,0 +1,52 @@
+/**
+ \page	Examples
+These are some examples for the interactive use at ROOT's CINT prompt.
+All examples assume that you have the libDeadAndNoisyTools library loaded.
+\code
+~> export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${PATH_TO_CALICE_CALIB}/lib
+~> root -l
+root [0] gSystem->Load("libDeadAndNoisyTools.so")
+\endcode
+
+Note: The \c export command is for bash, you might have to adapt it if you are
+ using a different shell.
+
+If you need it regularly you might want to put the \c gSystem->Load() command
+into your rootlogon.C
+
+ \section usingSpectrumPropertiesRunInfo Having a closer look at one run using SpectrumPropertiesRunInfo
+
+The input for the SpectrumPropertiesRunInfo class is a root file with the
+spectra for each channel. Usually this is in a files called \c
+runnumber.root. Currently also a file with the AHC config is needed for the
+frontend/slot <-> module mapping. This is subject to be removed once the
+mapping in ahcBinHst ist fully working.
+
+\subsection plotRun Plotting the rms of all channels in a run
+For this we use the TTree:.Draw() command from root. The
+SpectrumPropertiesRunInfo class provides the tree for you. All you need is the
+input file \c RUNNUMBER.root. You simply create the SpectrumPropertiesRunInfo
+object [1] and get the tree from it [2]. For drawing TGraphs (2D plots) it is
+convenient to change the marker style from a one pixel dot to something larger
+[3].
+\code
+root [1] SpectrumPropertiesRunInfo spri(360759,"AHCforCERN2010.cfg");
+root [2] TTree *t = spri.getSpectrumPropertiesTree()
+root [3] t->SetMarkerStyle(2);
+\endcode
+
+Now you can draw any information in the Tree with just one line, incl. cuts.
+\li [4] Histogram the mean values for all channels
+\li [5] Draw a graph rmv vs. channel for all channels in module 9
+\code
+root [4] t->Draw("_mean","_slot==19")
+root [5] t->Draw("_rms:_channel+_chip*spri.getNChannelsPerChip()","_module==9")	
+\endcode
+Note the usage of SpectrumPropertiesRunInfo::getNChannelsPerChip(). There is
+also the SpectrumPropertiesRunInfo::getNChipsPerModue() function. You can use
+this to calculate the global channel number \f$( moduleID \cdot nChipsPerModule + chipID ) \cdot nChannelsPerChip + channelNumber \f$.
+
+\subsection plotDead Plotting the rms of only the dead channels
+
+ \subsection printDead Printing a list of dead channels in one run	
+*/

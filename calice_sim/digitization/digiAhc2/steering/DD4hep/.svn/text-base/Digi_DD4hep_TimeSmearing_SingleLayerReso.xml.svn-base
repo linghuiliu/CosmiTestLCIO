@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!-- ?xml-stylesheet type="text/xsl" href="http://ilcsoft.desy.de/marlin/marlin.xsl"? -->
+<!-- ?xml-stylesheet type="text/xsl" href="marlin.xsl"? -->
+
+<!--##########################################
+#                                        #
+#     Example steering file for marlin   #
+#                                        #
+##########################################-->
+
+
+<marlin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ilcsoft.desy.de/marlin/marlin.xsd">
+  <execute>
+    <processor name="MCRunTime"/>
+    <processor name="Ahc2TriggerSim"/>
+    <processor name="ProgressHandler"/>
+
+    <processor name="GeoConditions"/>
+    <processor name="Ahc2MappingProcessor"/>
+    <processor name="Ahc2CellDescriptionProcessor"/>
+    <processor name="Ahc2CellNeighboursProcessor"/>
+    <processor name="Ahc2CalibrationsProcessor"/>
+
+    <processor name="Ahc2MIP2GeVConversionHCAL_SSF"/>
+    <processor name="Ahc2MIP2GeVConversionHCAL_BL"/>
+    <processor name="Ahc2MIP2GeVConversionECAL"/>
+
+    <processor name="Ahc2ROCThresholdHCAL_SSF"/>
+    <processor name="Ahc2ROCThresholdHCAL_BL"/>
+    <processor name="Ahc2ROCThresholdECAL"/>
+
+    <processor name="Ahc2CollectionMerger"/>
+    <processor name="Ahc2AppendProcessor"/>
+    <processor name="Ahc2SiPMStatisticHCAL"/>
+    <processor name="Ahc2SiPMStatisticECAL"/>
+
+    <processor name="Ahc2TriggeredChannelsHCAL"/>
+
+    <processor name="Ahc2TimeSmearingProcessorHCAL"/>
+
+    <processor name="MyLCIOOutputProcessor"/>
+  </execute>
+
+  <global>
+    <parameter name="LCIOInputFiles">
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev0-Ev999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev10000-Ev10999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev1000-Ev1999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev11000-Ev11999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev12000-Ev12999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev13000-Ev13999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev14000-Ev14999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev15000-Ev15999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev16000-Ev16999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev17000-Ev17999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev18000-Ev18999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev19000-Ev19999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev20000-Ev20999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev2000-Ev2999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev21000-Ev21999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev22000-Ev22999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev23000-Ev23999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev24000-Ev24999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev25000-Ev25999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev26000-Ev26999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev27000-Ev27999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev28000-Ev28999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev29000-Ev29999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev30000-Ev30999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev3000-Ev3999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev31000-Ev31999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev32000-Ev32999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev33000-Ev33999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev34000-Ev34999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev35000-Ev35999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev36000-Ev36999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev37000-Ev37999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev38000-Ev38999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev39000-Ev39999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev40000-Ev40999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev4000-Ev4999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev41000-Ev41999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev42000-Ev42999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev43000-Ev43999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev44000-Ev44999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev45000-Ev45999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev46000-Ev46999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev47000-Ev47999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev48000-Ev48999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev49000-Ev49999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev50000-Ev50999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev5000-Ev5999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev51000-Ev51999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev52000-Ev52999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev53000-Ev53999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev54000-Ev54999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev55000-Ev55999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev56000-Ev56999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev57000-Ev57999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev58000-Ev58999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev59000-Ev59999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev60000-Ev60999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev6000-Ev6999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev61000-Ev61999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev62000-Ev62999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev63000-Ev63999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev64000-Ev64999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev65000-Ev65999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev66000-Ev66999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev67000-Ev67999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev68000-Ev68999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev69000-Ev69999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev70000-Ev70999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev7000-Ev7999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev71000-Ev71999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev72000-Ev72999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev73000-Ev73999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev74000-Ev74999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev75000-Ev75999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev76000-Ev76999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev77000-Ev77999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev78000-Ev78999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev79000-Ev79999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev80000-Ev80999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev8000-Ev8999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev81000-Ev81999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev82000-Ev82999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev83000-Ev83999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev84000-Ev84999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev85000-Ev85999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev86000-Ev86999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev87000-Ev87999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev88000-Ev88999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev89000-Ev89999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev90000-Ev90999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev9000-Ev9999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev91000-Ev91999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev92000-Ev92999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev93000-Ev93999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev94000-Ev94999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev95000-Ev95999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev96000-Ev96999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev97000-Ev97999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev98000-Ev98999.slcio
+      /nfs/dust/ilc/user/ebrianne/AHCAL_Simulation/Production/Electrons/DD4HEP/10GeV/Run24542_e-_10GeV_QGSP_BERT_HP_Ev99000-Ev99999.slcio
+    </parameter>
+    <!-- limit the number of processed records (run+evt): -->
+    <parameter name="MaxRecordNumber" value="20000" />
+    <parameter name="SkipNEvents" value="0" />
+    <parameter name="SupressCheck" value="false" />
+    <parameter name="Verbosity" options="DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT"> SILENT </parameter>
+  </global>
+
+  <processor name="MyLCIOOutputProcessor" type="LCIOOutputProcessor">
+    <!--Writes the current event to the specified LCIO outputfile. Needs to be the last ActiveProcessor.-->
+    <!--drops the named collections from the event-->
+    <parameter name="DropCollectionNames" type="StringVec"> hcalSD_BL hcalSD_SSF ecalSD hcalSD_BL_MIP hcalSD_SSF_MIP ecalSD_MIP ecal_ROC hcal_BL_ROC hcal_SSF_ROC hcal_merged_ROC ecal_SiPM hcal_SiPM hcal_SiPM2 MCParticle </parameter>
+    <!--drops all collections of the given type from the event-->
+    <!--parameter name="DropCollectionTypes" type="StringVec">  </parameter-->
+    <!-- write complete objects in subset collections to the file (i.e. ignore subset flag)-->
+    <!--parameter name="FullSubsetCollections" type="StringVec">  </parameter-->
+    <!--force keep of the named collections - overrules DropCollectionTypes (and DropCollectionNames)-->
+    <parameter name="KeepCollectionNames" type="StringVec"> hcal_digi ecal_digi </parameter>
+    <!-- name of output file -->
+    <parameter name="LCIOOutputFile" type="string">
+      Digifiles/Digitization_DD4hep_Run24542_e-_10GeV_QGSP_BERT_HP_SingleLayerReso.slcio
+    </parameter>
+    <!--write mode for output file:  WRITE_APPEND or WRITE_NEW-->
+    <parameter name="LCIOWriteMode" type="string"> WRITE_NEW </parameter>
+    <!--will split output file if size in kB exceeds given value - doesn't work with APPEND and NEW-->
+    <!--parameter name="SplitFileSizekB" type="int">1992294 </parameter-->
+  </processor>
+
+  <!-- Run Info -->
+
+  <processor name="MCRunTime" type="MCRunTimeProcessor">
+    <!--Sets the event time to the time of the given run number-->
+    <!--initialisation of the database-->
+    <parameter name="DBInit" type="string" value="flccaldb02.desy.de:calice:caliceon:Delice.1:3306"/>
+    <!--Collection from DB which contains information about the location of a run-->
+    <parameter name="RunLocationFolder" type="string" value="/cd_calice_cernSPS2015/TestbeamJuly2015/RunLocation"/>
+    <!--Run number of the run for MC files-->
+    <parameter name="RunNumber" type="int" value="24542"/>
+    <!--Collection from DB which contains the start and stop time of a given run-->
+    <parameter name="RunTimeFolder" type="string" value="/cd_calice_cernSPS2015/TestbeamJuly2015/RunTimeInfo"/>
+    <!--Apply a savety margin of n seconds between the nominal run start and
+    the first MC event time stamp to ensure validity of conditions data-->
+    <parameter name="SavetyMargin" type="int" value="0"/>
+  </processor>
+
+  <!-- Trigger Sim -->
+
+  <processor name="Ahc2TriggerSim" type="Ahc2TriggerSim">
+    <!--Mode for trigger MC, 100 for 100x100 2 fold coincidence, 500 for 500x500 2 fold coincidence-->
+    <parameter name="DetectorName" type="string" value="Ahc2_July15"/>
+    <!--Mode for trigger MC, 100 for 100x100 2 fold coincidence, 500 for 500x500 2 fold coincidence-->
+    <parameter name="TriggerMode" type="int" value="100"/>
+  </processor>
+
+  <!-- MIP2GeV Conversion -->
+
+  <processor name="Ahc2MIP2GeVConversionHCAL_BL" type="Ahc2MIP2GeVProcessor">
+    <!-- Name of SimCalorimeterHit input collections -->
+    <parameter name="Input_Collection" type="string"> hcalSD_BL </parameter>
+    <!-- Name of the Sim Calorimeter Hit output collection converted to MIP -->
+    <parameter name="Output_Collection" type="string"> hcalSD_BL_MIP </parameter>
+    <!-- MIP value in GeV -->
+    <parameter name="MIP2GeV" type="float"> 0.000470 </parameter>
+    <parameter name="RootfileName" type="string"> MIP2GeV_HCAL.root </parameter>
+    <parameter name="WriteRootfile" type="bool"> false </parameter>
+    <!-- Map for changing K from Simulation to K in database (example in Sim K = 31 -> K = 14) -->
+    <parameter name="KHandler" type="StringVec">
+      0 11
+      2 12
+      10 13
+      20 14
+    </parameter>
+  </processor>
+
+  <processor name="Ahc2MIP2GeVConversionHCAL_SSF" type="Ahc2MIP2GeVProcessor">
+    <!-- Name of SimCalorimeterHit input collections -->
+    <parameter name="Input_Collection" type="string"> hcalSD_SSF </parameter>
+    <!-- Name of the Sim Calorimeter Hit output collection converted to MIP -->
+    <parameter name="Output_Collection" type="string"> hcalSD_SSF_MIP </parameter>
+    <!-- MIP value in GeV -->
+    <parameter name="MIP2GeV" type="float"> 0.000470 </parameter>
+    <parameter name="RootfileName" type="string"> MIP2GeV_HCAL.root </parameter>
+    <parameter name="WriteRootfile" type="bool"> false </parameter>
+    <!-- Map for changing K from Simulation to K in database (example in Sim K = 31 -> K = 14) -->
+    <parameter name="KHandler" type="StringVec">
+      0 3
+      1 4
+      2 5
+      3 6
+      4 7
+      5 8
+      6 9
+      7 10
+    </parameter>
+  </processor>
+
+  <processor name="Ahc2MIP2GeVConversionECAL" type="Ahc2MIP2GeVProcessor">
+    <!-- Name of SimCalorimeterHit input collections -->
+    <parameter name="Input_Collection" type="string"> ecalSD </parameter>
+    <!-- Name of the Sim Calorimeter Hit output collection converted to MIP -->
+    <parameter name="Output_Collection" type="string"> ecalSD_MIP </parameter>
+    <!-- MIP value in GeV -->
+    <parameter name="MIP2GeV" type="float"> 0.000309 </parameter>
+    <parameter name="RootfileName" type="string"> MIP2GeV_ECAL.root </parameter>
+    <parameter name="WriteRootfile" type="bool"> false </parameter>
+    <!-- Map for changing K from Simulation to K in database (example in Sim K = 31 -> K = 14) -->
+    <parameter name="KHandler" type="StringVec">
+      0 1
+      1 2
+    </parameter>
+  </processor>
+
+
+  <!-- ROC Threshold -->
+
+  <processor name="Ahc2ROCThresholdECAL" type="Ahc2ROCThresholdProcessor">
+    <!-- Name of SimCalorimeterHit input collections -->
+    <parameter name="ROCThresholdProcessor_simHitInputCollection" type="string"> ecalSD_MIP </parameter>
+    <!-- Name of the Sim Calorimeter Hit output collection converted to MIP -->
+    <parameter name="ROCThresholdProcessor_calHitOutputCollection" type="string"> ecal_ROC </parameter>
+    <!-- tile edge dimension in mm in X -->
+    <parameter name="ROCThresholdProcessor_tileEdgeX" type="float"> 45.0 </parameter>
+    <!-- tile edge dimension in mm in Y -->
+    <parameter name="ROCThresholdProcessor_tileEdgeY" type="float"> 5.0 </parameter>
+    <!-- dead space between tiles in mm -->
+    <parameter name="ROCThresholdProcessor_deadSpace" type="float"> 0.1 </parameter>
+    <!-- MIP threshold fraction -->
+    <parameter name="ROCThresholdProcessor_Threshold" type="float"> 0.5 </parameter>
+    <!-- fast shaper time in ns -->
+    <parameter name="ROCThresholdProcessor_tfast" type="float"> 15 </parameter>
+    <!-- low shaper time in ns -->
+    <parameter name="ROCThresholdProcessor_tslow" type="float"> 50 </parameter>
+    <!-- Number of Layers in the detector -->
+    <parameter name="NLayer" type="int"> 14 </parameter>
+    <!-- Layer arrangement of the detector (1 EBU Horizontal, 2 EBU Vertical, 3 HBU, 4 2*2 HBU) -->
+    <parameter name="LayerPattern" type="string"> 11333333334444 </parameter>
+  </processor>
+
+  <processor name="Ahc2ROCThresholdHCAL_SSF" type="Ahc2ROCThresholdProcessor">
+    <!-- Name of SimCalorimeterHit input collections -->
+    <parameter name="ROCThresholdProcessor_simHitInputCollection" type="string"> hcalSD_SSF_MIP </parameter>
+    <!-- Name of the Sim Calorimeter Hit output collection converted to MIP -->
+    <parameter name="ROCThresholdProcessor_calHitOutputCollection" type="string"> hcal_SSF_ROC </parameter>
+    <!-- tile edge dimension in mm in X -->
+    <parameter name="ROCThresholdProcessor_tileEdgeX" type="float"> 30.0 </parameter>
+    <!-- tile edge dimension in mm in Y -->
+    <parameter name="ROCThresholdProcessor_tileEdgeY" type="float"> 30.0 </parameter>
+    <!-- dead space between tiles in mm -->
+    <parameter name="ROCThresholdProcessor_deadSpace" type="float"> 0.1 </parameter>
+    <!-- MIP threshold fraction -->
+    <parameter name="ROCThresholdProcessor_Threshold" type="float"> 0.5 </parameter>
+    <!-- fast shaper time in ns -->
+    <parameter name="ROCThresholdProcessor_tfast" type="float"> 15 </parameter>
+    <!-- low shaper time in ns -->
+    <parameter name="ROCThresholdProcessor_tslow" type="float"> 50 </parameter>
+    <!-- Number of Layers in the detector -->
+    <parameter name="NLayer" type="int"> 14 </parameter>
+    <!-- Layer arrangement of the detector (1 EBU Horizontal, 2 EBU Vertical, 3 HBU, 4 2*2 HBU) -->
+    <parameter name="LayerPattern" type="string"> 11333333334444 </parameter>
+  </processor>
+
+  <processor name="Ahc2ROCThresholdHCAL_BL" type="Ahc2ROCThresholdProcessor">
+    <!-- Name of SimCalorimeterHit input collections -->
+    <parameter name="ROCThresholdProcessor_simHitInputCollection" type="string"> hcalSD_BL_MIP </parameter>
+    <!-- Name of the Sim Calorimeter Hit output collection converted to MIP -->
+    <parameter name="ROCThresholdProcessor_calHitOutputCollection" type="string"> hcal_BL_ROC </parameter>
+    <!-- tile edge dimension in mm in X -->
+    <parameter name="ROCThresholdProcessor_tileEdgeX" type="float"> 30.0 </parameter>
+    <!-- tile edge dimension in mm in Y -->
+    <parameter name="ROCThresholdProcessor_tileEdgeY" type="float"> 30.0 </parameter>
+    <!-- dead space between tiles in mm -->
+    <parameter name="ROCThresholdProcessor_deadSpace" type="float"> 0.1 </parameter>
+    <!-- MIP threshold fraction -->
+    <parameter name="ROCThresholdProcessor_Threshold" type="float"> 0.5 </parameter>
+    <!-- fast shaper time in ns -->
+    <parameter name="ROCThresholdProcessor_tfast" type="float"> 15 </parameter>
+    <!-- low shaper time in ns -->
+    <parameter name="ROCThresholdProcessor_tslow" type="float"> 50 </parameter>
+    <!-- Number of Layers in the detector -->
+    <parameter name="NLayer" type="int"> 14 </parameter>
+    <!-- Layer arrangement of the detector (1 EBU Horizontal, 2 EBU Vertical, 3 HBU, 4 2*2 HBU) -->
+    <parameter name="LayerPattern" type="string"> 11333333334444 </parameter>
+  </processor>
+
+  <processor name="Ahc2CollectionMerger" type="Ahc2CollectionMerger">
+    <parameter name="InputCollections" type="StringVec"> hcal_SSF_ROC hcal_BL_ROC </parameter>
+    <parameter name="OutputCollection" type="string"> hcal_merged_ROC </parameter>
+  </processor>
+
+  <!-- Append -->
+
+  <processor name="Ahc2AppendProcessor" type="Ahc2AppendProcessor">
+    <parameter name="AppendFileNames" type="StringVec"> /afs/desy.de/group/flc/pool/ebrianne/Projects/AHCAL/Testbeam_July2015/Data_Analysis/Timing/Muons/Data/Noise_study/NoiseFiles/Noise_Run24647.slcio </parameter>
+    <parameter name="InputCollections" type="StringVec"> Ahc2Noise </parameter>
+    <parameter name="OutputCollections" type="StringVec"> _Ahc2Noise </parameter>
+    <parameter name="RepeatCollections" type="bool"> true </parameter>
+  </processor>
+
+  <!-- SiPM Statistics -->
+
+  <processor name="Ahc2SiPMStatisticHCAL" type="Ahc2SiPMStatisticProcessor">
+    <!-- Name of CalorimeterHit input collections -->
+    <parameter name="Input_Collection" type="string"> hcal_merged_ROC </parameter>
+    <!-- Name of the input noise collection -->
+    <parameter name="NoiseCollectionName" type="string"> _Ahc2Noise </parameter>
+    <!-- Name of the Calorimeter Hit output collection converted to px with SiPM statistic treatment -->
+    <parameter name="Output_Collection" type="string"> hcal_SiPM </parameter>
+    <!-- Name of the MappingProcessor instance that provides the geometry of the detector -->
+    <parameter name="MappingProcessorName" type="string"> Ahc2MappingProcessor </parameter>
+    <!-- Name of the CellDescriptionProcessor instance that provides the corrected position of the cells -->
+    <parameter name="CellDescriptionProcessorName" type="string"> Ahc2CellDescriptionProcessor </parameter>
+    <!-- Name of the CellNeighboursProcessor instance that provides the neighbours -->
+    <parameter name="CellNeighboursProcessorName" type="string"> Ahc2CellNeighboursProcessor </parameter>
+    <!-- Name of the Ahc2CalibrationsProcessor that provides the calibrations of the AHCal tiles -->
+    <parameter name="Ahc2CalibrationsProcessorName" type="string"> Ahc2CalibrationsProcessor </parameter>
+    <!-- Filter dead cells -->
+    <parameter name="filterDeadCells" type="bool"> true </parameter>
+    <!-- Filter cells that use some default value in calibration -->
+    <parameter name="filterDefaultCells" type="bool"> false </parameter>
+    <!-- Do MIP Temperature correction -->
+    <parameter name="doMIPTempCorrection" type="bool"> false </parameter>
+    <!-- Do Gain Temperature correction -->
+    <parameter name="doGainTempCorrection" type="bool"> false </parameter>
+    <!-- Add detector noise to pure MC -->
+    <parameter name="DoAddNoise" type="bool"> true </parameter>
+    <!-- Noise energy in MIPs -->
+    <parameter name="NoiseEnergyMIP" type="bool"> true </parameter>
+    <!-- Saturation of the pixel -->
+    <parameter name="doSaturation" type="bool"> true </parameter>
+    <!-- Binomial Smearing of the pixel -->
+    <parameter name="doBinomialSmearing" type="bool"> true </parameter>
+    <!-- Correct light yield for cells with default gain value in calibration -->
+    <parameter name="_correctDefaultGainToLY" type="bool"> true </parameter>
+    <!-- Fixed light yield for cells with default gain value in calibration -->
+    <parameter name="fixedLightYieldForCorrection" type="float"> 13. </parameter>
+    <!-- Physics Mode for new ITEP. -->
+    <parameter name="ITEP_PhysicsMode" type="bool"> true </parameter>
+    <!-- Apply optical cross talk -->
+    <parameter name="DoOpticalCrossTalk" type="bool"> true </parameter>
+    <!-- Light leakage (i.e. factor for the tiles cross-talk) -->
+    <parameter name="LightLeakageParameters" type="StringVec">
+      4 0.15
+      5 0.15
+      6 0.15
+      7 0.15
+      8 0.15
+      9 0.15
+      10 0.15
+    </parameter>
+  </processor>
+
+  <processor name="Ahc2SiPMStatisticECAL" type="Ahc2SiPMStatisticProcessor">
+    <!-- Name of CalorimeterHit input collections -->
+    <parameter name="Input_Collection" type="string"> ecal_ROC </parameter>
+    <!-- Name of the input noise collection -->
+    <parameter name="NoiseCollectionName" type="string"> _Ahc2Noise </parameter>
+    <!-- Name of the Calorimeter Hit output collection converted to px with SiPM statistic treatment -->
+    <parameter name="Output_Collection" type="string"> ecal_digi </parameter>
+    <!-- Name of the MappingProcessor instance that provides the geometry of the detector -->
+    <parameter name="MappingProcessorName" type="string"> Ahc2MappingProcessor </parameter>
+    <!-- Name of the CellDescriptionProcessor instance that provides the corrected position of the cells -->
+    <parameter name="CellDescriptionProcessorName" type="string"> Ahc2CellDescriptionProcessor </parameter>
+    <!-- Name of the CellNeighboursProcessor instance that provides the neighbours -->
+    <parameter name="CellNeighboursProcessorName" type="string"> Ahc2CellNeighboursProcessor </parameter>
+    <!-- Name of the Ahc2CalibrationsProcessor that provides the calibrations of the AHCal tiles -->
+    <parameter name="Ahc2CalibrationsProcessorName" type="string"> Ahc2CalibrationsProcessor </parameter>
+    <!-- Filter dead cells -->
+    <parameter name="filterDeadCells" type="bool"> true </parameter>
+    <!-- Filter cells that use some default value in calibration -->
+    <parameter name="filterDefaultCells" type="bool"> false </parameter>
+    <!-- Do MIP Temperature correction -->
+    <parameter name="doMIPTempCorrection" type="bool"> false </parameter>
+    <!-- Do Gain Temperature correction -->
+    <parameter name="doGainTempCorrection" type="bool"> false </parameter>
+    <!-- Add detector noise to pure MC -->
+    <parameter name="DoAddNoise" type="bool"> false </parameter>
+    <!-- Noise energy in MIPs -->
+    <parameter name="NoiseEnergyMIP" type="bool"> true </parameter>
+    <!-- Saturation of the pixel -->
+    <parameter name="doSaturation" type="bool"> true </parameter>
+    <!-- Binomial Smearing of the pixel -->
+    <parameter name="doBinomialSmearing" type="bool"> true </parameter>
+    <!-- Correct light yield for cells with default gain value in calibration -->
+    <parameter name="_correctDefaultGainToLY" type="bool"> true </parameter>
+    <!-- Fixed light yield for cells with default gain value in calibration -->
+    <parameter name="fixedLightYieldForCorrection" type="float"> 7. </parameter>
+    <!-- Physics Mode for new ITEP. -->
+    <parameter name="ITEP_PhysicsMode" type="bool"> true </parameter>
+    <!-- Apply optical cross talk -->
+    <parameter name="DoOpticalCrossTalk" type="bool"> true </parameter>
+    <!-- Light leakage (i.e. factor for the tiles cross-talk) -->
+    <parameter name="LightLeakageParameters" type="StringVec">
+    </parameter>
+  </processor>
+
+  <!-- Trigger counting event parameter -->
+
+  <processor name="Ahc2TriggeredChannelsHCAL" type="Ahc2TriggeredChannels">
+    <!-- Name of SimCalorimeterHit input collections -->
+    <parameter name="InputCollection" type="string"> hcal_SiPM </parameter>
+    <!-- Name of the Sim Calorimeter Hit output collection converted to MIP -->
+    <parameter name="OutputCollection" type="string"> hcal_SiPM2 </parameter>
+    <!-- Name of the MappingProcessor instance that provides the geometry of the detector -->
+    <parameter name="MappingProcessorName" type="string"> Ahc2MappingProcessor </parameter>
+    <!-- Name of the Ahc2CalibrationsProcessor that provides the calibrations of the AHCal tiles -->
+    <parameter name="Ahc2CalibrationsProcessorName" type="string"> Ahc2CalibrationsProcessor </parameter>
+  </processor>
+
+  <!-- Time Smearing -->
+
+  <processor name="Ahc2TimeSmearingProcessorHCAL" type="Ahc2TimeSmearingProcessor">
+    <!-- Name of CalorimeterHit input collections -->
+    <parameter name="Input_Collection" type="string"> hcal_SiPM2 </parameter>
+    <!-- Name of the Calorimeter Hit output collection converted to MIP -->
+    <parameter name="Output_Collection" type="string"> hcal_digi </parameter>
+    <!-- Name of the MappingProcessor instance that provides the geometry of the detector -->
+    <parameter name="MappingProcessorName" type="string"> Ahc2MappingProcessor </parameter>
+    <!-- Random seed -->
+    <parameter name="RandomSeed" type="int"> 0 </parameter>
+    <!-- Time Smearing of the hit -->
+    <parameter name="doTimeSmearing" type="bool"> true </parameter>
+    <!-- Pedestal shift -->
+    <parameter name="doTDCShift" type="bool"> true </parameter>
+    <!-- Parameters for Pedestal shift in terms of A*Log(nTrigger) + B -->
+    <parameter name="ShiftParameters" type="StringVec">
+      4.82 -0.33
+    </parameter>
+    <!-- Method for smearing: SimpleGaus, DoubleGaus -->
+    <parameter name="SmearingMethod" type="string"> DoubleGaus </parameter>
+    <!-- Parameters used for smearing. SG: mu, sigma; DG: mu1, sigma1, mu2, sigma2; -->
+    <parameter name="TimeSmearingParameters" type="StringVec">
+      -0.646 5.847 1.000 3.384
+    </parameter>
+  </processor>
+
+  <processor name="ProgressHandler" type="ProgressHandler">
+    <!--Report event/run numbers at fixed time intervals, and handle SIGINT (Ctrl-C) for a graceful exit.-->
+    <!--The number of seconds after which the number of processed events will be shown.-->
+    <parameter name="ReportInterval" type="int" value="20"/>
+  </processor>
+
+  <!-- DB parameters + Mapper -->
+
+  <processor name="GeoConditions" type="ConditionsProcessor">
+    <parameter name="DBInit" type="string" value="flccaldb02.desy.de:calice:caliceon:Delice.1:3306"/>
+    <parameter name="DBCondHandler" type="StringVec">
+      Ahc2ModuleDescription        /cd_calice_cernSPS2015/TestbeamJuly2015/ModuleDescription               HEAD
+      Ahc2ModuleConnection         /cd_calice_cernSPS2015/TestbeamJuly2015/ModuleConnection                HEAD
+      Ahc2ModuleLocationReference  /cd_calice_cernSPS2015/TestbeamJuly2015/ModuleLocationReference         HEAD
+      Ahc2DetectorTransformation   /cd_calice_cernSPS2015/TestbeamJuly2015/DetectorTransformation          HEAD
+      Ahc2HardwareConnection       /cd_calice_cernSPS2015/TestbeamJuly2015/Ahc2HardwareConnection          HEAD
+      E4DPedestal                  /cd_calice_cernSPS2015/TestbeamJuly2015/Pedestal                        ahc2_pedestal_010
+      E4DGainConstants             /cd_calice_cernSPS2015/TestbeamJuly2015/gain_constants                  ahc2_gain_constants_004
+      E4DGainSlopes                /cd_calice_cernSPS2015/TestbeamJuly2015/gain_slopes                     ahc2_gain_slopes_003
+      E4DMipConstants              /cd_calice_cernSPS2015/TestbeamJuly2015/mip_constants                   ahc2_mip_constants_008
+      E4DMipSlopes                 /cd_calice_cernSPS2015/TestbeamJuly2015/mip_slopes                      ahc2_mip_slopes_006
+      E4DDeadCellMap               /cd_calice_cernSPS2015/TestbeamJuly2015/DeadCellMap                     ahc2_DeadCells_017
+      E4DSaturationParameters      /cd_calice_cernSPS2015/TestbeamJuly2015/SaturationParameters            ahc2_Sat_001
+      E4DIntercalibration          /cd_calice_cernSPS2015/TestbeamJuly2015/Intercalibration                ahc2_IC_008
+      E4DPhysicsCalibIntercalibration          /cd_calice_cernSPS2015/TestbeamJuly2015/PhysicsCalibIntercalibration                ahc2_PhysicsCalibIC_002
+      E4DTimeSlopes                /cd_calice_cernSPS2015/TestbeamJuly2015/TimeSlopes                      ahc2_time_slopes_001
+      E4DTimePedestal              /cd_calice_cernSPS2015/TestbeamJuly2015/TimePedestal                    ahc2_time_Ped_001
+    </parameter>
+  </processor>
+
+  <processor name="Ahc2MappingProcessor" type="MappingProcessor">
+    <!--Processor that provides a CALICE Mapping object from conditions data-->
+    <!--Name of the ModuleConnection collection-->
+    <parameter name="ModuleConnection"  type="string" lcioInType="LCGenericObject"> Ahc2ModuleConnection </parameter>
+    <!--Name of the ModuleDescription collection-->
+    <parameter name="ModuleDescription" type="string" lcioInType="LCGenericObject"> Ahc2ModuleDescription </parameter>
+    <!--Type name of the mapper instance. Currently valid identifiers are: AHC,AHC2-->
+    <parameter name="MapperType" type="string" value="AHC2"/>
+  </processor>
+
+  <processor name="Ahc2CellDescriptionProcessor" type="CellDescriptionProcessor">
+    <!--Processor that provides a MappedContainer of CALICE CellDescription objects from conditions data-->
+    <!--name of MappingProcessor which takes care of the mapping-->
+    <parameter name="MappingProcessorName"   type="string"> Ahc2MappingProcessor </parameter>
+    <!--Name of the DetectorTransformation collection-->
+    <parameter name="DetectorTransformation" type="string" lcioInType="LCGenericObject"> Ahc2DetectorTransformation </parameter>
+    <!--Name of the ModuleConnection collection-->
+    <parameter name="ModuleConnection"       type="string" lcioInType="LCGenericObject"> Ahc2ModuleConnection </parameter>
+    <!--Name of the ModuleDescription collection-->
+    <parameter name="ModuleDescription"      type="string" lcioInType="LCGenericObject"> Ahc2ModuleDescription </parameter>
+    <!--Name of the ModuleLocation collection-->
+    <parameter name="ModuleLocation"         type="string" lcioInType="LCGenericObject"> Ahc2ModuleLocationReference </parameter>
+  </processor>
+
+  <processor name="Ahc2CellNeighboursProcessor" type="CellNeighboursProcessor">
+    <!--Processor that provides a MappedContainer of CellNeighbours objects-->
+    <!--Name of the MappingProcessor instance that provides the geometry of the detector.-->
+    <parameter name="MappingProcessorName"   type="string"> Ahc2MappingProcessor </parameter>
+  </processor>
+
+  <processor name="Ahc2CalibrationsProcessor" type="Ahc2CalibrationsProcessor">
+    <!--Processor that provides a MappedContainer of SiPMCalibrations objects-->
+    <!--Name of the MappingProcessor instance that provides the geometry of the detector.-->
+    <parameter name="MappingProcessorName" type="string"> Ahc2MappingProcessor </parameter>
+    <!--Name of the pedestal collection-->
+    <parameter name="PedestalCollection" type="string" lcioInType="LCGenericObject"> E4DPedestal </parameter>
+    <!--Name of the MIP constants collection-->
+    <parameter name="MIPConstantCollection" type="string" lcioInType="LCGenericObject"> E4DMipConstants </parameter>
+    <!--Name of the MIP slopes collection-->
+    <parameter name="MIPSlopeCollection" type="string" lcioInType="LCGenericObject"> E4DMipSlopes </parameter>
+    <!--Name of the gain constants collection-->
+    <parameter name="GainConstantCollection" type="string" lcioInType="LCGenericObject"> E4DGainConstants </parameter>
+    <!--Name of the gain slopes collection-->
+    <parameter name="GainSlopeCollection" type="string" lcioInType="LCGenericObject"> E4DGainSlopes </parameter>
+    <!--Name of the interCalibration collection-->
+    <parameter name="InterCalibrationCollection" type="string" lcioInType="LCGenericObject"> E4DIntercalibration </parameter>
+    <!--Name of the interCalibration physics calib collection-->
+    <parameter name="PhysicsCalibICCollection" type="string" lcioInType="LCGenericObject"> E4DPhysicsCalibIntercalibration </parameter>
+    <!--Name of the saturation collection-->
+    <parameter name="SaturationParametersCollection" type="string" lcioInType="LCGenericObject"> E4DSaturationParameters </parameter>
+    <!--Name of the time slopes collection-->
+    <parameter name="TimeSlopesParametersCollection" type="string" lcioInType="LCGenericObject"> E4DTimeSlopes </parameter>
+    <!--Name of the time Pedestal collection-->
+    <parameter name="TimePedestalParametersCollection" type="string" lcioInType="LCGenericObject"> E4DTimePedestal </parameter>
+    <!--Collection with quality flags-->
+    <parameter name="CellQualityCollection" type="string" lcioInType="LCGenericObject"> E4DDeadCellMap </parameter>
+  </processor>
+
+</marlin>

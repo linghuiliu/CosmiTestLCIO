@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/public/calice/!svn/ver/4739/calice_calib/trunk/calib/include
+END
+HcalSingleHits.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/4698/calice_calib/trunk/calib/include/HcalSingleHits.hh
+END
+Ahc2PedestalCalibrator.hh
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/calice/!svn/ver/4588/calice_calib/trunk/calib/include/Ahc2PedestalCalibrator.hh
+END
+MipTrackFinder.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/3984/calice_calib/trunk/calib/include/MipTrackFinder.hh
+END
+AngleTrackFinder.hh
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/3974/calice_calib/trunk/calib/include/AngleTrackFinder.hh
+END
+CellAnalysisProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/calice/!svn/ver/3975/calice_calib/trunk/calib/include/CellAnalysisProcessor.hh
+END
+ExtractIntercalibrationProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/public/calice/!svn/ver/3221/calice_calib/trunk/calib/include/ExtractIntercalibrationProcessor.hh
+END
+SingleCellAnalysis.hh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/3681/calice_calib/trunk/calib/include/SingleCellAnalysis.hh
+END
+Ahc2OffsetCalibrator.hh
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/4668/calice_calib/trunk/calib/include/Ahc2OffsetCalibrator.hh
+END
+ExtractSaturationCurveProcessor.hh
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/public/calice/!svn/ver/3222/calice_calib/trunk/calib/include/ExtractSaturationCurveProcessor.hh
+END
+ClusterOrdering.hh
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/public/calice/!svn/ver/3900/calice_calib/trunk/calib/include/ClusterOrdering.hh
+END
+SingleCellStatistics.hh
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/3681/calice_calib/trunk/calib/include/SingleCellStatistics.hh
+END
+EcalSingleHits.hh
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/4698/calice_calib/trunk/calib/include/EcalSingleHits.hh
+END
+Ahc2GainCalibrator.hh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/4625/calice_calib/trunk/calib/include/Ahc2GainCalibrator.hh
+END
+Ahc2MipTrackFinder.hh
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/4739/calice_calib/trunk/calib/include/Ahc2MipTrackFinder.hh
+END

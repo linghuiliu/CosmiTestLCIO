@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!-- ?xml-stylesheet type="text/xsl" href="http://ilcsoft.desy.de/marlin/marlin.xsl"? -->
+<!-- ?xml-stylesheet type="text/xsl" href="marlin.xsl"? -->
+
+<!--##########################################
+#                                        #
+#     Example steering file for marlin   #
+#                                        #
+##########################################-->
+
+
+<marlin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ilcsoft.desy.de/marlin/marlin.xsd">
+  <execute>
+    <processor name="ProgressHandler"/>
+
+    <processor name="GeoConditions"/>
+    <processor name="Ahc2MappingProcessor"/>
+    <processor name="Ahc2CellDescriptionProcessor"/>
+    <processor name="Ahc2CalibrationsProcessor"/>
+
+    <processor name="Ahc2CollectionMerger"/>
+
+    <processor name="MyLCIOOutputProcessor"/>
+
+    <processor name="Ahc2CalibrateProcessorHCAL"/>
+    <processor name="Ahc2CalibrateProcessorECAL"/>
+
+    <processor name="Ahc2MipTrackFinder"/>
+
+    <processor name="HcalRootTreeWriter"/>
+    <processor name="EcalRootTreeWriter"/>
+  </execute>
+
+  <global>
+    <parameter name="LCIOInputFiles" >
+      Digifiles/Digitization_DD4hep_Run24017_mu-_8GeV_QGSP_BERT_50k_SingleLayerReso.slcio
+    </parameter>
+    <!-- limit the number of processed records (run+evt): -->
+    <parameter name="MaxRecordNumber" value="0" />
+    <parameter name="SkipNEvents" value="0" />
+    <parameter name="SupressCheck" value="false" />
+    <parameter name="Verbosity" options="DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT"> ERROR </parameter>
+  </global>
+
+  <processor name="ProgressHandler" type="ProgressHandler">
+    <!--Report event/run numbers at fixed time intervals, and handle SIGINT (Ctrl-C) for a graceful exit.-->
+    <!--The number of seconds after which the number of processed events will be shown.-->
+    <parameter name="ReportInterval" type="int" value="20"/>
+  </processor>
+
+  <processor name="MyLCIOOutputProcessor" type="LCIOOutputProcessor">
+    <!--Writes the current event to the specified LCIO outputfile. Needs to be the last ActiveProcessor.-->
+    <!--drops the named collections from the event-->
+    <!--parameter name="DropCollectionNames" type="StringVec"> hcalSD_SSF hcalSD_BL ecalSD ecalSD_MIP hcalSD_SSF_MIP hcalSD_BL_MIP </parameter-->
+    <!--drops all collections of the given type from the event-->
+    <!--parameter name="DropCollectionTypes" type="StringVec">  </parameter-->
+    <!-- write complete objects in subset collections to the file (i.e. ignore subset flag)-->
+    <!--parameter name="FullSubsetCollections" type="StringVec"> hcal_SSF_smeared_time hcal_BL_smeared_time ecal_smeared_time </parameter-->
+    <!--force keep of the named collections - overrules DropCollectionTypes (and DropCollectionNames)-->
+    <parameter name="KeepCollectionNames" type="StringVec"> </parameter>
+    <!-- name of output file -->
+    <parameter name="LCIOOutputFile" type="string">
+      Digifiles/Reco_DD4hep_Run24017_mu-_8GeV_QGSP_BERT_50k_SingleLayerReso.slcio
+    </parameter>
+    <!--write mode for output file:  WRITE_APPEND or WRITE_NEW-->
+    <parameter name="LCIOWriteMode" type="string"> WRITE_NEW </parameter>
+    <!--will split output file if size in kB exceeds given value - doesn't work with APPEND and NEW-->
+    <!--parameter name="SplitFileSizekB" type="int">1992294 </parameter-->
+  </processor>
+
+  <!-- DB parameters + Mapper -->
+
+  <processor name="GeoConditions" type="ConditionsProcessor">
+    <parameter name="DBInit" type="string" value="flccaldb02.desy.de:calice:caliceon:Delice.1:3306"/>
+    <parameter name="DBCondHandler" type="StringVec">
+      Ahc2ModuleDescription        /cd_calice_cernSPS2015/TestbeamJuly2015/ModuleDescription               HEAD
+      Ahc2ModuleConnection         /cd_calice_cernSPS2015/TestbeamJuly2015/ModuleConnection                HEAD
+      Ahc2ModuleLocationReference  /cd_calice_cernSPS2015/TestbeamJuly2015/ModuleLocationReference         HEAD
+      Ahc2DetectorTransformation   /cd_calice_cernSPS2015/TestbeamJuly2015/DetectorTransformation          HEAD
+      Ahc2HardwareConnection       /cd_calice_cernSPS2015/TestbeamJuly2015/Ahc2HardwareConnection          HEAD
+      E4DPedestal                  /cd_calice_cernSPS2015/TestbeamJuly2015/Pedestal                        ahc2_pedestal_010
+      E4DGainConstants             /cd_calice_cernSPS2015/TestbeamJuly2015/gain_constants                  ahc2_gain_constants_004
+      E4DGainSlopes                /cd_calice_cernSPS2015/TestbeamJuly2015/gain_slopes                     ahc2_gain_slopes_003
+      E4DMipConstants              /cd_calice_cernSPS2015/TestbeamJuly2015/mip_constants                   ahc2_mip_constants_008
+      E4DMipSlopes                 /cd_calice_cernSPS2015/TestbeamJuly2015/mip_slopes                      ahc2_mip_slopes_006
+      E4DDeadCellMap               /cd_calice_cernSPS2015/TestbeamJuly2015/DeadCellMap                     ahc2_DeadCells_014
+      E4DSaturationParameters      /cd_calice_cernSPS2015/TestbeamJuly2015/SaturationParameters            ahc2_Sat_001
+      E4DIntercalibration          /cd_calice_cernSPS2015/TestbeamJuly2015/Intercalibration                ahc2_IC_006
+      E4DPhysicsCalibIntercalibration          /cd_calice_cernSPS2015/TestbeamJuly2015/PhysicsCalibIntercalibration                ahc2_PhysicsCalibIC_002
+      E4DTimeSlopes                /cd_calice_cernSPS2015/TestbeamJuly2015/TimeSlopes                      ahc2_time_slopes_001
+      E4DTimePedestal              /cd_calice_cernSPS2015/TestbeamJuly2015/TimePedestal                    ahc2_time_Ped_001
+    </parameter>
+  </processor>
+
+  <processor name="Ahc2MappingProcessor" type="MappingProcessor">
+    <!--Processor that provides a CALICE Mapping object from conditions data-->
+    <!--Name of the ModuleConnection collection-->
+    <parameter name="ModuleConnection"  type="string" lcioInType="LCGenericObject"> Ahc2ModuleConnection </parameter>
+    <!--Name of the ModuleDescription collection-->
+    <parameter name="ModuleDescription" type="string" lcioInType="LCGenericObject"> Ahc2ModuleDescription </parameter>
+    <!--Type name of the mapper instance. Currently valid identifiers are: AHC,AHC2-->
+    <parameter name="MapperType" type="string" value="AHC2"/>
+  </processor>
+
+  <processor name="Ahc2CellDescriptionProcessor" type="CellDescriptionProcessor">
+    <!--Processor that provides a MappedContainer of CALICE CellDescription objects from conditions data-->
+
+    <!--name of MappingProcessor which takes care of the mapping-->
+    <parameter name="MappingProcessorName"   type="string"> Ahc2MappingProcessor </parameter>
+
+    <!--Name of the DetectorTransformation collection-->
+    <parameter name="DetectorTransformation" type="string" lcioInType="LCGenericObject"> Ahc2DetectorTransformation </parameter>
+    <!--Name of the ModuleConnection collection-->
+    <parameter name="ModuleConnection"       type="string" lcioInType="LCGenericObject"> Ahc2ModuleConnection </parameter>
+    <!--Name of the ModuleDescription collection-->
+    <parameter name="ModuleDescription"      type="string" lcioInType="LCGenericObject"> Ahc2ModuleDescription </parameter>
+    <!--Name of the ModuleLocation collection-->
+    <parameter name="ModuleLocation"         type="string" lcioInType="LCGenericObject"> Ahc2ModuleLocationReference </parameter>
+  </processor>
+
+  <processor name="Ahc2CalibrationsProcessor" type="Ahc2CalibrationsProcessor">
+    <!--Processor that provides a MappedContainer of SiPMCalibrations objects-->
+    <!--Name of the MappingProcessor instance that provides the geometry of the detector.-->
+    <parameter name="MappingProcessorName" type="string"> Ahc2MappingProcessor </parameter>
+    <!--Name of the pedestal collection-->
+    <parameter name="PedestalCollection" type="string" lcioInType="LCGenericObject"> E4DPedestal </parameter>
+    <!--Name of the MIP constants collection-->
+    <parameter name="MIPConstantCollection" type="string" lcioInType="LCGenericObject"> E4DMipConstants </parameter>
+    <!--Name of the MIP slopes collection-->
+    <parameter name="MIPSlopeCollection" type="string" lcioInType="LCGenericObject"> E4DMipSlopes </parameter>
+    <!--Name of the gain constants collection-->
+    <parameter name="GainConstantCollection" type="string" lcioInType="LCGenericObject"> E4DGainConstants </parameter>
+    <!--Name of the gain slopes collection-->
+    <parameter name="GainSlopeCollection" type="string" lcioInType="LCGenericObject"> E4DGainSlopes </parameter>
+    <!--Name of the interCalibration collection-->
+    <parameter name="InterCalibrationCollection" type="string" lcioInType="LCGenericObject"> E4DIntercalibration </parameter>
+    <!--Name of the interCalibration physics calib collection-->
+    <parameter name="PhysicsCalibICCollection" type="string" lcioInType="LCGenericObject"> E4DPhysicsCalibIntercalibration </parameter>
+    <!--Name of the saturation collection-->
+    <parameter name="SaturationParametersCollection" type="string" lcioInType="LCGenericObject"> E4DSaturationParameters </parameter>
+    <!--Name of the time slopes collection-->
+    <parameter name="TimeSlopesParametersCollection" type="string" lcioInType="LCGenericObject"> E4DTimeSlopes </parameter>
+    <!--Name of the time Pedestal collection-->
+    <parameter name="TimePedestalParametersCollection" type="string" lcioInType="LCGenericObject"> E4DTimePedestal </parameter>
+    <!--Collection with quality flags-->
+    <parameter name="CellQualityCollection" type="string" lcioInType="LCGenericObject"> E4DDeadCellMap </parameter>
+  </processor>
+
+  <processor name="Ahc2CollectionMerger" type="Ahc2CollectionMerger">
+    <parameter name="InputCollections" type="StringVec"> hcal_SSF_smeared_time hcal_BL_smeared_time </parameter>
+    <parameter name="OutputCollection" type="string"> hcal_merged_smeared_time </parameter>
+  </processor>
+
+  <processor name="Ahc2CalibrateProcessorHCAL" type="Ahc2CalibrateProcessor">
+    <!--Does calibration of AHCal hits-->
+    <!--Name of the CellDescriptionProcessor instance that provides the corrected position of the cells.-->
+    <parameter name="CellDescriptionProcessorName" type="string"> Ahc2CellDescriptionProcessor </parameter>
+    <!--Name of the EPTCalibrationsProcessor that provides the calibrations of the AHCal tiles.-->
+    <parameter name="Ahc2CalibrationsProcessorName" type="string"> Ahc2CalibrationsProcessor </parameter>
+    <!--Name of the Ahc2HardwareConnection Collection.-->
+    <parameter name="HardwareConnectionCollection" type="string"> Ahc2HardwareConnection </parameter>
+    <!--Name of the input collection-->
+    <parameter name="InputCollectionName" type="string"> hcal_merged_smeared_time </parameter>
+    <!--Name of the MappingProcessor instance that provides the geometry of the detector.-->
+    <parameter name="MappingProcessorName" type="string"> Ahc2MappingProcessor </parameter>
+    <!--Minimal energy deposition in units of MIP to keep hit, applied only if ZeroSuppression==1.-->
+    <parameter name="MipCut" type="float"> 0.5 </parameter>
+    <!--AHCal conversion factor from MIP to GeV-->
+    <parameter name="MipToGeVFactor" type="float"> 0.0255 </parameter>
+    <!--Name of the output AHCal hit collection, of type CalorimeterHit-->
+    <parameter name="OutputAhcHitCollectionName" type="string"> Ahc2Calorimeter_Hits </parameter>
+    <!--apply (1) or ignore (0) the pedestal subtraction-->
+    <parameter name="PedestalSubtraction" type="bool"> false </parameter>
+    <!--scale factor for the energy-->
+    <!--parameter name="ScaleEnergy" type="float">1 </parameter-->
+    <!--apply (1) or ignore (0) the MIP threshold cut-->
+    <parameter name="ZeroSuppression" type="bool"> true </parameter>
+    <!--Do error calculation-->
+    <parameter name="doErrorCalculation" type="bool"> false </parameter>
+    <!--Do gain temperature correction-->
+    <parameter name="doGainTemperatureCorrection" type="bool"> false </parameter>
+    <!--Do MIP temperature correction-->
+    <parameter name="doMipTemperatureCorrection" type="bool"> false </parameter>
+    <!--Do saturation correction-->
+    <parameter name="doSaturationCorrection" type="bool"> true </parameter>
+    <!--Filter dead cells-->
+    <parameter name="filterDeadCells" type="bool"> true </parameter>
+    <!--Filter cells that use some default value in calibration.-->
+    <parameter name="filterDefaultCells" type="bool"> false </parameter>
+    <!--Convert RAW ADC to MIP cell by cell-->
+    <parameter name="doMipConversion" type="bool"> true </parameter>
+    <!--Convert RAW TDC to ns cell by cell-->
+    <parameter name="doTimeConversion" type="bool"> false </parameter>
+    <!--verbosity level of this processor ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
+    <parameter name="Verbosity" type="string"> ERROR </parameter>
+  </processor>
+
+  <processor name="Ahc2CalibrateProcessorECAL" type="Ahc2CalibrateProcessor">
+    <!--Does calibration of AHCal hits-->
+    <!--Name of the CellDescriptionProcessor instance that provides the corrected position of the cells.-->
+    <parameter name="CellDescriptionProcessorName" type="string"> Ahc2CellDescriptionProcessor </parameter>
+    <!--Name of the EPTCalibrationsProcessor that provides the calibrations of the AHCal tiles.-->
+    <parameter name="Ahc2CalibrationsProcessorName" type="string"> Ahc2CalibrationsProcessor </parameter>
+    <!--Name of the Ahc2HardwareConnection Collection.-->
+    <parameter name="HardwareConnectionCollection" type="string"> Ahc2HardwareConnection </parameter>
+    <!--Name of the input collection-->
+    <parameter name="InputCollectionName" type="string"> ecal_smeared_time </parameter>
+    <!--Name of the MappingProcessor instance that provides the geometry of the detector.-->
+    <parameter name="MappingProcessorName" type="string"> Ahc2MappingProcessor </parameter>
+    <!--Minimal energy deposition in units of MIP to keep hit, applied only if ZeroSuppression==1.-->
+    <parameter name="MipCut" type="float"> 0.5 </parameter>
+    <!--AHCal conversion factor from MIP to GeV-->
+    <parameter name="MipToGeVFactor" type="float"> 0.0255 </parameter>
+    <!--Name of the output AHCal hit collection, of type CalorimeterHit-->
+    <parameter name="OutputAhcHitCollectionName" type="string"> ScEcalCalorimeter_Hits </parameter>
+    <!--apply (1) or ignore (0) the pedestal subtraction-->
+    <parameter name="PedestalSubtraction" type="bool"> false </parameter>
+    <!--scale factor for the energy-->
+    <!--parameter name="ScaleEnergy" type="float">1 </parameter-->
+    <!--apply (1) or ignore (0) the MIP threshold cut-->
+    <parameter name="ZeroSuppression" type="bool"> true </parameter>
+    <!--Do error calculation-->
+    <parameter name="doErrorCalculation" type="bool"> false </parameter>
+    <!--Do gain temperature correction-->
+    <parameter name="doGainTemperatureCorrection" type="bool"> false </parameter>
+    <!--Do MIP temperature correction-->
+    <parameter name="doMipTemperatureCorrection" type="bool"> false </parameter>
+    <!--Do saturation correction-->
+    <parameter name="doSaturationCorrection" type="bool"> true </parameter>
+    <!--Filter dead cells-->
+    <parameter name="filterDeadCells" type="bool"> true </parameter>
+    <!--Filter cells that use some default value in calibration.-->
+    <parameter name="filterDefaultCells" type="bool"> false </parameter>
+    <!--Convert RAW ADC to MIP cell by cell-->
+    <parameter name="doMipConversion" type="bool"> true </parameter>
+    <!--Convert RAW TDC to ns cell by cell-->
+    <parameter name="doTimeConversion" type="bool"> false </parameter>
+    <!--verbosity level of this processor ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
+    <parameter name="Verbosity" type="string"> ERROR </parameter>
+  </processor>
+
+  <processor name="Ahc2MipTrackFinder" type="Ahc2MipTrackFinder">
+    <!--Name of the input AHCal hit collection, of type CalorimeterHit-->
+    <parameter name="AHCalCollectionName" type="string"> Ahc2Calorimeter_Hits </parameter>
+    <parameter name="ECalCollectionName" type="string"> ScEcalCalorimeter_Hits </parameter>
+    <!--Name of the output AHCal hit collection, of type CalorimeterHit-->
+    <parameter name="OutputAhcHitCollectionName" type="string"> Ahc2Calorimeter_TrackHits </parameter>
+    <parameter name="OutputEmcHitCollectionName" type="string"> ScEcalCalorimeter_TrackHits </parameter>
+    <!--Cut on nUmber of hits in Tower-->
+    <parameter name="NHitsOnTower" type="int"> 8 </parameter>
+    <parameter name="NHitsOnLayer" type="int"> 2 </parameter>
+    <parameter name="NEBULayers" type="int"> 2 </parameter>
+    <parameter name="NHBULayers" type="int"> 12 </parameter>
+    <parameter name="MMaxHit" type="int"> 30 </parameter>
+    <parameter name="MMinHit" type="int"> 0 </parameter>
+    <parameter name="KeepT0_CherenkowHits" type="bool"> true </parameter>
+    <parameter name="T0Handler" type="StringVec">
+      2 24 11
+      15 24 11
+      2 24 12
+      2 24 13
+      23 24 13
+      3 24 14
+    </parameter>
+    <parameter name="CherenkowHandler" type="StringVec">
+      8 18 10
+      22 24 12
+      23 24 14
+    </parameter>
+    <parameter name="Verbosity" type="string"> ERROR </parameter>
+  </processor>
+
+  <!-- Write root file containing Temp data -->
+  <processor name="HcalRootTreeWriter" type="RootTreeWriter">
+    <!--Name of the output ROOT file-->
+    <parameter name="OutFileName" type="string">
+      Rootfiles/DD4hep_Run24017_mu-_8GeV_QGSP_BERT_50k_SingleLayerSmearing.root
+    </parameter>
+    <parameter name="HitWriteEngine_enable" type="int"> 1 </parameter>
+    <parameter name="HitWriteEngine_InCol" type="string" lcioInType="CalorimeterHit"> Ahc2Calorimeter_TrackHits </parameter>
+    <parameter name="HitWriteEngine_caloType" type="string"> ahc </parameter>
+    <parameter name="HitWriteEngine_eventFiltering" type="int"> 1 </parameter>
+    <parameter name="HitWriteEngine_informationLevel" type="int"> 3 </parameter>
+    <parameter name="HitWriteEngine_cogIJenable" type="int"> 0 </parameter>
+  </processor>
+
+  <!-- Write root file containing Temp data -->
+  <processor name="EcalRootTreeWriter" type="RootTreeWriter">
+    <!--Name of the output ROOT file-->
+    <parameter name="OutFileName" type="string">
+      Rootfiles/DD4hep_Run24017_mu-_8GeV_QGSP_BERT_50k_SingleLayerSmearing.root
+    </parameter>
+    <parameter name="HitWriteEngine_enable" type="int"> 1 </parameter>
+    <parameter name="HitWriteEngine_InCol" type="string" lcioInType="CalorimeterHit"> ScEcalCalorimeter_TrackHits </parameter>
+    <parameter name="HitWriteEngine_caloType" type="string"> emc </parameter>
+    <parameter name="HitWriteEngine_eventFiltering" type="int"> 1 </parameter>
+    <parameter name="HitWriteEngine_informationLevel" type="int"> 3 </parameter>
+    <parameter name="HitWriteEngine_cogIJenable" type="int"> 0 </parameter>
+  </processor>
+
+</marlin>

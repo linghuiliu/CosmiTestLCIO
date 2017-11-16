@@ -1,0 +1,13 @@
+_Incomplete_ README for AHCAL digitization
+
+Please read http://www-flc.desy.de/flc/flcwiki/HCAL_Digitization for
+an overview.
+
+The steerings are currently for HCAL only runs CERN 2007. The input
+and output file names have to be put in.
+
+For other runs types some folders need to be changed, see
+http://www-flc.desy.de/flc/flcwiki/NonHcalConditionsData .
+
+The order is: ganging, digitization, reconstruction. In addition noise
+can be generated and overlayed in the digitization step.

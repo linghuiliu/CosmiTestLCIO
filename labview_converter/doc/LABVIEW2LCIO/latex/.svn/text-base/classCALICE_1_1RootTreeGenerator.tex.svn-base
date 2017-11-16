@@ -1,0 +1,134 @@
+\section{CALICE::Root\-Tree\-Generator Class Reference}
+\label{classCALICE_1_1RootTreeGenerator}\index{CALICE::RootTreeGenerator@{CALICE::RootTreeGenerator}}
+Class to process Labview raw.  
+
+
+{\tt \#include $<$Root\-Tree\-Generator.hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+virtual Processor $\ast$ \bf{new\-Processor} ()\label{classCALICE_1_1RootTreeGenerator_35c76a03046c6a38b70986e61dab0e90}
+
+\item 
+\bf{Root\-Tree\-Generator} ()\label{classCALICE_1_1RootTreeGenerator_e38c9fd758ddb3a831223ef8765bd3b7}
+
+\item 
+\bf{$\sim$Root\-Tree\-Generator} ()\label{classCALICE_1_1RootTreeGenerator_554b4a05c12440db73bc92cb40940af5}
+
+\item 
+void \bf{init} ()\label{classCALICE_1_1RootTreeGenerator_ef505539cc3a166184a96b6a597b2142}
+
+\item 
+void \bf{process\-Event} (LCEvent $\ast$evt)\label{classCALICE_1_1RootTreeGenerator_a0434517c132655d99986dc9c61ccd92}
+
+\item 
+void \bf{end} ()\label{classCALICE_1_1RootTreeGenerator_84611f449c049d1e85df92c902800c65}
+
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+std::string \bf{\_\-input\-Col\-Name}\label{classCALICE_1_1RootTreeGenerator_6e3ccdee44a36637ec5f82b38613aa80}
+
+\item 
+TFile $\ast$ \bf{\_\-root\-File}\label{classCALICE_1_1RootTreeGenerator_ba6d91d1711bf79073a6fc66c89b7cf2}
+
+\item 
+std::string \bf{\_\-root\-File\-Name}\label{classCALICE_1_1RootTreeGenerator_260eeab9bd8a73bbdeb2386b1a2f9100}
+
+\item 
+TTree $\ast$ \bf{\_\-tree\-T0}\label{classCALICE_1_1RootTreeGenerator_585307997ecb8c88c484dc31b33971b9}
+
+\item 
+TTree $\ast$ \bf{\_\-tree\-Labview\-Block}\label{classCALICE_1_1RootTreeGenerator_df2fbfdedc2abfd463e7ffbe0d277841}
+
+\item 
+int \bf{\_\-T01}\label{classCALICE_1_1RootTreeGenerator_a67f2b9113d6aa9c5e149e75b0ac3577}
+
+\item 
+int \bf{\_\-A01}\label{classCALICE_1_1RootTreeGenerator_667429bf9de4d2f8688011aa8599d125}
+
+\item 
+int \bf{\_\-HB01}\label{classCALICE_1_1RootTreeGenerator_da416cfa7271214bfb6e15f43c6ac975}
+
+\item 
+int \bf{\_\-BX01}\label{classCALICE_1_1RootTreeGenerator_da9c02208c92b5a31b33b6f065cb4f38}
+
+\item 
+int \bf{\_\-CN01}\label{classCALICE_1_1RootTreeGenerator_7d362a145eb29c9b6feae54429e58ebc}
+
+\item 
+int \bf{\_\-T02}\label{classCALICE_1_1RootTreeGenerator_06d978ef255dbf5536a82d06eb56318e}
+
+\item 
+int \bf{\_\-A02}\label{classCALICE_1_1RootTreeGenerator_9160cd652d81aaedf2d7a1968e4aae0e}
+
+\item 
+int \bf{\_\-HB02}\label{classCALICE_1_1RootTreeGenerator_2a1ceea0d4413f5c58ebe249eba46a29}
+
+\item 
+int \bf{\_\-BX02}\label{classCALICE_1_1RootTreeGenerator_5f35ffe5b1af5f6c8144c9597444eaee}
+
+\item 
+int \bf{\_\-CN02}\label{classCALICE_1_1RootTreeGenerator_6f9abcd2f4e4fd84c65bf6ae0fca7178}
+
+\item 
+int \bf{\_\-n\-Hits}\label{classCALICE_1_1RootTreeGenerator_5d5296e7d128ed4965c3ebd44d6883d0}
+
+\item 
+int \bf{\_\-Bunch\-XID}\label{classCALICE_1_1RootTreeGenerator_09a994142a4a861b92e97de8dec6fb70}
+
+\item 
+int \bf{\_\-Cycle\-Nr}\label{classCALICE_1_1RootTreeGenerator_46fb27402d692084f748a4cea88a4866}
+
+\item 
+int \bf{\_\-Chip\-ID}\label{classCALICE_1_1RootTreeGenerator_df053f25a33e93fc21b348ea4c15e3ad}
+
+\item 
+int \bf{\_\-ASICNr}\label{classCALICE_1_1RootTreeGenerator_d4807c84723ab8b1ffe0b6afc7b06627}
+
+\item 
+int \bf{\_\-Evt\-Nr}\label{classCALICE_1_1RootTreeGenerator_b1d7f8094a5df61ad65266c42106e5ab}
+
+\item 
+int \bf{\_\-Channel}\label{classCALICE_1_1RootTreeGenerator_e0e0671eb00d7bf1682bbb1aae0ecde4}
+
+\item 
+int \bf{\_\-TDC}\label{classCALICE_1_1RootTreeGenerator_b3f8c347923dd4ab60d3607fdf07e957}
+
+\item 
+int \bf{\_\-ADC}\label{classCALICE_1_1RootTreeGenerator_efe0fe5186c9b8348bf4ab7d0602a4fa}
+
+\item 
+int \bf{\_\-x\-Pos}\label{classCALICE_1_1RootTreeGenerator_6ef7b392828476b6919e649fda591f17}
+
+\item 
+int \bf{\_\-y\-Pos}\label{classCALICE_1_1RootTreeGenerator_dab30b6874a9c44dab78e0fa229ad88e}
+
+\item 
+int \bf{\_\-Hit\-Bit}\label{classCALICE_1_1RootTreeGenerator_6ac1a75da7f3c1e15123c60ad5e08f84}
+
+\item 
+int \bf{\_\-Gain\-Bit}\label{classCALICE_1_1RootTreeGenerator_7b2a24933acb0e0ffc3110c0bc499139}
+
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Class to process Labview raw. 
+
+\begin{Desc}
+\item[Author:]: Shaojun Lu DESY \end{Desc}
+\begin{Desc}
+\item[Date:]Nov 15 2012 \end{Desc}
+
+
+
+
+Definition at line 23 of file Root\-Tree\-Generator.hh.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+Root\-Tree\-Generator.hh\item 
+Root\-Tree\-Generator.cc\end{CompactItemize}

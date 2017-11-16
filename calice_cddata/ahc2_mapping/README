@@ -1,0 +1,60 @@
+README for AHC2 Mapping in the database (expert only!!!)
+
+ - ModuleDescription_XXXX.txt
+
+Provide input file for different orientations (DIF pointing to top, left or right..) of a Module type the associated CellID0 encoding.
+The Numbers are : Module_type, Chip, Chn, CellID1, I, J, K, CellID0 (K has no importance here - ModuleConnection will do the job)
+
+Left :  1       0       0       1       13      13      1       426816
+Top : 	1	0	0	1	12	13	1	426752
+
+-> In this example, as the Module is rotated, the I change by 25 - 13 = 12 but J stays the same thus giving a different CellID0.
+
+ - createHardwareConnection.cc
+
+Tools to create a file to upload to the database to make the Hardware Connection between ChipID and Module/ChipNumber.
+Example :
+
+ChipID  Module  ChipNumber
+129     1       0
+
+To be changed depending on the layer disposition!
+Compile by doing : g++ -O3 -Wall -o createHardwareConnection createHardwareConnection.cc
+Execute : ./createHardwareConnection <output file> <MinChip> <MaxChip>
+
+#######
+
+/!\ For all the files in the following, don t forget to change the time validity for the database /!\
+ lcio::LCTime begin(2015, 8, 01, 0, 0, 0);
+ lcio::LCTime end(2015, 8, 31, 0, 0, 0);
+
+#######
+
+ - createEPTDescription.cc
+
+File to be put into calice_cddata/dbfill before compiling!
+This code reads the file ModuleDescription_XXXX.txt as input and create the description of a Module type that is uploaded to the database.
+So far nothing needs to be changed into the code!! All Module types are already described there (Module types from 1 to 5 - see http://flcwiki.desy.de/AHCALTestBeamCERN2015/OfflineDataAnalysis#Offline_Data_Analysis:_Database)
+If a new Module Geometry is introduced for Testbeam this would need modification as well as ModuleDescription_XXXX.txt to have the new module type inside.
+
+Ex : 
+
+//SINGLE HBU LAYER
+    ModuleDescription  *EPTModule1 = new ModuleDescription(4, 144, "_A",kModuleDescriptionWithCellDimensionAndZPos);
+    EPTModule1->setWidth(360);
+    EPTModule1->setHeight(360);
+
+This creates a description for a single HBU. In the constructor, the "4" represent the module_type number, "144", the number of channels in the Module.
+
+ - createEPTModuleConnection.cc
+
+This code makes the connection between module type to the layer number. Then creates a collection into the database.
+Be careful here, the module type is equal to the module_type number from the ModuleDescription constructor minus 4!
+
+Example : Single HBU layer -> module_type number = 4, ModuleConnection module_type = 0!
+
+ - createEPTModuleLocation.cc
+
+This code makes the relation between the module_type (from ModuleConnection) and the z position. Then it creates a collection into the database.
+
+Example : Layer 1 is at z = 70 mm and it is a single HBU layer (module_type = 0). Then it will associate this layer 1 of module_type 0 to the position z = 70 mm.

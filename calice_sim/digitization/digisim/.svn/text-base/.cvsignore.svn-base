@@ -1,0 +1,6 @@
+attic
+DigiSimConfig.cmake
+build
+.build
+bin
+lib

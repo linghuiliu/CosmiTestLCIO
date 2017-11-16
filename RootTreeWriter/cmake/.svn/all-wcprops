@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/public/calice/!svn/ver/3879/calice_tools/RootTreeWriter/trunk/cmake
+END
+BuildSetup.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/public/calice/!svn/ver/3879/calice_tools/RootTreeWriter/trunk/cmake/BuildSetup.cmake
+END
+MacroCheckDeps.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/public/calice/!svn/ver/3879/calice_tools/RootTreeWriter/trunk/cmake/MacroCheckDeps.cmake
+END
+RootTreeWriterConfig.cmake.in
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/public/calice/!svn/ver/3879/calice_tools/RootTreeWriter/trunk/cmake/RootTreeWriterConfig.cmake.in
+END
+cmake_uninstall.cmake.in
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/public/calice/!svn/ver/3879/calice_tools/RootTreeWriter/trunk/cmake/cmake_uninstall.cmake.in
+END

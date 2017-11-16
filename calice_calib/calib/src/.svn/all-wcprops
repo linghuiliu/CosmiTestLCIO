@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/public/calice/!svn/ver/4744/calice_calib/trunk/calib/src
+END
+Ahc2GainCalibrator.cc
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/4698/calice_calib/trunk/calib/src/Ahc2GainCalibrator.cc
+END
+Ahc2MipTrackFinder.cc
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/4744/calice_calib/trunk/calib/src/Ahc2MipTrackFinder.cc
+END
+Ahc2PedestalCalibrator.cc
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/public/calice/!svn/ver/4698/calice_calib/trunk/calib/src/Ahc2PedestalCalibrator.cc
+END
+MipTrackFinder.cc
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/calice/!svn/ver/4628/calice_calib/trunk/calib/src/MipTrackFinder.cc
+END
+AngleTrackFinder.cc
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/public/calice/!svn/ver/4628/calice_calib/trunk/calib/src/AngleTrackFinder.cc
+END
+CellAnalysisProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/calice/!svn/ver/4628/calice_calib/trunk/calib/src/CellAnalysisProcessor.cc
+END
+ExtractIntercalibrationProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/public/calice/!svn/ver/4628/calice_calib/trunk/calib/src/ExtractIntercalibrationProcessor.cc
+END
+SingleCellAnalysis.cc
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/public/calice/!svn/ver/4628/calice_calib/trunk/calib/src/SingleCellAnalysis.cc
+END
+Ahc2OffsetCalibrator.cc
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/calice/!svn/ver/4668/calice_calib/trunk/calib/src/Ahc2OffsetCalibrator.cc
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/public/calice/!svn/ver/4698/calice_calib/trunk/calib/src/CMakeLists.txt
+END
+ExtractSaturationCurveProcessor.cc
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/public/calice/!svn/ver/4698/calice_calib/trunk/calib/src/ExtractSaturationCurveProcessor.cc
+END

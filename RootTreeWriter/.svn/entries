@@ -1,0 +1,114 @@
+10
+
+dir
+4758
+https://svnsrv.desy.de/public/calice/calice_tools/RootTreeWriter/trunk
+https://svnsrv.desy.de/public/calice
+
+
+
+2016-10-17T05:48:11.289278Z
+4723
+/C=JP/O=KEK/OU=CRC/CN=JEANS Daniel Thomelin Dietrich
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+d1deb40d-bcc4-47cc-9d27-f84b3a1afcb8
+
+cmake
+dir
+
+include
+dir
+
+doc
+dir
+
+.gitignore
+file
+
+
+
+
+2017-06-08T17:43:47.000000Z
+8b349eb76f37bc43e788c349693b2911
+2008-08-14T21:58:46.000000Z
+2091
+meyern
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+45
+
+src
+dir
+
+bin
+dir
+
+engines
+dir
+
+CMakeLists.txt
+file
+
+
+
+
+2017-06-08T17:43:47.000000Z
+f2fcf31dbdd4943ccf6d19dba8b90ebb
+2016-10-17T05:48:11.289278Z
+4723
+/C=JP/O=KEK/OU=CRC/CN=JEANS Daniel Thomelin Dietrich
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10093
+

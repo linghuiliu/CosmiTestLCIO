@@ -1,0 +1,18 @@
+
+export MARLIN_DLL=`pwd`/lib/libDigiSim.so
+
+#steer="identity"
+steer="tbeam-0610"
+if [ x$1 != "x" ]; then
+  steer=$1
+fi
+
+if [ -e marlin.slcio ]; then
+  /bin/rm -f marlin.slcio
+fi
+
+echo ./bin/digisim ${steer}.steer
+Marlin ${steer}.steer > outfile
+
+#.. cleanup
+rm cdb.log

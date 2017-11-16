@@ -1,0 +1,20 @@
+Here the calicesim lib is created which is used
+to transform the pure simulation into reco conform
+data types. 
+The library has to be included in corresponding (reco) jobs
+
+The package supports cmake building. For this a calicebuild.cmake
+has to be present (available in userlib). Adjust the pathes in there
+accordingly.
+
+mkdir buildsim
+cd buildim
+cmake -C <your_path>/calicebuild.cmake <your_path>/calice_sim
+make install
+
+Building and setting environment variables (old style): 
+Adjust the 'env.sh' script according to your needs and then ...
+
+. ./env.sh --compile
+(setting only environment: see . ./env.sh --help)
+gmake 
