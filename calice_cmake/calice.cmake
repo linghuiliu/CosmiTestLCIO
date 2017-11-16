@@ -10,7 +10,7 @@
 # calice code installation directory
 
 SET( CALICE_HOME 
-     "/directorypath/calice"
+     "/directorypath"
      CACHE PATH "Path to CALICE Software" FORCE )
 MARK_AS_ADVANCED( CALICE_HOME )
 
@@ -25,7 +25,7 @@ SET( CMAKE_MODULE_PATH
 ## i.e. the directory where you want your libraries
 ## and binaries to be installed.
 #################################################
-#SET( CMAKE_INSTALL_PREFIX "/directorypath/calice/install"
+#SET( CMAKE_INSTALL_PREFIX "/directorypath/install"
 #     CACHE PATH "Install prefix" FORCE)
 #
 #################################################

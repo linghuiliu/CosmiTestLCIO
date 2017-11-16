@@ -73,7 +73,7 @@ SET( CMAKE_PREFIX_PATH
 	/afs/desy.de/project/ilcsoft/sw/boost/1.58.0;
 CACHE PATH "CMAKE_PREFIX_PATH" FORCE )
 
-SET( CMAKE_INSTALL_PREFIX "/directorypath/calice/myInstall"
+SET( CMAKE_INSTALL_PREFIX "/directorypath/myInstall"
      CACHE PATH "Install prefix" FORCE) 
 
 # set CMAKE_MODULE_PATH for backwards compatibility directly to ILCUTIL_DIR/cmakemodules
@@ -81,6 +81,6 @@ SET( CMAKE_INSTALL_PREFIX "/directorypath/calice/myInstall"
 
 ############## CALICE ############################
 # CMake Modules Path
-SET( CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "/directorypath/calice/calice_cmake" CACHE PATH "Path to CMake Modules" FORCE )
+SET( CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "/directorypath/calice_cmake" CACHE PATH "Path to CMake Modules" FORCE )
    
 
