@@ -9,24 +9,28 @@ How to setup
         setup.sh
         test/steering_hodoscope.xml
 
-2. > mkdir myInstall
-   > mkdir build_calice_userlib
-   > mkdir build_calice_analysis
-   > mkdir build_calice_calib
-   > mkdir build_calice_reco
-   > mkdir build_labview_converter
-   > mkdir build_RootTreeWriter
+2.```
+ mkdir myInstall
+ mkdir build_calice_userlib
+ mkdir build_calice_analysis
+ mkdir build_calice_calib
+ mkdir build_calice_reco
+ mkdir build_labview_converter
+ mkdir build_RootTreeWriter
+```
                    
-3. > cd build_calice_userlib
-   > cmake -C ../user-pro-test_x86_64_gcc44_sl6.cmake ../calice_userlib/
-   > make
-   > make install
+3. ```
+ cd build_calice_userlib
+ cmake -C ../user-pro-test_x86_64_gcc44_sl6.cmake ../calice_userlib/
+ make
+ make install
+```
 
    Do the same for all the "build_" directories.
 
-4. > source setup.sh
+4. ``` source setup.sh```
 
 5. Run
-   > Marlin test/steering_hodoscope.xml
+   ``` Marlin test/steering_hodoscope.xml```
    with proper input and output files.
 
