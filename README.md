@@ -13,8 +13,8 @@ How to setup
 ```
  mkdir myInstall
  mkdir build_calice_userlib
- mkdir build_calice_reco
  mkdir build_labview_converter
+ mkdir build_calice_reco
  mkdir build_calice_calib
  mkdir build_RootTreeWriter
 ```
