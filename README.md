@@ -13,10 +13,9 @@ How to setup
 ```
  mkdir myInstall
  mkdir build_calice_userlib
- mkdir build_calice_analysis
- mkdir build_calice_calib
  mkdir build_calice_reco
  mkdir build_labview_converter
+ mkdir build_calice_calib
  mkdir build_RootTreeWriter
 ```
                    
@@ -28,7 +27,7 @@ How to setup
  make install
 ```
 
-   Do the same for all the "build_" directories.
+   Do the same for all the "build_" directories in the order above.
 
 4. ``` source setup.sh```
 
