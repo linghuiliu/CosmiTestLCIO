@@ -10,6 +10,9 @@
 #include <string>
 
 #include "TTree.h"
+#include "TF1.h"
+
+#define pitch 5.0
 
 namespace marlin
 {
@@ -32,13 +35,18 @@ namespace marlin
     virtual void fillVariables( EVENT::LCEvent* );
     
     double adc2nph( int adc, int ihod, int ch );
+    void recoverDeadCh();
     void reconstruct(int ihod);
+    double trackDistance(double x1, double y1, double x2, double y2, float * pos);
     void chAt(int fiber, int ihod, int axis, int *ch);
     double thetaWith(int fiber);
     double fiberWith(double theta);
     double argWith(double x, double y);
+    double edgeCorrection(double x);
 
     /* tree variables*/
+    const static unsigned int MAXCELLS  = 7609; /*should be big enough for all detectors!*/
+
     struct
     {
       int    cycle[2];
@@ -50,9 +58,19 @@ namespace marlin
       int    nRecoY[2];
       double recoX[2][8];
       double recoY[2][8];
-      
+      double trueRecoX[2];
+      double trueRecoY[2];
     } _hitsFill;
     
+    struct
+    {
+      int nHits;
+      int hitI[MAXCELLS];
+      int hitJ[MAXCELLS];
+      int hitK[MAXCELLS];
+      float hitEnergy[MAXCELLS];
+      float hitPos[MAXCELLS][3];
+    } _ahcHits;
     
   private:
     void resetHitsFill();
@@ -65,6 +83,10 @@ namespace marlin
     std::string _prefix[2];
     std::string _hitColName[2];
     std::string _ahcColName;
+
+    int height1, height2;
+
+    TF1 *corrF1, *corrF2;
 
     int   cycle;
     int   tdc;

@@ -24,13 +24,6 @@ using namespace TMath;
 #define IDEBUG(name) std::cout << __FILE__ <<","<<__LINE__ << "; " << #name <<" at " << &name << std::endl;
 
 /* This engine can be run within the RootTreeWriter
- * it was tested for root 5.16.00
- * depending on the required information level it will fill
- * 0: integrated values only
- * 1: layer by layer information in addition
- * 2: radial information in addition
- *
- * Due to our weired mapping it is only running for the HCAL up to now
  */
 namespace marlin
 {
@@ -52,9 +45,19 @@ namespace marlin
                                                    std::string("hod2"));
 
     _hostProcessor.relayRegisterProcessorParameter("HodoscopeWriteEngine_isModInverted",
-                                                   "run -48 have wrong hod numbers",
+                                                   "run - 48 have wrong hod numbers",
                                                    isModInverted,
                                                    (bool) false);
+
+    _hostProcessor.relayRegisterProcessorParameter("HodoscopeWriteEngine_Height1",
+                                                   "layer number for hodoscope 1",
+                                                   height1,
+                                                   0);
+
+    _hostProcessor.relayRegisterProcessorParameter("HodoscopeWriteEngine_Height2",
+                                                   "layer number for hodoscope 2",
+                                                   height2,
+                                                   13);
 
 
     _hostProcessor.relayRegisterInputCollection(LCIO::CALORIMETERHIT,_engineName+"_InCol1",
@@ -71,7 +74,7 @@ namespace marlin
 
       for (int i=0;i<2;i++) {
          char fname[256];
-         sprintf(fname, "/directorypath/RootTreeWriter/engines/onePC%d.txt",i+1);
+         sprintf(fname, "/afs/desy.de/group/flc/pool/liulingh/calice/RootTreeWriter/engines/onePC%d.txt",i+1);
          FILE *fp = fopen(fname,"r");
          float ped, opc;
          int j=0;
@@ -82,6 +85,11 @@ namespace marlin
          }
          fclose(fp);
       }
+      corrF1 = new TF1("corrF1","8./TMath::Pi()*TMath::ATan(([0]*TMath::CosH([0]*(7.5-x))*TMath::Sin(TMath::Pi()/8.*(7.5-x))-TMath::Pi()/8.*TMath::SinH([0]*(7.5-x))*TMath::Cos(TMath::Pi()/8*(7.5-x)))/([0]*TMath::Exp(8.*[0])+TMath::Pi()/8.*TMath::SinH([0]*(7.5-x))*TMath::Sin(TMath::Pi()/8.*(7.5-x))+[0]*TMath::CosH([0]*(7.5-x))*TMath::Cos(TMath::Pi()/8.*(7.5-x))))+x",-0.5,7.5);
+      corrF1->SetParameter(0,0.317);
+
+      corrF2 = new TF1("corrF2","-8./TMath::Pi()*TMath::ATan(([0]*TMath::CosH([0]*(x-75.5))*TMath::Sin(TMath::Pi()/8.*(x-75.5))-TMath::Pi()/8.*TMath::SinH([0]*(x-75.5))*TMath::Cos(TMath::Pi()/8*(x-75.5)))/([0]*TMath::Exp(8.*[0])+TMath::Pi()/8.*TMath::SinH([0]*(x-75.5))*TMath::Sin(TMath::Pi()/8.*(x-75.5))+[0]*TMath::CosH([0]*(x-75.5))*TMath::Cos(TMath::Pi()/8.*(x-75.5))))+x",75.5,83.5);
+      corrF2->SetParameter(0,0.317);
    }
 
 
@@ -130,6 +138,12 @@ namespace marlin
     hostTree->Branch(string(_prefix[ihod]+"recoY").c_str(), _hitsFill.recoY[ihod], 
 		     string(_prefix[ihod]+"recoY["+_prefix[ihod]+"nRecoY]/D").c_str());
 
+    hostTree->Branch(string(_prefix[ihod]+"trueRecoX").c_str(), &_hitsFill.trueRecoX[ihod], 
+		     string(_prefix[ihod]+"trueRecoX/D").c_str());
+
+    hostTree->Branch(string(_prefix[ihod]+"trueRecoY").c_str(), &_hitsFill.trueRecoY[ihod], 
+		     string(_prefix[ihod]+"trueRecoY/D").c_str());
+
   }
   }
 
@@ -143,14 +157,14 @@ namespace marlin
     LCCollection* inCol;
     
     try {
-    for (int ih=0;ih<2;ih++) {
-      inCol = evt->getCollection( _hitColName[ih] );
-      int ihod;
-      if(isModInverted) ihod = 1-ih;
-      else ihod=ih;
+      for (int ih=0;ih<2;ih++) {
+        inCol = evt->getCollection( _hitColName[ih] );
+        int ihod;
+        if(isModInverted) ihod = 1-ih;
+        else ihod=ih;
 
-      for ( int ielm = 0; ielm < inCol->getNumberOfElements(); ielm++ ) 
-	{
+        for ( int ielm = 0; ielm < inCol->getNumberOfElements(); ielm++ ) 
+        {
 	  LCObject *obj = inCol->getElementAt(ielm);
 	  HodoscopeBlock lBlock(obj);
           
@@ -169,6 +183,7 @@ namespace marlin
             _hitsFill.adc[ihod][itr - adc.begin()] = *itr;
             _hitsFill.nph[ihod][itr - adc.begin()] = adc2nph(*itr,ihod,itr-adc.begin());
           }
+          recoverDeadCh();
 
           reconstruct(ihod);
           _hitsFill.nRecoX[ihod] = nReco[0];
@@ -180,7 +195,81 @@ namespace marlin
             _hitsFill.recoY[ihod][n] = recoPos[1][n];
           }
 	}/* end loop over all hits*/
-    }
+      }
+      inCol = evt->getCollection( _ahcColName );
+      std::string encoding = inCol->getParameters().getStringVal( "CellIDEncoding");
+      if (encoding == "")
+      {
+        LCParameters &param = inCol->parameters();
+        //set default encoding if no encoding present
+        param.setValue(LCIO::CellIDEncoding, "M:3,S-1:3,I:9,J:9,K-1:6");
+        encoding = inCol->getParameters().getStringVal( "CellIDEncoding");
+      }
+      CellIDDecoder<CalorimeterHit> decoder(inCol);
+      bool hasKminus1 = false;
+      if (encoding.find("K-1") != std::string::npos)
+      {
+        hasKminus1 = true;
+      }
+      int nHits=0;
+      for ( int cellCounter = 0; cellCounter < inCol->getNumberOfElements() && cellCounter < (int)MAXCELLS; cellCounter++ )
+      {
+        CalorimeterHit *hit = dynamic_cast<CalorimeterHit*>(inCol->getElementAt(cellCounter));
+        _ahcHits.hitI[nHits] = decoder(hit)["I"];
+        _ahcHits.hitJ[nHits] = decoder(hit)["J"];
+
+        if (hasKminus1) _ahcHits.hitK[nHits] = decoder(hit)["K-1"]+1;
+        else            _ahcHits.hitK[nHits] = decoder(hit)["K"];
+
+        _ahcHits.hitEnergy[nHits] = hit->getEnergy();
+        
+        const float *hitPos = hit->getPosition();
+        _ahcHits.hitPos[nHits][0] = hitPos[0];
+        _ahcHits.hitPos[nHits][1] = hitPos[1];
+        _ahcHits.hitPos[nHits][2] = hitPos[2];
+        
+        nHits++;
+      }
+      _ahcHits.nHits = nHits;
+
+      int maxPass = 0;
+      int maxNX1 = 0;
+      int maxNX2 = 0;
+      int maxNY1 = 0;
+      int maxNY2 = 0;
+      double minDis = 0.;
+
+      for (int nx1=0;nx1<_hitsFill.nRecoX[0];nx1++) {
+        for (int ny1=0;ny1<_hitsFill.nRecoY[0];ny1++) {
+          for (int nx2=0;nx2<_hitsFill.nRecoX[1];nx2++) {
+            for (int ny2=0;ny2<_hitsFill.nRecoY[1];ny2++) {
+              int passPts = 0;
+              double dissum = 0.;
+              for (nHits=0;nHits<_ahcHits.nHits;nHits++) {
+                double distance = trackDistance(_hitsFill.recoX[0][nx1],_hitsFill.recoY[0][ny1],_hitsFill.recoX[1][nx2],_hitsFill.recoY[1][ny2],_ahcHits.hitPos[nHits]);
+                if (distance < 30.) {
+                  passPts++;
+                  dissum += distance*distance;
+                }
+              }
+              if (passPts>maxPass || (passPts==maxPass && dissum<minDis)) {
+                maxPass = passPts;
+                maxNX1  = nx1;
+                maxNY1  = ny1;
+                maxNX2  = nx2;
+                maxNY2  = ny2;
+                minDis  = dissum;
+              } 
+            }
+          }
+        }
+      }
+
+      _hitsFill.trueRecoX[0] = _hitsFill.recoX[0][maxNX1];
+      _hitsFill.trueRecoY[0] = _hitsFill.recoY[0][maxNY1];
+      _hitsFill.trueRecoX[1] = _hitsFill.recoX[1][maxNX2];
+      _hitsFill.trueRecoY[1] = _hitsFill.recoY[1][maxNY2];
+
     }/*try*/
     
     catch ( DataNotAvailableException err ) 
@@ -192,16 +281,25 @@ namespace marlin
   }/*fillVariables*/
 
   void HodoscopeWriteEngine::resetHitsFill() {
-  for (int ihod=0;ihod<2;ihod++) {
-    _hitsFill.cycle[ihod] = 0;
-    _hitsFill.tdc[ihod] = 0;
-    _hitsFill.accept[ihod] = 0;
+    for (int ihod=0;ihod<2;ihod++) {
+      _hitsFill.cycle[ihod] = 0;
+      _hitsFill.tdc[ihod] = 0;
+      _hitsFill.accept[ihod] = 0;
 
-    for (int i=0; i<64; i++){
-      _hitsFill.adc[ihod][i] = 0;
-      _hitsFill.nph[ihod][i] = 0;
+      for (int i=0; i<64; i++){
+        _hitsFill.adc[ihod][i] = 0;
+        _hitsFill.nph[ihod][i] = 0;
+      }
+      _hitsFill.nRecoX[ihod] = 0;
+      _hitsFill.nRecoY[ihod] = 0;
+      for (int i=0;i<8;i++){
+        _hitsFill.recoX[ihod][i] = 0;
+        _hitsFill.recoY[ihod][i] = 0;
+      }
+      _hitsFill.trueRecoX[ihod] = 0;
+      _hitsFill.trueRecoY[ihod] = 0;
+
     }
-  }
   }
   
   double HodoscopeWriteEngine::adc2nph( int adc, int ihod, int ch ) 
@@ -213,7 +311,19 @@ namespace marlin
 
     return nph;
   }
-  
+
+  void HodoscopeWriteEngine::recoverDeadCh() {
+    if(_hitsFill.nph[0][33]+_hitsFill.nph[0][35] > 0) {
+      _hitsFill.nph[0][61] = _hitsFill.nph[0][34]*(_hitsFill.nph[0][60]+_hitsFill.nph[0][62])/(_hitsFill.nph[0][33]+_hitsFill.nph[0][35]);
+    }
+    if(_hitsFill.nph[1][7]+_hitsFill.nph[1][9]>0) {
+      _hitsFill.nph[1][20] = _hitsFill.nph[1][8]*(_hitsFill.nph[1][19]+_hitsFill.nph[1][21])/(_hitsFill.nph[1][7]+_hitsFill.nph[1][9]);
+    }
+    if(_hitsFill.nph[1][10]+_hitsFill.nph[1][12]>0) {
+      _hitsFill.nph[1][23] = _hitsFill.nph[1][11]*(_hitsFill.nph[1][22]+_hitsFill.nph[1][24])/(_hitsFill.nph[1][10]+_hitsFill.nph[1][12]);
+    }
+  }
+
   void HodoscopeWriteEngine::reconstruct(int ihod) {
     double xsum,ysum;
   
@@ -235,9 +345,22 @@ namespace marlin
         nReco[axis]=(83.5-reco)/16+1;
       }
       for(int n=0;n<nReco[axis];n++) {
-        recoPos[axis][n]=(reco+n*16)*5.;
+        recoPos[axis][n]=(edgeCorrection(reco+n*16) - 41.5)*pitch;
+        //recoPos[axis][n]=(reco+n*16 - 41.5)*pitch;
       }
     }
+  }
+  double HodoscopeWriteEngine::trackDistance(double x1, double y1, double x2, double y2, float * pos) {
+    double z1, z2;
+    z1 = height1 * 43.3;
+    z2 = height2 * 43.3;
+
+    double intercept[2];
+    intercept[0] = ((pos[2]-z1)*x2 + (z2-pos[2])*x1) / (z2-z1);
+    intercept[1] = ((pos[2]-z1)*y2 + (z2-pos[2])*y1) / (z2-z1);
+
+    double distance = Sqrt((pos[0]-intercept[0])*(pos[0]-intercept[0])+(pos[1]-intercept[1])*(pos[1]-intercept[1]));
+    return distance;
   }
   void HodoscopeWriteEngine::chAt(int fiber, int ihod, int axis, int *ch) {
     if (ihod==0) {
@@ -271,7 +394,14 @@ namespace marlin
     if(arg<0) arg += 2*Pi();
     return arg;
   }
+  double HodoscopeWriteEngine::edgeCorrection(double x) {
+    if (x<8.5) {
+      x = corrF1->GetX(x,-0.5,7.5);
+    } else if (x>76.5) {
+      x = corrF2->GetX(x,75.5,83.5);
+    }
+    return x;
+  }
 
 }/*namespace marlin*/
-
 

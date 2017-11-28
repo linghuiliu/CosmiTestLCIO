@@ -29,7 +29,7 @@
 
   <global>
     <parameter name="LCIOInputFiles">
-      /directorypath/ahcal_hodoscope_run00047.slcio
+      /afs/desy.de/group/flc/pool/liulingh/calice/ahcal_hodoscope_run00047.slcio
     </parameter>
     <!-- limit the number of processed records (run+evt): -->
     <parameter name="MaxRecordNumber" value="0" />
@@ -193,15 +193,17 @@
   <processor name="HcalRootTreeWriter" type="RootTreeWriter">
     <!--Name of the output ROOT file-->
     <parameter name="OutFileName" type="string">
-      /directorypath/test/result/test.root
+      /afs/desy.de/group/flc/pool/liulingh/calice/test/result/test.root
     </parameter>
     <parameter name="HodoscopeWriteEngine_enable" type="int"> 1 </parameter>
-    <parameter name="HodoscopeWriteEngine_isModInverted" type="bool"> true </parameter>
+    <parameter name="HodoscopeWriteEngine_isModInverted" type="bool"> false </parameter>
     <parameter name="HodoscopeWriteEngine_InCol1" type="string" lcioInType="CalorimeterHit"> hodoscope1 </parameter>
     <parameter name="HodoscopeWriteEngine_InCol2" type="string" lcioInType="CalorimeterHit"> hodoscope2 </parameter>
-    <!--parameter name="HodoscopeWriteEngine_AhcalCol" type="string" lcioInType="CalorimeterHit"> Ahc2Calorimeter_Hits </parameter-->
+    <parameter name="HodoscopeWriteEngine_AhcalCol" type="string" lcioInType="CalorimeterHit"> Ahc2Calorimeter_Hits </parameter>
     <parameter name="HodoscopeWriteEngine_Prefix1" type="string"> hod1 </parameter>
     <parameter name="HodoscopeWriteEngine_Prefix2" type="string"> hod2 </parameter>
+    <parameter name="HodoscopeWriteEngine_Height1" type="int"> 0 </parameter>
+    <parameter name="HodoscopeWriteEngine_Height2" type="int"> 13 </parameter>
 
     <parameter name="HitWriteEngine_enable" type="int"> 1 </parameter>
     <!-- <parameter name="HitWriteEngine_InCol" type="string" lcioInType="CalorimeterHit"> Ahc2Calorimeter_Hits </parameter> -->
@@ -241,7 +243,7 @@
     <!--parameter name="KeepCollectionNames" type="StringVec">MyPreciousSimTrackerHits  </parameter-->
     <!-- name of output file -->
     <parameter name="LCIOOutputFile" type="string"> 
-      /directorypath/test/test.slico
+      /afs/desy.de/user/l/liulingh/calice/test/test.slico
     </parameter>
     <!--write mode for output file:  WRITE_APPEND or WRITE_NEW-->
     <parameter name="LCIOWriteMode" type="string"> WRITE_NEW </parameter>
@@ -260,7 +262,7 @@
     <parameter name="BranchPrefix" type="string"> ahc </parameter>
     <!--Name of the output root file-->
     <parameter name="OutputRootFileName" type="string">
-      /directorypath/test/result/temp.root
+      /afs/desy.de/user/l/liulingh/calice/test/result/temp.root
     </parameter>
     <!--verbosity level of this processor                                                                                                                      
           ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
