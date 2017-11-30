@@ -83,6 +83,11 @@ namespace CALICE
 		_zeroSuppression,
 		(bool) true);
 
+		registerProcessorParameter("SkipNoHit",
+		"skip (1) if the hitbit is 0",
+		_skipNoHit,
+		(bool) true);
+
 		registerProcessorParameter("PhysicsMode",
 		"Change the energy calibration depending on the running mode (Physics or Calib) - specific for the new ITEP boards",
 		_isPhysicsMode,
@@ -392,7 +397,7 @@ namespace CALICE
 						int GainBit = (ADC[ichan]& 0x2000)?1:0;
 
 						//Choose hit bit = 1
-						if (!HitBit) continue;
+						if (_skipNoHit && !HitBit) continue;
 
 						//#########
 						streamlog_out(DEBUG0)<< "ChipID: " << Chip << "  Channel: "<< ichan << endl;

@@ -165,6 +165,8 @@
     <!--parameter name="ScaleEnergy" type="float">1 </parameter-->
     <!--apply (1) or ignore (0) the MIP threshold cut-->
     <parameter name="ZeroSuppression" type="bool"> false </parameter>
+    <!--skip (1) the cells with no hitbit-->
+    <parameter name="SkipNoHit" type="bool"> true </parameter>
     <!--Minimal energy deposition in units of MIP to keep hit, applied only if ZeroSuppression==1.-->
     <parameter name="MipCut" type="float"> 0.5 </parameter>
     <!--AHCal conversion factor from MIP to GeV-->

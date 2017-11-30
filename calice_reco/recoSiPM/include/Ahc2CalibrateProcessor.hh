@@ -141,6 +141,7 @@ namespace CALICE
     bool _doSaturationCorr;        /**<flag to enable/disable the saturation correction*/
     bool _zeroSuppression;         /**<flag to enable/disable the zero suppression, that is if you want
     to apply the 0.4 MIP cut or not*/
+    bool _skipNoHit;         /**<flag to skip the cell without hitbit*/
     bool _isPhysicsMode;           /**<flag to enable/disable the physics mode energy calibration*/
 
     bool _filterDeadCells;         /**<flag to enable/disable the filtering of dead cells*/

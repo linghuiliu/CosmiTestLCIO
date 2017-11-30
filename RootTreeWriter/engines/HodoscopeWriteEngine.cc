@@ -233,10 +233,10 @@ namespace marlin
       _ahcHits.nHits = nHits;
 
       int maxPass = 0;
-      int maxNX1 = 0;
-      int maxNX2 = 0;
-      int maxNY1 = 0;
-      int maxNY2 = 0;
+      int maxNX1 =  0;
+      int maxNX2 =  0;
+      int maxNY1 =  0;
+      int maxNY2 =  0;
       double minDis = 0.;
 
       for (int nx1=0;nx1<_hitsFill.nRecoX[0];nx1++) {
@@ -246,6 +246,7 @@ namespace marlin
               int passPts = 0;
               double dissum = 0.;
               for (nHits=0;nHits<_ahcHits.nHits;nHits++) {
+                if (_ahcHits.hitEnergy[nHits]<350) continue;
                 double distance = trackDistance(_hitsFill.recoX[0][nx1],_hitsFill.recoY[0][ny1],_hitsFill.recoX[1][nx2],_hitsFill.recoY[1][ny2],_ahcHits.hitPos[nHits]);
                 if (distance < 30.) {
                   passPts++;
@@ -265,10 +266,17 @@ namespace marlin
         }
       }
 
-      _hitsFill.trueRecoX[0] = _hitsFill.recoX[0][maxNX1];
-      _hitsFill.trueRecoY[0] = _hitsFill.recoY[0][maxNY1];
-      _hitsFill.trueRecoX[1] = _hitsFill.recoX[1][maxNX2];
-      _hitsFill.trueRecoY[1] = _hitsFill.recoY[1][maxNY2];
+      if (maxPass == 0) {
+        _hitsFill.trueRecoX[0] = -10000;
+        _hitsFill.trueRecoY[0] = -10000;
+        _hitsFill.trueRecoX[1] = -10000;
+        _hitsFill.trueRecoY[1] = -10000;
+      } else {
+        _hitsFill.trueRecoX[0] = _hitsFill.recoX[0][maxNX1];
+        _hitsFill.trueRecoY[0] = _hitsFill.recoY[0][maxNY1];
+        _hitsFill.trueRecoX[1] = _hitsFill.recoX[1][maxNX2];
+        _hitsFill.trueRecoY[1] = _hitsFill.recoY[1][maxNY2];
+      }
 
     }/*try*/
     
