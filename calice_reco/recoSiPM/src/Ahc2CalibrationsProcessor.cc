@@ -1243,10 +1243,10 @@ namespace CALICE {
 	      slope.push_back(1.6);
 	    std::vector<float> slope_err;
 	    for(int i = 0; i < 2; i++)
-	      slope.push_back(0.5);
+	      slope_err.push_back(0.5);
 	    std::vector<int> status;
 	    for(int i = 0; i < 2; i++)
-	      slope.push_back(1);
+	      status.push_back(1);
 
             timeslope = new SimpleValueVector(index, 2, slope, slope_err, status);
             bits.setTimeSlopesParametersDefault();

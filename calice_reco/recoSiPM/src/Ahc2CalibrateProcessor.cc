@@ -148,6 +148,15 @@ namespace CALICE
 		_doTimeConversion,
 		(bool) false);
 
+                FloatVec exampleOffsets;
+                exampleOffsets.push_back(0.);
+
+                registerProcessorParameter("HBUPosOffsets",
+                "HBU position offsets x,y,z",
+                _HBUoffsets,
+                exampleOffsets);
+
+
 	}
 
 
@@ -893,9 +902,16 @@ namespace CALICE
 	CellDescription* cellDescription = _cellDescriptions->getByCellID(cellID);
 	float newPosition[3] = {cellDescription->getX(), cellDescription->getY(), cellDescription->getZ()};
 
+        float corredPos[3];
+        int hitK = _mapper->getDecoder()->getKFromCellID(cellID)-1;
+        corredPos[0] = newPosition[0] + _HBUoffsets[3*hitK+0];
+        corredPos[1] = newPosition[1] + _HBUoffsets[3*hitK+1];
+        corredPos[2] = newPosition[2] + _HBUoffsets[3*hitK+2];
+
 	streamlog_out(DEBUG0)<<" position: ("<<newPosition[0]<<", "<<newPosition[1]<<", "<<newPosition[2] <<")"<<std::endl;
 
-	newHit->setPosition(newPosition);
+        newHit->setPosition(corredPos);
+	//newHit->setPosition(newPosition);
 
 	/* Check for double hits! same cellID0 */
 	if(checkHit(newHit))

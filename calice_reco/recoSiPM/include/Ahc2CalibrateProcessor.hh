@@ -154,6 +154,8 @@ namespace CALICE
     bool _doMipConversion; /**Convert ADC to MIP or not**/
     bool _doTimeConversion; /**Convert TDC to ns or not**/
 
+    FloatVec _HBUoffsets; /**HBU position offsets**/
+
     bool _isDATA;       /**<flag to switch to DATA processing */
     bool _isMC;         /**<flag to switch to MC processing */
     bool _isFirstEvent; /**<flag to switch to DATA/MC at the first event, the following events should be the same. */

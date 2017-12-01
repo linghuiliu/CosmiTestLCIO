@@ -27,13 +27,14 @@
   </execute>
 
 
+      <!--/afs/desy.de/group/flc/pool/liulingh/calice/ahcal_hodoscope_run00047.slcio-->
   <global>
     <parameter name="LCIOInputFiles">
-      /afs/desy.de/group/flc/pool/liulingh/calice/ahcal_hodoscope_run00047.slcio
+      <!--/nfs/dust/ilc/group/flchcal/AHCAL_Cosmic_2017_November/LCIO/171130180406_run000082.raw.slcio-->
     </parameter>
     <!-- limit the number of processed records (run+evt): -->
     <parameter name="MaxRecordNumber" value="0" />
-    <parameter name="SkipNEvents" value="0" />
+    <parameter name="SkipNEvents" value="46676" />
     <parameter name="SupressCheck" value="false" />
     <parameter name="Verbosity" options="DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT"> ERROR </parameter>
   </global>
@@ -189,13 +190,15 @@
     <parameter name="doMipConversion" type="bool"> false </parameter>
     <!--Convert RAW TDC to ns cell by cell-->
     <parameter name="doTimeConversion" type="bool"> false </parameter>
+    <!--HBU position offsets for each layer x y z-->
+    <parameter name="HBUPosOffsets" type="FloatVec"> 0. 0. 0. -46. 0. 389.7 -36. 138. 129.9 </parameter>
   </processor>
 
   <!-- Write root file containing Temp data -->
   <processor name="HcalRootTreeWriter" type="RootTreeWriter">
     <!--Name of the output ROOT file-->
     <parameter name="OutFileName" type="string">
-      /afs/desy.de/group/flc/pool/liulingh/calice/test/result/test.root
+      /afs/desy.de/group/flc/pool/liulingh/calice/test/result/test82.root
     </parameter>
     <parameter name="HodoscopeWriteEngine_enable" type="int"> 1 </parameter>
     <parameter name="HodoscopeWriteEngine_isModInverted" type="bool"> false </parameter>

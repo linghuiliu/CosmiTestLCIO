@@ -44,6 +44,7 @@ namespace marlin
                                                    _prefix[1],
                                                    std::string("hod2"));
 
+
     _hostProcessor.relayRegisterProcessorParameter("HodoscopeWriteEngine_isModInverted",
                                                    "run - 48 have wrong hod numbers",
                                                    isModInverted,
@@ -177,11 +178,12 @@ namespace marlin
           _hitsFill.tdc[ihod] = tdc;
           _hitsFill.accept[ihod] = accept;
           for(auto itr = adc.begin(); itr != adc.end(); ++itr) {
-            if (itr-adc.begin()>=64) {
+            int channel = itr-adc.begin();
+            if (channel>=64) {
               break;
             }
-            _hitsFill.adc[ihod][itr - adc.begin()] = *itr;
-            _hitsFill.nph[ihod][itr - adc.begin()] = adc2nph(*itr,ihod,itr-adc.begin());
+            _hitsFill.adc[ihod][channel] = *itr;
+            _hitsFill.nph[ihod][channel] = adc2nph(*itr,ihod,channel);
           }
           recoverDeadCh();
 
@@ -321,13 +323,13 @@ namespace marlin
   }
 
   void HodoscopeWriteEngine::recoverDeadCh() {
-    if(_hitsFill.nph[0][33]+_hitsFill.nph[0][35] > 0) {
+    if(_hitsFill.nph[0][33] > 1 && _hitsFill.nph[0][35] > 1) {
       _hitsFill.nph[0][61] = _hitsFill.nph[0][34]*(_hitsFill.nph[0][60]+_hitsFill.nph[0][62])/(_hitsFill.nph[0][33]+_hitsFill.nph[0][35]);
     }
-    if(_hitsFill.nph[1][7]+_hitsFill.nph[1][9]>0) {
+    if(_hitsFill.nph[1][7] > 1 && _hitsFill.nph[1][9] > 1) {
       _hitsFill.nph[1][20] = _hitsFill.nph[1][8]*(_hitsFill.nph[1][19]+_hitsFill.nph[1][21])/(_hitsFill.nph[1][7]+_hitsFill.nph[1][9]);
     }
-    if(_hitsFill.nph[1][10]+_hitsFill.nph[1][12]>0) {
+    if(_hitsFill.nph[1][10] > 1 && _hitsFill.nph[1][12] > 1) {
       _hitsFill.nph[1][23] = _hitsFill.nph[1][11]*(_hitsFill.nph[1][22]+_hitsFill.nph[1][24])/(_hitsFill.nph[1][10]+_hitsFill.nph[1][12]);
     }
   }
