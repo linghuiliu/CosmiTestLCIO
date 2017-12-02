@@ -26,8 +26,6 @@
     <!-- <processor name="MyLCIOOutputProcessor"/> -->
   </execute>
 
-
-      <!--/afs/desy.de/group/flc/pool/liulingh/calice/ahcal_hodoscope_run00047.slcio-->
   <global>
     <parameter name="LCIOInputFiles">
       <!--/nfs/dust/ilc/group/flchcal/AHCAL_Cosmic_2017_November/LCIO/171130180406_run000082.raw.slcio-->
@@ -198,7 +196,7 @@
   <processor name="HcalRootTreeWriter" type="RootTreeWriter">
     <!--Name of the output ROOT file-->
     <parameter name="OutFileName" type="string">
-      /afs/desy.de/group/flc/pool/liulingh/calice/test/result/test82.root
+      /directorypath/test/result/test82.root
     </parameter>
     <parameter name="HodoscopeWriteEngine_enable" type="int"> 1 </parameter>
     <parameter name="HodoscopeWriteEngine_isModInverted" type="bool"> false </parameter>
@@ -248,7 +246,7 @@
     <!--parameter name="KeepCollectionNames" type="StringVec">MyPreciousSimTrackerHits  </parameter-->
     <!-- name of output file -->
     <parameter name="LCIOOutputFile" type="string"> 
-      /afs/desy.de/user/l/liulingh/calice/test/test.slico
+      /directorypath/test/result/test.slico
     </parameter>
     <!--write mode for output file:  WRITE_APPEND or WRITE_NEW-->
     <parameter name="LCIOWriteMode" type="string"> WRITE_NEW </parameter>
@@ -267,7 +265,7 @@
     <parameter name="BranchPrefix" type="string"> ahc </parameter>
     <!--Name of the output root file-->
     <parameter name="OutputRootFileName" type="string">
-      /afs/desy.de/user/l/liulingh/calice/test/result/temp.root
+      /directorypath/test/result/temp.root
     </parameter>
     <!--verbosity level of this processor                                                                                                                      
           ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->

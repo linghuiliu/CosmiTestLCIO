@@ -75,7 +75,7 @@ namespace marlin
 
       for (int i=0;i<2;i++) {
          char fname[256];
-         sprintf(fname, "/afs/desy.de/group/flc/pool/liulingh/calice/RootTreeWriter/engines/onePC%d.txt",i+1);
+         sprintf(fname, "/directorypath/RootTreeWriter/engines/onePC%d.txt",i+1);
          FILE *fp = fopen(fname,"r");
          float ped, opc;
          int j=0;
