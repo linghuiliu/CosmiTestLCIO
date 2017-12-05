@@ -28,7 +28,7 @@
 
   <global>
     <parameter name="LCIOInputFiles">
-      <!--/nfs/dust/ilc/group/flchcal/AHCAL_Cosmic_2017_November/LCIO/171130180406_run000082.raw.slcio-->
+      /nfs/dust/ilc/group/flchcal/AHCAL_Cosmic_2017_November/LCIO/171203140649_run000096.raw.slcio
     </parameter>
     <!-- limit the number of processed records (run+evt): -->
     <parameter name="MaxRecordNumber" value="0" />
@@ -189,14 +189,15 @@
     <!--Convert RAW TDC to ns cell by cell-->
     <parameter name="doTimeConversion" type="bool"> false </parameter>
     <!--HBU position offsets for each layer x y z-->
-    <parameter name="HBUPosOffsets" type="FloatVec"> 0. 0. 0. -46. 0. 389.7 -36. 138. 129.9 </parameter>
+    <!--parameter name="HBUPosOffsets" type="FloatVec"> 0. 0. 0. -46. 0. 389.7 -36. 138. 129.9 </parameter-->
+    <parameter name="HBUPosOffsets" type="FloatVec"> -8. 145. 43.3 0. -148. 389.7 0. 0. 129.9 </parameter>
   </processor>
 
   <!-- Write root file containing Temp data -->
   <processor name="HcalRootTreeWriter" type="RootTreeWriter">
     <!--Name of the output ROOT file-->
     <parameter name="OutFileName" type="string">
-      /directorypath/test/result/test82.root
+      /directorypath/test/result/test96.root
     </parameter>
     <parameter name="HodoscopeWriteEngine_enable" type="int"> 1 </parameter>
     <parameter name="HodoscopeWriteEngine_isModInverted" type="bool"> false </parameter>

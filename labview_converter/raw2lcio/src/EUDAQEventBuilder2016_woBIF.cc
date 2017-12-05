@@ -357,9 +357,9 @@ namespace CALICE{
 							 iADC[18], iADC[19], iADC[20], iADC[21], iADC[22], iADC[23],  iADC[24], iADC[25], iADC[26], iADC[27], iADC[28], iADC[29], iADC[30],iADC[31], iADC[32], iADC[33], iADC[34], iADC[35]
 							 );
 	    
-	    if (iCpID>=129 && iCpID<=140)
-	      colECAL->addElement( lBlock );
-	    else
+//	    if (iCpID>=129 && iCpID<=140)
+//	      colECAL->addElement( lBlock );
+//	    else
 	      colHCAL->addElement( lBlock );
 	    
 	  }

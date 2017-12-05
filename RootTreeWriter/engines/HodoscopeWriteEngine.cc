@@ -145,6 +145,9 @@ namespace marlin
     hostTree->Branch(string(_prefix[ihod]+"trueRecoY").c_str(), &_hitsFill.trueRecoY[ihod], 
 		     string(_prefix[ihod]+"trueRecoY/D").c_str());
 
+    hostTree->Branch(string(_prefix[ihod]+"trueRecoZ").c_str(), &_hitsFill.trueRecoZ[ihod], 
+		     string(_prefix[ihod]+"trueRecoZ/D").c_str());
+
   }
   }
 
@@ -279,6 +282,8 @@ namespace marlin
         _hitsFill.trueRecoX[1] = _hitsFill.recoX[1][maxNX2];
         _hitsFill.trueRecoY[1] = _hitsFill.recoY[1][maxNY2];
       }
+      _hitsFill.trueRecoZ[0] = height1 * 43.3;
+      _hitsFill.trueRecoZ[1] = height2 * 43.3;
 
     }/*try*/
     
@@ -331,6 +336,12 @@ namespace marlin
     }
     if(_hitsFill.nph[1][10] > 1 && _hitsFill.nph[1][12] > 1) {
       _hitsFill.nph[1][23] = _hitsFill.nph[1][11]*(_hitsFill.nph[1][22]+_hitsFill.nph[1][24])/(_hitsFill.nph[1][10]+_hitsFill.nph[1][12]);
+    }
+    if(_hitsFill.nph[1][56] > 1 && _hitsFill.nph[1][58] > 1) {
+      _hitsFill.nph[1][38] = _hitsFill.nph[1][57]*(_hitsFill.nph[1][37]+_hitsFill.nph[1][39])/(_hitsFill.nph[1][56]+_hitsFill.nph[1][58]);
+    }
+    if(_hitsFill.nph[1][54] > 1 && _hitsFill.nph[1][56] > 1) {
+      _hitsFill.nph[1][40] = _hitsFill.nph[1][55]*(_hitsFill.nph[1][39]+_hitsFill.nph[1][41])/(_hitsFill.nph[1][54]+_hitsFill.nph[1][56]);
     }
   }
 
@@ -405,9 +416,9 @@ namespace marlin
     return arg;
   }
   double HodoscopeWriteEngine::edgeCorrection(double x) {
-    if (x<8.5) {
+    if (x<7.5) {
       x = corrF1->GetX(x,-0.5,7.5);
-    } else if (x>76.5) {
+    } else if (x>75.5) {
       x = corrF2->GetX(x,75.5,83.5);
     }
     return x;
