@@ -61,6 +61,7 @@ namespace marlin
       double trueRecoX[2];
       double trueRecoY[2];
       double trueRecoZ[2];
+      int    maxPass;
     } _hitsFill;
     
     struct

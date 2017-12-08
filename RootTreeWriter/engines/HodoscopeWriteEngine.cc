@@ -148,6 +148,9 @@ namespace marlin
     hostTree->Branch(string(_prefix[ihod]+"trueRecoZ").c_str(), &_hitsFill.trueRecoZ[ihod], 
 		     string(_prefix[ihod]+"trueRecoZ/D").c_str());
 
+    hostTree->Branch(string("hod_maxPass").c_str(), &_hitsFill.maxPass, 
+		     string("hod_maxPass/I").c_str());
+
   }
   }
 
@@ -237,7 +240,7 @@ namespace marlin
       }
       _ahcHits.nHits = nHits;
 
-      int maxPass = 0;
+      _hitsFill.maxPass = 0;
       int maxNX1 =  0;
       int maxNX2 =  0;
       int maxNY1 =  0;
@@ -258,8 +261,8 @@ namespace marlin
                   dissum += distance*distance;
                 }
               }
-              if (passPts>maxPass || (passPts==maxPass && dissum<minDis)) {
-                maxPass = passPts;
+              if (passPts>_hitsFill.maxPass || (passPts==_hitsFill.maxPass && dissum<minDis)) {
+                _hitsFill.maxPass = passPts;
                 maxNX1  = nx1;
                 maxNY1  = ny1;
                 maxNX2  = nx2;
@@ -271,7 +274,7 @@ namespace marlin
         }
       }
 
-      if (maxPass == 0) {
+      if (_hitsFill.maxPass == 0) {
         _hitsFill.trueRecoX[0] = -10000;
         _hitsFill.trueRecoY[0] = -10000;
         _hitsFill.trueRecoX[1] = -10000;
