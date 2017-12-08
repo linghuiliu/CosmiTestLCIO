@@ -1,6 +1,6 @@
 void event_display(int evenum = 12348){
   TString matchfile;
-  matchfile.Form("../result/test82.root");
+  matchfile.Form("../result/test96.root");
   TFile *fmatch = new TFile(matchfile.Data(), "read");
   TTree *tmatch = (TTree*)fmatch->Get("bigtree");
   Int_t HhitI[256],HhitJ[256],HhitK[256],Hnhit;
@@ -19,7 +19,7 @@ void event_display(int evenum = 12348){
   tmatch->SetBranchAddress("ahc_hitK", HhitK);
   tmatch->SetBranchAddress("ahc_hitPos", HhitPos);
   tmatch->SetBranchAddress("ahc_hitEnergy", HADC);
-  TString ephname,nxname,nyname,recxname,recyname,truexname,trueyname;
+  TString ephname,nxname,nyname,recxname,recyname,truexname,trueyname,truezname;
   for (int m = 0; m < 2; m++) {
     ephname.Form("hod%d_nph",m+1);
     nxname.Form("hod%d_nRecoX",m+1);
@@ -28,6 +28,7 @@ void event_display(int evenum = 12348){
     recyname.Form("hod%d_recoY",m+1);
     truexname.Form("hod%d_trueRecoX",m+1);
     trueyname.Form("hod%d_trueRecoY",m+1);
+    truezname.Form("hod%d_trueRecoZ",m+1);
     tmatch->SetBranchAddress(ephname,nph[m]);
     tmatch->SetBranchAddress(nxname,&nX[m]);
     tmatch->SetBranchAddress(nyname,&nY[m]);
@@ -35,6 +36,7 @@ void event_display(int evenum = 12348){
     tmatch->SetBranchAddress(recyname,recoY[m]);
     tmatch->SetBranchAddress(truexname,&trueReco[3*m+0]);
     tmatch->SetBranchAddress(trueyname,&trueReco[3*m+1]);
+    tmatch->SetBranchAddress(truezname,&trueReco[3*m+2]);
   }
 
   for (int i=evenum;i<tmatch->GetEntries();i++) {
@@ -79,6 +81,7 @@ void event_display(int evenum = 12348){
   TGraphErrors *recoG[2];
   TGraph2D *Edisplay = new TGraph2D();
   TGraph2D *Hdisplay = new TGraph2D();
+  TPolyLine3D *tile[256];
   int gcount=0;
   double height[2]={0,43.3*13};
 
@@ -108,8 +111,8 @@ void event_display(int evenum = 12348){
       }
     }
   }
-  trueReco[2] = height[0];
-  trueReco[5] = height[1];
+  //trueReco[2] = height[0];
+  //trueReco[5] = height[1];
   TPolyLine3D *line = new TPolyLine3D(2,trueReco);
   line->SetLineColor(2);
 
@@ -147,6 +150,13 @@ void event_display(int evenum = 12348){
     }
 */
     Hdisplay->SetPoint(n,HhitPos[n][0],HhitPos[n][1],HhitPos[n][2]);
+    Double_t tilecorner[15] = {
+HhitPos[n][0]-15,HhitPos[n][1]-15,HhitPos[n][2],
+HhitPos[n][0]-15,HhitPos[n][1]+15,HhitPos[n][2],
+HhitPos[n][0]+15,HhitPos[n][1]+15,HhitPos[n][2],
+HhitPos[n][0]+15,HhitPos[n][1]-15,HhitPos[n][2],
+HhitPos[n][0]-15,HhitPos[n][1]-15,HhitPos[n][2]};
+    tile[n] = new TPolyLine3D(5,tilecorner);
     cout<<n<<" "<<HhitPos[n][0]<<" "<<HhitPos[n][1]<<" "<<HhitPos[n][2]<<endl;
   }
 
@@ -162,6 +172,7 @@ void event_display(int evenum = 12348){
   canvas3->cd();
   Edisplay->Draw("P");
   Hdisplay->Draw("P same");
+  for (int n=0;n<Hnhit;n++) tile[n]->Draw("same");
   line->Draw("same");
   //canvas4->cd();
   //Hdisplay->Draw("P");
